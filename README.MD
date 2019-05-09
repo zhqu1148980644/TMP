@@ -58,7 +58,7 @@ word2vec model comes from [here](https://github.com/RaRe-Technologies/gensim-dat
 ![bilstm_crf](bilstm_crf_model.png)
 ##### 2. Result
 Not fully completed.
-![bilstm_crf](41.png)
+![bilstm_crf](41epoch.png)
 ####
 #### Usage
 ##### prerequisites:
