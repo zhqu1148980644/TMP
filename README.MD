@@ -147,4 +147,4 @@ It takes me a long time to understand what kind of process is going on in other'
 
 - Maybe I will do this task again after I have finished leaning the theoretical knowledge .
 
-- Testing another deeplearning alrothm.
+- Testing another deeplearning algorithm.
