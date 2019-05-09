@@ -55,14 +55,15 @@ word2vec model comes from [here](https://github.com/RaRe-Technologies/gensim-dat
 ##### Stacked BILSTM
 ##### CRF
 ##### 2. Result
-f1-score: 28
-100epochs
+Not fully completed.
+![bilstm_crf](44.png)
 ####
 #### Usage
 ##### prerequisites:
 - wapiti
 - keras and tensorflow
 - pretrained word2vec model
+- Download AGAC corpus and word2vec model and change the file path in the last few lines of agac.py.
 ##### command line:
 ```bash
 python3 agac.py
@@ -139,7 +140,9 @@ train_test(model, x_train, x_test, y_test, table, batch_size=32, epochs=200)
 >https://github.com/kyzhouhzau/Sequence_Labeling
 
 #### Plan
-This is the first time that I use deep leaning method to handle a task.
+- This is the first time that I use deep leaning method to handle a task.
 It takes me a long time to understand what kind of process is going on in other's  code which realted to NER using lstm.
 
-Maybe I will do this task again after I have finished leaning the theoretical knowledge.
+- Maybe I will do this task again after I have finished leaning the theoretical knowledge .
+
+- Testing another deeplearning alrothm.
