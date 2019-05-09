@@ -55,7 +55,8 @@ word2vec model comes from [here](https://github.com/RaRe-Technologies/gensim-dat
 ##### Stacked BILSTM
 ##### CRF
 ##### 2. Result
-
+f1-score: 28
+100epochs
 ####
 #### Usage
 ##### prerequisites:
