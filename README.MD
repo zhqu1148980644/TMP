@@ -44,7 +44,7 @@ Pattern file is used for automated feature function extraction.
 2. Changed pattern file to extract feature function based on both tokens and POS.
 
 ##### 3. Result
-
+![wapiti result](wapiti_result.png)
 #### BILSTM+CRF with keras
 ##### 1. Design
 ##### Embedding:<br> 
