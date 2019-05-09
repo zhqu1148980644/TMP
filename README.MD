@@ -21,7 +21,7 @@ In task one. we only focous on the `denotations` filed.
 2. Fetch sentences
 3. Fetch tokens of each sentence
 4. Remove sentence with no entity marks . There are some mis-annotation in agac file. e.g.
-Entites are correctly predicted by CRF while these tokens are not annotated in AGAC file. Therefore this sentence are not included in the test sample.
+Entites are correctly predicted by CRF while these tokens are not annotated in AGAC file. Therefore these sentence are not included in the test sample.
 5. Extract POS feature of each token.
 
 #### CRF with wapiti
