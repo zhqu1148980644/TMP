@@ -54,9 +54,11 @@ word2vec model comes from [here](https://github.com/RaRe-Technologies/gensim-dat
 3. POS tag embedding
 ##### Stacked BILSTM
 ##### CRF
+##### overview
+![bilstm_crf](bilstm_crf_model.png)
 ##### 2. Result
 Not fully completed.
-![bilstm_crf](44.png)
+![bilstm_crf](41.png)
 ####
 #### Usage
 ##### prerequisites:
