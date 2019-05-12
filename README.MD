@@ -143,7 +143,7 @@ train_test(model, x_train, x_test, y_test, table, batch_size=32, epochs=200)
 
 #### Plan
 - This is the first time that I use neural network method to handle a task.
-It takes me a long time to understand what kind of process is going on in other's code which realted to NER using lstm.
+It takes me a long time to understand what kind of process is going on in other's code which related to NER using lstm.
 
 - Maybe I will do this task again after I have finished leaning the theoretical knowledge .
 
