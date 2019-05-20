@@ -472,13 +472,13 @@ class AGACTransform(object):
                     break
 
         # function for cheking if a word span within any sentence span
-        def check_skip(st, ed, sentence_with_deno):
+        def check_skip(st, ed):
             for sent_begin, sent_end in sentence_with_deno:
                 if st >= sent_begin and ed <= sent_end:
                     return False
             return True
 
-        return sentence_with_deno, check_skip
+        return check_skip
 
     def _write_bio(self, records, output, filter=False, delimiter='\t'):
         outfile = open(output, "w", encoding='utf-8', newline='\n')
@@ -488,10 +488,10 @@ class AGACTransform(object):
             deno_dict = record.deno_dict
             # find the empty sentence which has no denotations.
             if filter:
-                sentence_with_deno, check_skip = self.get_deno_span(record)
+                check_skip = self.get_deno_span(record)
             for st, ed in record.token_span():
                 # Skip the empty sentence which has no denotaions.
-                if filter and check_skip(st, ed, sentence_with_deno):
+                if filter and check_skip(st, ed):
                     continue
                 token = text[st: ed]
                 marker = deno_dict.get(token + str(st), None)
@@ -513,11 +513,11 @@ class AGACTransform(object):
             index = -1
             # find the empty sentence which has no denotations.
             if filter:
-                sentence_with_deno, check_skip = self.get_deno_span(record)
+                check_skip = self.get_deno_span(record)
             for st, ed in record.token_span():
                 index += 1
                 # Skip the empty sentence which has no denotaions.
-                if filter and check_skip(st, ed, sentence_with_deno):
+                if filter and check_skip(st, ed):
                     continue
                 token = text[st: ed]
                 marker = deno_dict.get(token + str(st), None)
@@ -543,11 +543,11 @@ class AGACTransform(object):
                 index = -1
                 # find the empty sentence which has no denotations.
                 if filter:
-                    sentence_with_deno, check_skip = self.get_deno_span(record)
+                    check_skip = self.get_deno_span(record)
                 for st, ed in record.token_span():
                     index += 1
                     # Skip the empty sentence which has no denotaions.
-                    if filter and check_skip(st, ed, sentence_with_deno):
+                    if filter and check_skip(st, ed):
                         continue
                     token = text[st: ed]
                     tokens.append(token)
