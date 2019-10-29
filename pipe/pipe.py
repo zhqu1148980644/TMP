@@ -149,16 +149,55 @@ class Pipe(PipeBase, FileMixin):
         return res
 
 
+class Singleton(type):
+    def __init__(self, *args, **kwargs):
+        self.__instance = None
+        super().__init__(*args, **kwargs)
+
+    def __call__(self, *args, **kwargs):
+        if self.__instance is None:
+            self.__instance = super().__call__(*args, **kwargs)
+        return self.__instance
+
+
+class EasyPipe(Pipe, metaclass=Singleton):
+    END = "END"
+
+    def __init__(self):
+        super().__init__(lambda x: x)
+
+    def __call__(self, *args, **kwargs):
+        raise NotImplementedError
+
+    def __or__(self, rop):
+        if rop == self.END:
+            self._threads = []
+            self.stream = []
+        else:
+            return super().__or__(rop)
+
+    def __ror__(self, lop):
+        self._threads = []
+        self.stream = []
+        try:
+            lop = auto_open(lop)
+        except:
+            pass
+        self.x = lop
+
+        return self
+
+
 P = Pipe
 
-p = P(
+pipe = P(
     lambda p: p
     | p.x[np.cos(p.x) >= 10]
     | (i ** 2 for i in p.x)
     | list
     | plt.plot(p.x) | print('done')
 )
-p(np.arange(20))
+pipe(np.arange(20))
 
 P(
     lambda p: p
@@ -177,24 +216,24 @@ P(
     | p.x.shape[0]
 )()
 
-p = Pipe(
+pipe = Pipe(
     lambda p: "testfile" >> p
     | (line for line in p.x)
 ) > "another_file"
 
-p = Pipe(
+pipe = Pipe(
     lambda p: "testfile" >> p
     | (line for line in p.x)
     | (line + "haha" for line in p.x)
 ) >> "another_file1"
 
-p()
-"another_file" | p
-"another_file" >> p
-['asda', "asdas", "qweqw"] >> p
+pipe()
+"another_file" | pipe
+"another_file" >> pipe
+['asda', "asdas", "qweqw"] >> pipe
 
 
-p = P(
+pipe = P(
     lambda p: p
     | (str(i) + "\n" for i in p.x)
     | "grep 1"
@@ -203,4 +242,12 @@ p = P(
     | print(p.x)
 )
 
-(i for i in range(20)) >> p
+(i for i in range(20)) >> pipe
+
+
+p = EasyPipe()
+END = EasyPipe.END
+
+"another_file1" >> p | list | print(p.x) | END
+p | 10 | range | list | print(p.x) | END
+[1, 2, 3, 4] >> p | (i ** 2 for i in p.x) | list | print(p.x) | END
