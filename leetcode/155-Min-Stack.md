@@ -21,5 +21,85 @@ minStack.getMin();   --> Returns -2.
 
 #### Solutions
 
-1. ##### two stack
+The difficulty lies in always keeping tack of the current minimum number in the stack.
 
+
+1. ##### one stack
+
+- Use a single value to store the minimum element of the stack.
+- When find a more small value, push the current minimum item into the stack before this new minimum is pushed back.
+    - When the minimum element is poped, the second minimum number can be easily fetched from the top of the stack thus the minimum can be correctly recorded.
+
+```c++
+class MinStack {
+private:
+    stack<int> s;
+    int min = INT_MAX;
+public:
+    /** initialize your data structure here. */
+    MinStack() {}
+
+    void push(int x) {
+        if (x <= min)  {
+            s.push(min);
+            min = x;
+        }
+        s.push(x);
+    }
+
+    void pop() {
+        int & top = s.top(); s.pop();
+        if (top == min) {
+            min = s.top();
+            s.pop();
+        }
+    }
+
+    int top() {
+        return s.top();
+    }
+
+    int getMin() {
+        return min;
+    }
+};
+```
+
+
+
+2. ##### two stack
+
+- Use another stack to keep tack of the minimum numbers.
+
+
+```c++
+class MinStack {
+private:
+    stack<int> s;
+    stack<int> min;
+public:
+    /** initialize your data structure here. */
+    MinStack() {}
+
+    void push(int x) {
+        s.push(x);
+        if (min.empty() || x <= min.top()) min.push(x);
+    }
+
+    void pop() {
+        if (!s.empty()) {
+            if (min.top() == s.top()) min.pop();
+            s.pop();
+        }
+    }
+
+    int top() {
+        return s.top();
+    }
+
+    int getMin() {
+        return min.top();
+    }
+};
+
+```
