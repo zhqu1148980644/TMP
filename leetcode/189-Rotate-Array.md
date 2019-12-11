@@ -32,6 +32,44 @@ Could you do it in-place with O(1) extra space?
 
 2. ##### use cycle replacement
 
+- Due to the limitation of constant space, we need to move items in place.
+    - Each time we move an item to it's proper place, the item in that place need to be moved too.
+    - For simplicity, we can store the replaced item in the place of the moved item. Then back to the first step.
+    - As the step are always the same, this moving loop will finally back to the original place. i.e No need and no way to move anymore.
+    - Then start at the next index.
 
+
+```c++
+void rotate(int* nums, int numsSize, int k){
+    k = k % numsSize;
+    for (int i = 0, times = 0; times < numsSize; i++) {
+        int cur_i = i;
+        do {
+            int next_i = (cur_i + k) % numsSize;
+            int tmp = nums[next_i];
+            nums[next_i] = nums[i];
+            nums[i] = tmp;
+            cur_i = next_i;
+            times++;
+        } while (cur_i != i);
+    }
+}
+```
 
 3. ###### reverse
+
+- reverse the whole array: `n` items.
+- reverse the front `k` items;
+- reverse the left `n - k` items.
+
+```c++
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+        k %= nums.size();
+        reverse(nums.begin(), nums.end());
+        reverse(nums.begin(), nums.begin() + k);
+        reverse(nums.begin() + k, nums.end());
+    }
+};
+```
