@@ -4,12 +4,14 @@ from functools import partial
 from subprocess import Popen, PIPE
 from inspect import isgenerator, isfunction
 from typing import Callable
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn import datasets
 
+__all__ = ['P', 'p', 'END']
 
 def auto_open(filename, *args, **kwargs):
     return open(filename, *args, **kwargs)
@@ -41,7 +43,7 @@ class PipeBase(object):
 
     @property
     def x(self):
-        return self.stream[-1]
+        return self.stream[-1] if self.stream else None
 
     @x.setter
     def x(self, value):
@@ -171,8 +173,11 @@ class EasyPipe(Pipe, metaclass=Singleton):
 
     def __or__(self, rop):
         if rop == self.END:
+            res = self.x
             self._threads = []
             self.stream = []
+            self.fns = []
+            return res
         else:
             return super().__or__(rop)
 
@@ -180,74 +185,29 @@ class EasyPipe(Pipe, metaclass=Singleton):
         self._threads = []
         self.stream = []
         try:
-            lop = auto_open(lop)
+            if Path(lop).exists():
+                lop = auto_open(lop)
+            else:
+                raise FileNotFoundError(lop)
         except:
             pass
+
         self.x = lop
 
         return self
 
+    # p   >>  'test.file'
+    def __rshift__(self, rop):
+        self.handle_sibling(rop)
+        self | wfile_fn(rop, 'a+')
+        return self
+
+    # p   >   'test.file'
+    def __gt__(self, rop):
+        self.handle_sibling(rop)
+        self | wfile_fn(rop, 'w')
+        return self
 
 P = Pipe
-
-pipe = P(
-    lambda p: p
-    | p.x[np.cos(p.x) >= 10]
-    | (i ** 2 for i in p.x)
-    | list
-    | plt.plot(p.x) | print('done')
-)
-pipe(np.arange(20))
-
-P(
-    lambda p: p
-    | np.linspace(0, 2*np.pi, 100) | np.sin | plt.plot
-)()
-
-iris = datasets.load_iris()
-iris = pd.DataFrame(iris.data, columns=iris.feature_names)
-print(iris.shape)
-iris.head()
-
-P(
-    lambda p: p
-    | iris
-    | p.x[p.x['sepal width (cm)'] > 3.2]
-    | p.x.shape[0]
-)()
-
-pipe = Pipe(
-    lambda p: "testfile" >> p
-    | (line for line in p.x)
-) > "another_file"
-
-pipe = Pipe(
-    lambda p: "testfile" >> p
-    | (line for line in p.x)
-    | (line + "haha" for line in p.x)
-) >> "another_file1"
-
-pipe()
-"another_file" | pipe
-"another_file" >> pipe
-['asda', "asdas", "qweqw"] >> pipe
-
-
-pipe = P(
-    lambda p: p
-    | (str(i) + "\n" for i in p.x)
-    | "grep 1"
-    | (int(i) for i in p.x)
-    | list
-    | print(p.x)
-)
-
-(i for i in range(20)) >> pipe
-
-
 p = EasyPipe()
 END = EasyPipe.END
-
-"another_file1" >> p | list | print(p.x) | END
-p | 10 | range | list | print(p.x) | END
-[1, 2, 3, 4] >> p | (i ** 2 for i in p.x) | list | print(p.x) | END
