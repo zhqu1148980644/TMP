@@ -24,7 +24,7 @@ If you have figured out the O(n) solution, try coding another solution using the
 int maxSubArray(int* nums, int numsSize){
     int m = INT_MIN, last = 0;
     while (numsSize--) {
-        last = nums[numsSize] + ((last > 0) ? last : 0);
+        last = max(nums[numsSize] + last, nums[numsSize]);
         m = max(m, last);
     }
     return m;

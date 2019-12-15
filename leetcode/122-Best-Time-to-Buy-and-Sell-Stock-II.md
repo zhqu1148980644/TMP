@@ -30,9 +30,8 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
 1. ##### Straight forward
 
-- Sum up all the price difference between two consecutive days.
-- Actually we need to sell at the last price-increasing point, and immediatly buy one the next day and repeat this process.
-
+- To achieve the maximum profit, we need to buy at the start of each ascending slope and sell at the end the slope.
+- This process equals to summing up all the price difference between two consecutive days.
 
 ```c++
 int maxProfit(int* prices, int pricesSize){
@@ -45,3 +44,7 @@ int maxProfit(int* prices, int pricesSize){
     return SUM;
 }
 ```
+
+2. ##### Dynamic programming
+
+See problem 123.
