@@ -77,7 +77,7 @@ ad
 bc
 ```
 
-Interger of position mask decreases as the permutation forward.
+- Interger of position mask decreases as the permutation forward.
 
 ```c++
 1100
@@ -86,6 +86,7 @@ Interger of position mask decreases as the permutation forward.
 0110
 ```
 
+- The code below firstly find the bigest number, when ever a next-permutaiotn are requested, deduce the number one by one until find a number whose number of bits setted is equal to `k`.
 
 ```c++
 class CombinationInterator {
@@ -96,7 +97,7 @@ private:
 
     int countOne(unsigned int n) {
         int count = 0;
-        while () {
+        while (true) {
             count++;
             n = n & (n - 1);
         }
@@ -131,3 +132,6 @@ public:
     }
 };
 ```
+
+
+- For big n and small k, this search-one-by-one strategy could be time consuming.

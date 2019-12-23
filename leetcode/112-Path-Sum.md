@@ -43,9 +43,9 @@ public:
 };
 ```
 
-2. ##### iteration(dfs or preorder) with stack
+2. ##### iteration(dfs or postder ?) with stack
 
-- Because the numbers may be negative, we can not pre-exit(prune).
+- Because the number may be negative, we can not pre-exit(prune).
 
 ```c++
 class Solution {

@@ -67,6 +67,70 @@ public:
 };
 ```
 
+Or use template borrowed from others.
+- https://leetcode.com/problems/minimum-window-substring/discuss/26808/Here-is-a-10-line-template-that-can-solve-most-'substring'-problems
+
+
+```c++
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int count[128] = {0}, maxlen = 0;
+        int i = 0, j = 0;
+        while (j < s.size()) {
+            if (++count[s[j++]] == 2)
+                while (--count[s[i++]] != 1);
+            if (j - i >= maxlen)
+                maxlen = j - i;
+        }
+        return maxlen;
+    }
+};
+```
+
+Use the same template in problem: `Longest Substring with At Most Two Distinct Characters`
+
+```c++
+int lengthOfLongestSubstringTwoDistinct(string s) {
+    int count[128] = {0};
+    int counter = 0, i = 0, j = 0, maxlen = 0;
+    while (j < s.size()) {
+        if (++count[s[j++]] == 1) counter++;
+        while (counter > 2)
+            if (--count[s[i++]] == 0) counter--;
+        if (j - i >= maxlen)
+            maxlen = j - i;
+    }
+    return maxlen;
+}
+```
+
+Use the same template in problem: `minimum window substring`
+
+```c++
+class Solution {
+public:
+    string minWindow(string s, string t) {
+        int count[128] = {0};
+        for (auto & c : t) count[c]++;
+        int i = 0, j = 0, counter = t.size();
+        int minlen = s.size(), start = s.size();
+        while (j < s.size()) {
+            if (--count[s[j++]] >= 0) counter--;
+            if (counter == 0) {
+                while (counter == 0)
+                    if (++count[s[i++]] > 0) counter++;
+                if (j - i  + 1 <= minlen) {
+                    minlen = j - i + 1;
+                    start = i - 1;
+                }
+            }
+        }
+        return start == s.size() ? "" : s.substr(start, minlen);
+    }
+};
+```
+
 3. #### Optimised Sliding window O(n) S(n)
 
 As we can see in the second method, We have to move the `s[i]` forward several times until the duplicate of `s[j]` is removed. Why don't we jump directly to the index `next` to the duplicate of `s[j]`. 

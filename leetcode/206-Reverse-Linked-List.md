@@ -15,7 +15,6 @@ A linked list can be reversed either iteratively or recursively. Could you imple
 
 
 
-
 #### Solutions
 
 1. ##### Iteration

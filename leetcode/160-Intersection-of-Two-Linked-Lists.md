@@ -53,7 +53,7 @@ Your code should preferably run in O(n) time and use only O(1) memory.
 
 1. ##### two pointer
 
-- Move two pointers for each head forward till the end, count two length.
+- counting the length of each list use two pointers two pass.
 - Reset two pointers to heads, move to the interset node.
 
 ```c++

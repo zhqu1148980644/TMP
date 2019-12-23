@@ -59,7 +59,7 @@ int myAtoi(char * str){
     bool neg = false;
     if (*str == '-' || *str == '+') 
         if(*str++ == '-') neg = true;
-    
+
     int n = 0; long res = 0;
     while (*str && ISNUM(n = *str - '0')) {
         if (res > MAX) { res = MAX; break; }

@@ -30,7 +30,7 @@ For k = 3, you should return: 3->2->1->4->5
 
 - If the reversed node in the last step are smaller then k, Use the same function reverse back this part of node
 
-```c
+```c++
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -75,6 +75,66 @@ struct ListNode* reverseKGroup(struct ListNode* head, int k){
 
 
 ```
+
+
+##### Borrow idea from problem 92
+
+```c++
+class Solution {
+public:
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        int len = 0;
+        ListNode * cur = head;
+        while (cur && ++len) cur = cur->next;
+
+        ListNode * dummy = new ListNode(0);
+        dummy->next = head; head = dummy;
+        for (int i = 0; i < len / k; i++) {
+            cur = head->next;
+            for (int j = 0; j < k - 1; j++) {
+                ListNode * tmp = head->next;
+                head->next = cur->next;
+                cur->next = cur->next->next;
+                head->next->next = tmp;
+            }
+            head = cur;
+        }
+        return dummy->next;
+    }
+};
+```
+
+Or recall the same function to reverse back the tail.
+
+```c++
+class Solution {
+public:
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        ListNode * cur, * dummy = new ListNode(0);
+        dummy->next = head; head = dummy;
+        int inserted;
+
+        while (head->next) {
+            cur = head->next;
+            for (inserted = 0; inserted < k - 1 && cur->next; inserted++) {
+                ListNode * tmp = head->next;
+                head->next = cur->next;
+                cur->next = cur->next->next;
+                head->next->next = tmp;
+            }
+            if (inserted == k - 1)
+                head = cur;
+            else {
+                // No way to get the real tail, thus we need to manually exit.
+                head->next = reverseKGroup(head->next, inserted + 1);
+                break;
+            }
+        }
+        return dummy->next;
+    }
+};
+```
+
 
 3. #### Recursion O(n) S(n)
 
