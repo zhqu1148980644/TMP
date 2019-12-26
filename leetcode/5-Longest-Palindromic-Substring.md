@@ -81,7 +81,10 @@ char * longestPalindrome(char * s) {
 - Build a dp table `dp[n, n]`, `dp[i, j]` represents if `s[i:j]` is a palindromic substring.
 - The relation: `dp[i, j] = true` only if `dp[i + 1, j - 1] == true` and `s[i] == s[j]`.
 
-```c
+
+Row by row, from bottom to top.
+
+```c++
 char * longestPalindrome(char * s) {
     if (!s || !*s) return "";
     int len = strlen(s);
@@ -100,5 +103,28 @@ char * longestPalindrome(char * s) {
 }
 ```
 
+Column by column, from left to right.
+
+```c++
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        if (!s.size()) return "";
+        bool dp[s.size()][s.size()];
+        int st = 0, ed = 0;
+
+        for (int j = 0; j < s.size(); j++) {
+            for (int i = 0; i <= j; i++) {
+                dp[i][j] = s[i] == s[j] && (j - i < 2 || dp[i + 1][j - 1]);
+                if (dp[i][j] && j - i > ed - st) {
+                    st = i;
+                    ed = j;
+                }
+            }
+        }
+        return s.substr(st, ed - st + 1);
+    }
+};
+```
 
 4. #### Manacher's Algorithm O(n)
