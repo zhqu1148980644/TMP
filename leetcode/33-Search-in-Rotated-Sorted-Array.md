@@ -88,7 +88,32 @@ public:
     }
 };
 ```
+Or
 
+```c++
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        if (!nums.size()) return -1;
+        int lo = 0, hi = nums.size() - 1;
+        while (lo < hi) {
+            int mid = lo + ((hi - lo) >> 1);
+            if (nums[mid] < nums[hi]) {
+                if (nums[mid] < target && nums[hi] >= target)
+                    lo = mid + 1;
+                else
+                    hi = mid;
+            } else {
+                if (target < nums[lo] || target > nums[mid])
+                    lo = mid + 1;
+                else
+                    hi = mid;
+            }
+        }
+        return nums[lo] == target ? lo : -1;
+    }
+};
+```
 
 3. #### Maitain the moving direction when binary searching O(log(n))
 

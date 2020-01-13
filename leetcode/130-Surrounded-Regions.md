@@ -156,7 +156,7 @@ public:
         for (int i = 0; i < size; i++)
             nodes[i] = i;
     }
-    ~UnionFind() { 
+    ~UnionFind() {
         delete [] nodes;
     }
 

@@ -132,7 +132,7 @@ public:
 
         while (root || !s.empty()) {
             while (root) {
-                // always push two times is ok too.
+                // always push two times.
                 if (root->right) s.push(root);
                 s.push(root);
                 root = root->left;
@@ -263,7 +263,7 @@ public:
 - Check for detail if you can not understand. https://leetcode-cn.com/problems/binary-tree-postorder-traversal/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by--34/
 - In preorder/inorder morris method, we will visit the root node twice, and by checking if the precursor node's right child is `NULL` to determine if we have visited the left tree.
 - Whenever we have visited the left tree and come back to the root node, we iteratively and `reversely` add `root node's left child`, `left child's right child`, `left child's right child' right child` ... into the result array.
-- Reversely adding nodes can be done by revering the `linked list` first and then revering it back.
+- Reversely adding nodes can be done by reversing the `linked list` first and then revering it back.
 
 ![](https://pic.leetcode-cn.com/5a136b884028d63dbc037994bf441debcc923960bfc69299cf8e2db23bc4abdb.jpg)
 

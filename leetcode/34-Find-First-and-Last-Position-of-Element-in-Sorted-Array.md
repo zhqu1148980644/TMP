@@ -45,7 +45,7 @@ class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
         int lo = binarySearch(nums, target);
-        if (lo == nums.size() || nums[lo] != target) 
+        if (lo == nums.size() || nums[lo] != target)
             return vector<int>{-1, -1};
         else {
             int hi = (nums[nums.size() - 1] >= target + 1) ? binarySearch(nums, target + 1): nums.size();

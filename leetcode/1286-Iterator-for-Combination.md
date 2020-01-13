@@ -135,3 +135,54 @@ public:
 
 
 - For big n and small k, this search-one-by-one strategy could be time consuming.
+
+
+3. ##### generate the next combination
+
+- borrowed from the official answer.
+- In each next call, find the `first` character can be lifted starting from the end of the current combination.
+    - If this character exists, lift it up to the next bigger character and reset all characters after it in a minimum ascending order to make combinations unique.
+    - Else the next combination doesn't exist, return the current one and flip the `finished` flag.
+
+```c++
+class CombinationIterator {
+private:
+    string characters;
+    string com;
+    bool finished = false;
+
+public:
+    CombinationIterator(string characters, int combinationLength) {
+        this->characters = characters;
+        com.resize(combinationLength);
+        for (int i = 0; i < combinationLength; i++)
+            com[i] = i;
+    }
+
+    string next() {
+        string res;
+        for (auto & index : com)
+            res += characters[index];
+
+        int len = characters.size(), comlen = com.size();
+        int liftup = comlen - 1;
+        while (liftup >= 0 && com[liftup] == len - comlen + liftup)
+            liftup--;
+
+        if (liftup == -1)
+            finished = true;
+        else {
+            com[liftup]++;
+            while (++liftup < comlen)
+                com[liftup] = com[liftup - 1] + 1;
+        }
+
+        return res;
+    }
+
+    bool hasNext() {
+        return !finished; 
+    }
+};
+
+```

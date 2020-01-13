@@ -47,7 +47,7 @@ Can you solve it without using extra space?
 1. two steps
 
 - Use floyd method to check if the loop exists in the linked list.
-    - At the first glance, I thought the resulting node returnd in the problem 141 is the answer. Finally I realized that it cant be like this because there no single start point in the loop.
+    - At the first glance, I thought the resulting node returnd in the problem 141 is the answer. Finally I realized that it can't be like this because there is no single start point in the loop.
     - Though the resulting node may not be the answer we want, it can be used as an imaginary tail in a normal non-cycled linked list.
     - we call this node `head1`.
 - Use the method in problem 160 to find the intersection/crossing nodes.
