@@ -34,8 +34,8 @@ Should output:
 
 ```sql
 # Write your MySQL query statement below
-SELECT CLASS
-    FROM COURSES
-    GROUP BY CLASS
-    HAVING COUNT(DISTINCT STUDENT) >= 5;
+SELECT Class
+    FROM courses
+    GROUP BY Class
+    HAVING COUNT(DISTINCT Student) >= 5;
 ```
