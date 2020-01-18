@@ -62,12 +62,15 @@ public:
         0  k           n
 prefix |*************   |
 suffix |   *************|
+       |*************-------------|  2 * s
 ```
+
 - In next table, as the prefix equals to the suffix, the `first k` characters in prefix equals to the `first k` characters in suffix.
     - which is: `prefix[:k] == suffix[: k]`, and because `suffix[: k]` is `s[k:2k]`, we have `s[:k] == s[k:2k]`
     - Follow the same perspective, the equation `s[xk:(x+1)k] == s[(x+1)k, xk:(x+2)k]` applies to the whole string as long as `k` is a devisor of `len(s)`.
     - Thus we can prove that `s` is made of `n/k` numbers of `k`.
-
+- The example above also demonstrated how the second solution works.
+    - This is a general approach to seach for the repeated pattern in a string. ie: `(s + s).find(s, 1)`.
 
 ```c++
 class Solution {
