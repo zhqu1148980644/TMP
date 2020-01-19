@@ -28,7 +28,7 @@ You can assume that you can always reach the last index.
 ```c++
 #define max(x, y) (x > y ? x : y);
 int jump(int* nums, int numsSize){
-    int furthest, end = 0, jumps = 0;
+    int furthest = 0, end = 0, jumps = 0;
     for (int i = 0; i < numsSize - 1; i++) {
         furthest = max(furthest, nums[i] + i);
         if (furthest >= numsSize - 1) {

@@ -27,6 +27,7 @@ We say a point is a good point if we can jump to it.
 
 - A point can jump to the last good point(the end) if only it can jump to the first good point left the last good point.
 
+```c++
 bool canJump(int* nums, int numsSize){
     int cur = numsSize - 1;
     for (int i = numsSize - 2; i >= 0; i--) {
@@ -34,7 +35,7 @@ bool canJump(int* nums, int numsSize){
     }
     return !cur;
 }
-
+```
 
 2. #### greedy forward O(n)
 
