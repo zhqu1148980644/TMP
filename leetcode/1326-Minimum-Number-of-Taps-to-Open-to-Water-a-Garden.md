@@ -56,6 +56,7 @@ Output: 1
 
 1. ##### greedy strategy  O(n2) S(n)
 
+- reference: https://leetcode-cn.com/problems/minimum-number-of-taps-to-open-to-water-a-garden/solution/5318-by-ikaruga/
 - `maxrange[i]` represents the rightmost(right closed) land could be covered by all taps that covered location `i`(the start point of land i).
 
 ```c++
