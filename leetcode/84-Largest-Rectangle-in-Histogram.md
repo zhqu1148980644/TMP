@@ -82,10 +82,10 @@ public:
 };
 ```
 
-3. ##### optimized version with stack
+3. ##### optimized version with stack O(n)
 
 - Use a stack to record the leftmost smaller element.
-- Invariant: elements in the stack are always in ascending order and the former element is the leftmost smaller element of the next element.
+- Invariant: elements in the stack are always in ascending order and the former element is the first smaller element left to the next element.
 - Push `-1` into the stack as a left guard.
 
 ```c++
@@ -96,12 +96,14 @@ public:
         int maxarea = 0, len = heights.size();
 
         for (int cur = 0; cur < len; cur++) {
+            // left is secure
             while (s.top() != -1 &&  heights[s.top()] >= heights[cur]) {
                 auto top = s.top(); s.pop();
                 maxarea = max((cur - s.top() - 1) * heights[top], maxarea);
             }
             s.push(cur);
         }
+        // right is secure
         while (s.top() != -1) {
             auto top = s.top(); s.pop();
             maxarea = max((len - s.top() - 1) * heights[top], maxarea);
