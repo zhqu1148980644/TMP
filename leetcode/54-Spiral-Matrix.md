@@ -49,7 +49,7 @@ public:
             while (--len1) res.push_back(matrix[i][++j]);
             // right_col[1:]
             while (--len2) res.push_back(matrix[++i][j]);
-            if (ncol > 1 & nrow > 1) {
+            if (ncol > 1 && nrow > 1) {
                 len1 = ncol; len2 = nrow;
                 // bottom_row[1:]
                 while (--len1) res.push_back(matrix[i][--j]);

@@ -25,7 +25,7 @@ Explanation:
 
 #### Solutions
 
-1. ##### dynamic programming
+1. ##### dynamic programming with memoization
 
 - reference: the official answer
 - See this promblem in a top-down perspective can make it more understandable.
@@ -68,4 +68,11 @@ public:
         return solve(dp, boxes, 0, boxes.size() - 1, 0);
     }
 };
+```
+
+2. ##### dynamic programming with iteration
+
+
+```c++
+
 ```

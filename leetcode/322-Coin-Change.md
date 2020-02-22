@@ -19,7 +19,7 @@ You may assume that you have an infinite number of each kind of coin.
 
 #### Solutions
 
-1. ##### dynamic programming
+1. ##### dynamic programming O(nk) k: number of coins
 
 ```c++
 class Solution {

@@ -24,39 +24,66 @@ n is a 32-bit signed integer, within the range [−231, 231 − 1]
 
 ### Solutions
 
-1. #### bit operation  O(log(n))
+1. #### recursion O(log(n))
 
 - Observation: 
     - x * 2n = (x * n) * (x * n) = (x * n) ** 2
-    - x * 2n = (x * n) ** 2 * x
+    - x * (2n + 1) = (x * n) ** 2 * x
 - When the n increases with n, the bit numbers of exponent increases with log2(n).
 - Time complexity can be reduced to log2(n)
 
 ```c++
 #define sqr(x) ((x) * (x))
-double pow1(double x, long n) {
-    if (n == 0) return 1.0;
-    return (n & 1) ? sqr(pow1(x, n >> 1)) * x : sqr(pow1(x, n >> 1));
-}
+class Solution {
+public:
+    double pow(double x, long n) {
+        if (n == 0)
+            return 1;
+        double half = pow(x, n >> 1);
+        return (n & 1) ? half * half * x : half * half;
+    }
 
-double myPow(double x, int n){
-    if (!x) {
-        return 0;
-    }
-    else if (x == 1.0) {
-        return 1.0;
-    } else if (x == -1) {
-        return ((n % 2) == 0) ? 1.0 : -1.0;
-    } else {
+    double myPow(double x, int n) {
+        // in case of : -2147583648
         long N = n;
-        if (n > 0) {
-            return pow1(x, N);
-        } else {
-            return 1.0 / pow1(x, -N);
-        }
+        if (!x)
+            return 0;
+        else if (x == 1)
+            return 1;
+        else if (x == -1)
+            return (n % 2) == 0 ? 1 : -1;
+        else
+            return n >= 0 ? pow(x, N) : (1.0 / pow(x, -N));
     }
-}
+};
 ```
 
+2. ##### bit representation
 
+- `x^4 = x^0b100 = x^(2^2 * 1 + 2^1 * 0 + 2^0 * 0) = x^(2^2) * X^0 * X^0`
+
+```c++
+class Solution {
+public:
+    double myPow(double x, int n) {
+        long N = n;
+        if (N < 0) {
+            x = 1.0 / x;
+            N = -N;
+        }
+
+        double res = 1;
+        while (N) {
+            // the current bit is 1
+            if (N & 1)
+                res *= x;
+            // x^(2^n)
+            x *= x;
+            N >>= 1;
+        }
+
+        return res;
+    }
+};
+```
 

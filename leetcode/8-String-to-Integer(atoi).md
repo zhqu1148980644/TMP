@@ -50,7 +50,7 @@ Explanation: The number "-91283472332" is out of the range of a 32-bit signed in
 
 The question said the machine can't handle number lager than int. Need a way to get rid of long.
 
-```c
+```c++
 #define ISNUM(x) ((x) >= 0 && (x) <= 9)
 #define MAX 2147483648
 

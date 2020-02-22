@@ -23,35 +23,6 @@ Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
 Output: false
 ```
 
-
-```c++
-class Solution {
-private:
-    unordered_set<string> m;
-    unordered_map<int, bool> breakable;
-
-public:
-    bool canBreak(string s, int start) {
-        if (start == s.size())
-            return true;
-        if (breakable.count(start))
-            return breakable[start];
-        for (int i = start; i < s.size(); i++) {
-            auto word = s.substr(start, i - start + 1);
-            if (m.count(word) && canBreak(s, i + 1))
-                return breakable[start] = true;
-
-        }
-        return breakable[start] = false;
-    }
-
-    bool wordBreak(string s, vector<string>& wordDict) {
-        for (auto & word : wordDict) m.insert(word);
-        return canBreak(s, 0);
-    }
-};
-```
-
 #### Solutions
 
 1. ##### backtrack with memoization  O(n2)

@@ -36,7 +36,7 @@ The digit d=3 occurs 35 times in 103,113,123,130,131,...,238,239,243.
     - Following the rule in `problem 233`, the number of 0 in this position is composed of two parts: 
         - The main part: `(223 / 100) * 10 = 20` ie: `01, 02, 03, ... 09   101, 102, 103 ... 109`. It's clear that the first `10` numbers are invalid.
         - The remainder part: `min(223 % 100 - 10 * 0 + 1, 10) = 10`, ie: `201 202 203 204 205 ... 209`. 
-        - Thus the deduced counts offset the invalid numbers in the main part.
+        - Thus the deduced count offsets the count of invalid numbers in the main part.
 
 ```c++
 class Solution {
