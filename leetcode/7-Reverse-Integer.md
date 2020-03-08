@@ -29,7 +29,11 @@ Assume we are dealing with an environment which could only store integers within
 
 1. #### Straight forward.
 
-Watch for edges cases.
+- Watch for edges cases.
+- No need to check the case when `base * 10 + remainder > INT_MAX`.
+    - When x contains 9 digits and `base` reaches to number smaller than `INT_MAX / 10` before the first digit is considered.
+    - Since the first digit will not be larger than `2`, `base * 10 + remainder` will be `INT_MAX / 10 + 2` in the worst case, which is a valid number, thus we only need to ensure `base < INT_MAX / 10`.
+
 
 ```c++
 class Solution {
@@ -46,6 +50,25 @@ public:
             res = res * 10 + remain;
         }
         return res;
+    }
+};
+```
+
+Or
+
+```c++
+class Solution {
+public:
+    int reverse(int x) {
+        if (!x) return 0;
+        int base = 0;
+        while (x) {
+            if (base > INT_MAX / 10 || base < INT_MIN / 10)
+                return 0;
+            base = base * 10 + x % 10;
+            x /= 10;
+        }
+        return base;
     }
 };
 ```

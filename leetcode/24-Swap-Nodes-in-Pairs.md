@@ -15,12 +15,9 @@ Given 1->2->3->4, you should return the list as 2->1->4->3.
 1. #### Iteration
 
 - Borrowed from stephan.
+- The trick of pointer of pointer will be used again in problem 25.
 
-- When it comes to problems related to linked list, supprisingly neat and tricky method can be accomplished by utilizing a pointer points to pointer.
-
-- This trick will be used again in problem 25.
-
-```c
+```c++
 /**
  * Definition for singly-linked list.
  * struct ListNode {

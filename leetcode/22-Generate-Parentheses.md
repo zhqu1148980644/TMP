@@ -24,23 +24,19 @@ Iteratively build lists of k-valid parentheses untill k reaches n.
 class Solution {
 public:
     vector<string> generateParenthesis(int n) {
-        vector<vector<string>> res;
-        for (int i = 0; i <= n; i++) {
-            res.push_back(vector<string>());
-            if (i == 0)
-                res[0].push_back("");
-            else if (i == 1)
-                res[i].push_back("()");
-            else {
-                for (int j = 0; j < i; j++) {
-                    for (auto & str1 : res[j])
-                        for (auto & str2 : res[i - j - 1]) {
-                            res[i].push_back("(" + str1 + ")" + str2);
-                        }
-                }
+        vector<vector<string>> res = {{""}, {"()"}};
+
+        for (int i = 2; i <= n; i++) {
+            vector<string> res1;
+            for (int j = 0; j < i; j++) {
+                for (auto & s1 : res[j])
+                    for (auto & s2 : res[i - j - 1])
+                        res1.push_back("(" + s1 + ")" + s2);
             }
+            res.push_back(move(res1));
         }
-        return res[res.size() - 1];
+        
+        return res[n];
     }
 };
 ```
@@ -51,6 +47,38 @@ Time complexity: complicated
 
 - Keeping track of left and right brackets.
 - Add right brackt only when the number of left brackets is larger than the number of right brackets.
+
+```c++
+class Solution {
+public:
+    vector<string> res;
+    int n;
+
+    void solve(string & s, int left, int right) {
+        if (s.size() == 2 * n)
+            res.push_back(s);
+        else {
+            if (left < n) {
+                s.push_back('(');
+                solve(s, left + 1, right);
+                s.pop_back();
+            }
+            if (right < left) {
+                s.push_back(')');
+                solve(s, left, right + 1);
+                s.pop_back();
+            }
+        }
+    }
+
+    vector<string> generateParenthesis(int n) {
+        this->n = n;
+        string base;
+        solve(base, 0, 0);
+        return res;
+    }
+};
+```
 
 ```python
 class Solution:

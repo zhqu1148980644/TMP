@@ -25,11 +25,11 @@ class Solution:
 2. #### two pointer or greedy method O(n)
 
 - One pointer start from 0, another pointer start from the end.
-- In each step, calculate the current valid volumn of water, the move the shoter one forward one step towards center.
+- In each step, calculate the current valid volumn of water, then move the shoter one forward one step towards center.
     - TODO: Proof of correctness. Shrink the solution space.
 
 
-```c
+```c++
 #define max(x, y) ((x > y) ? (x) : (y))
 int maxArea(int* height, int heightSize){
     int max_size = 0;

@@ -33,7 +33,7 @@ Output: true
 
 1. #### stack
 
-This application is widely taught in textbooks related to structure and algorithms.
+This application is widely taught in textbooks related to data structure and algorithms.
 
 ```c++
 class Solution {

@@ -135,22 +135,23 @@ public:
 
 As we can see in the second method, We have to move the `s[i]` forward several times until the duplicate of `s[j]` is removed. Why don't we jump directly to the index `next` to the duplicate of `s[j]`. 
 
-- A `HashMap` can be used to record this information. ie. Each character's last index we seen before.
+- A `HashMap` can be used to record this information. ie. Each character's last index + 1 we seen before.
 - For ascii characters. We can directly use `int[256]` as a hashmap.
 
 ```c++
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        int maps[128] = {0};
-        int n = s.length(), ans = 0;
-        for (int i = 0, j = 0; j < n; ++j) {
-            char & c = s[j];
-            i = max(maps[c], i);
-            ans = max(ans, j - i + 1);
-            maps[c] = j + 1;
+        int cache[128] = {0};
+        int i = 0, res = 0;
+        for (int j = 0; j < s.size(); j++) {
+            i = max(i, cache[s[j]]);
+            if (j - i + 1 > res)
+                res = j - i + 1;
+            cache[s[j]] = j + 1;
         }
-        return ans;
+
+        return res;
     }
 };
 ```

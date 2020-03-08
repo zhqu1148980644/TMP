@@ -21,7 +21,7 @@ Output: "bb"
 
 1. #### Brute force O(n3)
 
-```c
+```c++
 int ispalin(char * st, char * ed) {
     while (st < ed) if (*st++ != *--ed) return 0;
     return true;
@@ -48,7 +48,7 @@ char * longestPalindrome(char * s) {
 
 2. #### Linear scan and expand from the center O(n2)
 
-```c
+```c++
 #define max(x, y) ((x > y) ? (x) : (y))
 int expand(char * s, int left, int right) {
     while(left >= 0 && s[right] && s[left] == s[right]) {

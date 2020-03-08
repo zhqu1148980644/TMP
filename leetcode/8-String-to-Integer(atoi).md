@@ -48,29 +48,27 @@ Explanation: The number "-91283472332" is out of the range of a 32-bit signed in
 
 1. #### Straight forward
 
-The question said the machine can't handle number lager than int. Need a way to get rid of long.
-
 ```c++
-#define ISNUM(x) ((x) >= 0 && (x) <= 9)
-#define MAX 2147483648
-
 int myAtoi(char * str){
-    while(*str && *str == ' ') ++str;
-    bool neg = false;
-    if (*str == '-' || *str == '+') 
-        if(*str++ == '-') neg = true;
+    while (*str && *str == ' ')
+        str++;
 
-    int n = 0; long res = 0;
-    while (*str && ISNUM(n = *str - '0')) {
-        if (res > MAX) { res = MAX; break; }
-        res = res * 10 + n;
-        ++str;
-
+    int sign = 1;
+    if (*str == '-' || *str == '+')
+        sign = *str++ == '-' ? -1 : 1;
+    
+    int res = 0;
+    while (*str && isdigit(*str)) {
+        int curd = sign == 1 ? (*str - '0') : -(*str - '0');
+        if (sign == 1) {
+            if (res > INT_MAX / 10 || res * 10 > INT_MAX - curd)
+                return INT_MAX;
+        } else if (res < INT_MIN / 10 || res * 10 < INT_MIN - curd)
+            return INT_MIN;
+        res = res * 10 + curd;
+        str++;
     }
-    res = res > MAX ? MAX : res;
-    if (neg)
-        return -res;
-    else
-        return (res == MAX) ? res - 1 : res;
+
+    return res;
 }
 ```

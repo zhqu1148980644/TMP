@@ -57,10 +57,37 @@ class Solution:
 
 ```
 
-3. ##### backtrack or dfs
+3. ##### greedy strategy with dfs
 
 ```c++
+class Solution {
+public:
+    int res;
+    void dfs(int cur, int cnt, vector<int> & coins, int amount) {
+        if (amount < 0 || coins[cur] * (res - cnt) < amount)
+            return;
+        if (amount == 0) {
+            if (cnt < res)
+                res = cnt;
+        }
+        else {
+            for (int i = cur; i < coins.size(); i++)
+                dfs(i, cnt + 1, coins, amount - coins[i]);
+        }
 
+    }
+
+    int coinChange(vector<int>& coins, int amount) {
+        if (amount == 0)
+            return 0;
+        res = amount + 1;
+        sort(coins.begin(), coins.end(), greater<int>());
+        for (int i = 0; i < coins.size(); i++)
+            dfs(i, 1, coins, amount - coins[i]);
+
+        return res == amount + 1 ? -1 : res;
+    }
+};
 ```
 
 4. ##### bfs

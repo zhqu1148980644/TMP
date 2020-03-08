@@ -15,11 +15,10 @@ Explanation: 342 + 465 = 807.
 
 1. #### straight forward
 
-Do not care about reversion, Store carry when forwarding.
+- Emulate the process of adding two numbers. Do not care about reversion, Store carry when forwarding.
 
-- [] Code below is a little messy.
 
-```c
+```c++
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -27,41 +26,36 @@ Do not care about reversion, Store carry when forwarding.
  *     struct ListNode *next;
  * };
  */
-struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
-    struct ListNode * p_list = (struct ListNode *) malloc(sizeof(struct ListNode));
-    struct ListNode * now = p_list;
+
+
+typedef struct ListNode Node;
+struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2){
+    if (!l1 && !l2) return NULL;
+    Node dummy = {0, 0};
+    Node * prev = &dummy;
     int remain = 0;
-    int tmp = 0;
-    while (l1 || l2) {
-        now->next = (struct ListNode *) malloc(sizeof(struct ListNode));
-        now = now->next;
-        if (l1 && l2) {
-            tmp = l1->val + l2->val + remain;
+    while (l1 || l2 || remain) {
+        if (l1) {
+            remain += l1->val;
             l1 = l1->next;
+        }
+        if (l2) {
+            remain += l2->val;
             l2 = l2->next;
-        } else if (l1) {
-            tmp = l1->val + remain;
-            l1 = l1->next;
-        } else {
-            tmp = l2->val + remain;
-            l2 = l2->next;
-        } 
-        if (remain = tmp / 10)
-            now->val = tmp % 10;
-        else
-            now->val = tmp;
+        }
+        Node * cur = (Node *) malloc(sizeof(Node));
+        prev->next = cur; prev = cur;
+        if (remain / 10) {
+            cur->val = remain % 10;
+            remain = remain / 10;
+        }
+        else {
+            cur->val = remain;
+            remain = 0;
+        }
     }
-    if (remain) {
-        struct ListNode * head = p_list->next;
-        now->next = p_list;
-        p_list->val = remain;
-        p_list->next = NULL;
-        return head;
-    } else {
-        now->next = NULL;
-        struct ListNode * head = p_list->next;
-        free(p_list);
-        return head; 
-    }
+
+    prev->next = NULL;
+    return dummy.next;;
 }
 ```

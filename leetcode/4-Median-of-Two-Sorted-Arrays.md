@@ -85,6 +85,8 @@ And the relation satisfies: numbers in left part <= numbers in right part
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        // why we choose the shorter one as num1?
+        // When cut1 becomes 0, cut1 may be larger than 2 * len2, which is not permitted.
         if (nums2.size() < nums1.size())
             return findMedianSortedArrays(nums2, nums1);
         

@@ -42,9 +42,28 @@ for (int i = 0; i < len; i++) {
 ### Solutions
 
 1. #### Use the same way in problem 26
-More assignment operations.
+
+- Stack valid numbers at the front.
+- Assignments will run O(n) when the number of invalid numbers is small.
+
+```c++
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        int i = 0;
+        for (int j = 0; j < nums.size(); j++) {
+            if (nums[j] != val)
+                nums[i++] = nums[j];
+        }
+
+        return i;
+    }
+};
+```
 
 2. #### Use two pointer way with swap
+
+- Put invalid numbers at the back.
 
 ```c++
 class Solution {

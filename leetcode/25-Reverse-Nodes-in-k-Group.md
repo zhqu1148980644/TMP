@@ -41,7 +41,7 @@ For k = 3, you should return: 3->2->1->4->5
 
 struct ListNode* reverseKGroup(struct ListNode* head, int k){
     struct ListNode * hhead = head;
-    struct ListNode ** pprev = &hhead, * cur, * next, *nnext;// pprev is the pointer of (imaginary node)->next. And next point to current head;
+    struct ListNode ** pprev = &hhead, * cur, * next, *nnext;// pprev is the pointer of (imaginary node)->next. And next points to the current head;
     int reversed;
     // get the current and the next pointer.
     while ((cur = *pprev) && (next = cur->next)) {
@@ -68,16 +68,8 @@ struct ListNode* reverseKGroup(struct ListNode* head, int k){
 
 2. #### Iteration O(n)
 
-- First iterate the linked list to get the total length `N`.
-- Reverse k-group `N // k`  times.
-
-```c
-
-
-```
-
-
-##### Borrow idea from problem 92
+- Firstly iterate the linked list to get the total length `N`.
+- Then reverse k-group `N // k` times using the method in `problem 92`.
 
 ```c++
 class Solution {
@@ -110,27 +102,29 @@ Or recall the same function to reverse back the tail.
 class Solution {
 public:
     ListNode* reverseKGroup(ListNode* head, int k) {
-        ListNode * cur, * dummy = new ListNode(0);
-        dummy->next = head; head = dummy;
-        int inserted;
-
+        if (k <= 1)
+            return head;
+        ListNode dummy(0); dummy.next = head;
+        head = &dummy;
         while (head->next) {
-            cur = head->next;
-            for (inserted = 0; inserted < k - 1 && cur->next; inserted++) {
+            ListNode * cur = head->next;
+            int inserted = 0;
+            while (cur->next && inserted < k - 1) {
                 ListNode * tmp = head->next;
                 head->next = cur->next;
                 cur->next = cur->next->next;
                 head->next->next = tmp;
+                inserted++;
             }
-            if (inserted == k - 1)
-                head = cur;
-            else {
-                // No way to get the real tail, thus we need to manually exit.
+            if (inserted && inserted < k - 1) {
                 head->next = reverseKGroup(head->next, inserted + 1);
+                // head is no longer the real tail, we must manually exit
                 break;
             }
+            head = cur;
         }
-        return dummy->next;
+
+        return dummy.next;
     }
 };
 ```

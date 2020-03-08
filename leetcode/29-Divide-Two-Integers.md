@@ -27,30 +27,39 @@ Assume we are dealing with an environment which could only store integers within
 
 - Borrowed from other.
 - Iteratively find the lagest divisor.
-- The problem said the machine can only handle 32-bit integers. Need to find a way without long.
+- Convert inputs to negative numbers to get rid of overflow problems.
 
-```c
-int divide(int dividend, int divisor){
-    if (dividend == INT_MIN  && divisor == -1)
-        return INT_MAX;
-    int neg =  (dividend < 0 ^ divisor < 0) ? 1 : 0;
-    long dd = dividend; long ds = divisor;
-    ds = (ds < 0) ? -ds : ds;
-    dd = (dd < 0) ? -dd : dd;
-    if (ds == 1) return neg ? -dd : dd;
 
-    int res = 0;
-    while (dd >= ds) {
-        long m = ds; long n = 1;
-        while ((m << 1) <= dd) {
-            m <<= 1; // m = m * 2
-            n <<= 1; // n = n * 2
+```c++
+class Solution {
+public:
+    int divide(int dividend, int divisor) {
+        if (dividend == INT_MIN && divisor == -1)
+            return INT_MAX;
+        bool neg = dividend < 0 ^ divisor < 0;
+        if (dividend > 0)
+            dividend = -dividend;
+        if (divisor > 0)
+            divisor = -divisor;
+
+        unsigned int res = 0, fold = 1;
+        int _divisor = divisor;
+        while (dividend <= _divisor) {
+            if (dividend <= divisor) {
+                res += fold;
+                dividend -= divisor;
+                fold += fold;
+                if (divisor < (INT_MIN >> 1))
+                    break;
+                divisor += divisor;
+            }
+            else {
+                divisor = _divisor;
+                fold = 1;
+            }
         }
-        dd -= m;
-        res += n;
+        
+        return neg ? 0 - res : res;
     }
-    if (neg && res < INT_MIN) res = INT_MIN;
-    if (!neg && res > INT_MAX) res = INT_MAX;
-    return neg ? -res : res;
-}
+};
 ```
