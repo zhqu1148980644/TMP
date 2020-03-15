@@ -21,7 +21,7 @@ Return 3, which is the length of the path [4,2,1,3] or [5,2,1,3].
 
 1. ##### recursion
 
-- Use recursion to calculate depth of each node and updatet the maximum diameter in the meantime.
+- Use recursion to calculate depth of each node and update the maximum diameter in the meantime.
 
 ```c++
 /**
