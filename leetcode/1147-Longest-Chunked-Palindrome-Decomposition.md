@@ -105,7 +105,7 @@ public:
 
 3. rabin-karp
 
-- In the greedy approach, as strings are allocated in comtinous memory, adding characters at the front of string and comparing them is consuming.
+- In the greedy approach, as strings are allocated in comtinous memory, adding characters at the front of string and comparing them is time-consuming.
 - The idea is to use rolling hash to compare two growing head/tail substrings that can leads to O(n) time complexity.(without collisions)
 
 ```c++
