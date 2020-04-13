@@ -42,30 +42,22 @@ Output: 4
 
 1. ##### straight forward
 
-
 ```c++
-#define valid(i) (!(s & (1 << i)))
 class Solution {
 public:
     int maxNumberOfFamilies(int n, vector<vector<int>>& reservedSeats) {
-        int ranges[5][2] = {{2, 3}, {4, 5}, {6, 7}, {8, 9}};
         unordered_map<int, int> seats;
         for (auto & s : reservedSeats)
-            for (int i = 0; i < 4; i++)
-                if (ranges[i][0] <= s[1] && s[1] <= ranges[i][1]) {
-                    seats[s[0]] |= 1 << i;
-                    break;
-                }
+            seats[s[0]] |= 1 << (s[1] - 1);
 
         int res = (n - seats.size()) * 2;
         for (auto [row, s] : seats) {
-            if (s == 0)
+            bool sl = (s & 0b0111100000) == 0;
+            bool sm = (s & 0b0001111000) == 0;
+            bool sr = (s & 0b0000011110) == 0;
+            if (sl && sr)
                 res += 2;
-            else if (!valid(1))
-                res += valid(2) && valid(3);
-            else if (!valid(2))
-                res += valid(0) && valid(1);
-            else if (valid(1) && valid(2))
+            elise if (sl || sm || sr)
                 res += 1;
         }
 
