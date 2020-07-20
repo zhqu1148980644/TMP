@@ -27,7 +27,9 @@ Explanation: Cheapest is start on cost[0], and only step on 1s, skipping cost[3]
 1. ##### dynamic programming
 
 
-- `dp[i]` represents the cost have been paied when we reach `staircase[i]`.
+- `dp[i]` represents the minimum cost need to pay when reaches `staircase[i]`.
+- Note: the top of the floor is the position next to the last step.
+
 
 ```c++
 class Solution {

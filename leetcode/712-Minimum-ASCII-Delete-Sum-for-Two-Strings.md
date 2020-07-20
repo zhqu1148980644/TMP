@@ -36,7 +36,6 @@ public:
     int minimumDeleteSum(string s1, string s2) {
         if (s2.size() < s1.size())
             return minimumDeleteSum(s2, s1);
-
         int n1 = s1.size(), n2 = s2.size();
         vector<int> dp(n2 + 1);
         for (int i = 1; i <= n1; i++) {
@@ -51,11 +50,8 @@ public:
             }
         }
 
-        int sum = 0;
-        for (auto & c : s1)
-            sum += c;
-        for (auto & c : s2)
-            sum += c;
+        int sum = accumulate(s1.begin(), s1.end(), 0)
+                + accumulate(s2.begin(), s2.end(), 0);
 
         return sum - 2 * dp[n2];
     }
@@ -73,27 +69,25 @@ public:
     int minimumDeleteSum(string s1, string s2) {
         if (s2.size() < s1.size())
             return minimumDeleteSum(s2, s1);
-        
         int n1 = s1.size(), n2 = s2.size();
         vector<int> dp(n2 + 1);
-        for (int j = 1; j <= n2; j++)
-            dp[j] = dp[j - 1] + s2[j - 1];
+        for (int i = 0; i < n2; i++)
+            dp[i + 1] += dp[i] + s2[i];
         
         for (int i = 1; i <= n1; i++) {
             int diag = dp[0];
             dp[0] += s1[i - 1];
             for (int j = 1; j <= n2; j++) {
                 int tmp = dp[j];
-                // No need to delete, delete any of them would only increase cost
+                // no need to delete
                 if (s1[i - 1] == s2[j - 1])
                     dp[j] = diag;
                 else
                     dp[j] = min(dp[j - 1] + s2[j - 1], dp[j] + s1[i - 1]);
-
                 diag = tmp;
             }
         }
-
+        
         return dp[n2];
     }
 };

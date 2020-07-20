@@ -40,21 +40,18 @@ Tilt of binary tree : 0 + 0 + 1 = 1
  * };
  */
 class Solution {
-private:
-    int sumslope = 0;
+public:
+    int res = 0;
     int dfs(TreeNode * root) {
-        int lh = 0, rh = 0;
-        if (root->left)
-            lh = dfs(root->left);
-        if (root->right)
-            rh = dfs(root->right);
-        sumslope += abs(lh - rh);
+        if (!root) return 0;
+        int lh = dfs(root->left);
+        int rh = dfs(root->right);
+        res += abs(lh - rh);
         return lh + rh + root->val;
     }
-public:
     int findTilt(TreeNode* root) {
         if (root) dfs(root);
-        return sumslope;
+        return res;
     }
 };
 ```
@@ -65,23 +62,14 @@ public:
 - use stack to record the sum of left tree and a single variable to record the sum of right tree.
 
 ```c++
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
 class Solution {
 public:
     int findTilt(TreeNode* root) {
-        stack<int> lefts;
         stack<TreeNode *> s;
         TreeNode * prev = nullptr;
-        int right = 0, sumslope = 0;
-
+        stack<int> lefts; int right = 0;
+        int res = 0;
+        
         while (root || !s.empty()) {
             while (root) {
                 s.push(root);
@@ -96,19 +84,18 @@ public:
                 if (root->left) {
                     left = lefts.top(); lefts.pop();
                 }
-                sumslope += abs(left - right);
-                if (!s.empty() && s.top()->right == root)
-                    right = left + right + root->val;
-                else {
+                res += abs(left - right);
+                if (!s.empty() && s.top()->left == root) {
                     lefts.push(left + right + root->val);
                     right = 0;
                 }
+                else
+                    right = left + right + root->val;
                 prev = root;
                 root = nullptr;
             }
         }
-
-        return sumslope;
+        return res;
     }
 };
 ```

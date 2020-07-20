@@ -20,22 +20,22 @@ Placing a bomb at (1,1) kills 3 enemies.
 #### Solutions
 
 
-1. ##### One pass  O(n2) S(n)
+1. ##### dynamic programming O(n2) S(n)
 
 - Borrowed from stephan.
-- The idea is to count every enemy exactly once.
 - `rowsum` represents all enemies can be killed in a region without any walls. Whenever meets a block whose's left block is a wall, count all enemies starting at this block until a wall is reached. Then all zeros in this non-wall region can `reuse` this counts.
-- `colsum` is a vector which is different from rowsum, as we are jumping from column to column, we need a vector to store all counts. Or you can loop through the table in a column first way, then rowsum will be a vector and vice versa.
+- `colsum` is a vector stores counts of the previous row in all columns. The couting process of `colsum[j]` is the same as `rowsum`.
 
 ```c++
 class Solution {
 public:
     int maxKilledEnemies(vector<vector<char>>& grid) {
         int nrow = grid.size(); if (!nrow) return 0;
-        int ncol = grid[0].size(); if (!ncol) return 0;
-        vector<int> colsum(ncol);
+        int ncol = grid[0].size();
+
         int rowsum;
-        int maxscore = 0;
+        vector<int> columm(ncol);
+        int res = 0;
 
         for (int i = 0; i < nrow; i++)
             for (int j = 0; j < ncol; j++) {
@@ -44,16 +44,15 @@ public:
                     for (int c = j; c < ncol && grid[i][c] != 'W'; c++)
                         rowsum += grid[i][c] == 'E';
                 }
-                if (i == 0 || grid[i - 1][j] == 'W') {
-                    colsum[j] = 0;
+                if (i == 0|| grid[i - 1][j] == 'W') {
+                    columm[j] = 0;
                     for (int r = i; r < nrow && grid[r][j] != 'W'; r++)
-                        colsum[j] += grid[r][j] == 'E';
+                        columm[j] += grid[r][j] == 'E';
                 }
                 if (grid[i][j] == '0')
-                    maxscore = max(maxscore, rowsum + colsum[j]);
+                    res = max(res, rowsum + columm[j]);
             }
-
-        return maxscore;
+        return res;
     }
 };
 ```

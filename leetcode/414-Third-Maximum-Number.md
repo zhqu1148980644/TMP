@@ -50,3 +50,29 @@ public:
     }
 };
 ```
+
+```c++
+class Solution {
+public:
+    int thirdMax(vector<int>& nums) {
+        vector<int> res;
+
+        for (auto n : nums) {
+            bool within = false;
+            for (auto num : res)
+                if (n == num) {
+                    within = true;
+                    break;
+                }
+            if (within) continue;
+            for (auto & num : res)
+                if (n > num)
+                    swap(n, num);
+            if (res.size() < 3)
+                res.push_back(n);
+        }
+
+        return res.size() < 3 ? res.front() : res.back();
+    }
+};
+```

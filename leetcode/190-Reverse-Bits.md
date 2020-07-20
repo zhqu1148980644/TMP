@@ -42,3 +42,23 @@ uint32_t reverseBits(uint32_t n) {
 }
 ```
 
+
+3. ##### divide and conquer
+
+- reverse 16bit part, then 8bit part, ... 2bit part.
+
+```c++
+class Solution {
+public:
+    uint32_t reverseBits(uint32_t n) {
+        n = (n << 16) | (n >> 16);
+        n = ((n & 0xff00ff00) >> 8) | ((n & 0x00ff00ff) << 8);
+        n = ((n & 0xf0f0f0f0) >> 4) | ((n & 0x0f0f0f0f) << 4);
+        n = ((n & 0b11001100110011001100110011001100) >> 2) | ((n & 0b00110011001100110011001100110011) << 2);
+        n = ((n & 0b10101010101010101010101010101010) >> 1) | ((n & 0b01010101010101010101010101010101) << 1);
+        return n;
+    }
+};
+```
+
+

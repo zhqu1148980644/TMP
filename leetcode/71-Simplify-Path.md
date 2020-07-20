@@ -51,17 +51,19 @@ Output: "/a/b/c"
 class Solution {
 public:
     string simplifyPath(string path) {
-        list<string> dq;
-        int i = 0; path.push_back('/');
-        string prev = "";
+        list<string> st;
+        int i = 0;
+        string prev;
+        path.push_back('/');
+
         while (i < path.size()) {
             if (path[i] == '/') {
                 if (prev.size()) {
                     if (prev == "..") {
-                        if (dq.size()) dq.pop_back();
+                        if (st.size()) st.pop_back();
                     }
                     else if (prev != ".")
-                        dq.push_back(prev);
+                        st.push_back(prev);
                 }
                 prev = "";
                 i++;
@@ -69,10 +71,12 @@ public:
             else
                 prev.push_back(path[i++]);
         }
+
         string res = "/";
-        for (auto it = dq.begin(); it != dq.end(); it++)
-            res += *it + "/";
-        if (dq.size()) res.pop_back();
+        for (auto & p : st)
+            res += p + "/";
+        if (st.size())
+            res.pop_back();
         return res;
     }
 };

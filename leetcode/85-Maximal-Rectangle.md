@@ -25,6 +25,7 @@ Output: 6
 
 
 ```c++
+// treat as  horizontal bars.
 class Solution {
 public:
     int maximalRectangle(vector<vector<char>>& matrix) {
@@ -58,24 +59,22 @@ public:
 - The same as the optimized stack solution in `problem 84`.
 
 ```c++
+// treat as vertical bars
 class Solution {
 public:
-    // code in `problem 84`
-    int area(vector<int> heights) {
+    // code in problem 84
+    int area(vector<int> & heights) {
         stack<int> s; s.push(-1);
-        int res = 0, len = heights.size();
-        for (int i = 0; i < len; i++) {
-            while (s.top() != -1 && heights[s.top()] >= heights[i]) {
-                int top = s.top(); s.pop();
-                res = max(res, (i - s.top() - 1) * heights[top]);
+        heights.push_back(-1);
+        int res = 0;
+        for (int i = 0; i < heights.size(); i++) {
+            while (s.top() != -1 && heights[s.top()] > heights[i]) {
+                int h = heights[s.top()]; s.pop();
+                res = max(res, (i - s.top() - 1) * h);
             }
             s.push(i);
         }
-        while (s.top() != -1) {
-            int top = s.top(); s.pop();
-            res = max(res, (len - s.top() - 1) * heights[top]);
-        }
-    
+        heights.pop_back();
         return res;
     }
     int maximalRectangle(vector<vector<char>>& matrix) {
@@ -89,7 +88,6 @@ public:
                 heights[j] = matrix[i][j] == '1' ? heights[j] + 1 : 0;
             res = max(res, area(heights));
         }
-
         return res;
     }
 };
@@ -99,6 +97,10 @@ public:
 3. ##### dynamic programming
 
 - See official answer for details.
+- The maximum rectangle extened from a given position(at the bottom of the rectangle) can be fetched by:
+    - streches up untill meets a 0 cell which represents the top edge of the rectangle.
+    - streches left/right to find the left/right edge.
+- `left[j] = coln` means the leftmost column that can be covered for the largest rectangle extended from `matrix[i][j]`.
 
 ```c++
 class Solution {
@@ -117,6 +119,7 @@ public:
                 if (matrix[i][j] == '1')
                     right[j] = min(right[j], curright);
                 else {
+                    // right[j] = n - 1 means the next row doest not depends on the current row
                     right[j] = n - 1;
                     curright = j - 1;
                 }
@@ -127,6 +130,7 @@ public:
                     left[j] = max(left[j], curleft);
                 }
                 else {
+                    // left[j] = 0 means the next row donesn't depends in the current row
                     height[j] = left[j] = 0;
                     curleft = j + 1;
                 }

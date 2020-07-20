@@ -12,6 +12,8 @@ Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.
 
 1. ##### Sieve of Eratosthenes
 
+
+
 ```c++
 class Solution {
 public:
@@ -25,6 +27,32 @@ public:
                 isPrime[j] = false;
 
         return count(isPrime.begin() + 2, isPrime.end(), true);
+    }
+};
+```
+
+
+2. ##### euler sieve
+
+
+```c++
+class Solution {
+public:
+    int countPrimes(int n) {
+        vector<int> primes(n), vis(n);
+        if (n <= 2) return 0;
+        vis[0] = vis[1] = 1; 
+        int cnt = 0;
+        for (int i = 2; i < n; i++) {
+            if (!vis[i])
+                primes[cnt++] = i;
+            for (int j = 0; j < cnt && i * primes[j] < n; j++) {
+                vis[i * primes[j]] = true;
+                if (i % primes[j] == 0)
+                    break;
+            }
+        }
+        return cnt;
     }
 };
 ```

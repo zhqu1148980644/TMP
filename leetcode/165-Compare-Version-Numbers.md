@@ -63,6 +63,26 @@ class Solution:
 ```
 
 ```c++
+class Solution {
+public:
+    vector<int> split(const string & s, char delimiter = '.') {
+        vector<int> tokens;
+        string token;
+        istringstream tokenstream(s);
+        while (getline(tokenstream, token, delimiter))
+            tokens.push_back(stoi(token));
+        return tokens;
+    }
+    int compareVersion(string version1, string version2) {
+        auto s1 = split(version1);
+        auto s2 = split(version2);
+        if (s1.size() < s2.size()) s1.resize(s2.size());
+        else s2.resize(s1.size());
+        int i = 0;
+        while (i < s1.size() && s1[i] == s2[i])
+            i++;
+        return s1.size() == i ? 0 : (s1[i] > s2[i] ? 1 : -1);
 
-
+    }
+};
 ```

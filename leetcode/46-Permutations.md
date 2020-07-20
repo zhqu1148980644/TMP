@@ -17,13 +17,14 @@ Output:
 
 ### Solutions
 
-- In this problem, there is no need to firstly sort the array. Thus we need to find a way to use each number exactly once in each permutation.
+- In this problem, there is no need to firstly sort the array(Sorting is utilized for removing duplicate permutaion and pruning.). The only restriction is using each number exactly once in each permutation.
 - Because there is no duplicate number, no need to remove duplicate permutations.
 
 1. #### backtrack
 
 
 - use swap to make sure each item is used only once.
+- Caution: the result permutations are not listed in lexicographical order as the original list is not sorted and swap could shuffle the list.
 
 ```c++
 class Solution {
@@ -55,7 +56,7 @@ public:
 class Solution {
 private:
     vector<vector<int>> res;
-    unordered_set<int> seen;
+    vector<bool> seen;
     vector<int> path;
 
     void Permute(vector<int> & nums) {
@@ -63,17 +64,18 @@ private:
             res.push_back(path); return;
         }
         for (int i = 0; i < nums.size(); i++){
-            if (seen.find(i) != seen.end()) continue;
-            seen.insert(i);
+            if (seen[i]) continue;
+            seen[i] = true;
             path.push_back(nums[i]);
             Permute(nums);
             path.pop_back();
-            seen.erase(i);
+            seen[i] = false;
         }
     }
 
 public:
     vector<vector<int>> permute(vector<int>& nums) {
+        seen = vector<bool>(nums.size(), false);
         Permute(nums);
         return res;
     }

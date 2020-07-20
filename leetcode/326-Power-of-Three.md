@@ -45,7 +45,7 @@ public:
 3. prime number
 
 - Find the largest number that `x % 3 == 0`  ie. 3 ** 19.
-- The only divisors of `3 ** 19` are `3 ** 0`, `3 ** 1` .....
+- Divisors of `3 ** 19` are `3 ** 0`, `3 ** 1` .....
 
 ```c++
 class Solution {

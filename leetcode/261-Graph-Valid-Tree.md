@@ -23,21 +23,10 @@ Output: false
     - The graph contains one single connected component.
 
 ```c++
-class UnionFind {
-private:
-    int * nodes;
-    int * sizes;
-public:
-    UnionFind(int size) {
-        nodes = new int[size];
-        sizes = new int[size];
-        for (int i = 0; i < size; i++) {
-            nodes[i] = i;
-            sizes[i] = 1;
-        }
-    }
-    ~UnionFind() {
-        delete [] nodes; delete [] sizes;
+struct UnionFind {
+    vector<int> nodes, sizes;
+    UnionFind(int size) : nodes(size), sizes(size, 1) {
+        iota(nodes.begin(), nodes.end(), 0);
     }
     int find(int node) {
         while (nodes[node] != node)
@@ -45,12 +34,11 @@ public:
         return node;
     }
     bool merge(int node1, int node2) {
-        int f1 = find(node1);
-        int f2 = find(node2);
+        int f1 = find(node1), f2 = find(node2);
         if (f1 == f2)
             return false;
         else {
-            if (sizes[f1] > sizes[f2])
+            if (sizes[f2] < sizes[f1])
                 swap(f1, f2);
             nodes[f1] = f2;
             sizes[f2] += sizes[f1];
@@ -62,14 +50,14 @@ public:
 class Solution {
 public:
     bool validTree(int n, vector<vector<int>>& edges) {
+        if (edges.size() != n - 1) return false;
         UnionFind uf(n);
 
-        for (auto & e : edges) {
+        for (auto & e : edges)
             if (!uf.merge(e[0], e[1]))
                 return false;
-            else
-                n--;
-        }
+            else n--;
+        
         return n == 1;
     }
 };
@@ -116,7 +104,7 @@ Or use set to count the number of visited nodes.
 ```c++
 class Solution {
 public:
-    int dfs(int node, vector<vector<int>> & adjs, unordered_set<int> & visited, int prenode) {
+    bool dfs(int node, vector<vector<int>> & adjs, unordered_set<int> & visited, int prenode) {
             visited.insert(node);
             for (auto & outnode : adjs[node]) {
                 if (prenode == outnode)
@@ -136,8 +124,8 @@ public:
             adjs[e[1]].push_back(e[0]);
         }
         unordered_set<int> visited;
-        bool nocycel = dfs(0, adjs, visited, -1);
-        return nocycel && (visited.size() == n);
+        bool nocycle = dfs(0, adjs, visited, -1);
+        return nocycle && (visited.size() == n);
         // Do not use dfs(0, adjs, visited, -1) && visited.size() == n
         // The right side of && will be executed first.
     }

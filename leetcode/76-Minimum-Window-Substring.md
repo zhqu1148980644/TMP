@@ -67,32 +67,31 @@ public:
 
 2. ##### optimized version
 
-- One hash map is sufficient to represent both the requirements in T and the character counts in the current window.
-- Because the left pinters will never be greater than the right pinters, all characters did not show in S will be ignored as their counts will never be greater than 0. ie: deduce their counts when they appeared and increase their counts when they dispeared when shrinking the left pinters.
+- One hash map is sufficient to represent both the requirements in T and the character counts in the current window. i.e: deduce their counts when they appeared and increase their counts when they dispeared when shrinking the left pinters.
 
 
 ```c++
 class Solution {
 public:
     string minWindow(string s, string t) {
-        int count[128] = {0};
-        for (auto & c : t) count[c]++;
-        string res;
-        int i = 0, j = 0, formed = 0, minlen = s.size();
+        vector<int> count(128);
+        for (auto c : t) count[c]++;
+
+        int i = 0, j = 0, formed = 0, min_len = s.size() + 1, st = s.size();
         while (j < s.size()) {
-            if (--count[s[j]] >= 0) formed++;
+            if (--count[s[j]] >= 0)
+                formed++;
             while (formed == t.size()) {
-                if (j - i + 1 <= minlen) {
-                    minlen = j - i + 1;
-                    res = s.substr(i, minlen);
+                if (j - i + 1 < min_len) {
+                    min_len = j - i + 1;
+                    st = i;
                 }
-                // this is greater than.
-                // counts of some characters in the current window may be more than the requirements.
                 if (++count[s[i++]] > 0) formed--;
             }
             j++;
         }
-        return res;
+
+        return st == s.size() ? "" : s.substr(st, min_len);
     }
 };
 ```
@@ -103,7 +102,7 @@ OR
 class Solution {
 public:
     string minWindow(string s, string t) {
-        int count[128] = {0};
+        vector<int> count(128);
         for (auto & c : t) count[c]++;
         int i = 0, j = 0, formed = 0;
         int start = s.size(), minlen = s.size();
@@ -128,6 +127,7 @@ check `problem 3` for detailed solution for this kind of problem.
 
 3. ##### optimized version
 
+- For case when `O(2n) >> O(n)`.
 - We can use a vector to record the the position of characters in S that is appeared in T.
 - Then use the same method above to loop through this sequence.
 
@@ -135,32 +135,32 @@ check `problem 3` for detailed solution for this kind of problem.
 class Solution {
 public:
     string minWindow(string s, string t) {
-        int count[128] = {0};
-        for (auto & c : t) count[c]++;
+        vector<int> count(128);
+        for (auto c : t) count[c]++;
 
         vector<pair<char, int>> strpos;
         for (int i = 0; i < s.size(); i++)
             if (count[s[i]])
-                strpos.push_back(make_pair(s[i], i));
-
-        int i = 0, formed = 0;
-        int minlen = s.size(), start = s.size();
-
-        for (auto & end : strpos) {
-            if (--count[end.first] >= 0)
+                strpos.push_back({s[i], i});
+        
+        int i = 0, formed = 0, min_len = s.size() + 1, st = s.size();
+        
+        for (auto & [c, end] : strpos) {
+            if (--count[c] >= 0)
                 formed++;
             if (formed == t.size()) {
                 while (formed == t.size())
                     if (++count[strpos[i++].first] > 0)
                         formed--;
-                int len = end.second - strpos[i - 1].second + 1;
-                if (len <= minlen) {
-                    minlen = len;
-                    start = strpos[i - 1].second;
+                int len = end - strpos[i - 1].second + 1;
+                if (len < min_len) {
+                    min_len = len;
+                    st = strpos[i - 1].second;
                 }
             }
         }
-        return start == s.size() ? "" : s.substr(start, minlen);
+
+        return st == s.size() ? "" : s.substr(st, min_len);
     }
 };
 ```

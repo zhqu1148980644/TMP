@@ -36,6 +36,7 @@ void reorderList(struct ListNode* head){
     }
     node * pre = NULL, * cur = slow->next;
     slow->next = NULL;
+    // reverse the last half
     while (cur) {
         node * tmp = cur->next;
         cur->next = pre;
@@ -43,14 +44,13 @@ void reorderList(struct ListNode* head){
     }
     // merge version
     // slow = head->next; fast = pre;
-    // while (slow && fast) {
+    // while (fast) {
     //     head->next = fast; fast = fast->next;
     //     head = head->next;
     //     head->next = slow; slow = slow->next;
     //     head = head->next;
     // }
-    // if (fast) head->next = fast;
-    // return slow
+    // return;
 
     // insert version
     slow = head; fast = pre;
@@ -62,6 +62,6 @@ void reorderList(struct ListNode* head){
         if (!slow->next->next) break;
         else slow = slow->next->next;
     }
-    return head;
+    return;
 }
 ```

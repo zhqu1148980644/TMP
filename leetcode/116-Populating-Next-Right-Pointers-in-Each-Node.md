@@ -181,7 +181,9 @@ class Solution:
         return r
 ```
 
-Or a recursive version
+5. ##### recursion
+
+- Note that this verison links one level across multiple recursive call. 
 
 ```c++
 class Solution {

@@ -41,7 +41,7 @@ public:
 };
 ```
 
-2. ##### complete binary tree
+2. ##### recursion with complete binary tree
 
 - For a full binary tree, the total number of nodes is `2**h - 1`.  (root has height 1).
 - As a complete binary tree fills nodes in the left most of the last level, all levels before the last level is full.
@@ -71,6 +71,57 @@ public:
             root = root->left;
         }
         return h;
+    }
+};
+```
+
+
+3. ##### search for the last element
+
+
+- Use binary search to search for the index of the last element in the last level.
+
+```c++
+class Solution {
+public:
+    int height(TreeNode * root) {
+        int h = 0;
+        while (root) {
+            h++;
+            root = root->left;
+        }
+        return h;
+    }
+    bool exists(TreeNode * root, int target, int h) {
+        int lo = 0, hi = pow(2, h - 1);
+        for (int i = 1; i < h; i++) {
+            int mid = lo + ((hi - lo) / 2);
+            if (target < mid) {
+                root = root->left;
+                hi = mid;
+            }
+            else {
+                lo = mid + 1;
+                root = root->right;
+            }
+            if (!root) break;
+        }
+        return root;
+    }
+    int countNodes(TreeNode* root) {
+        int h = height(root);
+        if (h <= 1) return pow(2, h) - 1;
+        int lo = 0, hi = pow(2, h - 1);
+        while (lo < hi) {
+            int mid = lo + ((hi - lo) / 2);
+            bool e = exists(root, mid, h);
+            if (e)
+                lo = mid + 1;
+            else
+                hi = mid;
+        }
+
+        return pow(2, h - 1) -1 + lo;
     }
 };
 ```

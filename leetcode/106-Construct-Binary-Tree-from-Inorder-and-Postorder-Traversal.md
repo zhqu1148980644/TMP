@@ -21,7 +21,7 @@ Return the following binary tree:
 #### Solutions
 
 - It's clear hat the reversed version of the postorder traversal is similar to the preorder traversal, except that the right node is visited before the left node. Thus by selecting the root nodes backwards and reversing the visiting order of left/right node, you can apply the same idea/method to this problem as in `problem 106`.
-    - prorder: `root left ritght` reversed postorder: `root right left`.
+    - preorder: `root left ritght` reversed postorder: `root right left`.
 
 1. ##### recursion
 
@@ -85,40 +85,22 @@ public:
 - See `problem 105` for detail.
 
 ```c++
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
 class Solution {
-    int postindex;
-    int inindex;
-    vector<int> inorder;
-    vector<int> postorder;
-
 public:
-    TreeNode * build(int stop) {
-        if (inindex < 0 || inorder[inindex] == stop) {
-            return nullptr;
-        } else {
-            TreeNode * root = new TreeNode(postorder[postindex--]);
-            root->right = build(root->val);
-            inindex--;
-            root->left = build(stop);
-            return root;
-        }
-    }
+    int pos, ino;
 
+    TreeNode * postbuild(vector<int> & inorder, vector<int> & postorder, int stop) {
+        if (ino < 0 || inorder[ino] == stop)
+            return nullptr;
+        TreeNode * root = new TreeNode(postorder[pos--]);
+        root->right = postbuild(inorder, postorder, root->val);
+        ino--;
+        root->left = postbuild(inorder, postorder, stop);
+        return root;
+    }
     TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
-        this->inorder = inorder;
-        this->postorder = postorder;
-        postindex = postorder.size() - 1;
-        inindex = inorder.size() - 1;
-        return build(INT_MIN);
+        ino = pos = postorder.size() - 1;
+        return postbuild(inorder, postorder, INT_MIN);
     }
 };
 ```
@@ -133,12 +115,14 @@ class Solution {
 public:
     TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
         stack<TreeNode *> s;
-        if (!postorder.size()) return nullptr;
-        int pos = postorder.size() - 1, ino = pos;
-        TreeNode * root = new TreeNode(postorder[pos--]), * head =  root;
-        s.push(root);
+        int ino = postorder.size() - 1, pos = ino;
+        TreeNode * head, * root;
+        if (postorder.size())
+            s.push(root = head = new TreeNode(postorder[pos--]));
+        else
+            return nullptr;
         while (!s.empty()) {
-            while (s.top()->val != inorder[ino])  {
+            while (s.top()->val != inorder[ino]) {
                 root = root->right = new TreeNode(postorder[pos--]);
                 s.push(root);
             }
@@ -146,11 +130,12 @@ public:
                 root = s.top(); s.pop();
                 ino--;
             }
-            if (pos >= 0) {
+            if (ino >= 0) {
                 root = root->left = new TreeNode(postorder[pos--]);
                 s.push(root);
             }
         }
+
         return head;
     }
 };

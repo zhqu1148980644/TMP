@@ -36,29 +36,23 @@ Explanation: We can replace '0' with '1' to get t.
 class Solution {
 public:
     bool isOneEditDistance(string s, string t) {
-        if (abs((int)s.size() - (int)t.size()) > 1)
-            return false;
-        if (s.size() > t.size())
+        int lens = s.size(), lent = t.size();
+        if (abs(lens - lent) > 1) return false;
+        if (lens > lent) {
             swap(s, t);
-
-        bool unequal = false;
+            swap(lens, lent);
+        }
         int i = 0;
-        while (i < s.size()) {
-            if (s[i] != t[i]) {
-                unequal = true;
-                break;
-            }
+        while (i < lens && s[i] == t[i])
             i++;
-        }
-        if (!unequal) {
-            return s.size() < t.size();
-        } else {
-            int j = s.size() < t.size() ? i + 1 : ++i;
-            while (j < t.size())
-                if (s[i++] != t[j++])
-                    return false;
-            return true;
-        }
+        // two idetical strings are not one edit apart
+        if (lens == lent && i == lens)
+            return false;
+        int j = lens < lent ? i + 1 : ++i;
+        while (j < lent)
+            if (s[i++] != t[j++])
+                return false;
+        return true;
     }
 };
 ```

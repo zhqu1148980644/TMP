@@ -61,14 +61,20 @@ class Solution:
                 return rs[:i] + s
 ```
 
+```python
+class Solution:
+    def shortestPalindrome(self, s: str) -> str:
+        for i in range(len(s), -1, -1):
+            if s[:i] == s[:i][::-1]:
+                return s[::-1][: len(s) - i] + s
+```
+
 
 2. ##### kmp O(n)
 
 - What's the purpose of buiding a `next` table in kmp algorithm ?
-    - When we failed to match `p[i]` with the target string `s[j]` after characters before are matched successfully, there is no need to restart the matching with the next characters in `s` and `p[0]`. ie. we can reuse the matching history.
-    - For a given pattern string `p`, `next[i]` represents the position of the longest prefix identical to suffix of `p[:i)`.
-    - As long as we start matching with `p[0]` compares to characters before `s[j]`, the matching process will be equivalent to mach the prefix of `p[:i)` and the suffix of `p[:)` which is independent of the target string `s`.
-    - Filtered all impossible match, we can start matching with `p[next[i]]` compares to `s[j]`.
+    - When we failed to match `p[i]` with the target string `s[j]` after characters before are matched successfully, there is no need to restart the matching with `s[j - i]` and `p[0]`. The matching process will be equivalent to mach the prefix of `p[:i)` and the suffix of `p[:)` which is independent of the target string `s`.
+    - For a given pattern string `p`, `next[i]` represents the length of the longest prefix identical to suffix of `p[:i)`. With `next[i]` computed, we can start matching with `p[next[i]]` compares to `s[j]`.
 - Example:
 
 ```
@@ -82,7 +88,7 @@ class Solution:
 ```
 
 - Summary: the `next` table rercods the length of the longest identical prefix and suffix ending with each character(right-open).
-- Here `next[i]` represents the longest prefix equals to `p[:i)`'s suffix is `p[:next[i])`
+- Here `next[i]` represents the longest prefix equals to `p[:i)`'s suffix `p[:next[i])`
 - Insert a `#` between s and rev to prevent prefix longer than `len(s)`.
 
 ```c++
@@ -133,7 +139,7 @@ int kmp(char * P, char * T) {
     int * next = build_next(P);
     int i = 0, j = 0;
     while ((i != m) && (j != n)) {
-        if ((j < 0) || (T[i] == P[i])) {
+        if ((j < 0) || (T[i] == P[j])) {
             ++i; ++j;
         } else
             j = next[i];
@@ -163,3 +169,5 @@ public:
     }
 };
 ```
+
+4. ##### manarchar method O(n)

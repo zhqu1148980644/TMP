@@ -42,6 +42,8 @@ public:
         while (n) {
             res = hex[n % 16] + res;
             n /= 16;
+            // res = hex[n & 0b1111] + res;
+            // n >>= 4;
         }
         return res;
     }

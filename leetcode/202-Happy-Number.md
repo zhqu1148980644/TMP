@@ -67,4 +67,24 @@ public:
 
 3. ##### Use rules
 
-- Every unhappy number will meet number smaller than 6 but not equal to 1.
+- Every unhappy number will meet number 4.
+
+
+```c++
+class Solution {
+public:
+    int next(int n) {
+        int res = 0;
+        while (n) {
+            res += (n % 10) * (n % 10);
+            n /= 10;
+        }
+        return res;
+    }
+    bool isHappy(int n) {
+        while (n != 1 && n > 4)
+            n = next(n);
+        return n == 1;
+    }
+};
+```

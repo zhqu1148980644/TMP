@@ -18,7 +18,7 @@ One way is to shoot one arrow for example at x = 6 (bursting the balloons [2,8] 
 
 #### Solutions
 
-- Check `problem 435` which is solved by greedy method too.
+- Check `problem 435` for similar solutions.
 
 1. ##### greedy method
 
@@ -32,6 +32,7 @@ public:
         sort(points.begin(), points.end());
 
         int arrow = 1, prevend = points[0][1];
+        // two intervals with the second's start equals to the first's end is considered as overlapping.
         for (int i = 1; i < points.size(); i++) {
             if (points[i][0] > prevend) {
                 arrow++;
@@ -46,6 +47,29 @@ public:
 };
 ```
 
+or
+
+```c++
+class Solution {
+public:
+    int findMinArrowShots(vector<vector<int>>& points) {
+        if (!points.size()) return 0;
+        sort(points.begin(), points.end());
+
+        int arrow = 1, prevend = points[0][1];
+        for (int i = 1; i < points.size(); i++) {
+            if (points[i][1] < prevend)
+                prevend = points[i][1];
+            else if (points[i][0] > prevend) {
+                arrow++;
+                prevend = points[i][1];
+            }
+        }
+        return arrow;
+    }
+};
+```
+
 - Or sort by end, then there is no need to update the minimum end of intervals.
 
 ```c++
@@ -53,18 +77,18 @@ class Solution {
 public:
     int findMinArrowShots(vector<vector<int>>& points) {
         if (!points.size()) return 0;
-        sort(points.begin(), points.end(), [](vector<int> & v1, vector<int> & v2) {
-            return v1[1] <= v2[1];
+        sort(points.begin(), points.end(), [](auto & v1, auto & v2) {
+            return v1[1] < v2[1];
         });
 
         int arrow = 1, prevend = points[0][1];
         for (int i = 1; i < points.size(); i++) {
+        // two intervals with the second's start equals to the first's end is considered as overlapping.
             if (points[i][0] > prevend) {
                 arrow++;
                 prevend = points[i][1];
             }
         }
-
         return arrow;
     }
 };

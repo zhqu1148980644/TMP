@@ -35,27 +35,23 @@ As an added challenge, try to code it using only iterators in C++ or iterators i
 
 ```c++
 class Vector2D {
-private:
-    vector<vector<int>> v;
+public:
     vector<vector<int>::iterator> gen;
     int cur = 0;
-
-public:
     Vector2D(vector<vector<int>>& v) {
-        this->v = move(v);
-        for (auto & vv : this->v) {
+        for (auto & vv : v) {
             gen.push_back(vv.begin());
             gen.push_back(vv.end());
         }
     }
-
+    
     int next() {
         while (gen[cur] == gen[cur + 1])
             cur += 2;
         int res = *gen[cur]++;
         return res;
     }
-
+    
     bool hasNext() {
         while (cur < gen.size() && gen[cur] == gen[cur + 1])
             cur += 2;
@@ -69,4 +65,32 @@ public:
  * int param_1 = obj->next();
  * bool param_2 = obj->hasNext();
  */
+```
+
+or
+
+```c++
+class Vector2D {
+public:
+    vector<vector<int>> v;
+    int i = 0, j = 0;
+    Vector2D(vector<vector <int>>& v) {
+        this->v = v;
+    }
+    
+    int next() {
+        while (i < v.size() && j >= v[i].size()) {
+            i++; j = 0;
+        }
+        if (i >= v.size()) return -1;
+        return v[i][j++];
+    }
+    
+    bool hasNext() {
+        while (i < v.size() && j >= v[i].size()) {
+            i++; j = 0;
+        }
+        return i < v.size();
+    }
+};
 ```

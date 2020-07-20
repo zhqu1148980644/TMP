@@ -53,12 +53,11 @@ public:
 
 2. #####
 
-- borrowed from others.
 - reference: https://leetcode.com/problems/candy/discuss/161652/One-pass-O(n)-with-O(1)-space-shortest-solution-easy-to-understand
 - The key point: Instead of counting the number of slopes and calculate the sum candies in the `future` like the standard answer did, this method will count the candies whenever meets a increasing rating or a decreasing rating.
     - For an increasing sequence, start from the first child with 1 candy, increase the required number of candies by 1 and add this child's candies into the final sum when passing the increasing sequence. After assined candies for the peak child, we can ensure that any child before the peak kid has been given the right number of candies. Though this peak child's number of candies may be `wrong`, we will fix it later.
     - For a decreasing sequence, since the number of candies for first child of the decreasing sequence has been assigned(In prious increasing sequence, or implicitly assigned by the initial `s`), we will start from the second child with candies 1, and increase candies whenever meets a decreasing rating and plus them into the sum count.
-        - For example,  `1 2 3 2 1 0`. we will assign them with candies `1 2 3 1 2 3`, though the decreasing part should be `reversed` as higer rating will get higher candies, the sum of the decreasing part will be the `same`. Untill now, every child has been assigned the right number of candies `except for the peak child`. Thus, we increase the number of candies for the peak child by 1 whenever the decreased part is longer then the increase part. There are two increased children and three decreased children, thus we assign `one more` candies for the peak child.
+        - For example,  `1 2 3 2 1 0`. we will assign them with candies `1 2 3 1 2 3`, though the decreasing part should be `reversed` as higer rating will get higher candies(reversed: 1 2 3 3 2 1), the sum of the decreasing part will be the `same`. Untill now, every child has been assigned the right number of candies `except for the peak child`. Thus, we increase the number of candies for the peak child by 1 whenever the decreased part is longer then the increase part. There are 2 increased children and three decreased children, thus we assign `one more` candies for the peak child.
 - The final assignment of candies for every child can also be fetched in the same way.
     - If the final assignment of candies are need the two pass method should be more proper.
 
@@ -80,7 +79,7 @@ public:
                 s += dec++;
                 if (dec > inc)
                     s++;
-                // can not reset `inc` here.
+                // can not reset `inc` here. inc needs to be compared with dec
             }
             else {
                 s++;

@@ -23,30 +23,42 @@ One possible answer is: [0,-3,9,-10,null,5], which represents the following heig
 1. ##### recursion, find mid point O(nlog(n)) S(log(n))
 
 - This method is similar to `problem 108`. Since linked list does not support efficient indexing, we need to find the middle node in a linked list in each subproblem.
-- Another option is to set the middle node's next pointer to `NULL`, then the inorder function can works only with the root parameter. However, this will change the structure of the original linked list which may be unchangebal in real world.
+- Another option is to set the middle node's next pointer to `NULL`, then the inorder function can works only with the root parameter. However, this will change the structure of the original linked list which may be unacceptable in real world.
 
 ```c++
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
 class Solution {
-private:
-    TreeNode * inorder(ListNode * head, ListNode * tail) {
-        // head->next == null will be handled by in the next iteration
-        if (head == tail) return NULL;
+public:
+    TreeNode * preorder(ListNode * head, ListNode * tail) {
+        if (head == tail) return nullptr;
         ListNode * mid = head, * fast = head;
-        while (fast != tail && fast->next != tail) {
+        while (fast != tail && fast->next != tail) { 
             mid = mid->next;
             fast = fast->next->next;
         }
-        fast = mid->next;
-
         TreeNode * root = new TreeNode(mid->val);
-        root->left = inorder(head, mid);
-        root->right = inorder(mid->next, tail);
-
+        root->left = preorder(head, mid);
+        root->right = preorder(mid->next, tail);
         return root;
     }
-public:
     TreeNode* sortedListToBST(ListNode* head) {
-        return inorder(head, NULL);
+        return preorder(head, nullptr);
     }
 };
 ```
@@ -82,7 +94,7 @@ public:
 ```
 
 
-4. ##### emulate inorder traversal by recursion
+4. ##### emulate inorder traversal by recursion O(n) S(log(n))
 
 
 - borrowed from others.
@@ -93,51 +105,31 @@ public:
     - To terminate the recursive inorder traversal in the right point, we need to fetch the total length of the linked list.
 
 ```c++
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
 class Solution {
 public:
     ListNode * head;
-    TreeNode * convertBst(int lo, int hi) {
+
+    TreeNode* convertBst(int lo, int hi) {
         if (lo >= hi) return nullptr;
-        int mid = lo + ((hi - lo) >> 1);
+        int mid = lo + (hi - lo) / 2;
 
         TreeNode * left = convertBst(lo, mid);
-        TreeNode * node = new TreeNode(head->val);
-        node->left = left;
-        // move one step further
-        this->head = this->head->next;
+        TreeNode * root = new TreeNode(head->val);
+        root->left = left;
+        head = head->next;
         TreeNode * right = convertBst(mid + 1, hi);
-        node->right = right;
-
-        return node;
+        root->right = right;
+        return root;
     }
 
     TreeNode* sortedListToBST(ListNode* head) {
-        int count = 0;
+        int len = 0;
         ListNode * cur = head;
         while (cur) {
-            cur = cur->next;
-            count++;
+            len++; cur = cur->next;
         }
         this->head = head;
-
-        return convertBst(0, count);
+        return convertBst(0, len);
     }
 };
 ```

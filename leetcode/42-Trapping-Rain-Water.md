@@ -76,8 +76,7 @@ class Solution:
 3. #### two pointers. O(n)
 
 - Use two value to record the left-heighest and right-heighest. 
-- Move the lower one forward to ensure that the there is at least one bar who's height is larger than this side's heighest bar. So the water level of this position is solely constrained by this side's highest bar.
-- When this relation can be ensured in each step, the corresponding volumn can be calculated in the same time.
+- Move the lower one forward to ensure that all bars in the lower side is smaller than the current higher bar. Thus the water level of lower one is solely constrained by this side's highest bar.
 
 ```c++
 class Solution {
@@ -109,7 +108,7 @@ public:
 4. #### Optimized two pointer version. O(n)
 
 - borrowed from stephan.
-- only maintain the smallest height(water level) of left-heighest and right-heighest.
+- only maintain the smallest height(water level) between left-heighest and right-heighest.
 
 ```c++
 class Solution {
@@ -129,3 +128,27 @@ public:
 ```
 
 5. #### stack version.
+
+
+```c++
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int res = 0;
+        stack<int> s;
+        for (int i = 0; i < height.size(); i++) {
+            while (!s.empty() && height[s.top()] < height[i]) {
+                int curh = height[s.top()]; s.pop();
+                if (s.empty()) break;
+                int l = s.top(), r = i;
+                // each level will be counted only once.
+                // for multibar with the same height, only the first bar will acounts(others as 0 diff).
+                res += (min(height[l], height[r]) - curh) * (i - s.top() - 1);
+            }
+            s.push(i);
+        }
+
+        return res;
+    }
+};
+```

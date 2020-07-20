@@ -20,26 +20,20 @@ You may assume that nums' length ≥ k-1 and k ≥ 1.
 
 #### Solutions
 
-1. ##### min stack push/pop O(log(n))
+1. ##### min heap push/pop O(log(n))
 
 ```c++
 class KthLargest {
-private:
-    priority_queue<int, vector<int>, greater<int>> pq;
-    int maxsize;
 public:
-    KthLargest(int k, vector<int>& nums) : maxsize(k) {
-        for (auto & num : nums) {
-            pq.push(num);
-            if (pq.size() > maxsize)
-                pq.pop();
-        }
+    int k;
+    priority_queue<int, vector<int>, greater<>> pq;
+    KthLargest(int k, vector<int>& nums) : k(k) {
+        for (auto n : nums) add(n);
     }
     
     int add(int val) {
         pq.push(val);
-        if (pq.size() > maxsize)
-            pq.pop();
+        if (pq.size() > k) pq.pop();
         return pq.top();
     }
 };
@@ -54,28 +48,19 @@ public:
 
 2. ##### multiset insert/delete O(log(n))
 
-- reference: https://leetcode-cn.com/problems/kth-largest-element-in-a-stream/solution/703-shu-ju-liu-zhong-de-di-kda-yuan-su-liang-chong/
-
 ```c++
 class KthLargest {
-private:
-    multiset<int> m;
-    int maxsize;
 public:
-    KthLargest(int k, vector<int>& nums) : maxsize(k) {
-        for (auto & num : nums) {
-            m.insert(num);
-            if (m.size() > maxsize)
-                m.erase(m.begin());
-        }
+    int k;
+    multiset<int> m;
+    KthLargest(int k, vector<int>& nums) : k(k) {
+        for (auto n : nums) add(n);
     }
     
     int add(int val) {
         m.insert(val);
-        if (m.size() > maxsize)
-            m.erase(m.begin());
+        if (m.size() > k) m.erase(m.begin());
         return *m.begin();
     }
 };
-
 ```

@@ -40,22 +40,10 @@ When we erase the brick at (1, 0), the brick at (1, 1) has already disappeared d
 - By this way, we can utilize the efficient union operation of UF and count the increased number of bricks connected to the top(ceiling) at each erasure(add) step.
 
 ```c++
-class UnionFind {
-private:
-
-    int * sizes;
-public:
-    int * nodes;
-    UnionFind(int size) {
-        nodes = new int[size];
-        for (int i = 0; i < size; i++)
-            nodes[i] = i;
-        sizes = new int[size];
-        for (int i = 0; i < size; i++)
-            sizes[i] = 1;
-    }
-    ~UnionFind() {
-        delete [] nodes; delete [] sizes;
+struct UnionFind {
+    vector<int> nodes, sizes;
+    UnionFind(int size) : nodes(size), sizes(size, 1) {
+        iota(nodes.begin(), nodes.end(), 0);
     }
     int find(int index) {
         while (nodes[index] != index) {
@@ -70,8 +58,8 @@ public:
         if (father1 == father2)
             return false;
         else {
-            if (this->sizes[father1] > this->sizes[father2]);
-            swap(father1, father2);
+            if (sizes[father1] > sizes[father2])
+                swap(father1, father2);
             nodes[father1] = father2;
             sizes[father2] += sizes[father1];
             return true;
@@ -81,62 +69,54 @@ public:
         return this->sizes[find(node)];
     }
 };
-
 #define node(x, y) (((x) * ncol + (y)))
 class Solution {
 public:
     vector<int> hitBricks(vector<vector<int>>& grid, vector<vector<int>>& hits) {
         // create a final grid containing bricks will not be erased
-        vector<vector<int>> final_grid;
-        for (auto & row : grid)
-            final_grid.push_back(row);
+        // valid(former state is 1) erased items are marked as -1
         for (auto & x_y : hits)
-            final_grid[x_y[0]][x_y[1]] = 0;
-
+            grid[x_y[0]][x_y[1]] *= -1;
         // create a community represent ceiling, bricks connected to ceiling will not drop
         int nrow = grid.size(), ncol = grid[0].size();
         UnionFind uf(nrow * ncol + 1);
         int ceil = nrow * ncol;
-
-        // traverse all bricks and connect to multiple community
+        // traverse all bricks and connect all nodes into communities
         for (int i = 0; i < nrow; i++) {
             for (int j = 0; j < ncol; j++) {
-                if (final_grid[i][j] == 0)
+                if (grid[i][j] != 1)
                     continue;
-                int curnode = node(i, j);
-                if (i == 0)
-                    uf.merge(curnode, ceil);
-                if (j + 1 < ncol && final_grid[i][j + 1])
-                    uf.merge(node(i, j + 1), curnode);
-                if (i + 1 < nrow && final_grid[i + 1][j])
-                    uf.merge(node(i + 1, j), curnode);
+                int cur = node(i, j);
+                if (i == 0) uf.merge(cur, ceil);
+                if (j + 1 < ncol && grid[i][j + 1] == 1)
+                    uf.merge(cur, node(i, j + 1));
+                if (i + 1 < nrow && grid[i + 1][j] == 1)
+                    uf.merge(cur, node(i + 1, j));
             }
         }
-
         // Starting from the last erasure, put erased bricks onto the grid.
         // if the size of ceiling community increased after added the brick, the same number of bricks will fall when this bricks is removed.
-        vector<int> increased(hits.size(), 0);
-        for (int cur = hits.size() - 1; cur >= 0; cur--) {
-            int x = hits[cur][0], y = hits[cur][1];
+        vector<int> increased(hits.size());
+        for (int i = hits.size() - 1; i >= 0; i--) {
+            int x = hits[i][0], y = hits[i][1];
             if (grid[x][y] == 0) continue;
-            int curnode = node(x, y);
+            int cur = node(x, y);
             int precount = uf.count(ceil);
-
             if (x == 0)
-                uf.merge(curnode, ceil);
-            if (x - 1 >= 0 && final_grid[x - 1][y])
-                uf.merge(node(x - 1, y), curnode);
-            if (y - 1 >= 0 && final_grid[x][y - 1])
-                uf.merge(node(x, y - 1), curnode);
-            if (x + 1 < nrow && final_grid[x + 1][y])
-                uf.merge(node(x + 1, y), curnode);
-            if (y + 1 < ncol && final_grid[x][y + 1])
-                uf.merge(node(x, y + 1), curnode);
-
+                uf.merge(cur, ceil);
+            else if (grid[x - 1][y] == 1)
+                uf.merge(node(x - 1, y), cur);
+            if (x + 1 < nrow && grid[x + 1][y] == 1)
+                uf.merge(node(x + 1, y), cur);
+            if (y - 1 >= 0 && grid[x][y - 1] == 1)
+                uf.merge(node(x, y - 1), cur);
+            if (y + 1 < ncol && grid[x][y + 1] == 1)
+                uf.merge(node(x, y + 1), cur);
             if (uf.count(ceil) > precount)
-                increased[cur] = uf.count(ceil) - precount - 1;
-
-            final_grid[x][y] = 1;
+                // 1 represents the erased element, it does not belong to dropped els
+                increased[i] = uf.count(ceil) - precount - 1;
+            // set to 1 to reverse the erasement
+            grid[x][y] = 1;
         }
 
         return increased;
@@ -144,9 +124,19 @@ public:
 };
 ```
 
+2. ##### bfs
 
-2. ##### other solutions
+- Use the same idead but with different strategy for searching connected nodes.
+
+```c++
+
+```
+
+
+3. ##### other solutions
 
 - Need to read.
 - https://leetcode.com/problems/bricks-falling-when-hit/discuss/120057/C%2B%2B-DFS-(similar-to-LC749)
 - https://leetcode.com/problems/bricks-falling-when-hit/discuss/119829/Python-Solution-by-reversely-adding-hits-bricks-back
+
+

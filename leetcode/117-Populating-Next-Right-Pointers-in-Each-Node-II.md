@@ -82,10 +82,9 @@ public:
 };
 ```
 
-2. ##### level by level O(n) S(1)/S(log(n))
+2. ##### Recursion O(n) S(1)/S(log(n))
 
-
-Recursive version
+- Because nodes in one level is fully linked after multiple recursive call, the right tree must be linked before the left tree. 
 
 ```c++
 class Solution {
@@ -96,6 +95,7 @@ public:
 
         // Search for the first node with valid child in the current level.
         Node * right = nullptr, * next = root->next;
+        // trys to find the next node in the same level
         while (next && (!next->left && !next->right))
             next = next->next;
         if (next) right = next->left ? next->left : next->right;
@@ -107,6 +107,7 @@ public:
 
         // Connectting the right child at first is indispensable.
         // Otherwise the searching step would fails in future steps.
+        // Because root->right may not contain children, root->left's will skip root-right and search for another node with children through the link of root->right->next.
         connect(root->right);
         connect(root->left);
 
@@ -117,7 +118,7 @@ public:
 
 The iteration one can be much more complicated and many edge cases need to be considered.
 
-3. ##### optimized solution 2
+3. ##### level by level
 
 - Borrowed from others.
 - This method seems like the standard answer applys to any kind of binary tree.
@@ -145,7 +146,7 @@ public:
                 }
                 root = root->next;
             }
-            root = dummy.next;
+            root = dummy.next; // the first item in the next level
         }
         return r;
     }

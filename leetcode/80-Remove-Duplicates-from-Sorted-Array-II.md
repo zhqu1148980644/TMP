@@ -54,7 +54,7 @@ int removeDuplicates(int* nums, int numsSize){
 }
 ```
 
-- Go one step further, the code can be simplified more
+- Go one step further, the code can be simplified further
 - The invariance: for every node `k` before `i`, `array[k] != array[k - 2]`
 ```c++
 

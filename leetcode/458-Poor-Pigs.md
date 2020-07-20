@@ -22,10 +22,10 @@ If there are n buckets and a pig drinking poison will die within m minutes, how 
 1. ##### math
 
 - reference: the official answer.
-- For simplicity, suppose `minutesToDie` is `4` and `minutesToTest` is `2` and there is only `one` big, how many buckets can we test?
+- For simplicity, suppose `minutesToDie` is `4` and `minutesToTest` is `2` and there is only `one` pig, how many buckets can we test?
     - There are `three` possibilities: 
-    - Drink the first bucket and `die in minutes 2`. The answer is bucket 1
-    - Then drink the second bucket and `die in 4`. The answer is bucket 2
+    - Drink the first bucket and `die in minutes 4`. The answer is bucket 1
+    - Then drink the second bucket in `2` and and `die in 6`. The answer is bucket 2
     - Or this pig is `still alive`. The answer is bucket 3
 - Follow the same rule, there are `(minutesToDie/minutesToTest) + 1(still alive)` states thus we can test at most this number of buckets with one pig.
 - For `x` pigs, the number is `nstates**x`

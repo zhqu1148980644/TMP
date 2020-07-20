@@ -50,34 +50,29 @@ class Solution {
 public:
     int maximumGap(vector<int>& nums) {
         if (nums.empty() || nums.size() < 2) return 0;
-        int maxVal  = *max_element(nums.begin(), nums.end());
+        int  maxval = *max_element(nums.begin(), nums.end());
+        int exp = 1, radix = 10;
 
-        int exp = 1;
-        int radix = 10;
+        vector<int> sorted(nums.size());
 
-        vector<int> aux(nums.size());
-
-        while (maxVal / exp > 0) {
+        while (maxval / exp > 0) {
             vector<int> count(radix, 0);
             for (int i = 0; i < nums.size(); i++)
                 count[(nums[i] / exp) % 10]++;
-
             for (int i = 1; i < count.size(); i++)
                 count[i] += count[i - 1];
-
+            // must start from the back, otherwise the order sorted in the last step could be shuffled
             for (int i = nums.size() - 1; i >= 0; i--)
-                aux[--count[(nums[i] / exp) % 10]] = nums[i];
-
-            for (int i = 0; i < nums.size(); i++)
-                nums[i] = aux[i];
-
+                sorted[--count[(nums[i] / exp) % 10]] = nums[i];
+            
+            nums = sorted;
             exp *= 10;
         }
-
-        int maxGap = 0;
+        int maxgap = 0;
         for (int i = 0; i < nums.size() - 1; i++)
-            maxGap = max(nums[i + 1] - nums[i], maxGap);
-        return maxGap;
+            maxgap = max(nums[i + 1] - nums[i], maxgap);
+
+        return maxgap;
     }
 };
 ```
@@ -86,11 +81,11 @@ public:
 
 - Similar to bucket sort.
 - When n items are putted into `m(m < n)` buckets, there must be at least one bucket contains more than one item.
-- In this problem, buckets can be sesed as intervals with the same width equally layed out in `[min, max)`, thus each item can be putted in to buckets base on which interval the item belongs to.
-- The complexity of the sorting problem reduces to O(n).
-    - ie. values in the `(i - 1)'th` bucket is smaller than the `i'th` bucket.
+- In this problem, buckets can be seen as intervals with the same width equally layed out in `[min, max)`, thus each item can be putted into buckets based on which interval the item belongs to. Afther all items are putted correctly, values in the `(i - 1)'th` bucket is smaller than the `i'th` bucket.
 - The maxinum interval can be find by seaching for the maximum interval between two ajacent non-empty buckets.
-    - ie. the minimum number in the current bucket deduct the maximum number in the last bucket.
+    - ie. the minimum number in the current bucket deduct the maximum number in the first non-empty bucket afterwards. 
+    - Proof of correctness: `maxgap >= (w = (hi - lo) / (n - 1))`, `w` is the average interval of all adjaccent nodes, this eq means that the boundary of the mapgap must be within two diffenrent buckets, and all buckest between these two buckests are empty.
+    - `maxpgap == w` is true only when all nodes are evenly separated.
 - Instead of creating buckets to collect items, we can simply use two arrays to record the minimum and maximum number in each bucket.
 
 ```c++

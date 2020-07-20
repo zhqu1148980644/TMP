@@ -63,6 +63,7 @@ public:
             return;
         }
             
+        // only insert at the first position of `cc` or `c`
         for (int j, i = 0; i < b.size(); i = j) {
             j = i + 1;
             while (j < b.size() && b[j] == b[i]) j++;

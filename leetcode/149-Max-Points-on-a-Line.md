@@ -37,7 +37,7 @@ Explanation:
 1. ##### count slope O(n2) S(n)
 
 - reference: https://leetcode.com/problems/max-points-on-a-line/discuss/47124/C%2B%2B-slope-counter
-- For each point, check all possible lines could be found and record the maximum number of points reside in the line.
+- For each point, check all possible lines could be found and record the maximum number of points reside in thoese lines.
 - To get rid of precision problems, we use `gcd` pair to represents a unique line/slope.
 
 ```c++

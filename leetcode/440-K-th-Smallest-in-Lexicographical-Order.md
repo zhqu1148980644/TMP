@@ -20,7 +20,7 @@ The lexicographical order is [1, 10, 11, 12, 13, 2, 3, 4, 5, 6, 7, 8, 9], so the
 1. ##### denary tree(10 child of each node)
 
 - The k'th smallest integer in lexicographical order equals to the k'th node in preorder traversal of the denary tree.
-    - Actually is the path from the root to the k'th node.
+    - Actually is the path from root to the k'th node.
 - The first level has 9 node ranging from `1 to 9` and every nodes contains 10 child nodes ranging from `0 to 9`.
 - To speed up the traversal process, we can just count the total number of nodes belongs to a given node(subtree), and skip to the next node in the same level if the total number of nodes is smaller than the remaining foward steps, or jump to the left most child vise versa.
 - When counting the total number of subnodes within a given node(or a prefix), we must take into consideration of the maximum number provided by the problem.
@@ -50,13 +50,11 @@ public:
         while (cur_steps < k) {
             // there are next_steps number of nodes in this tree(include self)
             long next_steps = steps(prefix, n);
-            // jump to the next node in the current level
-            // and emulate we have moved forward next_steps steps.
+            // the target node must be within the current subtree, move to the left most child, increase 1 step. e.g 2 -> 20 or  42 -> 420
             if (cur_steps + next_steps > k) {
                 prefix *= 10;
                 cur_steps += 1;
-            // else the target node must within the current subtree
-            // move to the left most child, increase 1 step. e.g 2 -> 20 or  42 -> 420
+            // else jump to the next node in the current level and emulate we have moved forward next_steps steps.
             } else {
                 prefix += 1;
                 cur_steps += next_steps;

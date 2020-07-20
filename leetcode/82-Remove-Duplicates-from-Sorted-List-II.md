@@ -18,7 +18,7 @@ Output: 2->3
 
 - Whenever meet a `cur/head` node, set `cur` to the first node whose next node is different from this node.
 - If `cur` node equals to the `head` node, then this is a unique node, link to previous node's next pointer.
-- At the ending of each iteration, move `head/cur` to `cur`'s next node.
+- At the end of each iteration, move `head/cur` to `cur`'s next node.
 
 ```c++
 /**
@@ -52,9 +52,7 @@ struct ListNode* deleteDuplicates(struct ListNode* head){
 }
 ```
 
-Or use another more intuitive strategy:
-
-
+Or
 - Whenever we meet a `cur` node, check if it's unique.
 - If this node is unique:
     - link the previous node's next pointer to this unique node.

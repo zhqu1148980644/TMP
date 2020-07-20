@@ -43,7 +43,7 @@ public:
 };
 ```
 
-2. ##### iteration(dfs or postder ?) with stack
+2. ##### iteration(postder ?) with stack
 
 - Because the number may be negative, we can not pre-exit(prune).
 

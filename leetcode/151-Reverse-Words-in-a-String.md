@@ -56,7 +56,6 @@ void reverse(char * st, char * ed) {
 char * reverseWords(char * s){
     int len = strlen(s); if (!len) return s;
     reverse(s, s + len);
-    // start position each character from the beginning of the sting.
     int start = 0, end = 0;
     for (int i = 0; i < len; i++) {
         if (s[i] != ' ')

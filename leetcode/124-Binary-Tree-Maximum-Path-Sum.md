@@ -69,20 +69,10 @@ public:
 2. ##### postorder  O(n) S(log(n))
 
 - For each node, we calculate the maxinum-sum path that passed through the current node and only contains nodes with highth lower than this node.
-- `cursum` represents the maximum path between `root-left` and `root-right`.
-- For a certain root node, as the right child will be the previous visited node, we can use a variable `right` to record the right child's `cursum`.
-- While the left child is not the same case, we can use a `stack` to store `cursum` of these left children.
+- `cursum` represents the maximum path sum across the current node(not higher than this).
+- For a certain root node, as the right child will be the previous visited node, we can use a variable `right` to record the right child's `cursum`, While the left child is not, we instead use a `stack` to store `cursum` of these left children.
 
 ```c++
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
 class Solution {
 public:
     int maxPathSum(TreeNode* root) {
@@ -98,8 +88,9 @@ public:
                 root = root->left;
             }
             root = s.top();
-            if (root->right && root->right != prev)
+            if (root->right && root->right != prev) {
                 root = root->right;
+            }
             else {
                 // Codes above are ordinary postorder traversal codes.
                 s.pop(); prev = root;

@@ -39,7 +39,7 @@ private:
 
 public:
     vector<string> restoreIpAddresses(string s) {
-        if (s.size() <= 4 * 4) dfs(s, 0);
+        if (s.size() <= 4 * 3) dfs(s, 0);
         return res;
     }
 };

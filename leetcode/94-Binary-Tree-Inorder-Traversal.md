@@ -127,7 +127,7 @@ public:
         - set precursor's right child to `cur`
         - visit left child
     - otherwise, neither `cur` doesn't contain left child or the left child tree has been visited, go visit `cur`'s right child.
-        - When we are at the rightmost leaf node of a tree, the left child is `NULL` thus we will(rule one) go visit the right child which is the current tree's parent node.
+        - When we are at the rightmost leaf node of a tree, the left child is `NULL` thus we will(set by rule one) go visit the right child which is the current tree's parent node.
 
 
 ```c++

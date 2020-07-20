@@ -82,6 +82,37 @@ public:
 };
 ```
 
+or
+
+```c++
+class Solution {
+public:
+    int findRadius(vector<int>& houses, vector<int>& heaters) {
+        int maxdis = 0;
+        if (heaters.size() == 1) {
+            for (auto house : houses)
+                maxdis = max(abs(house - heaters[0]), maxdis);
+            return maxdis;
+        }
+        sort(heaters.begin(), heaters.end());
+        int len = heaters.size(), dis = 0;
+        for (auto & house : houses) {
+            auto find = lower_bound(heaters.begin(), heaters.end(), house);
+            if (find == heaters.end())
+                maxdis = max(maxdis, house - heaters.back());
+            else if (*find != house) {
+                if (find == heaters.begin())
+                    dis = heaters[0] - house;
+                else
+                    dis = min(*find - house, house - *prev(find));
+                maxdis = max(dis, maxdis);
+            }
+        }
+        return maxdis;
+    }
+};
+```
+
 
 2. ##### two pointers O(2nlog(n))
 
@@ -91,27 +122,25 @@ public:
 class Solution {
 public:
     int findRadius(vector<int>& houses, vector<int>& heaters) {
-        if (!is_sorted(houses.begin(), houses.end()))
-            sort(houses.begin(), houses.end());
-        if (!is_sorted(heaters.begin(), heaters.end()))
-            sort(heaters.begin(), heaters.end());
+        sort(houses.begin(), houses.end());
+        sort(heaters.begin(), heaters.end());
 
         int i = 0, h = 0;
         int maxdis = 0, lenh = houses.size(), lenhe = heaters.size();
         while (i < lenh && h < lenhe) {
             if (houses[i] <= heaters[h]) {
-                int dis = min(
-                    heaters[h] - houses[i], 
-                    h > 0 ? houses[i] - heaters[h - 1] : INT_MAX
-                );
+                int dis = min(heaters[h] - houses[i],
+                              h > 0 ? houses[i] - heaters[h - 1] : INT_MAX);
                 maxdis = max(maxdis, dis);
-                while (i < lenh && abs(heaters[h] - houses[i]) < dis);
-                    i++;
+                i++;
+                // skip all house with smaller absolute distance
+                while (i < lenh && abs(heaters[h] - houses[i]) < dis) i++;
             }
             else
                 h++;
         }
-        if (i != houses.size())
+        // when i < lenh, means the last heater is smaller than last house, it has been poassed in the while loop
+        if (i < lenh)
             maxdis = max(maxdis, houses[lenh - 1] - heaters[lenhe - 1]);
         return maxdis;
     }

@@ -38,10 +38,34 @@ Every integer represented in the 2D-array will be between 1 and N, where N is th
 - Since the original graph is a rooted tree and there is only one additional edge, there are three possible cases in total.
     - All nodes have `one` parents(indegree). This inserted edge will convert the graph into a cyclic graph.
     - One node have `two` parents(indegree), we must remove one of two duplicate edges.
-        - the graph is cyclic after we removed the second duplicate edge.
-            - Solution: remove the second duplicate edge
+        - the graph is cyclic after we removed the one of two duplicate edges.
+            - Solution: to make the tree non-cyclic, the only choice is to remove the other duplicate edge.
         - Else
-            - Solution: remove the first duplicate edge(within the cycle)
+            - Solution: remove the last duplicate edge(within the cycle)
+        - As the question needs the one occured last, we fistly remove the last duplicate edge, and check if there is a cycle.
+    - Anyway, there must be a cycle in the ordered gaph when there is one more edge.
+
+```
+case 1: contains merely cycle, remove the cycle
+     1 -> 2
+     ^    |
+     |    v
+     4 <- 3
+
+case 2: No cycle exists after removed the last duplicate edge(the last between 2->3 and 1->3)
+
+  1
+ / \
+v   v
+2-->3
+
+
+case 3: Cycle exists after removeed the last duplicate edge(5->1), remove the other edge(4->1)
+ 5-->1 -> 2
+     ^    |
+     |    v
+     4 <- 3
+```
 
 1. ##### union find
 
@@ -83,15 +107,15 @@ class Solution {
 public:
     vector<int> findRedundantDirectedConnection(vector<vector<int>>& edges) {
         int n = edges.size() + 1;
-        vector<int> parents(n, 0);
-        
+        vector<int> parents(n);
+        // find nodes with two parents
         vector<int> edge1 = {0, 0}, edge2 = {0, 0}, edgec = {0, 0};
-        // tries to find two duplicate edges
         for (auto & e : edges) {
             int src = e[0], tgt = e[1];
             if (parents[tgt]) {
                 edge1 = {parents[tgt], tgt};
                 edge2 = e;
+                // remove the last edge
                 e = {0, 0};
                 break;
             }
@@ -99,7 +123,8 @@ public:
         }
         // find cycle
         UnionFind uf(n);
-        for (auto & e : edges) {
+        for (auto e : edges) {
+            // e[0] == 0 only if this edge is removed
             if (e[0] == 0)
                 continue;
             if (!uf.merge(e[0], e[1])) {
@@ -110,7 +135,7 @@ public:
 
         if (edge1[0] != 0)
             if (edgec[0] != 0)
-                return edge1; 
+                return edge1;
             else
                 return edge2;
         else
@@ -167,6 +192,53 @@ public:
                 return edge1; 
             else
                 return edge2;
+        else
+            return edgec;
+    }
+};
+```
+
+or more concisely
+
+```c++
+class Solution {
+public:
+    bool hascycle(vector<int> & parents, int node) {
+        int cur = parents[node];
+        while (cur) {
+            if (cur == node)
+                return true;
+            else
+                cur = parents[cur];
+        }
+        return false;
+    }
+    vector<int> findRedundantDirectedConnection(vector<vector<int>>& edges) {
+        int n = edges.size() + 1;
+        vector<int> parents(n);
+        vector<int> edge1 = {0, 0}, edge2 = {0, 0}, edgec = {0, 0};
+
+        for (auto & e : edges) {
+            int src = e[0], tgt = e[1];
+            if (parents[tgt]) {
+                edge1 = {parents[tgt], tgt};
+                edge2 = e;
+                continue;
+            }
+            parents[tgt] = src;
+            // here is the trick
+            // if there is a cycle, no need to check again, otherwise the hascycle may run endlessly
+            // Can not break when found a cycle, because the duplicate edge may not be recorded yet
+            if (!edgec[0] && hascycle(parents, e[1]))
+                edgec = e;
+        }
+
+        if (edge1[0] != 0) {
+            if (edgec[0] != 0)
+                return edge1;
+            else
+                return edge2;
+        }
         else
             return edgec;
     }

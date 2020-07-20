@@ -45,31 +45,30 @@ bool isSubsequence(char * s, char * t){
 ```c++
 class Solution {
 public:
-    int bisearch(vector<int> & v, int target) {
-        if (v.size() == 1 && target > v[0])
-            return v.size();
-        int lo = 0, hi = v.size() - 1;
+    int bisearch(vector<int> & nums, int target) {
+        int lo = 0, hi = nums.size();
         while (lo < hi) {
-            int mid = lo + ((hi - lo) >> 1);
-            if (target > v[mid])
+            int mid = lo + ((hi - lo) / 2);
+            if (target > nums[mid])
                 lo = mid + 1;
             else
                 hi = mid;
         }
-        return lo;;
+        return lo;
     }
-
     bool isSubsequence(string s, string t) {
         if (t.size() < s.size())
             return false;
-        vector<vector<int>> cache(26, vector<int>());
+        
+        vector<vector<int>> cache(26);
         for (int i = 0; i < t.size(); i++)
             cache[t[i] - 'a'].push_back(i);
-
+        
         int target = -1;
         for (auto c : s) {
             if (!cache[c - 'a'].size())
                 return false;
+            // use upper_bound
             int find = bisearch(cache[c - 'a'], target + 1);
             if (find >= cache[c - 'a'].size())
                 return false;

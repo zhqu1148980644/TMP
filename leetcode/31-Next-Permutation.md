@@ -19,7 +19,7 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
 The rear part of the next smallest point must be monotonous increasing.
 
 - Find the reverse point. i.e. the first number whose next number is larger then itself.
-- swap this number with the first larger one in the rear subtring.
+- swap this number with the first(most close) larger one in the rear subtring.
 - Reverse the rear substring.
 
 ```c++

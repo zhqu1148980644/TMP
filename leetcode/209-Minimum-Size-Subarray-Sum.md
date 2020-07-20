@@ -13,7 +13,7 @@ Explanation: the subarray [4,3] has the minimal length under the problem constra
 
 #### Solutions
 
-1. ##### sliding window
+1. ##### sliding window O(n)
 
 ```c++
 class Solution {
@@ -32,9 +32,9 @@ public:
 };
 ```
 
-2. ##### binary search
+2. ##### binary search O(n + xlog(n))
 
-- Maintain an array of accumulated sum for each element and use binary search to search for the left-closest element `j` that is larger than `accm[i] - s`, then minimum subarray with sumvalue larger/qeual than s ending with `i` is `num[j - 1, i]` 
+- Maintain an array of accumulated sum for each element and use binary search to search for the left-closest element `j` that is larger than `accm[i] - s`, then the minimum subarray with sumvalue larger/equal than s ending with `i` is `num[j - 1, i]` 
 
 ```c++
 class Solution {

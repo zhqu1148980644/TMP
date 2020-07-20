@@ -55,5 +55,46 @@ class Solution:
 
 2. #### prime number multiplication
 
-- The idea is that the mulplication result of different prime numbers in a set are unique.
+- The idea is that the mulplication result of different prime numbers within a set are unique.
     - map each character a-z to different prime numbers. Then use multiplication as the group key.
+- Use double to avoid interger overflow.
+
+```c++
+template <unsigned int N>
+constexpr array<int, N> primenums() {
+    array<int, N> primes;
+    for (int i = 2, cur = 0; i <= INT_MAX && cur < N; i++) {
+        bool isprime = true;
+        for (int j = 2; j * j <= i; j++) {
+            if (i % j == 0) {
+                isprime = false;
+                break;
+            }
+        }
+        if (isprime)
+            primes[cur++] = i;
+    }
+    return primes;
+}
+
+auto primes = primenums<26>();
+
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        unordered_map<double, vector<string>> m;
+        for (auto & s : strs) {
+            double mulkey = 1;
+            for (auto c : s)
+                mulkey *= primes[c - 'a'];
+            m[mulkey].push_back(s);
+        }
+        
+        vector<vector<string>> res;
+        for (auto & [k, vs] : m)
+            res.push_back(move(vs));
+
+        return res;
+    }
+};
+```

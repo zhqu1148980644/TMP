@@ -27,7 +27,7 @@ where the largest sum among the two subarrays is only 18.
 1. ##### binary search O(nlog(sum - max))
 
 - Use binary search to find the largest sum among these m subarrays.
-- To determine the shrinking direction, we count the number of subarrays denoted as `n` with lagest sum smaller than or equal to `mid` amongst these `n` subarrays. ie, Suppose `mid` is the answer, how many subarrays will be splited.
+- To determine the shrinking direction, we count the number of subarrays denoted as `n` with lagest sum smaller than or equal to `mid(largest sum)` amongst these `n` subarrays. ie, Suppose `mid(larget sum)` is the answer, how many subarrays will be splited.
     - If `n > m`, `mid` must be underestimated, thus we search in the upper range `[mid + 1, hi]`.
     - Else search in `[lo, mid]`
 
@@ -68,6 +68,51 @@ public:
 
 2. ##### dynamic programming
 
-```c++
+- `dp[j][k]` represents the last subarray sum when `array[:j]` has been divided into `k` parts.
+- `j` is 0-based.
 
+```c++
+class Solution {
+public:
+    int splitArray(vector<int>& nums, int m) {
+        int len = nums.size();
+        vector<vector<long>> dp(len, vector<long>(m + 1, INT_MAX));
+        dp[0][1] = nums[0];
+        for (int i = 1; i < len; i++)
+            dp[i][1] = dp[i - 1][1] + nums[i];
+        
+        for (int j = 1; j < len; j++)
+            for (int k = min(m, j + 1); k > 1; k--)
+                for (int i = j - 1; i >= 0; i--)
+                    dp[j][k] = min(dp[j][k], max(dp[i][k - 1], dp[j][1] - dp[i][1]));
+        
+        return dp[len - 1][m];
+    }
+};
+```
+
+- Or we can just use a 1-d array by filling the dp table column by column.
+
+```c++
+class Solution {
+public:
+    int splitArray(vector<int>& nums, int m) {
+        int len = nums.size();
+        vector<long> sums(len); sums[0] = nums[0];
+        for (int i = 1; i < nums.size(); i++)
+            sums[i] = sums[i - 1] + nums[i];
+        
+        vector<long> dp(sums);
+
+        for (int k = 2; k <= m; k++)
+            for (int j = len - 1; j >= k - 1; j--) {
+                long minsum = INT_MAX;
+                for (int i = j - 1; i >= 0; i--)
+                    minsum = min(minsum, max(dp[i], sums[j] - sums[i]));
+                dp[j] = minsum;
+            }
+        
+        return dp[len - 1];
+    }
+};
 ```

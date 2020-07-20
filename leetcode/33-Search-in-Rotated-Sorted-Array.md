@@ -34,15 +34,19 @@ public:
         if (!nums.size()) return -1;
         int lo = 0, hi = nums.size();
         if (nums[hi - 1] < nums[lo]) {
+            hi = hi - 1;
             while (lo < hi) {
-                int mid = (lo + hi) / 2;
-                if (nums[mid] > nums[lo]) lo = mid;
-                else hi = mid;
+                int mid = lo + ((hi - lo) / 2);
+                if (nums[mid] > nums[hi])
+                    lo = mid + 1;
+                else
+                    hi = mid;
             }
             bool right = target <= nums[nums.size() - 1];
-            lo = right ? lo + 1 : 0;
-            hi = right ? nums.size() : lo + 1;
+            hi = right ? nums.size() : lo;
+            lo = right ? lo : 0;
         }
+        
         while (lo < hi) {
             int mid = (lo + hi) / 2;
             if (target < nums[mid]) hi = mid;

@@ -80,3 +80,38 @@ public:
  * while (i.hasNext()) cout << i.next();
  */
 ```
+
+or
+
+```c++
+class ZigzagIterator {
+public:
+    vector<vector<int>> vs;
+    vector<int> indexes;
+    int curi = 0;
+    ZigzagIterator(vector<int>& v1, vector<int>& v2) {
+        vs.push_back(v1);
+        vs.push_back(v2);
+        indexes = {0, 0};
+    }
+
+    int next() {
+        if (hasNext()) {
+            int res  = vs[curi][indexes[curi]++];
+            curi = (curi + 1) % vs.size();
+            return res;
+        }
+        else
+            return -1;
+    }
+
+    bool hasNext() {
+        int previ = curi;
+        while (indexes[curi] == vs[curi].size()) {
+            curi = (curi + 1) % vs.size();
+            if (curi == previ) return false;
+        }
+        return true;
+    }
+};
+```

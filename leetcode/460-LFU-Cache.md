@@ -37,41 +37,48 @@ cache.get(4);       // returns 4
 
 - Use hashmap for O(1) get/put.
 - Use double linked list for O(1) updating frequency and evict least frequently used item.
-- Caution: In STL's list, after adjacent items of an iterator has been removed or changed, the behavior of this iterator would not change(Not as expected). So do not use `++/--` after the next/previous item is removed/changed(because of inserion).
+- Caution: In STL's list, after adjacent items of an iterator has been removed or changed, the behavior of this iterator would change(Not as expected). So do not use `++/--` after the next/previous item is removed/changed(because of inserion).
 - Graph demonstration:
 
 ![](https://ieftimov.com/golang-lfu-cache/lfu-backbone-linked-lists.png)
 
+```
+freq.begin()  frequency   key nodes
+freq.begin() + 1 <5> <12, 123 ,1 12312, 1 34123>
+...              <4> < 123, 123 ,4212>
+...              <2> <123, 1234, 1,31>
+...              <1> <35, 34, 12, 45, 12>
+freq.end();
+```
+
 ```c++
-typedef list<pair<int, list<int>>> Freq;
+using Freq = list<pair<int, list<int>>>;
 struct Node {
     int key, value;
     Freq::iterator freq_it;
     list<int>::iterator pos_it;
-    Node (int k = 0, int v = 0) : key(k), value(v) {}
+    Node(int k = 0, int v = 0) : key(k), value(v) {}
 };
 
 class LFUCache {
-private:
+public:
     Freq freq;
     unordered_map<int, Node> cache;
-public:
     const int capacity;
-    LFUCache(int capacity) : capacity(capacity) {}
+    LFUCache(int capacity) : capacity(capacity) {
+
+    }
     
     int get(int key) {
         if (!cache.count(key))
             return -1;
         int res = cache[key].value;
-        // update frequency
         update(key, res);
-    
         return res;
     }
     
     void put(int key, int value) {
         if (!cache.count(key)) {
-            // Remove the least frequently used item
             if (freq.size() && cache.size() == capacity) {
                 auto & items = freq.back().second;
                 cache.erase(*items.begin());
@@ -79,14 +86,12 @@ public:
                 if (items.empty())
                     freq.pop_back();
             }
+            // insert a new element but with no space
             if (cache.size() >= capacity)
                 return;
         }
-        // update value, update frequency
         update(key, value);
     }
-    
-    // Caution: Do not reuse iterator after the list has been changed
     void update(int key, int value) {
         Freq::iterator fit;
         int newfreq;
@@ -96,7 +101,7 @@ public:
             newfreq = fit->first + 1;
             fit->second.erase(cache[key].pos_it);
             if (fit->second.empty())
-                // return the next iterator after this removed one.
+                // return the next iterator of the removed element
                 fit = freq.erase(fit);
         }
         else {
@@ -104,17 +109,15 @@ public:
             fit = freq.end();
             newfreq = 1;
         }
-        // no space or the previous item doesn't satisfy the requirement
-        if (fit == freq.begin() || prev(fit)->first != newfreq) {
-            // return this inserted item's iterator
-            fit = freq.insert(fit, make_pair(newfreq, list<int>()));
-        }
+        if (fit == freq.begin() || prev(fit)->first != newfreq)
+            // return the iterator of the inserted element
+            fit = freq.insert(fit, {newfreq, {}});
         else
             --fit;
         cache[key].freq_it = fit;
-        fit->second.push_back(key);
-        cache[key].pos_it = prev(fit->second.end());
+        cache[key].pos_it = fit->second.insert(fit->second.end(), key);
     }
+
 };
 
 /**
@@ -123,6 +126,14 @@ public:
  * int param_1 = obj->get(key);
  * obj->put(key,value);
  */
+```
+
+
+or
+
+```c++
+
+
 ```
 
 2. ##### OrderedDict in python

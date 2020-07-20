@@ -31,7 +31,7 @@ Explanation: You don't need to remove any of the intervals since they're already
 
 #### Solutions
 
-1. ##### dynamic programming sort by start
+1. ##### dynamic programming sort by start O(n2)
 
 - `dp[i]` represents the maximum number of non-overlapping intervals including `intervals[i]`
 
@@ -57,8 +57,6 @@ public:
 };
 ```
 
-
-- When sorting intervals by end, there are two situations need to be considered. Why?
 
 2. ##### greedy strategy
 

@@ -74,9 +74,6 @@ public:
     int maxCoins(vector<int>& nums) {
         nums.insert(nums.begin(), 1);
         nums.push_back(1);
-        for (auto & n : nums)
-            cout << n << " ";
-        cout << endl;
         int n = nums.size();
         memo = vector<vector<int>>(n, vector<int>(n));
         return solve(nums, 0, n - 1);

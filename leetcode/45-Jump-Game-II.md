@@ -22,8 +22,8 @@ You can assume that you can always reach the last index.
 1. #### Greedy or breath first search O(n)
 
 - We are initially positioned as the first region, the region we can reach is `num[1:nums[0]]`.
-- Loop through the points that is reacheable at the last step, calculate the maximum region that is reacheabel in this step.
-- When we get to the maximum region from the last step, update max_tep to `max_tep + 1`, then back to step 2.
+- Loop through the points that is reacheable at the current step, calculate the maximum region that is reacheable in the next step.
+- When we get to the maximum region from the last step, update jumps to `jumps + 1`, then back to step 2.
 
 ```c++
 #define max(x, y) (x > y ? x : y);

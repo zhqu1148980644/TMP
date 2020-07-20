@@ -106,7 +106,7 @@ public:
 class Solution {
 public:
     int evalRPN(vector<string> & tokens) {
-        string & s = tokens.back(); tokens.pop_back();
+        string s = tokens.back(); tokens.pop_back();
         if (!(s.size() == 1 && s[0] < 48))
             return stoi(s);
         else {

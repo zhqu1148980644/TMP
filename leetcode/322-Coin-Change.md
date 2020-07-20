@@ -64,6 +64,7 @@ class Solution {
 public:
     int res;
     void dfs(int cur, int cnt, vector<int> & coins, int amount) {
+        // pruning occurs here.
         if (amount < 0 || coins[cur] * (res - cnt) < amount)
             return;
         if (amount == 0) {

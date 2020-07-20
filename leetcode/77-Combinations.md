@@ -31,6 +31,7 @@ public:
         }
         // or i <= n   naive one
         // Stop if the number of remaining candidates is smaller than what we need
+        // starting from the lower one is similar to use sorting for removing duplicate permutaions
         for (int i = start; i <= n - (size - path.size()) + 1; i++) {
             path.push_back(i);
             dfs(n, i + 1);
@@ -47,8 +48,6 @@ public:
 ```
 
 2. ##### iterative backtracking
-
-- Think the `com` vector as a stack of path, then this method is similar to problem 51.
 
 ```c++
 class Solution {
@@ -75,7 +74,7 @@ public:
 };
 ```
 
-3. ##### The same idea as problem 46
+3. ##### Similar to solution 2 in problem 46
 
 - The difference between this problem and problem 46 is that the comibation doesn't care about the ordering of items.
 - `combination(n, k) = [i + subcom for i in range(n) for subcom in combination(n - 1, k - 1)]`
@@ -91,6 +90,7 @@ class Solution:
                 for i in range(n, k - 1, -1)
                 # for i in range(k , n + 1)
                 for subcom in self.combine(i - 1, k - 1)]
+                # self.combine(n, k - 1) will produce duplicate combination
 ```
 
 Or convert to an iterative way.

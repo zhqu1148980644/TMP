@@ -22,7 +22,6 @@ Output: [1]
 1. ##### hashmap with priority queue
 
 ```c++
-typedef pair<int, int> Count;
 class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
@@ -30,21 +29,20 @@ public:
         for (auto & num : nums)
             counter[num]++;
 
-        auto cmp = [](Count & item1, Count & item2) {
-            return item1.second > item2.second;
-        };
-        priority_queue<Count, vector<Count>, decltype(cmp)> pq(cmp);
+        using pii = pair<int, int>;
+        priority_queue<pii, vector<pii>, greater<pii>> pq;
+
         auto it = counter.begin();
         for (int i = 0; i < k; it++, i++)
-            pq.push(make_pair(it->first, it->second));
+            pq.emplace(it->second, it->first);
         for (; it != counter.end(); it++) {
-            pq.push(make_pair(it->first, it->second));
+            pq.emplace(it->second, it->first);
             pq.pop();
         }
-        vector<int> res(k, 0);
-        for (int i = 0; i < k; i++) {
-            res[k - i - 1] = pq.top().first;
-            pq.pop();
+
+        vector<int> res(k);
+        while (!pq.empty()) {
+            res[--k] = pq.top().second; pq.pop();
         }
         return res;
     }
@@ -95,33 +93,91 @@ public:
 };
 ```
 
-3. ##### hashmap with bucket sort
+or
+
+```c++
+class Solution {
+public:
+    template <typename V>
+    void move_median_to_first(V & v, int res, int a, int b, int c) {
+        if (v[a] < v[b]) {
+            if (v[b] < v[c])
+                swap(v[res], v[b]);
+            else if (v[a] < v[c])
+                swap(v[res], v[c]);
+            else
+                swap(v[res], v[a]);
+        }
+        else if (v[a] < v[c])
+            swap(v[res], v[a]);
+        else if (v[b] < v[c])
+            swap(v[res], v[c]);
+        else
+            swap(v[res], v[b]);
+    }
+    template <typename V>
+    void quick_select(V & v, int lo, int nth, int hi) {
+        while (lo < hi) {
+            int i = lo, j = hi, mid = lo + (hi - lo) / 2;
+            move_median_to_first(v, lo, lo + 1, mid, hi);
+            auto pivot = v[lo];
+            while (i < j) {
+                while (i < j && pivot < v[j]) j--;
+                v[i] = v[j];
+                while (i < j && v[i] < pivot) i++;
+                v[j] = v[i];
+            }
+            v[i] = pivot;
+            if (i <= nth) lo = i + 1;
+            if (i >= nth) hi = i - 1;
+        }
+    }
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        unordered_map<int, int> counter;
+        for (const auto n : nums)
+            counter[n]++;
+        
+        using pii = pair<int, int>;
+        vector<pii> vp;
+        for (auto & [k, v] : counter)
+            vp.emplace_back(v, k);
+        
+        k = vp.size() - k;
+        quick_select(vp, 0, k, vp.size() - 1);
+        
+        vector<int> res;
+        for (auto it = vp.begin() + k; it != vp.end(); it++)
+            res.push_back(it->second);
+        
+        return res;
+    }
+};
+```
+
+3. ##### bucket sort with hash map
 
 - Collect items into buckets based on their frequency.
 
 ```c++
-#include <experimental/random>
-typedef pair<int, int> Count;
 class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
+        int maxc = 0;
         unordered_map<int, int> counter;
-        for (auto & num : nums)
-            counter[num]++;
-        int maxcount = 0;
-        for (auto & it : counter)
-            maxcount = max(maxcount, it.second);
-
-        vector<vector<int>> buckets(maxcount + 1, vector<int>());
-
-        for (auto & it : counter)
-            buckets[it.second].push_back(it.first);
-
+        for (auto n : nums)
+            maxc = max(maxc, ++counter[n]);
+        
+        vector<vector<int>> buckets(maxc + 1);
+        
+        for (auto & [k, c] : counter)
+            buckets[c].push_back(k);
+        
         vector<int> res;
-        for (int i = buckets.size() - 1; i >=0 && res.size() < k; i--)
+        for (int i = buckets.size() - 1; i >= 0 && res.size() < k; i--)
             res.insert(res.end(), buckets[i].begin(), buckets[i].end());
-
+        
         return res;
+        
     }
 };
 ```

@@ -13,7 +13,7 @@ Design the encode and decode methods for the TinyURL service. There is no restri
 #include <experimental/random>
 class Solution {
 private:
-    map<string, string> m;
+    unordered_map<string, string> m;
     string keystr = "1234567890qwertyuiopasdfghjklzxcvbnmQWEASDZXCVFRTGBNHYUJMKIOPL@";
 public:
     string randkey() {

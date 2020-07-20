@@ -35,7 +35,7 @@ public:
         // visit cur even when cur == j
         while (cur <= j)
             if (nums[cur] < 1)
-                // nums[i] can be either 1 or 0. The invariance won't change in either case.
+                // nums[i] can be either 1(cur > i) or 0(i == cur). The invariance won't change in either case.
                 swap(nums[cur++], nums[i++]);
             else if (nums[cur] > 1)
                 // can not move cur forward, the swapped num[j] may be 0, moving cur forward will leave a zero in array[i: cur)

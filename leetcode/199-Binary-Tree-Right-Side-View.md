@@ -54,29 +54,29 @@ public:
 };
 ```
 
-2. ##### dfs
+2. ##### preorder dfs
 
 - dfs also works as long as we can record the level of each node when traversing.
-- To make dfs work correctly and simple, we need traverse start from the right child.
+- To make dfs work correctly and simple, we traverse starting from the right child.
 
 ```c++
-typedef pair<TreeNode *, int> p;
 class Solution {
 public:
     vector<int> rightSideView(TreeNode* root) {
-        stack<p> s;
-        s.push(p(root, 0));
+        stack<pair<TreeNode *, int>> s;
+        if(root) s.push({root, 0});
         vector<int> res;
+
         while (!s.empty()) {
-            TreeNode * node = s.top().first;
+            root = s.top().first;
             int level = s.top().second;
             s.pop();
-            if (node) {
-                if (level == res.size())
-                    res.push_back(node->val);
-                s.push(p(node->left, level + 1));
-                s.push(p(node->right, level + 1));
-            }
+            if (level == res.size())
+                res.push_back(root->val);
+            if (root->left)
+                s.push({root->left, level + 1});
+            if (root->right)
+                s.push({root->right, level + 1});
         }
         return res;
     }

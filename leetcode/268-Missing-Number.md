@@ -36,3 +36,27 @@ public:
     }
 };
 ```
+
+
+2. ##### buckets
+
+```c++
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int havezero = false;
+        for (int i = 0; i < nums.size(); i++) {
+            while (nums[i] != i + 1) {
+                if (nums[i] == 0) havezero = true;
+                if (nums[i] == 0 || nums[i] == nums[nums[i] - 1]) break;
+                swap(nums[i], nums[nums[i] - 1]);
+            }
+        }
+        if (!havezero) return 0;
+        for (int i = 0; i < nums.size(); i++)
+            if (nums[i] == 0)
+                return i + 1;
+        return 0;
+    }
+};
+```

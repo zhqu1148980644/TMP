@@ -43,3 +43,37 @@ class Solution(object):
                 for subpath in self.binaryTreePaths(kid)
                 ] or [ str(root.val) ]
 ```
+
+```c++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    vector<string> path;
+    vector<string> res;
+    void dfs(TreeNode * root) {
+        if (!root->left && !root->right) {
+            string s;
+            for (auto & subs : path)
+                s += subs + "->";
+            res.push_back(s + to_string(root->val));
+            return;
+        }
+        path.push_back(to_string(root->val));
+        if (root->left) dfs(root->left);
+        if (root->right) dfs(root->right);
+        path.pop_back();
+    }
+    vector<string> binaryTreePaths(TreeNode* root) {
+        if (root) dfs(root);
+        return res;
+    }
+};
+```

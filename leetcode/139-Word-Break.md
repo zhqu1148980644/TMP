@@ -61,35 +61,26 @@ public:
 
 ```c++
 class Solution {
-private:
-    unordered_set<string> m;
-    bool * breakable;
-
 public:
-    bool canBreak(string s, int start) {
-        if (start == s.size())
+    unordered_set<string> m;
+    vector<bool> breakable;
+    bool canbreak(string & s, int st) {
+        if (st == s.size())
             return true;
-        if (!breakable[start])
+        if (!breakable[st])
             return false;
-        breakable[start] = false;
-        for (int i = start; i < s.size(); i++) {
-            auto word = s.substr(start, i - start + 1);
-            if (m.count(word) && canBreak(s, i + 1))
+        for (int i = st; i < s.size(); i++) {
+            auto word = s.substr(st, i - st + 1);
+            if (m.count(word) && canbreak(s, i + 1))
                 return true;
-
         }
-        return false;
+        return breakable[st] = false;
     }
-
     bool wordBreak(string s, vector<string>& wordDict) {
-        for (auto & word : wordDict) m.insert(word);
-        breakable = new bool[s.size()];
-        for (int i = 0; i < s.size(); i++)
-            breakable[i] = true;
-        bool res = canBreak(s, 0);
-        delete []breakable;
-
-        return res;
+        for (auto & s : wordDict)
+            m.insert(s);
+        breakable = vector<bool>(s.size(), true);
+        return canbreak(s, 0);    
     }
 };
 ```

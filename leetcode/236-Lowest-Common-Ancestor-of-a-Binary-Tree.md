@@ -30,7 +30,9 @@ Explanation: The LCA of nodes 5 and 4 is 5, since a node can be a descendant of 
 
 #### Solutions
 
-1. ##### recursion
+1. ##### postorder traversal with counting
+
+- Use inorder traversal to find the `first` root node contains both the given two nodes.
 
 ```c++
 /**
@@ -43,27 +45,19 @@ Explanation: The LCA of nodes 5 and 4 is 5, since a node can be a descendant of 
  * };
  */
 class Solution {
-private:
+public:
     TreeNode * res = nullptr;
     int count = 0;
-
     void dfs(TreeNode * root, TreeNode * p, TreeNode * q) {
-        // return if found two nodes before.
         if (!root || count == 2) return;
         int precount = count;
-        if (root == p || root == q)
-            count++;
         dfs(root->left, p, q);
         dfs(root->right, p, q);
-        if (count >= 2) {
-            // set res only if this is the first node found two nodes.
-            if (res == nullptr && count - precount == 2)
-                res = root;
-            return;
-        }
+        if (root == p || root == q)
+            count++;
+        if (count - precount == 2 && !res)
+            res = root;
     }
-
-public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         dfs(root, p, q);
         return res;
@@ -71,7 +65,8 @@ public:
 };
 ```
 
-- Or a more recursive version.
+2. ##### recusion
+
 - borrowed from others.
 - This version would be a little slower in cases when two target nodes are in a relationship of ancestor and descendant.
 
@@ -94,9 +89,9 @@ public:
 };
 ```
 
-2. ##### record fathers using hashmap o(n) S(log(n))
+3. ##### inorder traversal, find the first common father using hashmap o(n) S(log(n))
 
-- Traverse the binary tree and record each node's patent in to a hashmap until fathers of `p` and `q` are found.
+- Traverse the binary tree and record each node's parent in a hashmap until fathers of `p` and `q` are found.
 - Find the first common ancestor of `p` and `q` along their lineage tree.
 
 ```c++
@@ -133,9 +128,9 @@ public:
 };
 ```
 
-3. ##### record the left tree using stack
+4. ##### inorder traversal with iteration
 
-- Use `lcalevel` to record the highest level(deep) that contains both two target nodes.
+- Use `lcalevel` to record the highest level(backwards from leafs) that contains both two target nodes.
 
 ```c++
 class Solution {
@@ -169,3 +164,5 @@ public:
     }
 };
 ```
+
+4. ##### postorder traversal

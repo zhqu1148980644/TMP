@@ -17,23 +17,21 @@ m.next(5) = (10 + 3 + 5) / 3
 
 ```c++
 class MovingAverage {
-private:
-    int size;
-    int cursum = 0;
-    queue<int> q;
-
 public:
+    int size, cursum = 0;
+    queue<int> q;
     /** Initialize your data structure here. */
-    MovingAverage(int size) : size(size) {}
+    MovingAverage(int size) : size(size) {
 
+    }
+    
     double next(int val) {
         if (q.size() == size) {
-            int outlier = q.front(); q.pop();
-            cursum -= outlier;
+            int out = q.front(); q.pop();
+            cursum -= out;
         }
-        cursum += val;
-        q.push(val);
-        return (double)cursum / (double)q.size();
+        q.push(val); cursum += val;
+        return cursum / (double)q.size();
     }
 };
 

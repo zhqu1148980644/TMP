@@ -41,11 +41,11 @@ public:
 ```
 
 
-2. ##### minstack
+2. ##### minheap
 
 - Sort meetings based on their start time.
 - Fore each meetings find former meeting with the longest ending time, check if this ending time is greater than the current meeting's start time to decide if there is need to open a new meeting room.
-- Use a `minstack` to reduce the complexity of `O(n2)` to `log(n)` in each step, thus the final time complexity is `2nlong(n)`.
+- Use a `minheap` to reduce the complexity of `O(n2)` to `log(n)` in each step, thus the final time complexity is `2nlong(n)`.
 
 ```c++
 class Solution {

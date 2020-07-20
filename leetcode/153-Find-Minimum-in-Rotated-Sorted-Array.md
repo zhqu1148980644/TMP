@@ -34,6 +34,9 @@ public:
         while (lo < hi) {
             int mid = lo + ((hi - lo) >> 1);
             // make sure the direction is right.
+            // when nums[mid] > nums[len - 1], the range must be after mid. ie lo = mid + 1;
+            // when nums[mid] == nums[len - 1], only  two possibilities:
+            // [1, 2] or [2, 1], in both two cases, hi = mid works too.
             int midnum = nums[mid] > nums[len - 1] ? INT_MIN : INT_MAX;
             if (nums[lo] < midnum)
                 hi = mid;
@@ -46,6 +49,7 @@ public:
 ```
 
 Or
+Caution: do not use [) mode.
 
 ```c++
 class Solution {
@@ -63,6 +67,31 @@ public:
                 lo = mid + 1;
         }
         return nums[lo];
+    }
+};
+```
+
+
+OR
+
+```c++
+class Solution {
+public:
+    int findMin(vector<int>& nums) {
+        if (nums.size() == 1) return nums[0];
+        int lo = 0, hi = nums.size();
+        if (nums[lo] <= nums[hi - 1])
+            return nums[0];
+        else {
+            while (lo < hi) {
+                int mid = lo + ((hi - lo) / 2);
+                if (nums[mid] > nums[lo])
+                    lo = mid;
+                else
+                    hi = mid;
+            }
+            return nums[lo + 1];
+        }
     }
 };
 ```

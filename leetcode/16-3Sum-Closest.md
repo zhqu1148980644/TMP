@@ -11,7 +11,7 @@ The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
 
 ### Solutions
 
-1. #### The same method in problem `15-3Sum` O(log(n) + n2)
+1. #### The same method in problem `15-3Sum` O(nlog(n) + n2)
 
 ```c++
 class Solution {
@@ -19,7 +19,7 @@ public:
     int threeSumClosest(vector<int>& nums, int target) {
         sort(nums.begin(), nums.end());
         int i = 0;
-        int closest = nums[0] + nums[1] + nums[2] - target;
+        int closest = nums[0] + nums[1] + nums[2];
         while (i < nums.size() - 1) {
             int a = nums[i];
             int j = i + 1, k = nums.size() - 1;

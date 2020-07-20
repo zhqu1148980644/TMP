@@ -53,6 +53,7 @@ public:
         int num_com = 0;
         for (int i = 0; i < M.size(); i++)
             if (!visited[i]) {
+                // visited[i] = true; // this is not compulsory
                 dfs(i, M, visited);
                 num_com++;
             }
@@ -70,21 +71,24 @@ public:
     int findCircleNum(vector<vector<int>>& M) {
         queue<int> q;
         int num_com = 0;
-        vector<bool> visited(M.size(), false);
+        vector<bool> visited(M.size());
 
         for (int i = 0; i < M.size(); i++) {
             if (visited[i]) continue;
-            q.push(i); visited[i] = true;
+            // visited[i] = true; // this is not compulsory
+            q.push(i);
             while (!q.empty()) {
                 auto cur = q.front(); q.pop();
-                for (int j = 0; j < M.size(); j++)
+                for (int j = 0; j < M.size(); j++) {
                     if (!visited[j] && M[cur][j]) {
                         visited[j] = true;
                         q.push(j);
                     }
+                }
             }
             num_com++;
         }
+
         return num_com;
     }
 };

@@ -31,8 +31,6 @@ Explanation: You are given the third node with value 1, the linked list should b
 
 1. ##### swap node value
 
-- At the first lookup, I implemented a function to move each node's value one step forward(right to left) and set the second last node's next pointer to null.
-- While, it turns out I made it too complicated.
 
 ```c++
 /**

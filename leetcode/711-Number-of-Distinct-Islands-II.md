@@ -68,6 +68,7 @@ are considered same island shapes. Because if we flip the first array in the up/
 - A unique shape contains 8 transformation: 4 by `rotation` and 4 by `reversion(mirror)`.
 - We `normalize` all coordinates within an island relative to the `left-top` point. ie: for a transformation: we just sort all points by their corrdinates and compute their relative coordinates with respect to the left-top one.
     - The choice of the base line point is not unique, other points could works too as long as all islands are normalized by the same rule.
+- Then, we choose the minimum normalized shape as the unique key of each unique shape.
 
 
 1. ##### dfs

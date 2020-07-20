@@ -32,7 +32,7 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
 - As the problem becomes more and more complicate(more states), the answer can not be directly figured out by some trick used in problem 121 122. We need a more generic and systematic way to solve this kind of problem. i.e. dynamic programming.
 
-- The maximum objective value can be achieved in a certain state is based on this state's last possible states(many), therefor to getto the target state we need to iterate over all possible state which can be seen as filling a 3d dp table where `dp[i][k][0]` represetns in the `i'th` day, `k` transactions are made, and `no` stock in hand.
+- The maximum objective value can be achieved in a certain state is based on this state's last possible states(many), therefor to getto the target state we need to iterate over all possible state which can be seen as filling a 3d dp table where `dp[i][k][0]` representing at the `i'th` day, `k` transactions are made, and `no` stock in hand.
 - This dependency can be formulated as:
     - Since there are only two possible values in the third variable, we can easily list these two situations.
     - For a certain state, the number of possible former states are limited by the rules, otherwise any state can be converted to this state(most dp problems carry implicit rules.).
@@ -41,9 +41,10 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 - The target state:
     - `dp[i - 1][k][0]`.  `dp[i - 1][k][1]` is definitely smaller.
 - Base states: 
-    - when filling the table, base state are not required to be filled.
+    - when filling the table, base states are not required to be filled.
     - `dp[-1][k][0] = dp[i][0][0] = 0`
     - `dp[-1][k][1] = dp[i][0][1] = -infinity` means impossible.
+
 
 1. ##### problem 121
 
@@ -54,8 +55,8 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
         - Thus the 3d dp table can be replaced by a 2d table.
 
 - More concise formulas are:
-    - `dp[i][1][0] = max(dp[i - 1][1][0], dp[i - 1][1][1] + p[i])`
-    - `dp[i][1][1] = max(dp[i - 1][1][1], -p[i])`
+    - `dp[i][0] = max(dp[i - 1][0], dp[i - 1][1] + p[i])`
+    - `dp[i][1] = max(dp[i - 1][1], -p[i])`
 
 - Since `dp[i]` depends solely on `dp[i - 1]`, we can simply use two variales to represent `dp[i - 1][0]` and `dp[i - 1][1]` to save O(n) space which is supposed to be costed by dp table.
 
@@ -94,7 +95,15 @@ int maxProfit(int* prices, int pricesSize){
 
 - `k = +infinity` with cooldown: 1day
     - `dp[i][0] = max(dp[i - 1][0], dp[i - 1][1] + p[i])`
+    - `dp[i][1] = max(dp[i - 1][1], dp[i - 1][0] - p[i])`
+- for the second case `dp[i][1]` when it comes from buy at day `i`. 
+    - `dp[i - 1][0] = max(dp[i - 2][0], dp[i - 2][1] + p[i])`.
+    - The second section represents `dp[i - 1][0]` comes from sell at day `i - 1`, since there is cool down requirements(one day cooldown after sell), this case is impossible, thus `dp[i - 1][0] = dp[i - 2][0]`.
+- Finally
+    - `dp[i][0] = max(dp[i - 1][0], dp[i - 1][1] + p[i])`
     - `dp[i][1] = max(dp[i - 1][1], dp[i - 2][0] - p[i])`
+
+
 
 ```c++
 
@@ -158,73 +167,31 @@ int maxProfit(int* prices, int pricesSize){
 6. ##### problem 188
 
 - `k = n`
-- Only one loop are used in former example because k are ignored when filling the tale. `k` in this problem cannot be ignored anymore, so a additional for loop will be used to iterate dimension `k`.
+- Only one loop are used in former example because k are ignored when filling the table. `k` in this problem cannot be ignored anymore, so a additional for loop will be used to iterate dimension `k`.
 
 ```c++
-#define max(x, y) ((x) > (y) ? x : y)
-int maxProfit(int k, int* prices, int pricesSize){
-    if (!pricesSize) return 0;
-    int size = pricesSize;
-    if (k > (size / 2)) {
-        int sum = 0, dif;
-        while (--size) {
-            dif = prices[size] - prices[size - 1];
-            if (dif > 0) sum += dif;
+class Solution {
+public:
+    int maxProfit(int k, vector<int>& prices) {
+        if (!prices.size()) return 0;
+        int size = prices.size();
+        if (k > size / 2) {
+            int res = 0;
+            for (int i = 1; i < size; i++)
+                res += max(0, prices[i] - prices[i - 1]);
+            return res;
         }
-        return sum;
-    }
-    k += 1;
-    int last0[k], last1[k], prelast0;
-    size = k;
-    while (size--) {
-        last0[size] = 0;
-        last1[size] = -prices[0];
-    }
-    last1[0] = INT_MIN;
-    for (int i = 1; i < pricesSize; i++) {
-        prelast0 = last0[0];
-        for (int j = 1; j < k; j++) {
-            int tmp = last0[j];
-            last0[j] = max(last0[j], last1[j] + prices[i]); 
-            last1[j] = max(last1[j], prelast0 - prices[i]);
-            prelast0 = tmp;
+        k += 1;
+        vector<int> last0(k), last1(k, INT_MIN);
+        for (int i = 0; i < prices.size(); i++) {
+            int prel = last0[0];
+            // reverse looping to avoid overwiriting last0 in the previous day
+            for (int j = k - 1; j >= 1; j--) {
+                last0[j] = max(last0[j], last1[j] + prices[i]);
+                last1[j] = max(last1[j], last0[j - 1] - prices[i]);
+            }
         }
+        return last0.back();
     }
-    return last0[k - 1];
-}
-```
-
-We used a `prelast0` variable to store the previous last0 which is overrittend in the last step of the loop. Looping from `k to 1` can save this work.
-
-```c++
-
-#define max(x, y) ((x) > (y) ? x : y)
-int maxProfit(int k, int* prices, int pricesSize){
-    if (!pricesSize) return 0;
-    int size = pricesSize;
-    if (k > (size / 2)) {
-        int sum = 0, dif;
-        while (--size) {
-            dif = prices[size] - prices[size - 1];
-            if (dif > 0) sum += dif;
-        }
-        return sum;
-    }
-    k += 1;
-    int last0[k], last1[k];
-    size = k;
-    while (size--) {
-        last0[size] = 0;
-        last1[size] = -prices[0];
-    }
-    last1[0] = INT_MIN;
-    for (int i = 1; i < pricesSize; i++) {
-        int cur = prices[i];
-        for (int j = k - 1; j > 0; j--) {
-            last0[j] = max(last0[j], last1[j] + cur); 
-            last1[j] = max(last1[j], last0[j - 1] - cur);
-        }
-    }
-    return last0[k - 1];
-}
+};
 ```

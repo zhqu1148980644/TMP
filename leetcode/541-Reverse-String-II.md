@@ -21,14 +21,13 @@ class Solution {
 public:
     string reverseStr(string s, int k) {
         if (k == 1 || !s.size()) return s;
-        int maxend = s.size() - 1, start = 0, end, tmp;
-        while (start < s.size()) {
-            tmp = start;
-            // key step
-            end = min(start + k - 1, maxend);
-            while (start < end)
-                swap(s[start++], s[end--]);
-            start = tmp + 2 * k;
+        int maxend = s.size() - 1, st = 0, end, tmp;
+        while (st < s.size()) {
+            tmp = st;
+            end = min(st + k - 1, maxend);
+            while(st < end)
+                swap(s[st++], s[end--]);
+            st = tmp + 2 * k;
         }
 
         return s;

@@ -33,3 +33,15 @@ void reverseString(char* s, int sSize){
     }
 }
 ```
+
+```c++
+class Solution {
+public:
+    void reverseString(vector<char>& s) {
+        int i = 0, len = s.size();
+        if (--len < 1) return;
+        while (i < len)
+            swap(s[i++], s[len--]);
+    }
+};
+```

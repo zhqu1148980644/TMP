@@ -57,7 +57,7 @@ public:
 - `dp[i][j]` represents the length of the longest common subsequence of `s[:i]` and `s[:j]`
     - if `s[i] == s[j]`, then `dp[i][j] = dp[i - 1][j - 1] + 1`
     - else `dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])`
-        - `dp[i - 1][j - 1]` can not be greater than other two cases.
+        - `dp[i - 1][j - 1]` can not be greater than the other two cases.
 
 ```c++
 class Solution {

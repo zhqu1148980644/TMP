@@ -55,7 +55,7 @@ WHERE D.Id = E.DepartmentId
 ```
 
 
-2. ##### row_number()
+2. ##### dense_rank()
 
 - reference: https://leetcode-cn.com/problems/department-highest-salary/comments/188672
 
@@ -67,10 +67,9 @@ FROM (
     SELECT D.Name AS Department,
            E.Name AS Employee,
            E.Salary,
-           ROW_NUMBER() OVER(PARTITION BY E.DepartmentId ORDER BY E.Salary) AS Rank
-    FROM Employee E
-    LEFT JOIN Department D 
-    ON D.Id = E.DepartmentId
+           dense_rank() over(PARTITION BY E.DepartmentId ORDER BY E.Salary DESC) as 'Rank'
+    FROM Employee E, Department D
+    WHERE D.Id = E.DepartmentId
 ) AS S
 WHERE S.Rank = 1
 ```

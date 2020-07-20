@@ -38,20 +38,19 @@ The minimum absolute difference is 1, which is the difference between 2 and 1 (o
  */
 class Solution {
 public:
-    void miniDiff(TreeNode * root, int & diff, int & prev) {
+    void mindiff(TreeNode * root, int & diff, int & prev) {
         if (!root) return;
-        miniDiff(root->left, diff, prev);
+        mindiff(root->left, diff, prev);
         if (prev >= 0 && root->val - prev < diff)
             diff = root->val - prev;
         prev = root->val;
-        miniDiff(root->right, diff, prev);
+        mindiff(root->right, diff, prev);
     }
-
     int getMinimumDifference(TreeNode* root) {
         int diff = INT_MAX;
         int prev = -1;
-        miniDiff(root, diff, prev);
-        return diff;
+        mindiff(root, diff, prev);
+        return diff;    
     }
 };
 ```
@@ -73,18 +72,30 @@ public:
 class Solution {
 public:
     int getMinimumDifference(TreeNode* root) {
-        TreeNode * prev = nullptr, * rdeep;
-        int mindiff = INT_MAX;
-        
+        TreeNode * prev = nullptr, * rdeep = nullptr;
+        int res = INT_MAX;
+
         while (root) {
             if (root->left) {
                 rdeep = root->left;
                 while (rdeep->right && rdeep->right != root)
                     rdeep = rdeep->right;
-                if (rdeep->right == root)
-                    rdeep->right = nullptr;
-                else {
+                if (rdeep->right != root) {
                     rdeep->right = root;
+                    root = root->left;
+                    continue;
+                }
+                else
+                    rdeep->right = nullptr;
+            }
+            if (prev && root->val - prev->val < res)
+                res = root->val - prev->val;
+            prev = root;
+            root = root->right;
+        }
+        return res;
+    }
+};             rdeep->right = root;
                     root = root->left;
                     continue;
                 }

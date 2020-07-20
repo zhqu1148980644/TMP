@@ -68,10 +68,10 @@ int majorityElement(int* nums, int numsSize){
 4. ##### deduce and conquer or Boyer-Moore Voting Algorithm
 
 
-- For a sequece `P`, `P[:2n]` is the `prefix` with majority `y` and `y` appeared `n` times in `P[:2n]`, then the majority of `P` is the majority of `P[i:]`.
+- For a sequece `P`, `P[:2n]` is the `prefix` with majority `y` and `y` appeared `n` times in `P[:2n]`, then the majority of `P` is the majority of `P[2n:]`.
 - Proof:
     - if the majority of `P` is `y`, since `y` and `non-y` deduces the same number of times, `y` will still be the majority of `P[2n:]`.
-    - if the majority of `P` is `x != y`, then because `x` deduces less than `non-x`, `x` will still be the majority of `P[2n:]`.
+    - if the majority of `P` is `x != y`, then because `x` deduces less than `non-x(y and other nonx in P[:2n])`, `x` will still be the majority of `P[2n:]`.
 
 
 ```c++

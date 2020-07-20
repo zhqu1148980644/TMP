@@ -51,12 +51,13 @@ public:
 
 2. ##### 01 knapsack problem O(n * w)  w: the target sum weight
 
-- Denote `P` as the sum of numbers with positive signs in nums and `N` the sum of numbers with negative signs. `(P | N == nums) and (P and N == empty)`
+- Denote `P` as the sum of numbers with positive signs in nums and `N` the sum of numbers with negative signs. 
 - This problem is equal to find `P` and `N` such that `P - N = target`.
     - -> `P - N + P + N = target + P + N`
     - -> `2P = target + P + N`
     - -> `2P = target + sum`
-- Thus we need to count the number of solutions that satisfy `2P = target + sum` which is similar to 01 knapsack problem.
+    - -> `P = (target + sum) / 2`
+- Thus we need to count the number of solutions that satisfy `P = (target + sum) / 2` which is similar to 01 knapsack problem.
 - `dp[w]` represents the number of solutions with sum weight of `w`.
 
 ```c++
@@ -75,6 +76,7 @@ public:
         dp[0] = 1;
         for (auto & cur : nums) {
             for (int w = target; w >= cur; w--)
+                // dp[cur_i][w] = dp[cur_i - 1][w] + dp[cur_i - 1][w - cur]
                 dp[w] += dp[w - cur];
         }
 

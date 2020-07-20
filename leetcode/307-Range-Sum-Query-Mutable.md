@@ -103,6 +103,7 @@ public:
     STNode * tree = nullptr;
 
     STNode * buildTree(vector<int> & nums, int st, int ed) {
+        // buildTree will must return Node with sum data member
         if (st == ed)
             return new STNode(st, ed, nums[st], nullptr, nullptr);
         int mid = st + ((ed - st) >> 1);
@@ -172,7 +173,7 @@ public:
     int n;
 
     NumArray(vector<int>& nums) : n(nums.size()) {
-        // complete binary tree has 2*n - 1 nodes in total.
+        // complete binary tree has 2*n - 1(when there are no nodes with 1 degree) nodes in total.
         // tree[0] is a placeholder, the root node is tree[1]
         tree = new int[2 * n];
         for (int i = n, j = 0; i < 2 * n; i++, j++)
@@ -202,6 +203,7 @@ public:
         l += n;
         r += n;
         int sum = 0;
+        // when l == r, will do another sum, then only one of l and r will change, thus the loop ends
         while (l <= r) {
             // if l boundary is a right child, plus and jump to parent's next brother in next loop
             if (l % 2 == 1) {

@@ -50,3 +50,27 @@ char * addBinary(char * a, char * b){
 }
 
 ```
+
+c++ version
+
+```c++
+#define num(x) ((x) - '0')
+#define chr(x) ((x) == 1 ? '1' : '0')
+class Solution {
+public:
+    string addBinary(string a, string b) {
+        int l1 = a.size(); if (!l1) return b;
+        int l2 = b.size(); if (!l2) return a;
+        int remain = 0;
+        string res;
+        
+        while (l1 || l2 || remain) {
+            if (l1) remain += num(a[--l1]);
+            if (l2) remain += num(b[--l2]);
+            res.push_back(chr(remain % 2));
+            remain /= 2;
+        }
+        return {res.rbegin(), res.rend()};
+    }
+};
+```

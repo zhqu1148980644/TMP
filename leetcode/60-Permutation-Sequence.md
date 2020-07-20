@@ -37,37 +37,34 @@ Output: "2314"
 
 ```c++
 class Solution {
-private:
-    unordered_set<int> seen;
-    int * factoral;
+public:
+    vector<bool> seen;
+    vector<int> factoral;
     int cur = 0;
 
     void dfs(int n, int k, string & permute) {
-        if (cur != k);
-            for (int i = 0; i < n; i++) {
-                if (seen.count(i)) continue;
-                int num = factoral[n - permute.size() - 1];
-                if (cur + num < k) {
-                    cur += num;
-                    continue;
-                }
-                seen.insert(i);
-                permute.push_back('0' + i + 1);
-                dfs(n, k, permute);
+        for (int i = 0; i < n; i++) {
+            if (seen[i]) continue;
+            int num = factoral[n - permute.size() - 1];
+            // reaches the answer when cur + num == k
+            if (cur + num < k) {
+                cur += num;
+                continue;
             }
+            seen[i] = true;
+            permute.push_back('1' + i);
+            dfs(n, k, permute);
+            // no need to pop_back() or seen, their is no tackback process
+        }
     }
-
-public:
     string getPermutation(int n, int k) {
-        factoral = new int[n + 1];
-        factoral[0] = 1;
+        seen = vector<bool>(n);
+        factoral = vector<int>(n + 1, 1);
         for (int i = 1; i <= n; i++)
             factoral[i] = factoral[i - 1] * i;
-
+        
         string permute;
         dfs(n, k, permute);
-
-        delete []factoral;
         return permute;
     }
 };
@@ -77,7 +74,8 @@ public:
 
 - Though the intrinsic idea are the same as the first solution, the first solution follows a backtracking strategy but with efficient pruning, while this solution trys to find every digit in the final permutation in a iterative way.
 - use 0-based indexing to faciliate the calculation.
-    - 1-based. `5 / 2  == 4 / 2`.
+    - for example, when the group size is `2`.
+    - 1-based. `5 / 2  == 4 / 2`. 5 and 4 are within the same group which is incorrect.
     - 0-based. `(5 - 1) / 2 != (4 - 1) / 2`.
 
 ```c++

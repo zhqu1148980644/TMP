@@ -28,8 +28,7 @@ Output: 7 -> 8 -> 0 -> 7
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        stack<int> s1;
-        stack<int> s2;
+        stack<int> s1, s2;
         while (l1) {
             s1.push(l1->val);
             l1 = l1->next;
@@ -41,16 +40,15 @@ public:
         ListNode * dummy = new ListNode(-1), * nnext;
         int remain = 0, num1, num2;
         while (s1.size() || s2.size() || remain) {
+            num1 = num2 = 0;
             if (s1.size()) {
                 num1 = s1.top(); s1.pop();
-            } else
-                num1 = 0;
+            }
             if (s2.size()) {
                 num2 = s2.top(); s2.pop();
-            } else
-                num2 = 0;
+            }
             int cur = num1 + num2 + remain;
-            ListNode * nnext = dummy->next;
+            nnext = dummy->next;
             dummy->next = new ListNode(cur % 10);
             dummy->next->next = nnext;
             remain = cur / 10;
@@ -68,8 +66,21 @@ public:
 - `listnum` returns the remainder.
 
 ```c++
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
 class Solution {
 public:
+    void insertNode(ListNode * root, int val) {
+        ListNode * tmp = root->next;
+        root->next = new ListNode(val);
+        root->next->next = tmp;
+    }
     int listnum(ListNode * l1, ListNode * l2, ListNode * root, int skip) {
         if (!l1) return 0;
         int cur;
@@ -77,10 +88,7 @@ public:
             cur = l2->val + listnum(l1, l2->next, root, --skip);
         else
             cur = l1->val + l2->val + listnum(l1->next, l2->next, root, 0);
-
-        ListNode * tmp = root->next;
-        root->next = new ListNode(cur % 10);
-        root->next->next = tmp;
+        insertNode(root, cur % 10);
         return cur / 10;
     }
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
@@ -92,21 +100,16 @@ public:
         tmp = l2;
         while (tmp && ++len2)
             tmp = tmp->next;
-
+        
         if (len1 != len2 && len1 > len2) {
             swap(len1, len2);
             swap(l1, l2);
         }
-        ListNode * dummy = new ListNode(-1);
-        int remain = listnum(l1, l2, dummy, len2 - len1);
-        if (remain) {
-            tmp = dummy->next;
-            dummy->next = new ListNode(remain);
-            dummy->next->next = tmp;
-        }
-        tmp = dummy->next;
-        delete dummy;
-        return tmp;
+
+        ListNode dummy(-1);
+        int remain = listnum(l1, l2, &dummy, len2 - len1);
+        if (remain) insertNode(&dummy, remain);
+        return dummy.next;
     }
 };
 ```

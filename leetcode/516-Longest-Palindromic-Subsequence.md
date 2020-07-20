@@ -33,7 +33,7 @@ One possible longest palindromic subsequence is "bb".
 - `dp[i][j]` represents the length of the longest palindromic subsequence within `s[i:j]`, then:
     - if `s[i] == s[j]`, `dp[i][j] = dp[i][j] + 2`
     - else `dp[i][j] = max(dp[i + 1][j], dp[i][j - 1])`
-- Codes below fill the table column by column from the left to the right, you may also choose to fill the table from the bottom row by row as long as all states required for updating a  position is available.
+- Codes below fill the table column by column from the left to the right, you may also choose to fill the table from the bottom row by row as long as all states required for updating a  position is available when needed.
 
 ```c++
 class Solution {
@@ -47,7 +47,7 @@ public:
                     dp[i][j] = 1;
                 else {
                     if (s[i] == s[j])
-                        // dp[i + 1][j - 2] is zero when j < i, would not cause error
+                        // dp[i + 1][j - 1] is zero(bypass the diagonal) when j < i, would not cause error
                         dp[i][j] = dp[i + 1][j - 1] + 2;
                     else
                         dp[i][j] = max(dp[i + 1][j], dp[i][j - 1]);
@@ -68,22 +68,22 @@ class Solution {
 public:
     int longestPalindromeSubseq(string s) {
         int len = s.size();
-        vector<int> dp(len, 0);
+        vector<int> dp(s.size());
 
         for (int i = len - 1; i >= 0; i--) {
-            // prel represents dp[i + 1][j - 1]
-            int prel = dp[i] = 1;
+            dp[i] = 1;
+            // prel represents dp[i + 1][j - 1
+            int prel = 0;
             for (int j = i + 1; j < len; j++) {
                 // down reprewents d[i + 1][j]
                 int down = dp[j];
-                if (s[i] == s[j])
-                    dp[j] = (j - i < 2 ? 0 : prel) + 2;
+                if  (s[i] == s[j])
+                    dp[j] = prel + 2;
                 else
                     dp[j] = max(dp[j - 1], down);
                 prel = down;
             }
         }
-
         return dp[len - 1];
     }
 };

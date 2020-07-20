@@ -46,17 +46,19 @@ public:
 class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
-        unordered_set<int> count;
-        for (auto & num : nums)
-            count.insert(num);
-        int c, maxc = 0;
-        for (auto num : count) {
-            if (count.find(num - 1) == count.end()) {
+        if (!nums.size()) return 0;
+        unordered_set<int> m;
+        for (auto & n : nums)
+            m.insert(n);
+        
+        int c, maxc = 1;
+        for (auto n : m) {
+            if (!m.count(n - 1)) {
                 c = 1;
-                while (count.find(num + 1) != count.end()) {
-                    c++; num++;
+                while (m.count(n + 1)) {
+                    n++; c++;
                 }
-                if (c > maxc) maxc = c;
+                maxc = max(maxc, c);
             }
         }
         return maxc;
@@ -66,7 +68,7 @@ public:
 
 3. ##### interval merging
 
-- Not fully understood yet.
+- Each unique number is inserted once. Only update the boundary of a contiguous region.
 
 ```c++
 class Solution {
@@ -84,6 +86,7 @@ public:
                 right = count[num + 1];
 
             cur = left + right + 1;
+            // update self. if one of left and right is 0, then self is a boundary
             count[num] = cur;
             count[num - left] = cur;
             count[num + right] = cur;

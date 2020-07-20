@@ -24,8 +24,10 @@ Output: false
 - `2 ** n` means set the n'th bit to 1.
 
 ```c++
-bool isPowerOfTwo(int n){
-    if (n > 0) return (n && !(n & (n-1)));
-    else return false;
-}
+class Solution {
+public:
+    bool isPowerOfTwo(int n) {
+        return n > 0 && !(n & (n - 1));
+    }
+};
 ```

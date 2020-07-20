@@ -31,9 +31,28 @@ see problem 123
 
 - reference: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/discuss/54118/C%2B%2B-Solution-with-O(n-%2B-klgn)-time-using-Max-Heap-and-Stack
 
-- This problem can be seen as a special(constrained) case of problem 122 where we find all contiguous vally-peak pair then buy in valley and sell in peak, thus summing up all differences of vally-peak will get the answer. Instead of picking all v-p pairs, only the highest `k` pairs can be selected.
+- This problem can be seen as a special(constrained) case of problem 122 where we find all contiguous vally-peak pair then buy in valley and sell in peak, thus summing up all differences of vally-peak will get the answer. Since `k` is constrained, instead of picking all v-p pairs, only the highest `k` pairs can be selected.
+- The key piont is to find all vp pairs, however, the number of transactions are limited, we may need to merge some vp_pairs into one transaction.
+    - In the first case, as making one merged transaction has profit `p2 - v1` which is definitly smaller than single transaction with either `p1 - v1` or `p2 - v2` profit. Merging this two transactions into one transaction is meaningless(choose the largest between `p1 - v1` and `p2 - v2` is more suitable).
+    - In the second case, though making two transactions has higher profit than the profit of merging them into one transaction(`p2 - v1`), when k is constrained and only `one` transaction is left, choosing the merged transaction is better than either one of two single transactions.
+        -  To combine these two possible transactions, treat `p2 - v1` as one transaction and `p1 - v2` as the other. When two transactions are available, choose both `p2 - v1` and `p1 - v2`. When one transaction is available, choose `p2 - v1`: ie: the merged transaction.
+```
+The first case:  v2 <= v1
+       .       .
+ .    . .     .
+  .  .   .   .
+   .      . .
+           .
+   v1  p1  v2  p2
 
-- Not fully understood.
+The second case: v2 > v1
+            .
+.      .   . 
+ .    . . . 
+  .  .   . 
+   .      
+  v1 p1 v2  p2
+```
 
 ```c++
 class Solution {

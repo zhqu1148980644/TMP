@@ -79,7 +79,9 @@ public:
 };
 ```
 
-- Since we are filling the dp table column by column, we can utilize a single column(vector).
+- We can also choose to fill the dp table row by row and only utilize a single vector.
+- If the number of items is even, the first player will always win.
+- reference: https://leetcode-cn.com/problems/predict-the-winner/comments/78786
 
 ```c++
 class Solution {
@@ -88,7 +90,7 @@ public:
         int len = nums.size();
         if (len % 2 == 0)
             return true;
-        vector<int> dp(len, 0);
+        vector<int> dp(len);
 
         for (int i = len - 1; i >= 0; i--) {
             dp[i] = nums[i];
@@ -101,5 +103,24 @@ public:
 };
 ```
 
-- If the number of items is even, the first player will always win.
-- referenc: https://leetcode-cn.com/problems/predict-the-winner/comments/78786
+or column by column
+
+```c++
+class Solution {
+public:
+    bool PredictTheWinner(vector<int>& nums) {
+        int len = nums.size();
+        if (len % 2 == 0)
+            return true;
+        vector<int> dp(len);
+
+        for (int j = 0; j < len; j++) {
+            dp[j] = nums[j];
+            for (int i = j - 1; i >= 0; i--) {
+                dp[i] = max(nums[i] - dp[i + 1], nums[j] - dp[i]);
+            }
+        }
+        return dp[0] >= 0;
+    }
+};
+```

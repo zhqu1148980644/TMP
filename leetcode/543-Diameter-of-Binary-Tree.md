@@ -21,7 +21,7 @@ Return 3, which is the length of the path [4,2,1,3] or [5,2,1,3].
 
 1. ##### recursion
 
-- Use recursion to calculate depth of each node and update the maximum diameter in the meantime.
+- Use recursion(postorder traversal) to calculate depth of each node and update the maximum diameter in the meantime.
 
 ```c++
 /**
@@ -34,19 +34,20 @@ Return 3, which is the length of the path [4,2,1,3] or [5,2,1,3].
  * };
  */
 class Solution {
-private:
-    int maxd = INT_MIN;
 public:
-    int maxdepth(TreeNode * root) {
+    int res = 0;
+    int dfs(TreeNode * root) {
         if (!root) return 0;
-        int l = maxdepth(root->left);
-        int r = maxdepth(root->right);
-        this->maxd = max(this->maxd, l + r);
+        int l = dfs(root->left);
+        int r = dfs(root->right);
+        res = max(res, l + r);
         return max(l, r) + 1;
     }
     int diameterOfBinaryTree(TreeNode* root) {
-        maxdepth(root);
-        return maxd;
+        dfs(root);
+        return res;
     }
 };
 ```
+
+2. ##### iteration

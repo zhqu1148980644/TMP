@@ -27,6 +27,43 @@ Output: false
 1. ##### Solutions
 
 - See `problem 33`
+- The time complexity is O(n) in worst case.
+    - 1111111123400001111. When mid is `nums[mid] == num[hi] == 1`, it's unable to know if mid within the let part or the right part.
+
+
+or
+
+```c++
+class Solution {
+public:
+    bool search(vector<int>& nums, int target) {
+        if (!nums.size()) return false;
+        int lo = 0, hi = nums.size();
+        while (lo < hi) {
+            int mid = lo + ((hi - lo) >> 1);
+            if (nums[mid] == target)
+                return true;
+            if (nums[mid] > nums[hi - 1]) {
+                if (target >= nums[mid] || target <= nums[hi - 1])
+                    lo = mid + 1;
+                else
+                    hi = mid;
+            }
+            else if (nums[mid] < nums[hi - 1]) {
+                if (target >= nums[mid] && target <= nums[hi - 1])
+                    lo = mid + 1;
+                else
+                    hi = mid;
+            }
+            else
+                hi--;
+        }
+        return false;
+    }
+};
+```
+
+Or
 
 ```c++
 class Solution {
@@ -34,17 +71,17 @@ public:
     bool search(vector<int>& nums, int target) {
         if (!nums.size()) return false;
         int lo = 0, hi = nums.size() - 1;
-        while (lo < hi) {
+        while (lo <= hi) {
             int mid = lo + ((hi - lo) >> 1);
             if (nums[mid] == target)
                 return true;
-            if (nums[mid] < nums[hi]) {
-                if (nums[mid] < target && nums[hi] >= target)
+            if (nums[mid] > nums[hi]) {
+                if (target >= nums[mid] || target <= nums[hi])
                     lo = mid + 1;
                 else
                     hi = mid;
-            } else if (nums[mid] > nums[hi]) {
-                if (target < nums[lo] || target > nums[mid])
+            } else if (nums[mid] < nums[hi]) {
+                if (target >= nums[mid] && target <= nums[hi])
                     lo = mid + 1;
                 else
                     hi = mid;
@@ -53,7 +90,7 @@ public:
                 // shrink right bound if middle equals to right bound
                 hi--;
         }
-        return nums[lo] == target;
+        return false;
     }
 };
 ```

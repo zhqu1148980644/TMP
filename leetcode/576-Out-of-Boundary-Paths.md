@@ -64,8 +64,6 @@ public:
 
 2. ##### dfs with memoization
 
-- `dp[i][j][k]` represents the number of unique paths reached `grid[i][j]` after moved `k` steps starting from `borders` which is contrary to the first solution.
-
 ```c++
 class Solution {
 public:

@@ -26,7 +26,7 @@ Explanation: The palindrome partitioning ["aa","b"] could be produced using 1 cu
 class Solution {
 public:
     int minCut(string s) {
-        vector<vector<bool>> dp(s.size(), vector<bool>(s.size(), false));
+        vector<vector<bool>> dp(s.size(), vector<bool>(s.size()));
         int mincut[s.size()];
 
         for (int j = 0; j < s.size(); j++) {
@@ -46,7 +46,7 @@ public:
 
 2. ##### optimized with one pass O(n2) S(n)
 
-- Since only the palindrome subarray would help us to update the `mincut` dp table, we can uitilize a center expansion method we used in problem 5 to avoid checking every possible substring which is time consuming.
+- Since only the palindrome subarray would help us to update the `mincut` dp table, we can uitilize a center expansion method we used in `problem 5` to avoid checking every possible substring which is time consuming.
 
 ```c++
 class Solution {
@@ -56,8 +56,7 @@ public:
         int mincut[len];
 
         // initialize with the maximum number of cuts
-        for (int k = 0; k < len; k++)
-            mincut[k] = k;
+        iota(mincut.begin(), mincut.end(), 0);
 
         for (int k = 0; k < len; k++) {
             // ...baab...

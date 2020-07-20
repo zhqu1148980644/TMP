@@ -45,13 +45,9 @@ return [2].
  * };
  */
 class Solution {
-private:
-    int maxcount = 0;
-    int curcount = 0;
-    int prev = INT_MIN;
-    vector<int> res;
-
 public:
+    int maxcount = 0, curcount = 0, prev = INT_MIN;
+    vector<int> res;
     void inorder(TreeNode * root) {
         if (root->left)
             inorder(root->left);
@@ -71,7 +67,6 @@ public:
         if (root) inorder(root);
         return res;
     }
-
 };
 ```
 

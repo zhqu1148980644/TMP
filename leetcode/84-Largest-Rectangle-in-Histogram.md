@@ -40,9 +40,9 @@ public:
 
 2. ##### expanding O(n)
 
-- For a certain bar `k`, the maximum area can be achieved by extending to both sides is bounded only by the height of itself denoted as `h[k]`. Thus we need to get the maximum region it can be extended to.
-    - The leftmost bar left to the current bar whose height is less than or equal to `h[k]` is `i`.
-    - The rightmost bar is `j` following the same rule as above.
+- For a certain bar `k`, the maximum area can be achieved by extending to both sides, the area is bounded only by the height of itself denoted as `h[k]`. Thus we need to get the maximum region it can be extended to.
+    - The first bar left to the current bar whose height is less than or equal to `h[k]` is `i`.
+    - The right boundary bar denoted as `j` with the same rule as above.
     - Them maximum area can be calculated as `h[k] * (j - i)`
 - Codes below find the first bar with height lower than the center bar, thus the fomulation has changed to `h[k] * (j - i - 1)`.
 ```c++
@@ -83,32 +83,27 @@ public:
 ```
 
 3. ##### optimized version with stack O(n)
-
-- Use a stack to record the leftmost smaller element.
-- Invariant: elements in the stack are always in ascending order and the former element is the first smaller element left to the next element.
-- Push `-1` into the stack as a left guard.
+- Bars are stored in monotonically increasing order, `s[i - 1]` is the first bar shorter than `s[i]` in the left side.
+- Push `-1` into the `stack` as a left guard.
+- Push `-1` into the `heights` as the imaginary right boundary.
 
 ```c++
 class Solution {
 public:
     int largestRectangleArea(vector<int>& heights) {
+        int res = 0;
         stack<int> s; s.push(-1);
-        int maxarea = 0, len = heights.size();
-
-        for (int cur = 0; cur < len; cur++) {
-            // left is secure
-            while (s.top() != -1 &&  heights[s.top()] >= heights[cur]) {
-                auto top = s.top(); s.pop();
-                maxarea = max((cur - s.top() - 1) * heights[top], maxarea);
+        heights.push_back(-1);
+        for (int cur = 0; cur < heights.size(); cur++) {
+            // as it's mono stack, all bars between s.top() and cur are greater than or equal to  height[s.top()].
+            while (s.top() != - 1 && heights[s.top()] > heights[cur]) {
+                auto h = heights[s.top()]; s.pop();
+                res = max(res, (cur - s.top() - 1) * h);
             }
             s.push(cur);
         }
-        // right is secure
-        while (s.top() != -1) {
-            auto top = s.top(); s.pop();
-            maxarea = max((len - s.top() - 1) * heights[top], maxarea);
-        }
-        return maxarea;
+
+        return res;
     }
 };
 ```

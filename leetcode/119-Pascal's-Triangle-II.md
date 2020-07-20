@@ -23,7 +23,7 @@ Could you optimize your algorithm to use only O(k) extra space?
 1. ##### dynamic programming
 
 - To save the space used for recording the overriten pascal number in the last layer, we calculate from the end to the beginning.
-- Only a hash of a certain layer needs to be calculated since numbers in each layer are symmetric.
+- Only a half of a certain layer needs to be calculated since numbers in each layer are symmetric.
 
 ```c++
 class Solution {
@@ -33,7 +33,6 @@ public:
         int mid;
         // backward
         for (int i = 1; i <= rowIndex; i++) {
-            res[i] = 1;
             mid = i - i / 2;
             for (int j = i - 1; j > 0 ; j--)
                 // only calculate the second half of the row

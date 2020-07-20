@@ -49,7 +49,7 @@ public:
 
 2. ##### iteration
 
-- Level order traversal as example.
+- Level order traversal
 
 ```c++
 /**
@@ -78,6 +78,62 @@ public:
             }
             if (root->right)
                 q.push(root->right);
+        }
+        return sum;
+    }
+};
+```
+
+or preorder traversal
+
+```c++
+class Solution {
+public:
+    int sumOfLeftLeaves(TreeNode* root) {
+        stack<TreeNode *> s;
+        if (root) s.push(root);
+        int sum = 0;
+        while (!s.empty() || root) {
+            if (root) {
+                if (root->right) s.push(root->right);
+                if (root->left && !root->left->right && !root->left->left) {
+                    sum += root->left->val;
+                    root = nullptr;
+                }
+                else
+                    root = root->left;
+            }
+            else {
+                root = s.top(); s.pop();
+            }
+        }
+        return sum;
+    }
+};
+```
+
+or inorder traversal
+
+```c++
+class Solution {
+public:
+    int sumOfLeftLeaves(TreeNode* root) {
+        stack<TreeNode *> s;
+        int sum = 0;
+        while (!s.empty() || root) {
+            if (root) {
+                s.push(root);
+                if (root->left && !root->left->right && !root->left->left) {
+                    sum += root->left->val;
+                    root = nullptr;
+                }
+                else
+                    root = root->left;
+            }
+            else {
+                root = s.top(); s.pop();
+                root = root->right;
+            }
         }
         return sum;
     }

@@ -22,10 +22,9 @@ public:
             if (l1) carry += (num1[--l1] - '0');
             if (l2) carry += (num2[--l2] - '0');
             res.push_back('0' + (carry % 10));
-            carry = carry / 10;
+            carry /= 10;
         }
-        reverse(res.begin(), res.end());
-        return string(res.begin(), res.end());
+        return {res.rbegin(), res.rend()};
     }
 };
 ```

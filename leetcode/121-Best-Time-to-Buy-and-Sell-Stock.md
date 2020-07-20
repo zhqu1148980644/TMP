@@ -37,22 +37,22 @@ int maxProfit(int * prices, int pricesSize) {
 
 2. ##### Staight forward O(n)
 
-- Record the minimum price before each time point and upadte the maximum profit we can get when sell at that point when traversing each day.
+- Record the minimum price before each time point and upadte the maximum profit we can get if sell at that point when traversing each day.
 
 ```c++
-int maxProfit(int* prices, int pricesSize){
-    if (!pricesSize) return 0;
-    int max = 0;
-    int min = prices[0];
-    for (int i = 0; i < pricesSize; i++) {
-        if (prices[i] < min)
-            min = prices[i];
-        else if (prices[i] - min > max)
-            max = prices[i] - min;
-    }
-    return max > 0 ? max : 0;
-}
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        if (!prices.size()) return 0;
+        int minp = prices[0], res = 0;
+        for (auto n : prices) {
+            res = max(res, n - minp);
+            minp = min(minp, n);
+        }
 
+        return res;
+    }
+};
 ```
 
 3. ##### maximum continues sum O(n)
@@ -62,17 +62,20 @@ int maxProfit(int* prices, int pricesSize){
 
 
 ```c++
-#define max(x, y) (((x) > (y)) ? (x) : (y))
-int maxProfit(int * prices, int pricesSize) {
-    if (pricesSize <= 1) return 0;
-    int max_p = 0, last = 0;
-    for (int i = 1; i < pricesSize; i++) {
-        int diff = prices[i] - prices[i - 1];
-        last = max(last + diff, diff);
-        max_p = max(max_p, last);
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        if (!prices.size()) return 0;
+        int res = 0, sum = 0;
+        for (int i = 1; i < prices.size(); i++) {
+            int diff = prices[i] - prices[i - 1];
+            int sum = max(sum + diff, diff);
+            res = max(res, sum);
+        }
+
+        return res;
     }
-    return max_p;
-}
+};
 ```
 
 4. ##### Dynamic programming O(n)

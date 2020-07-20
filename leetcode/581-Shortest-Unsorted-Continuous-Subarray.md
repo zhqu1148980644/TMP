@@ -52,7 +52,9 @@ class Solution:
 
 2. ##### two pass O(n)
 
-- The idea is to find the minimum value and maximum value in unordered subarray, then the shorted subarray contains all numbers wihthin this range(open) is the required subarray that can make the whole array sorted in ascending order when itself is sorted.
+- The idea is to find the minimum value and maximum value in the unordered subarray, then the shorted subarray containing all numbers wihthin this range(open) is the required subarray that can make the whole array sorted in ascending order when itself is sorted.
+    - For finding the peak value of the subarray for example:
+    - Finding all ajcant number pairs, whenever meet a pair with the second number smaller than the first number, update the peak value if the first number is larger it.
 
 
 ```c++
@@ -68,6 +70,7 @@ public:
             if (nums[i - 1] > nums[i])
                 valley = min(valley, nums[i]);
         int i, j;
+        // this must be >/<>, can bot be >=/<=
         for (i = 0; i < nums.size(); i++)
             if (valley < nums[i]) break;
         for (j = nums.size() - 1; j >= 0; j--)

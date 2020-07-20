@@ -22,14 +22,15 @@ For example, given the dungeon below, the initial health of the knight must be a
 
 The knight's health has no upper bound.
 Any room can contain threats or power-ups, even the first room the knight enters and the bottom-right room where the princess is imprisoned.
-```
+
 
 #### Solutions
 
 1. ##### dynamic programming
 
 - For standard dp problem, we need to start from the top-left corner of the dp table. However this problem require us to calculate the minimum health at this corner.
-- A intuitive thought is that we can calculate from the right-bottom and back to this corner as the minimum health are required to get to the princess is definitely depends on the room where the princess are imprisoned. And we can iteratively fill in the dp table where `dp[i][j]` means the minimum health are required when start at `dp[i][j]`.
+- A intuitive thought is that we can calculate from the right-bottom and back to this corner as the minimum health are required to get to the princess is definitely depends on the room where the princess are imprisoned. And we can iteratively fill in the dp table where `dp[i][j] <= 0` means the minimum health are required when start at `dp[i][j]`.
+    - `dp[i][j] = -5` means when starting at this point, the knight must have at least 6 health, otherwise his health will reduces to below zero(dead) during the path to the princess.
 - Remember to constrain the minimum health to `0` in dp table(can not work through a room if already died).
 - dp formulas:
     - `dp[i, j] = dungeon[i, j] + max(dp[i + 1, j], dp[i, j + 1])`
@@ -50,7 +51,7 @@ public:
                 minih[j] = min(0, dungeon[i][j] + (max(minih[j], minih[j + 1])));
         }
         // this is a non-negative(may be zero) integer.
-        // -5 means at least 6 health are required to pass this room and feature rooms till the princess with health 1.
+        // -5 means at least 6 health are required to pass this room and future rooms till she reaches the end with health 1.
         return -minih[0] + 1;
     }
 };

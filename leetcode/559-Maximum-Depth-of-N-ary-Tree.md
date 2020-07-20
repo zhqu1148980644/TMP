@@ -50,21 +50,15 @@ public:
     }
 };
 */
+
 class Solution {
 public:
-    int dfs(Node * root) {
-        if (!root)
-            return 0;
-        int maxh = 0;
-        for (int i = 0; i < root->children.size(); i++) {
-            int h = dfs(root->children[i]);
-            if (h > maxh)
-                maxh = h;
-        }
-        return 1 + maxh;
-    }
     int maxDepth(Node* root) {
-        return dfs(root);
+        if (!root) return 0;
+        int maxh = 0;
+        for (auto child : root->children)
+            maxh = max(maxh, maxDepth(child));
+        return maxh + 1;
     }
 };
 ```

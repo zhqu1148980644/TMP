@@ -32,19 +32,10 @@ We could return these lists in any order, for example the answer [['Mary', 'mary
 ```c++
 class UnionFind {
 private:
-    int * nodes;
-    int * sizes;
+    vector<int> nodes, sizes;
 public:
-    UnionFind(int size) {
-        nodes = new int[size];
-        sizes = new int[size];
-        for (int i = 0; i < size; i++) {
-            nodes[i] = i;
-            sizes[i] = 1;
-        }
-    }
-    ~UnionFind() {
-        delete [] nodes; delete [] sizes;
+    UnionFind(int size) : nodes(size), sizes(size, 1){
+        iota(nodes.begin(), nodes.end(), 0);
     }
     int find(int node) {
         while (nodes[node] != node)
@@ -65,42 +56,35 @@ public:
         }
     }
 };
+
 class Solution {
 public:
     vector<vector<string>> accountsMerge(vector<vector<string>>& accounts) {
-        unordered_map<string, int> email_to_id;
-        unordered_map<int, string> email_to_name;
-        UnionFind uf(10000);
-        // iterate over all emails, and connect emails belong to account.
-        int id = 0;
-        for (auto & acc : accounts) {
-            auto & name = acc[0];
+        unordered_map<string, int> email2id;
+        UnionFind uf(accounts.size());
+         // iterate over all emails, and connect users with same emails.
+        for (int id = 0; id < accounts.size(); id++) {
+            auto & acc = accounts[id];
             for (int i = 1; i < acc.size(); i++) {
-                auto & email = acc[i];
-                if (!email_to_id.count(email)) {
-                    email_to_id[email] = id;
-                    email_to_name[id] = name;
-                    id++;
-                }
-                uf.merge(email_to_id[email], email_to_id[acc[1]]);
+                auto & e = acc[i];
+                if (!email2id.count(e))
+                    email2id[e] = id;
+                uf.merge(email2id[e], email2id[acc[1]]);
             }
         }
+        // collect emails based on email's id.
         unordered_map<int, vector<string>> users;
-        // collect emails into each component
-        for (auto & it : email_to_id) {
-            auto user_id = uf.find(email_to_id[it.first]);
-            if (!users.count(user_id))
-                users[user_id].push_back("");
-            users[user_id].push_back(it.first);
-        }
-        // sort emails
-        for (auto & it : users)
-            sort(it.second.begin(), it.second.end());
-        // trasfer to a vector
+        for (auto & [e, id] : email2id)
+            users[uf.find(id)].push_back(e);
+        // reverse sort
+        for (auto & [id, emails] : users)
+            sort(emails.rbegin(), emails.rend());
+        // build result
         vector<vector<string>> res;
-        for (auto & it : users) {
-            it.second[0] = email_to_name[it.first];
-            res.push_back(move(it.second));
+        for (auto & [id, emails] : users) {
+            emails.push_back(accounts[id][0]);
+            reverse(emails.begin(), emails.end());
+            res.push_back(move(emails));
         }
 
         return res;
@@ -113,6 +97,91 @@ public:
 
 - Build the adjacency matrix and use dfs to find all connected components.
 
+```c++
+class Solution {
+public:
+    unordered_map<string, vector<int>> g;
+    unordered_set<string> visitede;
+    vector<bool> visitedp;
+    void append(vector<string> & emails, vector<vector<string>> & accounts, int curp) {
+        for (int i = 1; i < accounts[curp].size(); i++) {
+            auto & e = accounts[curp][i];
+            if (visitede.count(e)) continue;
+            emails.push_back(e);
+            visitede.insert(e);
+            for (auto p : g[e]) {
+                if (visitedp[p]) continue;
+                visitedp[p] = true;
+                append(emails, accounts, p);
+            }
+        }
+    }
+    vector<vector<string>> accountsMerge(vector<vector<string>>& accounts) {
+        for (int i = 0; i < accounts.size(); i++)
+            for (int j = 1; j < accounts[i].size(); j++) {
+                g[accounts[i][j]].push_back(i);
+            }
+        
+        visitedp = vector<bool>(accounts.size());
+        vector<vector<string>> res;
+        for (int i = 0; i < accounts.size(); i++) {
+            if (visitedp[i]) continue;
+            vector<string> emails;
+            visitedp[i] = true;
+            append(emails, accounts, i);
+            sort(emails.begin(), emails.end());
+            res.emplace_back(emails.size() + 1);
+            res.back()[0] = accounts[i][0];
+            for (int i = 0; i < emails.size(); i++)
+                res.back()[i + 1] = move(emails[i]);
+        }
+
+        return res;
+    }
+};
+```
+
+or use only one hashset
+
+```c++
+class Solution {
+public:
+    unordered_map<string, vector<int>> g;
+    unordered_set<string> visited;
+    void append(vector<string> & emails, vector<vector<string>> & accounts, int curp) {
+        for (int i = 1; i < accounts[curp].size(); i++) {
+            auto & e = accounts[curp][i];
+            if (visited.count(e)) continue;
+            emails.push_back(e);
+            visited.insert(e);
+            for (auto p : g[e])
+                append(emails, accounts, p);
+        }
+    }
+    vector<vector<string>> accountsMerge(vector<vector<string>>& accounts) {
+        for (int i = 0; i < accounts.size(); i++)
+            for (int j = 1; j < accounts[i].size(); j++) {
+                g[accounts[i][j]].push_back(i);
+            }
+        
+        vector<vector<string>> res;
+        for (int i = 0; i < accounts.size(); i++) {
+            vector<string> emails;
+            append(emails, accounts, i);
+            if (emails.empty() && accounts[i].size()) continue;
+            sort(emails.rbegin(), emails.rend());
+            emails.push_back(accounts[i][0]);
+            reverse(emails.begin(), emails.end());
+            res.push_back(move(emails));
+        }
+
+        return res;
+    }
+};
+```
+
+python version borrowed from the official answer.
+
 ```python
 class Solution:
     def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
@@ -121,6 +190,7 @@ class Solution:
         graph = defaultdict(set)
         for name, *emails in accounts:
             for email in emails:
+                # link the first email to all left emails
                 graph[emails[0]].add(email)
                 graph[email].add(emails[0])
                 email_name[email] = name

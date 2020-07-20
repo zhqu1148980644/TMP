@@ -17,7 +17,7 @@ Explanation: Digit 1 occurred in the following numbers: 1, 10, 11, 12, 13.
 - For example:
     - In each `10` base, there exists `1  1` in the lowest digit, ie: `1` or `11` or `21` ...
     - In each `100` base, there exists `10  1` in the second lowest digit, ie: `x10, x11, x12, x13 ... x19`
-    - In each `1000` base, there exists `100  1` in the third lowest digit, ie: `x1000, x1001, ... x1999`
+    - In each `1000` base, there exists `100  1` in the third lowest digit, ie: `x100, x101, ... x199`
     - `(n / base) * (base / 10)`
     - For remainder:
         - `1650 % 100 = 50`, as `50` is larger than `19`, this remainder contains exactly the same number of `1` as the base `100`. ie: `10`.
@@ -30,11 +30,11 @@ public:
     int countDigitOne(int n) {
         long res = 0;
         for (long num = 1; num <= n; num *= 10) {
-            long d = num * 10;
+            // d is base
+            long base = num * 10;
             // full part plus remaining part
-            res += (n / d) * num + min(max((n % d) - num + 1, 0l), num);
+            res += (n / base) * num + min(max((n % base) - num + 1, 0l), num);
         }
-
         return res;
     }
 };

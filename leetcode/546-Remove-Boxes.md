@@ -33,7 +33,7 @@ Explanation:
 
     - `[1, 3, 2, 2, 2, 3, 2, 2]` `dp[0:4]` changes depending on whether `3` has been erased.
     - The dp table needs another dimension to records the number of continous elements with the same color as the last element of the current subarray.
-    - `dp[i][j][k]` denotes the maximum points in subarray `s[i:j]` with `k` number of continous elements right to `s[j]` with value equal to `s[j]` after the last merge operation.
+    - `dp[i][j][k]` denotes the maximum points in subarray `s[i:j]` with `k` number of continous elements right to `s[j]`(not include s[j]) with value equal to `s[j]` after the last merge operation.
     - Thus, the dp transition formula is:
     - `dp[i][j][k] = max(dp[i][mid][k + 1] + dp[mid + 1, j - 1][0]) for mid in range(i, j) if s[mid] == s[j]`. ie: Firstly erases the middle parts, then leaves `k + 1` continous elements after `s[mid]` and merge the this remaining parts.
 

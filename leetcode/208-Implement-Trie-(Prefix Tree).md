@@ -24,17 +24,15 @@ trie.search("app");     // returns true
 
 ```c++
 class Trie {
-private:
+public:
+    /** Initialize your data structure here. */
     class TrieNode {
-    private:
-        TrieNode * links[26] = {nullptr};
-        bool End = false;
-
     public:
-        TrieNode() {}
+        TrieNode * links[26] = {nullptr};
+        bool isend = false;
         ~TrieNode() {
             for (int i = 0; i < 26; i++)
-                if (!links[i]) delete links[i];
+                if (links[i]) delete links[i];
         }
         bool contain(char ch) {
             return links[ch - 'a'] != nullptr;
@@ -50,28 +48,22 @@ private:
         TrieNode * get(char ch) {
             return links[ch - 'a'];
         }
-        bool & end() { return End; }
     };
-
+    
     TrieNode root;
-
-public:
-    /** Initialize your data structure here. */
-    Trie() {}
 
     /** Inserts a word into the trie. */
     void insert(string word) {
         TrieNode * root = &(this->root);
         for (int i = 0; i < word.size(); i++) {
-            if (!root->contain(word[i])) {
+            if (!root->contain(word[i]))
                 root->put(word[i]);
-            }
             root = root->get(word[i]);
         }
-        root->end() = true;
+        root->isend = true;
     }
-
-    TrieNode * searchPrefix(string word) {
+    
+    TrieNode * searchPrefix(string & word) {
         TrieNode * root = &(this->root);
         for (int i = 0; i < word.size(); i++) {
             if (root->contain(word[i]))
@@ -81,16 +73,16 @@ public:
         }
         return root;
     }
-
     /** Returns if the word is in the trie. */
     bool search(string word) {
         TrieNode * pnode = searchPrefix(word);
-        return pnode != nullptr && pnode->end();
+        return pnode && pnode->isend;
     }
-
+    
     /** Returns if there is any word in the trie that starts with the given prefix. */
     bool startsWith(string prefix) {
-        return searchPrefix(prefix) != nullptr;
+        TrieNode * pnode = searchPrefix(prefix);
+        return pnode;
     }
 };
 

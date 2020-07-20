@@ -51,11 +51,10 @@ Can you solve it without using extra space?
     - Though the resulting node may not be the answer we want, it can be used as an imaginary tail in a normal non-cycled linked list.
     - we call this node `head1`.
 - Use the method in problem 160 to find the intersection/crossing nodes.
-    - In the problem 160, the qestion is to find the intersection node which is the node where two linked lists converge.
+    - In the problem 160, the qestion is to find the intersection node where two linked lists converge.
     - Here we can find two linked lists acts exactly the same as in problem 160:
         - One linked list starting from `head` and ending at the former node of  `head1`.
         - Another linked list starting from `head1` and ending at the former node of `head1`.
-        - See? The same as the problem 160.
 
 ```c++
 /**
@@ -95,10 +94,13 @@ struct ListNode *detectCycle(struct ListNode *head) {
 
 2. ##### optimized solution 1
 
-- Use math.
 - Because the fast pointer is two times faster than the slow pointer, the path made by the fast pointer twice the path of slow pointer.
-    - the number of nodes passed from the `head` to `head1` is the same as the number of nodes passed from the `head1` to `head1` when they meet at the same node. Though both slow and fast pointer may pass through the loop many cycles.
-- Watch out the chanes when initializing fast pointer.
+    - support the nonloop region's length is `x` and the length between intersection point and the meeting point is `y`. the length of the loop is `c`
+    - `(x + n1 * c + y) * 2 = x + n2 * c`
+    - `x + y = (2 * n1 - n2) * c`
+    - fast node is now at `y` point, fast node will be at the intersection node when it forwards `x` steps as `x + y = n * c`.
+    - By moving slow at the head of the list, and let slow and fast continues to move forward with the same peace, they will both be at the intersection node after forwarded `x` steps.
+- Watch out the changes when initializing fast pointer.
 
 ```c++
 /**

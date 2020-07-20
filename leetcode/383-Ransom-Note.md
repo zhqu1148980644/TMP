@@ -15,6 +15,8 @@ canConstruct("aa", "aab") -> true
 
 1. ##### straight forward
 
+- O(n + m)
+
 ```c++
 class Solution {
 public:
@@ -26,6 +28,24 @@ public:
             if (--counter[c] < 0)
                 return false;
 
+        return true;
+    }
+};
+```
+
+- O(nm)
+
+```c++
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        int pos[26] = {0};
+        for (auto c : ransomNote) {
+            auto find = magazine.find(c, pos[c - 'a']);
+            if (find == string::npos)
+                return false;
+            pos[c - 'a'] = find + 1;
+        }
         return true;
     }
 };

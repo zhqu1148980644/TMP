@@ -31,9 +31,7 @@ target will be a non-zero integer in the range [-10^9, 10^9].
 
 - reference: https://leetcode-cn.com/problems/reach-a-number/solution/deng-jie-yu-shu-zu-tian-jia-zheng-fu-hao-wen-ti-by/
 - Denote `s = 1 + 2 + 3 ... + n` and `s` is the first number larger than or equal to target.
-- Firstly, the result can not be smaller than n as we only used plus operation.
-- Secondly, we need to flip the sign of a number(x) in `[1:n]` to make `s - 2x == target`, thus `s - target` must be even number.
-    - Actually the difference may be larger than numbers between `[1:n]`, in this case, we need to flip multiple numbers.
+- We need to flip signs of numbers with sum equals to `x` in `[1:n]` to make `s - 2x == target`, thus `s - target` must be even number.
 - So, the answer is the first numer whose accumulate sum is larger than or equal to target and the difference between itself and the target is even.
 
 
@@ -54,5 +52,3 @@ public:
     }
 };
 ```
-
-- Or we can simply use formula to find the smallest `x` such that the accumulate sum is larger than or equal to target, then check `x, x + 1, x + 2`

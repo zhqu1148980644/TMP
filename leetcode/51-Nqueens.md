@@ -47,7 +47,6 @@ private:
     
 public:
     vector<vector<string>> solveNQueens(int n) {
-        vector<bool> col(n, false);
         s.push_back(pos(0, -1));
         vector<vector<pos>> res;
         

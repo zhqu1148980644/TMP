@@ -139,9 +139,13 @@ public:
 ```c++
 template <typename T>
 class UnionFind {
-private:
-    T  * nodes;
+public:
+    vector<T> nodes;
+    vector<T> sizes;
 
+    UnionFind(T size) : nodes(size), sizes(size, 1) {
+        iota(nodes.begin(), nodes.end(), 0);
+    }
     T find(T node) {
         while (nodes[node] != node) {
             nodes[node] = nodes[nodes[node]];
@@ -149,70 +153,53 @@ private:
         }
         return node;
     }
-
-public:
-    UnionFind(T size){ 
-        nodes = new T[size];
-        for (int i = 0; i < size; i++)
-            nodes[i] = i;
-    }
-    ~UnionFind() {
-        delete [] nodes;
-    }
-
-    void merge(const T & node1, const T & node2) {
-        nodes[find(node1)] = find(node2);
-    }
-
-    bool is_connected(const T & node1, const T & node2) {
-        return find(node1) == find(node2);
+    bool merge(T node1, T node2) {
+        T f1 = find(node1);
+        T f2 = find(node2);
+        if (f1 == f2)
+            return false;
+        else {
+            if (sizes[f2] < sizes[f1])
+                swap(f1, f2);
+            sizes[f2] += sizes[f1];
+            nodes[f1] = f2;
+            return true;
+        }
     }
 };
 
 class Solution {
-private:
-    int nrow;
-    int ncol;
-
 public:
+    int nrow, ncol;
     inline int node(int i, int j) {
         return i * ncol + j;
     }
-
     void solve(vector<vector<char>>& board) {
         nrow = board.size(); if (!nrow) return;
         ncol = board[0].size();
 
         UnionFind<int> uf(nrow * ncol + 1);
-        int bordero = nrow * ncol;
+        int border = nrow * ncol;
 
         for (int i = 0; i < nrow; i++)
             for (int j = 0; j < ncol; j++) {
                 if (board[i][j] != 'O')
                     continue;
+                int curnode = node(i, j);
                 if (i == 0 || i == nrow - 1 || j == 0 || j == ncol - 1)
-                    uf.merge(node(i, j), bordero);
-                else {
-                    // border regions will never come here, no need to check bounds
-                    int curnode = node(i, j);
-                    if (board[i - 1][j] == 'O')
-                        uf.merge(node(i - 1, j), curnode);
-                    if (board[i + 1][j] == 'O')
-                        uf.merge(node(i + 1, j), curnode);
-                    if (board[i][j - 1] == 'O')
-                        uf.merge(node(i, j - 1), curnode);
-                    if (board[i][j + 1] == 'O')
-                        uf.merge(node(i, j + 1), curnode);
-                }
+                    uf.merge(node(i, j), border);
+                if (i + 1 < nrow && board[i + 1][j] == 'O')
+                    uf.merge(node(i + 1, j), curnode);
+                if (j + 1 < ncol && board[i][j + 1] == 'O')
+                    uf.merge(node(i, j + 1), curnode);
             }
-
+        
         for (int i = 0; i < nrow; i++)
             for (int j = 0; j < ncol; j++)
-                if (uf.is_connected(node(i, j), bordero))
+                if (uf.find(node(i, j)) == uf.find(border))
                     board[i][j] = 'O';
                 else
                     board[i][j] = 'X';
-
     }
 };
 ```

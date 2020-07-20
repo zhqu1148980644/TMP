@@ -15,15 +15,30 @@ The range of numbers in the array is [-1000, 1000] and the range of the integer 
 
 Given `sum[:i]` and `sum[:j]` st `j > i` we can quickly calculate the sum between i and j: `sum[i: j] = sum[:j] - sum[:i]`
 
-1. ##### straight forward O(n2)
+1. ##### prefix sum O(n2)
 
 - Store the aggregated sum for each position, and scan the sum before each position to check if there any contigous subarray with the required sum using the formula above.
 
-1. ##### hash map
+2. ##### prefix sum with hash map
 
-- The idea is the same to `two-sum` problem, use a hash map to store candidate values.
-- Here I saved the `expected_sum` in hash map. you can store the original sum in each position too.
-    - `cur_sum - old_sum = k` ie: `cur_sum = k + old_sum`.
+```c++
+class Solution {
+public:
+    int subarraySum(vector<int>& nums, int k) {
+        unordered_map<int, int> m {{0, 1}};
+        int sum = 0, res = 0;
+        for (auto n : nums) {
+            sum += n;
+            if (m.count(sum - k))
+                res += m[sum - k];
+            m[sum]++;
+        }
+        return res;
+    }
+};
+```
+
+or store expected_sums in the hash map
 
 ```c++
 class Solution {

@@ -20,8 +20,8 @@ Output: [-1,-1]
 
 1. #### One time binary search.
 
-- Binary seach the first one not smaller than the target.
-- Then find the first one not equal to the target.
+- Binary seach the first one not smaller than the target(right boundary).
+- Then find the first one not equal to the target starting from the right boundary.
 
 2. #### Two times binary search.
 

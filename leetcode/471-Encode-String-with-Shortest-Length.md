@@ -53,9 +53,7 @@ Explanation: "abbbabbbc" occurs twice, but "abbbabbbc" can also be encoded to "2
 
 #### Solutions
 
-- Inorder to find the `repeated pattern` in a string, we use method demonstrated in `problem 471`.
-- Check that problem for detailed explanation.
-
+- Use method in `problem 459` for checking if there are repeated pattern in a certain string.
 
 1. ##### dynamic programming with recursion
 
@@ -63,8 +61,7 @@ Explanation: "abbbabbbc" occurs twice, but "abbbabbbc" can also be encoded to "2
 - Denote `dp[i][j]` as the encoded shortest string of substring `s[i:j]`
 - `dp[i][j]` can be calculated by:
     - If `s[i:j]` is made of repeated pattern `p` with `k` occurrences, `dp[i][j]` can be represented by `k[p]`.
-    - Divide `s[i:j]` into two parts, `dp[i][j]` can be represented by `dp[i][k] + dp[k + 1][j] i <= k < j`.
-    - Choose the shortest one among all possibilities.
+    - Else, divide `s[i:j]` into two parts, `dp[i][j]` can be represented by `dp[i][k] + dp[k + 1][j] i <= k < j`, and choose the shortest one among all possibilities.
 
 ```c++
 class Solution {
@@ -84,13 +81,14 @@ public:
         if ((find = (res + res).find(res, 1)) < res.size())
             res = to_string(res.size() / find) + "[" + solve(s, dp, i, i + find - 1) + "]";
         // iterate all possibilities.
-        for (int k = i; k < j; k++) {
-            const string & left = solve(s, dp, i, k);
-            const string & right = solve(s, dp, k + 1, j);
-            if (left.size() + right.size() < res.size())
-                res = left + right;
+        else {
+            for (int k = i; k < j; k++) {
+                const string & left = solve(s, dp, i, k);
+                const string & right = solve(s, dp, k + 1, j);
+                if (left.size() + right.size() < res.size())
+                    res = left + right;
+            }
         }
-
         return res;
     }
     string encode(string s) {
@@ -123,11 +121,12 @@ public:
                 int find = res.size();
                 if ((find = (res + res).find(res, 1)) < res.size())
                     res = to_string(res.size() / find) + "[" + dp[i][i + find - 1] + "]";
-                for (int k = i; k < j; k++) {
-                    string & left = dp[i][k];
-                    string & right = dp[k + 1][j];
-                    if (left.size() + right.size() < res.size())
-                        res = left + right;
+                else {
+                    for (int k = i; k < j; k++) {
+                        string & left = dp[i][k];
+                        string & right = dp[k + 1][j];
+                        if (left.size() + right.size() < res.size())
+                            res = left + right;
                 }
             }
 

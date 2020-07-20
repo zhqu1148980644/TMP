@@ -129,3 +129,66 @@ public:
     }
 };
 ```
+
+
+Or
+
+```c++
+struct UnionFind {
+    vector<int> nodes, sizes;
+    UnionFind(int size, int initial) : nodes(size, initial), sizes(size, 1) {}
+    int find(int node) {
+        while (nodes[node] != node)
+            node = nodes[node] = nodes[nodes[node]];
+        return node;
+    }
+    bool merge(int node1, int node2) {
+        int f1 = find(node1), f2 = find(node2);
+        if (f1 == f2) return false;
+        else {
+            if (sizes[f2] < sizes[f1])
+                swap(f1, f2);
+            nodes[f1] = f2;
+            sizes[f2] += sizes[f1];
+            return true;
+        }
+    }
+};
+class Solution {
+public:
+    int nrow, ncol;
+    inline int node(int x, int y) {
+        return x * ncol + y;
+    }
+    vector<int> numIslands2(int m, int n, vector<vector<int>>& positions) {
+        nrow = m, ncol = n;
+        int water =  nrow * ncol;
+        UnionFind uf(nrow * ncol + 1, water);
+        vector<int> res;
+        int numisland = 0;
+
+        for (auto & vpos : positions) {
+            int x = vpos[0], y = vpos[1];
+            int curnode = x * ncol + y;
+            if (uf.nodes[curnode] == water) {
+                uf.nodes[curnode] = curnode;
+                numisland++; 
+                if (x + 1 < nrow && uf.find(curnode + ncol) != water)
+                    if (uf.merge(curnode + ncol, curnode))
+                        numisland--;
+                if (y + 1 < ncol && uf.find(curnode + 1) != water)
+                    if (uf.merge(curnode + 1, curnode))
+                        numisland--;
+                if (x - 1 >= 0 && uf.find(curnode - ncol) != water)
+                    if (uf.merge(curnode - ncol, curnode))
+                        numisland--;
+                if (y - 1 >= 0 && uf.find(curnode - 1) != water)
+                    if (uf.merge(curnode - 1, curnode))
+                        numisland--;
+            }
+            res.push_back(numisland);
+        }
+        return res;
+    }
+};
+```

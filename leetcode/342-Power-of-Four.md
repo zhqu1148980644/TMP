@@ -18,18 +18,33 @@ Could you solve it without loops/recursion?
 
 1. ##### Straight forward
 
-- if `n % 4 == 0` then `n  %% 2 == 0`
+- power of 4 must be power of 2.
 
 ```c++
-bool isPowerOfFour(int num){
-    if (num <= 0) return false;
-    if (!(num & (num - 1))) {
-        while (num >> 2) num = num >> 2;
-        if (num == 1) return true;
-        else return false;
-    }
-    else
+class Solution {
+public:
+    bool isPowerOfFour(int num) {
+        if (num <= 0) return false;
+        if (!(num & (num - 1))) {
+            while (num >> 2) num >>= 2;
+            return num == 1;
+        }
         return false;
-}
-
+    }
+};
 ```
+
+or
+
+```c++
+class Solution {
+public:
+    bool isPowerOfFour(int num) {
+        return num > 0 
+               && !(num & (num - 1)) 
+               && num & 0b01010101010101010101010101010101;
+    }
+};
+```
+
+or use 0x55555555(because 0b0101 is 0x5)

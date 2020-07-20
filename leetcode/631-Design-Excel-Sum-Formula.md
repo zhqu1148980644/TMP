@@ -55,7 +55,7 @@ Set(2, "B", 2);
 
 1. ##### straight forward
 
-- Lazy mode.
+- Lazy mode. Record the dependency of each cell in sum operation.
 - Use recursion to handle dependency of calculations.
 
 ```c++

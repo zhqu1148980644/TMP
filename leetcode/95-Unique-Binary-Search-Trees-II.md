@@ -41,17 +41,15 @@ class Solution {
 public:
 
     vector<TreeNode *> genTree(int start, int end) {
-        vector<TreeNode *> res;
         if (start > end)
-            res.push_back(nullptr);
-        else if (start == end) {
-            res.push_back(new TreeNode(start));
-        } else {
+            return {nullptr};
+        else {
+            vector<TreeNode *> res;
             for (int i = start; i <= end; i++) {
                 vector<TreeNode *> lefttree = genTree(start, i - 1);
                 vector<TreeNode *> righttree = genTree(i + 1, end);
-                for (auto & ltree : lefttree) {
-                    for (auto & rtree : righttree) {
+                for (auto ltree : lefttree) {
+                    for (auto rtree : righttree) {
                         TreeNode * root = new TreeNode(i);
                         root->left = ltree;
                         root->right = rtree;
@@ -59,8 +57,8 @@ public:
                     }
                 }
             }
+            return res;
         }
-        return res;
     }
 
     vector<TreeNode *> generateTrees(int n) {
@@ -75,9 +73,8 @@ public:
 
 2. ##### recursion with mem cache
 
+- bottom-up strategy
 - Structures of trees built from `2 3` are the same as structures of trees built from `98 99`. They differ only in values but not structures.
-    - yeah, structures from `2 3` are the same as structures from `1 2`.
-
 - Codes in the first method recursively calculate tree structures from different values but with same structures.
 
 ```c++

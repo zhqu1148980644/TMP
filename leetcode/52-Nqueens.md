@@ -70,3 +70,83 @@ public:
     }
 };
 ```
+
+
+2. ##### backtrack with recursion
+
+
+```c++
+class Solution {
+public:
+    using pos = pair<int, int>;
+    vector<pos> qs;
+    int res = 0;
+
+    void solve(int n, int currow) {
+        if (currow >= n) {
+            res++; return;
+        }
+        qs.push_back({currow, 0});
+        for (int j = 0; j < n; j++) {
+            auto & cur = qs.back();
+            cur.second = j;
+            if (contain(cur)) continue;
+            solve(n, currow + 1);
+        }
+        qs.pop_back();
+    }
+    bool contain(const pos & p2) {
+        for (auto & p1 : qs) {
+            if (p1 == p2) continue;
+            if ((p1.second == p2.second)
+                    || (p1.first + p1.second == p2.first + p2.second)
+                    || (p1.first - p1.second == p2.first - p2.second))
+                return true;
+        }
+        return false;
+    }
+    int totalNQueens(int n) {
+        solve(n, 0);
+        return res;
+    }
+};
+```
+
+
+3. ##### iteration
+
+- Use the code pattern in `problem 77`.
+
+```c++
+class Solution {
+public:
+    bool contain(vector<int> & com, int pos) {
+        int curr = pos, curc = com[pos];
+        for (int r = 0; r < pos; r++) {
+            int c = com[r];
+            if ((c == curc) || (curr + curc == r + c) || (curr - curc == r - c))
+                return true;
+        }
+        return false;
+    }
+    int totalNQueens(int n) {
+        int res = 0;
+        vector<int> com(n + 1, -1);
+        int pos = 0;
+        while (pos >= 0) {
+            com[pos]++;
+            if (pos >= n) { // record results
+                res++;
+                pos--;
+            }
+            else if (com[pos] >= n) // invalid, reture to former level
+                pos--;
+            else if (!contain(com, pos)) { // valid go to next level
+                com[++pos] = -1;
+            }
+        }
+
+        return res;
+    }
+};
+```

@@ -27,6 +27,8 @@ Could you solve it in linear time?
 
 1. ##### straight forward O(nk)
 
+- Time Limit Exceed
+
 ```c++
 class Solution {
 public:
@@ -38,6 +40,8 @@ public:
         return res;
     }
 };
+using namespace std;
+#include <iostream>
 ```
 
 2. ##### Mono stack
@@ -47,7 +51,6 @@ public:
 - A momo stack maintains a monotonically increasing sequence and keeps ordering of the pushed items.
     - Whenever pushed an item, check item at the back of queue which should be the minimum item of the queue, pop items till the back is not smaller than the current item. Thus ensure the queue follows an decreasing order from the front to the back.
     - To pop an item doesn't belong to the current window, we just need to check the front of the queue and remove it if it's the target.
-        - Suppose the target(i - k) is not the front item, then the front item must be larger than it which is contradictory to the fact that the target was pushed at the earliest.
 
 
 ```c++

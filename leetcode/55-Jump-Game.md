@@ -42,7 +42,7 @@ bool canJump(int* nums, int numsSize){
 - May be practically faster than the first version with pre-exit.
 - In each step we record the currently reacheable distant point.
     - If the maximum index is smaller than the current index. There is no way to get to the last.
-    - Yeach, pre-exit when we already can get to the last.
+    - Pre-exit when we already can get to the last.
 
 ```c++
 #define max(x, y) (x > y ? x : y)

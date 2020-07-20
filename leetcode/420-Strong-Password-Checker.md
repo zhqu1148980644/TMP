@@ -65,12 +65,12 @@ public:
             return max(replace, missnum);
         else {
             int del = s.size() - 20;
-            // Each deletion can represent one replacement.
+            // Each deletion can represent one replacement. xxx
             replace -= min(del, done);
-            // Two.
+            // Two deletion can represent one replacement.  xxxx
             if (del - done > 0)
                 replace -= min((del - done) / 2, dtwo);
-            // Three.
+            // Three deletion can represent one replacement.xxxxx*
             if (del - done - 2 * dtwo > 0)
                 replace -= (del - done - 2 * dtwo) / 3;
             return del + max(replace, missnum);

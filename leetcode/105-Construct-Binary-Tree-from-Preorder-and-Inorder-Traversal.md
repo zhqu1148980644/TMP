@@ -24,8 +24,8 @@ Return the following binary tree:
 - As the root node is the first node visited in preorder traversal, then for each preorder array, the first element represents the root node of the binary search tree. After finding out the root node, which part of the array belongs to the left subtree/right tree?
 - As the sequence of inorder traversal is in ascending order, and the left subtree is always smaller than the right subtree in a binary search tree, we can split the inorder traversal sequence into two parts demarcated by the root node. The root node come from preorder sequence mentioned before.
     - Knowning the partion point of the inorder traversal sequence, it's easy to get the length of the left subtree/right subtree. ie: the length of the left/right subarray.
-    - Suppose the length of left subarray is `l`, then left tree in preorder traversal sequence is `preorder[1: 1 + l]` and `preorder[1 + l:]` for right subtree.
-- In each step we can find the `root node`, nodes in preorder's head part that belongs to the `left subtree`, nodes in preorder's tail part that belongs to the `right subtree`. It's clear that this problem can be solved by a recursive approach.
+    - Suppose the length of left subarray is `l`, then left tree in preorder traversal sequence is `preorder[1: 1 + l]` and `preorder(1 + l:]` for right subtree.
+- In each step we can find the `root node`, nodes in preorder's head part belonging to the `left subtree` and nodes in preorder's tail part belonging to the `right subtree`. It's clear that this problem can be solved by a recursive approach.
 
 
 - image reference: https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/solution/c-tu-jie-guo-cheng-by-aris-7/
@@ -66,34 +66,25 @@ class Solution:
  * };
  */
 class Solution {
-    vector<int>  preorder;
-    vector<int> inorder;
-    unordered_map<int, int> m;
-    int preidx = 0;
-
 public:
+    unordered_map<int, int> m;
+    int rootindex = 0;
 
-    TreeNode * build(int left, int right) {
+    TreeNode * build(vector<int> & preorder, int left, int right) {
         if (left == right)
-            return NULL;
-        int rootval = preorder[preidx];
+            return nullptr;
+        int rootval = preorder[rootindex++];
         TreeNode * root = new TreeNode(rootval);
-
-        preidx++;
-        root->left = build(left, m[rootval]);
-        root->right = build(m[rootval] + 1, right);
+        root->left = build(preorder, left, m[rootval]);
+        root->right = build(preorder, m[rootval] + 1, right);
         return root;
     }
 
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-        this->preorder = preorder;
-        this->inorder = inorder;
-
         int index = 0;
-        for (auto & item : inorder)
-            m[item] = index++;
-
-        return build(0, inorder.size());
+        for (auto & n : inorder)
+            m[n] = index++;
+        return build(preorder, 0, inorder.size());
     }
 };
 ```
@@ -103,38 +94,33 @@ public:
 
 - borrowed from stephan
 - reference: https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/discuss/34543/Simple-O(n)-without-map
-- Instead of explicitly specifying the range of nodes, he uses a stop marker to terminate the recursive call.
+- Instead of explicitly specifying the range of subtree, he uses a stop marker to terminate the recursive call.
     - For left child tree, the stop marker is the root's value.
-    - For right child tree, the stop marker is the stop marker received as parameter from the parent call.
-- It's hard to proof the correctness of this method, however, I successfully applied the same method described here to recover the binary tree from postorder and preorder traversal.
+    - For right child tree, the stop marker is the stop marker received as parameter from the parent call. i.e right boundary of the parent tree.
+    - In other words, inindex represents the current node are being built in each step, when inindex reaches the `root node` of the current subtree, the building terminate.
+- It's hard to proof the correctness of this method, however, I successfully applied the same method described here to recover the binary tree from postorder and inorder traversal.
 
 ```c++
 class Solution {
-    vector<int> * preorder;
-    vector<int> * inorder;
-    unordered_map<int, int> m;
+public:
     int preindex = 0;
     int inindex = 0;
 
-public:
-
-    TreeNode * build(int stop) {
-        if (inindex >= inorder->size() || (*inorder)[inindex] == stop)
+    TreeNode * build(vector<int> & preorder, vector<int> & inorder, int stop) {
+        if (inindex >= inorder.size() || inorder[inindex] == stop)
             return nullptr;
         else {
-            TreeNode * root = new TreeNode((*preorder)[preindex++]);
-            root->left = build(root->val);
+            int rootval = preorder[preindex++];
+            TreeNode * root = new TreeNode(rootval);
+            root->left = build(preorder, inorder, root->val);
             inindex++;
-            root->right = build(stop);
+            root->right = build(preorder, inorder, stop);
             return root;
         }
     }
 
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-        this->preorder = &preorder;
-        this->inorder = &inorder;
-
-        return build(INT_MAX);
+        return build(preorder, inorder, INT_MAX);
     }
 };
 ```
@@ -148,8 +134,8 @@ public:
     - Go backwards to find the father's right child.
     - The preorder traversal offers us the root node sequence in preorder.
     - The inorder traversal tells us which node is the end of the left subtree.
-        - The preorder and inorder differs when inorder meets a right child if we traverse backwards from the left most leaf node.
-        - When this happens, then the disagreed node in preorder sequence is the the right child of the previous node.
+        - The pop sequence of preorder stack and inorder sequence differs when inorder meets a right child if we traverse backwards from the left most leaf node.
+        - When this happens, the disagreed node in preorder sequence is the the right child of the previous node.
 
 ```c++
 class Solution {
@@ -168,7 +154,8 @@ public:
                 root = root->left = new TreeNode(preorder[pre++]);
                 s.push(root);
             }
-            // Go back, till we find the first right child ie: inorder[ino]
+            // Go back, till we find the right child's left leaf ie: inorder[ino]
+            // or ino is out of bound.
             // This can be happened in both left tree or right tree.
             // when s is empty, we are at the root node of the whole tree.
             while (!s.empty() && s.top()->val == inorder[ino]) {

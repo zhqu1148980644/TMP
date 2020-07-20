@@ -34,8 +34,6 @@ Explanation:
 
 1. ##### cross product
 
-- For a convex polygon, angles of any two adjacent vectors should be the same(>=0 or <=0).
-
 ```c++
 class Solution {
 public:

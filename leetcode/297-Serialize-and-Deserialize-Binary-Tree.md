@@ -82,20 +82,56 @@ public:
 // codec.deserialize(codec.serialize(root));
 ```
 
-2. ##### levelorder traversal with queue
 
-- The same format as above.
+or
+
+- After the subtree has been built, the `st` will be at the end comma of the last element in subtree.
 
 ```c++
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
+class Codec {
+public:
+
+    void preorderSe(TreeNode * root, string & res) {
+        if (!root)
+            res.push_back(',');
+        else {
+            res += to_string(root->val) + ",";
+            preorderSe(root->left, res);
+            preorderSe(root->right, res);
+        }
+    }
+    // Encodes a tree to a single string.
+    string serialize(TreeNode* root) {
+        string res;
+        preorderSe(root, res);
+        return res;
+    }
+
+    TreeNode * preorderDe(string & data, int & st) {
+        if (data[st] == ',')
+            return nullptr;
+        else {
+            int len = 0;
+            while (data[st] != ',' && ++st) len++;
+            TreeNode * root = new TreeNode(stoi(data.substr(st - len, len)));
+            root->left = preorderDe(data, ++st);
+            root->right = preorderDe(data, ++st);
+            return root;
+        }
+    }
+    // Decodes your encoded data to tree.
+    TreeNode* deserialize(string data) {
+        int st = -1;
+        return preorderDe(data, ++st);
+    }
+};
+```
+
+2. ##### levelorder traversal with queue
+
+- The same format as above except the ordering of nodes is replaced by level order.
+
+```c++
 class Codec {
 public:
 
@@ -105,62 +141,100 @@ public:
         if (root) q.push(root);
         string res;
         while (!q.empty()) {
-            int size = q.size();
-            while (size--) {
-                auto cur = q.front(); q.pop();
-                if (cur) {
-                    res += to_string(cur->val) + ",";
-                    q.push(cur->left);
-                    q.push(cur->right);
-                }
-                else
-                    res.push_back(',');
+            auto cur = q.front(); q.pop();
+            if (cur) {
+                res += to_string(cur->val) + ",";
+                q.push(cur->left);
+                q.push(cur->right);
             }
+            else
+                res.push_back(',');
         }
-        cout << res << endl;
         return res;
     }
 
     // Decodes your encoded data to tree.
     TreeNode* deserialize(string data) {
         if (!data.size()) return nullptr;
-        int start = 0;
-        while (start < data.size() && data[start] != ',')
-            start++;
+        int st = 0;
+        while (st < data.size() && data[st] != ',')
+            st++;
         TreeNode * root, * cur;
-        root = cur = new TreeNode(stoi(data.substr(0, start)));
+        root = cur = new TreeNode(stoi(data.substr(0, st)));
 
-        queue<TreeNode *> q;
-        q.push(root);
-        start++;
+        queue<TreeNode *> q; q.push(root);
         TreeNode ** child[2];
 
-        while (!q.empty() && start < data.size()) {
+        while (!q.empty() && st < data.size()) {
             int size = q.size();
             while (size--) {
                 cur = q.front(); q.pop();
                 child[0] = &(cur->left);
                 child[1] = &(cur->right);
                 for (int i = 0; i < 2; i++) {
-                    if (data[start] == ',')
+                    st++;
+                    if (data[st] == ',')
                         *child[i] = nullptr;
                     else {
-                        int pre = start;
-                        while (start < data.size() && data[start] != ',')
-                            start++;
-                        *child[i] = new TreeNode(stoi(data.substr(pre, start - pre)));
+                        int len = 0;
+                        while (st < data.size() && data[st] != ',' && ++len)
+                            st++;
+                        *child[i] = new TreeNode(stoi(data.substr(st - len, len)));
                         q.push(*child[i]);
                     }
-                    start++;
                 }
             }
         }
-
         return root;
     }
 };
+```
 
-// Your Codec object will be instantiated and called as such:
-// Codec codec;
-// codec.deserialize(codec.serialize(root));
+
+Or
+
+```c++
+class Codec {
+public:
+
+    // Encodes a tree to a single string.
+    string serialize(TreeNode* root) {
+        queue<TreeNode *> q;
+        if (root) q.push(root);
+        string res;
+        while (!q.empty()) {
+            auto cur = q.front(); q.pop();
+            if (cur) {
+                res += to_string(cur->val) + ",";
+                q.push(cur->left);
+                q.push(cur->right);
+            }
+            else
+                res.push_back(',');
+        }
+        return res;
+    }
+
+    TreeNode* deserialize(string data) {
+        if (!data.size()) return nullptr;
+        // st is actually the end of the last element, which is a comma
+        auto createnode = [&data](int & st) {
+            st++; int len = 0;
+            while (data[st] != ',' && ++len) st++;
+            return len ? new TreeNode(stoi(data.substr(st - len, len))) : nullptr;
+        };
+        int st = -1;
+        queue<TreeNode *> q; TreeNode * root;
+        q.push(root = createnode(st));
+
+        while (!q.empty() && st < data.size()) {
+            TreeNode * cur = q.front(); q.pop();
+            if (cur->left = createnode(st))
+                q.push(cur->left);
+            if (cur->right = createnode(st))
+                q.push(cur->right);
+        }
+        return root;
+    }
+};
 ```

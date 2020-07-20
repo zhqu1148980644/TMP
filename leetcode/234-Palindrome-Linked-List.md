@@ -28,33 +28,48 @@ Could you do it in O(n) time and O(1) space?
  * Definition for singly-linked list.
  * struct ListNode {
  *     int val;
- *     struct ListNode *next;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
-
-typedef struct ListNode node;
-
-bool isPalindrome(struct ListNode* head){
-    if (!head || !head->next) return true;
-    node * prev = NULL;
-    node * right = head;
-    // move and reverse slowly
-    // When looping is finished, the head will be at (n + 1) / 2.
-    while (right && right->next) {
-        right = right->next->next;
-        node * tmp = head->next;
-        head->next = prev;
+class Solution {
+public:
+    bool isPalindrome(ListNode* head) {
+        if (!head || !head->next) return true;
+        ListNode * prev = nullptr, * right = head;
+        // reverse the fist half
+        while (right && right->next) {
+            right = right->next->next;
+            ListNode * tmp = head->next;
+            head->next = prev;
+            prev = head;
+            head = tmp;
+        }
+        // right is the fast pointer, should be at n / 2
+        ListNode * lhead = prev;
         prev = head;
-        head = tmp;
+        // right is not null means the length is odd, move head one step forward
+        if (right)
+            head = head->next;
+        bool ispalin = true;
+        while (lhead) {
+            if (lhead->val != head->val)
+                ispalin = false;
+            ListNode * tmp = lhead;
+            lhead = lhead->next;
+            tmp->next = prev;
+            prev = tmp;
+            head = head->next;
+        }
+        // if no need to reverse back the original list
+        // while (lhead && lhead->val == head->val) {
+        //     lhead = lhead->next;
+        //     head = head->next;
+        // }
+        // return !lhead;
+        return ispalin;
     }
-    // Right is not NULL means the length of the linked list is even. So we need to move the head one step forward.
-    if (right) head = head->next;
-    while (prev && (prev->val == head->val)) {
-        prev = prev->next;
-        head = head->next;
-    }
-    return !prev;
-}
+};
 ```
 
 
@@ -64,33 +79,40 @@ bool isPalindrome(struct ListNode* head){
 - Loop through the linked list to count the length.
 - Then reverse the first half of the linked list.
 - Checking.
-- Similar to problem 61, the counterintuitive part is that the simple one moves the same number of times as the first method.
+- Similar to problem 61, the counterintuitive part is that this method moves the same number of times as the first method.
 
 ```c++
-typedef struct ListNode node;
+class Solution {
+public:
+    bool isPalindrome(ListNode* head) {
+        if (!head || !head->next) return true;
+        int len = 1;
+        ListNode * tmp = head, * prev = nullptr;
+        while (tmp = tmp->next) len++;
 
-bool isPalindrome(struct ListNode* head){
-    if (!head || !head->next) return true;
-    int length = 1;
-    node * tmp = head,  * prev = NULL;
-    // count the total length
-    while (tmp = tmp->next) length++;
-
-    bool odd = length % 2 == 0;
-    length = length / 2;
-    // reverse the first half of the linked list.
-    while (length--) {
-        tmp = head->next;
-        head->next = prev;
+        bool odd = len % 2;
+        len /= 2;
+        while (len--) {
+            tmp = head->next;
+            head->next = prev;
+            prev = head;
+            head = tmp;
+        }
+        
+        ListNode * lhead = prev;
         prev = head;
-        head = tmp;
+        if (odd) head = head->next;
+        bool ispalin = true;
+        while (lhead) {
+            if (lhead->val != head->val)
+                ispalin = false;
+            ListNode * tmp = lhead;
+            lhead = lhead->next;
+            tmp->next = prev;
+            prev = tmp;
+            head = head->next;
+        }
+        return ispalin;
     }
-    // move head one step forward when the length is a even number.
-    if (!odd) head = head->next;
-    while (prev && (prev->val == head->val)) {
-        prev = prev->next;
-        head = head->next;
-    }
-    return !prev;
-}
+};
 ```

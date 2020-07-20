@@ -108,7 +108,6 @@ public:
 
 
 - Another version. O(nk)
-
 - `dp[k][m]` represents the maximum of floors can be investigated with `k` eggs and `m` moves.
 
 ```c++

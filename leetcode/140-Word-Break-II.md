@@ -42,37 +42,36 @@ Output:
 
 1. ##### dynamic programming
 
-- Memory limit exceed
-- A huge amount of undesirable subsolutions(prefix) are stored in the dp table.
-
 ```c++
 class Solution {
 public:
-    bool canBreak(string & s, unordered_set<string> & m) {
-        if (!m.size()) return false;
-        vector<bool> dp(s.size() + 1, false);
-        dp[0] = true;
-
-        for (int i = 1; i <= s.size(); i++)
-            for (int j = 0; j < i; j++) {
-                if (dp[j] && m.count(s.substr(j, i - j)))
-                    return true;
-            }
-        return false;
+    bool canbreak(string & s, unordered_set<string> & words) {
+        vector<bool> breakable(s.size() + 1);
+        breakable[0] = true;
+        int minl = INT_MAX, maxl = INT_MIN;
+        for (auto & word : words) {
+            minl = min(minl, (int)word.size());
+            maxl = max(maxl, (int)word.size());
+        }
+        for (int i = minl; i <= s.size(); i++)
+            for (int j = max(i - maxl, 0); j <= i - minl; j++)
+                if (breakable[j] && words.count(s.substr(j, i - j))) {
+                    breakable[i] = true;
+                    break; 
+                }
+        return breakable.back();
     }
 
-    typedef string Sentence;
     vector<string> wordBreak(string s, vector<string>& wordDict) {
-        unordered_set<string> m(wordDict.begin(), wordDict.end());
-        if (!canBreak(s, m)) return {};
+        unordered_set<string> words(wordDict.begin(), wordDict.end());
+        if (!canbreak(s, words)) return {};
 
-        vector<vector<Sentence>> dp{{""}};
-
+        vector<vector<string>> dp{{""}};
         for (int i = 1; i <= s.size(); i++) {
-            dp.push_back(vector<Sentence>());
+            dp.push_back({});
             for (int j = 0; j < i; j++) {
                 auto word = s.substr(j, i - j);
-                if (dp[j].size() && m.count(word))
+                if (words.count(word))
                     for (auto & sent : dp[j])
                         dp[i].push_back(sent.size() ? sent + " " + word : word);
             }
@@ -83,86 +82,43 @@ public:
 ```
 
 
-- To solve this problem, we can build the results backwards with minimal number of suffixs.
 
 2. ##### backtrack with recursion
-
-- Since backtracking builds results in a bottom-up way, only necessary suffix will be stored and thus reducing the memory usage.
-
-```c++
-typedef vector<string> Sents;
-class Solution {
-public:
-    Sents Break(unordered_map<int, Sents> & memo,
-                unordered_set<string> & words,
-                string & s, int start) {
-        if (start == s.size())
-            return {""};
-        if (memo.count(start))
-            return memo[start];
-
-        Sents sents;
-        for (int i = start; i < s.size(); i++) {
-            string word = s.substr(start, i - start + 1);
-            if (words.count(word))
-                for (auto & sent : Break(memo, words, s, i + 1))
-                    sents.push_back(word + (sent.size() ? " " : "") + sent);
-        }
-
-        return memo[start] = move(sents);
-    }
-
-    vector<string> wordBreak(string s, vector<string>& wordDict) {
-        if (!wordDict.size()) return {};
-        unordered_map<int, Sents> memo;
-        unordered_set<string> words(wordDict.begin(), wordDict.end());
-
-        return Break(memo, words, s, 0);
-    }
-};
-```
-
-Or a fancy one borrowed from stephan.
 
 ```c++
 class Solution {
 public:
     bool canbreak(string & s, unordered_set<string> & words) {
-        vector<bool> breakable(s.size() + 1, false);
+        vector<bool> breakable(s.size() + 1);
         breakable[0] = true;
-        int minlen = INT_MAX, maxlen = INT_MIN;
+        int minl = INT_MAX, maxl = INT_MIN;
         for (auto & word : words) {
-            minlen = min(minlen, (int)(word.size()));
-            maxlen = max(maxlen, (int)(word.size()));
+            minl = min(minl, (int)word.size());
+            maxl = max(maxl, (int)word.size());
         }
-
-        for(int i = minlen; i <= s.size(); i++)
-            for (int j = max(i - maxlen, 0); j <= i - minlen; j++)
+        for (int i = minl; i <= s.size(); i++)
+            for (int j = max(i - maxl, 0); j <= i - minl; j++)
                 if (breakable[j] && words.count(s.substr(j, i - j))) {
                     breakable[i] = true;
-                    break;
+                    break; 
                 }
-        return breakable[s.size()];
+        return breakable.back();
     }
     vector<string> wordBreak(string s, vector<string>& wordDict) {
-        unordered_set<string> words(wordDict.begin(), wordDict.end());
-        // prexit if the whole string is not breakable.
-        if (!canbreak(s, words)) return {};
+        unordered_map<int, vector<string>> mem {{s.size(), {""}}};
+        unordered_set<string> m(wordDict.begin(), wordDict.end());
 
-        unordered_map<int, vector<string>> memo = {{s.size(), {""}}};
-        // use a lambda function
-        function<vector<string>(int)> Break = [&](int start) {
-            if (!memo.count(start)) {
-                for (int i = start; i < s.size(); i++) {
-                    string word = s.substr(start, i - start + 1);
-                    if (!words.count(word)) continue;
+        function<vector<string>(int)> Break = [&](int st) {
+            if (!mem.count(st)) {
+                for (int i = st; i < s.size(); i++) {
+                    auto w = s.substr(st, i - st + 1);
+                    if (!m.count(w)) continue;
                     for (auto & sent : Break(i + 1))
-                        memo[start].push_back(word + (sent.size() ? " " : "") + sent);
+                        mem[st].push_back(w + (sent.size() ? " " : "") + sent);
                 }
             }
-            return memo[start];
+            return mem[st];
         };
-
         return Break(0);
     }
 };

@@ -90,7 +90,7 @@ public:
 };
 ```
 
-The python version seems non-pythonic and with approximately the same length. 
+The python version seems non-pythonic and with approximately the same length of codes.
 
 ```python
 # Definition for singly-linked list.

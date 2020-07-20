@@ -16,7 +16,7 @@ Output: 0
 
 - The idead is to find the longest unchangable high bits within the given range.
 - For example: `n = 101001` and `m = 101100`
-- Only the lowest `3` bit differs, as the bit ADN operation will get `0` whenever a `0` is encountered, when bit AND with increasing numbers, the lowest `3` bits will finally be 0.
+- Only the lowest `3` bit differs, as the bit AND operation will get `0` whenever a `0` is encountered, when bit AND with increasing numbers, the lowest `3` bits will finally be 0.
 
 1. ##### iteratively remove a tail bit
 
@@ -37,6 +37,7 @@ public:
 
 
 2. ##### iteratively remove the rightmost `1` bit
+
 
 ```c++
 class Solution {

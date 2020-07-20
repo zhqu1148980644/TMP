@@ -197,7 +197,7 @@ public:
                         uf.merge(node(i, j + 1), curnode);
                 }
             }
-
+        // plus one water node
         return uf.size() - 1;
 
     }
@@ -230,6 +230,40 @@ public:
             }
         return uf.size;
 
+    }
+};
+```
+
+Or
+
+```c++
+class Solution {
+public:
+    int nrow, ncol;
+    inline int node(int i, int j) {
+        return i * ncol + j;
+    }
+    int numIslands(vector<vector<char>>& grid) {
+        nrow = grid.size(); if (!nrow) return 0;
+        ncol = grid[0].size();
+        UnionFind<int> uf(nrow * ncol);
+        int numisaland = nrow * ncol;
+        for (int i = 0; i < nrow; i++)
+            for (int j = 0; j < ncol; j++) {
+                if (grid[i][j] == '0')
+                    numisaland--;
+                else {
+                    int curnode = node(i, j);
+                    if (i + 1 < nrow && grid[i + 1][j] == '1' 
+                        && uf.merge(node(i + 1, j), curnode) )
+                        numisaland--;
+                    if (j + 1 < ncol && grid[i][j + 1] == '1' 
+                        && uf.merge(node(i, j + 1), curnode))
+                        numisaland--;
+                }
+            }
+        
+        return numisaland;
     }
 };
 ```

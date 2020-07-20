@@ -33,9 +33,11 @@ public:
     vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
         if (nums1.size() > nums2.size())
             return intersect(nums2, nums1);
+        
         unordered_map<int, int> m;
-        for (auto & num : nums1)
-            m[num]++;
+        for (auto n : nums1)
+            m[n]++;
+        
         int k = 0;
         for (int i = 0; i < nums2.size() && m.size(); i++) {
             if (m.count(nums2[i])) {
@@ -44,8 +46,7 @@ public:
                     m.erase(nums2[i]);
             }
         }
-
-        return vector<int>(nums1.begin(), nums1.begin() + k);
+        return {nums1.begin(), nums1.begin() + k};
     }
 };
 ```
@@ -72,7 +73,7 @@ public:
                 i++; j++;
             }
         }
-        return vector(nums1.begin(), nums1.begin() + k);
+        return {nums1.begin(), nums1.begin() + k};
     }
 };
 ```

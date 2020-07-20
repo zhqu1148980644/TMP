@@ -19,7 +19,7 @@ Explanation: The result cannot be 2, because [-2,-1] is not a subarray.
 1. ##### dynamic programming
 
 - Use a dp table to record maximum product and minimum product of continuous subarrays ends with each position.
-- `maxp[i] = maxp[i] * num if num > 0 else minp[i] * num`
+- `maxp[i] = maxp[i] * num if num > 0 else max(minp[i] * num, num)`
 
 ```c++
 class Solution {
@@ -52,7 +52,7 @@ public:
     int maxProduct(vector<int>& nums) {
         int product = 1, max = INT_MIN;
 
-        for (int i = 0; i < nums.size() - 1; i++) {
+        for (int i = 0; i <= nums.size() - 1; i++) {
             product *= nums[i];
             if (product > max)
                 max = product;

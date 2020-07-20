@@ -93,6 +93,7 @@ public:
         st.push(root);
 
         while (cur < len) {
+            // s[cur] either be '(' or ')'
             if (s[cur++] == '(') {
                 int sign = 1, num = 0;
                 if (s[cur] == '-') {

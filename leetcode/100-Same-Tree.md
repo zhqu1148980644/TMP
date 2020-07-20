@@ -49,3 +49,56 @@ public:
 ```
 
 2. ##### iteration(dfs/bfs) with queue or stack
+
+stack
+
+```c++
+class Solution {
+public:
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+        stack<TreeNode *> s1, s2;
+        while (p || q || !s1.empty() || !s2.empty()) {
+            if (p || q) {
+                if (!(p && q)) return false;
+                s1.push(p); s2.push(q);
+                p = p->left; q = q->left;
+            }
+            else {
+                if (s1.empty() || s2.empty())
+                    return false;
+                p = s1.top(); s1.pop();
+                q = s2.top(); s2.pop();
+                if (p->val != q->val)
+                    return false;
+                p = p->right; q = q->right;
+            }
+        }
+
+        return true;
+    }
+};
+```
+
+Queue
+
+```c++
+class Solution {
+public:
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+        queue<TreeNode *> Q;
+        Q.push(p); Q.push(q);
+
+        while (!Q.empty()) {
+            p = Q.front(); Q.pop();
+            q = Q.front(); Q.pop();
+            if (!p && !q) continue;
+            if (!p || !q || p->val != q->val)
+                return false;
+            Q.push(p->left); Q.push(q->left);
+            Q.push(p->right); Q.push(q->right);
+        }
+
+        return true;
+    }
+};
+```

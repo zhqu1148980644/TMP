@@ -24,7 +24,7 @@ Given the Employee table, write a SQL query that finds out employees who earn mo
 1. ##### Self join
 
 ```sql
-SELECT * as Employee
+SELECT e.Name as Employee
     FROM Employee as e, Employee as m;
     WHERE e.ManagerId = m.id AND e.Salary > m.Salary;
 ```

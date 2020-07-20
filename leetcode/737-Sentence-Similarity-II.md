@@ -24,6 +24,8 @@ Finally, sentences can only be similar if they have the same number of words. So
 
 1. ##### Union Find O(n) S(numwords * wordlen) n: number of pairs
 
+- Make sure the id for unseen words are reversed.
+
 ```c++
 struct UnionFind {
     int * nodes;
@@ -95,37 +97,33 @@ class Solution {
 public:
     unordered_map<string, unordered_set<string>> g;
     unordered_map<string, int> coms;
-
-    void dfs(const string & word, int id) {
-        coms[word] = id;
-        for (auto & outnode : g[word]) {
-            if (coms[outnode] != id)
-                dfs(outnode, id);
-        }
+    void dfs(const string & w, int id) {
+        coms[w] = id;
+        for (auto & ow : g[w])
+            if (coms[ow] != id)
+                dfs(ow, id);
     }
-    
     bool areSentencesSimilarTwo(vector<string>& words1, vector<string>& words2, vector<vector<string>>& pairs) {
         if (words1.size() != words2.size())
             return false;
+        
         for (auto & v : pairs) {
             g[v[0]].insert(v[1]);
             g[v[1]].insert(v[0]);
-            for (auto & w : v)
-                if (!coms.count(w))
-                    coms[w] = -1;
+            coms[v[0]] = coms[v[1]] = -1;
         }
-
         int id = 1;
         for (auto & v : pairs)
-            for (auto & w : v)
+            for (auto & w : v) {
                 if (coms[w] == -1)
                     dfs(w, id++);
-
+            }
+        
         for (int i = 0; i < words1.size(); i++) {
-            int com1 = coms[words1[i]];
-            int com2 = coms[words2[i]];
-            if (com1 != com2 || 
-                (com1 == 0 && com2 == 0 && coms.find(words1[i]) != coms.find(words2[i])))
+            auto & w1 = words1[i];
+            auto & w2 = words2[i];
+            if (w1 == w2) continue;
+            if (!coms.count(w1) || !coms.count(w1) || coms[w1] != coms[w2])
                 return false;
         }
 

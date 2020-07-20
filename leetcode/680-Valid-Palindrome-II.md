@@ -40,3 +40,24 @@ public:
     }
 };
 ```
+
+or iterative version
+
+```c++
+class Solution {
+public:
+    bool valid(string & s, int & i, int & j) {
+        while (i < j && s[i] == s[j]) {
+            i++; j--;
+        }
+        return i >= j;
+    }
+    bool validPalindrome(string s) {
+        int i = 0, j = s.size() - 1;
+        if (valid(s, i, j)) return true;
+        int x1 = i + 1, y1 = j, x2 = i, y2 = j - 1;
+
+        return valid(s, x1, y1) || valid(s, x2, y2);
+    }
+};
+```

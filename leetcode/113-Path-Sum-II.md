@@ -85,6 +85,8 @@ public:
 class Solution {
 public:
     vector<vector<int>> pathSum(TreeNode* root, int sum) {
+        // No need to make new path vector for recording nodes
+        // s itself is composed by all nodes of the current path
         TreeNode * prev = NULL;
         vector<TreeNode *> s;
         vector<vector<int>> res;

@@ -1,25 +1,24 @@
-编写一个程序，找出第 n 个丑数。
+Write a program to find the n-th ugly number.
 
-丑数就是只包含质因数 2, 3, 5 的正整数。
+Ugly numbers are positive numbers whose prime factors only include 2, 3, 5. 
 
-```
-示例:
+Example:
 
-输入: n = 10
-输出: 12
-解释: 1, 2, 3, 4, 5, 6, 8, 9, 10, 12 是前 10 个丑数。
-```
+Input: n = 10
+Output: 12
+Explanation: 1, 2, 3, 4, 5, 6, 8, 9, 10, 12 is the sequence of the first 10 ugly numbers.
+Note:  
 
-##### 说明:  
+1 is typically treated as an ugly number.
+n does not exceed 1690.
 
--    1 是丑数。
--    n 不超过1690。
 
 
 #### Solutions
 
 
 1. ##### tree set O(nlog(n))
+
 
 ```c++
 class Solution {
@@ -44,6 +43,11 @@ public:
 
 2. ##### dynamic programming
 
+- Similar to merge sort. ie: merging sequence genrated by `n * 2, n * 3, n * 5`.
+    - `1 * 2, 2 * 2, 3 * 2, 4 * 2, 5 * 2...`
+    - `1 * 3, 2 * 3, 3 * 3, 4 * 3, 5 * 3...`
+    - `1 * 5, 2 * 5, 3 * 5, 4 * 5, 5 * 5...`
+    - After merged: `1, 1 * 2, 1 * 3, 2 * 2, 1 * 5.......`
 - Each ugly number can generate 3 different ugly numbers.
 
 ```c++

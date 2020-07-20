@@ -25,25 +25,22 @@ The minimum path sum from top to bottom is 11 (i.e., 2 + 3 + 5 + 1 = 11).
 class Solution {
 public:
     int minimumTotal(vector<vector<int>>& triangle) {
-        vector<int> lastrow(triangle.size(), 0);
-        lastrow[0] = triangle[0][0];
+        if (!triangle.size()) return 0;
+        vector<int> dp(triangle.size());
+        dp[0] = triangle[0][0];
 
         for (int i = 1; i < triangle.size(); i++) {
-            int prev = lastrow[0];
-            // the second row needs special treatment
-            int cur = i == 1 ? INT_MAX : lastrow[1];
-
-            lastrow[0] = prev + triangle[i][0];
+            int prel = dp[0];
+            dp[0] += triangle[i][0];
             for (int j = 1; j < i; j++) {
-                lastrow[j] = min(prev, cur) + triangle[i][j];
-                prev = cur;
-                cur = lastrow[j + 1]; 
+                int up = dp[j];
+                dp[j] = min(prel, up) + triangle[i][j];
+                prel = up;
             }
-            lastrow[i] = prev + triangle[i][i];
+            dp[i] = prel + triangle[i][i];
         }
 
-        return *min_element(lastrow.begin(), lastrow.end()); 
-
+        return *min_element(dp.begin(), dp.end());
     }
 };
 ```
@@ -55,12 +52,11 @@ public:
 class Solution {
 public:
     int minimumTotal(vector<vector<int>>& triangle) {
-        vector<int> minpath(triangle[triangle.size() - 1]);
+        vector<int> minpath(triangle.back());
 
-        for (int i = triangle.size() - 2; i >= 0; i--) {
-            for (int j = 0; j < i + 1; j++)
+        for (int i = triangle.size() - 2; i >= 0; i--)
+            for (int j = 0; j <= i; j++)
                 minpath[j] = min(minpath[j], minpath[j + 1]) + triangle[i][j];
-        }
 
         return minpath[0];
     }

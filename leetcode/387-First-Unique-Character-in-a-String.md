@@ -20,19 +20,18 @@ return 2.
 class Solution {
 public:
     int firstUniqChar(string s) {
-        vector<int> counter(26, INT_MAX);
+        vector<int> m(26, INT_MAX);
         for (int i = 0; i < s.size(); i++)
-            if (counter[s[i] - 'a'] != INT_MAX)
-                counter[s[i] - 'a'] = -1;
+            if (m[s[i] - 'a'] == INT_MAX)
+                m[s[i] - 'a'] = i;
             else
-                counter[s[i] - 'a'] = i;
-        
-        int minindex = INT_MAX;
+                m[s[i] - 'a'] = -1;
+        int res = INT_MAX;
         for (int i = 0; i < 26; i++)
-            if (counter[i] != -1)
-                minindex = min(minindex, counter[i]);
-        
-        return minindex == INT_MAX ? -1 : minindex;
+            if (m[i] != -1)
+                res = min(res, m[i]);
+
+        return res == INT_MAX ? -1 : res;
     }
 };
 ```

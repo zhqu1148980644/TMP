@@ -30,7 +30,7 @@ A solution set is:
 
 1. #### sort with backtracking O(max(nlog(n), n2)) S(n)
 
-- Sort the araay to remove duplicates solutions.
+- Sort the araay to remove duplicates solutions and facilitate pruning procedure. eg:  `2 2 3, 2 3 2, 3 2 2`.
 - Use backtrack to check each path.
 - Pre-exit(prune) when the path is impossible to extend benifited from sorting.
 
@@ -45,7 +45,7 @@ private:
             res.push_back(path); return;
         }
         for (int i = index; i < candidates.size(); i++) {
-            if (candidates[i] > target) continue;
+            if (candidates[i] > target) break;
             path.push_back(candidates[i]);
             traceback(candidates, i, target - candidates[i]);
             path.pop_back();

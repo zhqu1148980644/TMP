@@ -57,6 +57,8 @@ Therefore, you can't travel around the circuit once no matter where you start.
 class Solution {
 public:
     int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
+        // total_gas >= 0 ensures gas >= 0 during the whole trip.
+        // cur_gas >= 0 ensures gas >=  0 duting the left trip starting at start.
         int total_gas, cur_gas, start;
         total_gas = cur_gas = start = 0;
         for (int i = 0; i < gas.size(); i++) {
@@ -75,7 +77,7 @@ public:
 - In another perspective.
 - reference: https://leetcode-cn.com/problems/gas-station/solution/shi-yong-tu-de-si-xiang-fen-xi-gai-wen-ti-by-cyayc/
 - Aggregating gas unit debt(`gas[i] - cost[i]`) for every gas station, and choose the gas station next to the gas station with the lowest(negative) debt as the starting station.
-- If there is a solution to travel around the circuit once, then the aggregated gas unit at the last gas station will be `greater than or equal to 0`.
+    - Explanation: To ensure gas not be negative at all time, we need to move the gas ubunt debt line up, till the lowest debt(negative) increases to greater than or equal to 0. Since all debts after the pivot is higher than the pivot, which means the gas unit is aggregating after the pivot and the aggregated gas unit may be larger enough to pull up(added up in the first station) the whole line across zero.
 
 ```c++
 public:

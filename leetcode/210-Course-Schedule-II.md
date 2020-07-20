@@ -67,6 +67,8 @@ public:
 
 2. ##### dfs
 
+- Be cautious about the appending order and the reversement at the end;
+
 ```c++
 enum State {UNVISITED, VISITED, VISITING};
 

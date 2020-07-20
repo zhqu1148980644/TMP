@@ -50,9 +50,9 @@ Could you devise a constant space solution?
 
 - In the previous problem 98, we implemented methods to validate if the tree is BST and can find all reverse-order node pairs. ie: `prev.val > cur.cal`
 - Think of how to find out these two swapped nodes if we already have the inorder traversed sequence.
-- There are `two situations where the swap could be happen if you looked carefully on examples supplied in the problem.
-    - Two swapped nodes are `adjacent` to each other, then there will only be `one` reverse-ordered node pair in sequence of inorder traversal(it's supposed to be in ascending order). Find this node pair then swap could bring the sequence in ascending order again.
-    - If two swapped nodes are `not adjacent` to each other, then there will be `two` reverse-ordered node pairs. swap the first node of the first node pair with the second node of the second node piar would recover the tree;
+- There are two situations where the swap could be happen if you looked carefully on examples supplied in the problem.
+    - Two swapped nodes are `not adjacent` to each other, then there will only be `one` reverse-ordered node pair in sequence of inorder traversal(it's supposed to be in ascending order). Find this node pair then swap could bring the sequence in ascending order again.
+    - If two swapped nodes are `adjacent` to each other, then there will be `two` reverse-ordered node pairs. swap the first node of the first node pair with the second node of the second node piar would recover the tree;
 
 
 1. ##### inorder traversal
@@ -106,23 +106,30 @@ public:
         long prev = LONG_MIN;
         int rnum = 0;
         TreeNode * prevnode, * first, * second;
-        prevnode = first = second = nullptr;
+        first = second = prevnode = nullptr;
 
         while (root || !s.empty()) {
             if (root) {
                 s.push(root);
                 root = root->left;
-            } else {
+            }
+            else {
                 root = s.top(); s.pop();
-                if (rnum < 2 && !(prev < root->val)) {
-                    if (!first) first = prevnode;
-                    second = root; rnum++;
+                if (root->val <= prev) {
+                    if (rnum++ < 1) {
+                        first = prevnode;
+                        second = root;
+                    }
+                    else {
+                        second = root;
+                        break;
+                    }
                 }
-                prev = root->val;
-                prevnode = root;
+                prevnode = root; prev = root->val;
                 root = root->right;
             }
         }
+
         swap(first->val, second->val);
     }
 };

@@ -27,11 +27,11 @@ which are both strictly increasing.
 1. ##### dynamic programming O(n)
 
 - To make an array sorted, we just need to esure every pair of adjacent elements are ordered.
-- Thus, the problem of making `s[:i]` sorted can be solved by firstly solving `s[:i - 1]`. ie. the problem can be solved by dynamic programming.
-- To check if two adjacent elements are sorted, we need to know if the former character has been swapped. ie: The subproblem has two states: 
+- Thus, the problem of making `s[:i]` sorted can be solved by firstly solving `s[:i - 1]`(dynamic programming).
+- To check if two adjacent elements are sorted, we need to know if the former character has been swapped. The subproblem(previous pair) has two states: 
     - The last pair of characters has been swapped.
     - Remain the same.
-- Since the problem said solutions are guaranteed, every pair of ajacent elements can be sorted by swapping elements in two arrays. There are two possibilities:
+- There are two conditions need to be considered to ensure every pair of ajacent numbers are in sorted order.
     - `A[i] > A[i - 1] and B[i] > B[i - 1]`
     - `A[i] > B[i - 1] and B[i] > A[i - 1]`
     - For every possible `i`, `at least` one of two conditions is satisfied.

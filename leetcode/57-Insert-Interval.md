@@ -29,6 +29,36 @@ input types have been changed on April 15, 2019. Please reset to default code de
 - Finally build a new interval with the start and end.
 - Concatenate.
 
+```c++
+class Solution {
+public:
+    vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) {
+        vector<int> left, merged, right;
+        for (int i = 0; i < intervals.size(); i++) {
+            if (intervals[i][1] < newInterval[0])
+                left.push_back(i);
+            else if (intervals[i][0] > newInterval[1])
+                right.push_back(i);
+            else
+                merged.push_back(i);
+        }
+        vector<vector<int>> res;
+        for (auto i : left)
+            res.push_back(intervals[i]);
+        int st = newInterval[0], ed = newInterval[1];
+        if (merged.size()) {
+            st = min(intervals[merged.front()][0], newInterval[0]);
+            ed = max(intervals[merged.back()][1], newInterval[1]);
+        }
+        res.push_back({st, ed});
+        for (auto i : right)
+            res.push_back(intervals[i]);
+
+        return res;
+    }
+};
+```
+
 ```python
 class Solution(object):
     def insert(self, intervals, newInterval):

@@ -34,8 +34,8 @@ public:
         int count[26] = {0};
         for (auto & ch : s) count[ch - 'a']++;
         for (auto & ch : t) count[ch - 'a']--;
-        for (int i = 0; i < 26; i++)
-            if (count[i]) return false;
+        for (auto c : count)
+            if (c) return false;
         return true;
     }
 };

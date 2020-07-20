@@ -100,23 +100,53 @@ class Solution {
 public:
     bool isSymmetric(TreeNode* root) {
         if (!root) return true;
-        queue<TreeNode *> leftq; leftq.push(root->left);
-        queue<TreeNode *> rightq; rightq.push(root->right);
-        while (!leftq.empty() && !rightq.empty() && leftq.size() == rightq.size()) {
-            TreeNode * left = leftq.front(); leftq.pop();
-            TreeNode * right = rightq.front(); rightq.pop();
+        queue<TreeNode *> lq; lq.push(root->left);
+        queue<TreeNode *> rq; rq.push(root->right);
 
-            if (left && right) {
-                if (left->val != right->val)
+        while (!lq.empty() && !rq.empty()) {
+            TreeNode * l = lq.front(); lq.pop();
+            TreeNode * r = rq.front(); rq.pop();
+            if (l && r) {
+                if (l->val != r->val)
                     return false;
-                leftq.push(left->left);
-                leftq.push(left->right);
-                rightq.push(right->right);
-                rightq.push(right->left);
-            } else if(left || right)
+                lq.push(l->left); lq.push(l->right);
+                rq.push(r->right); rq.push(r->left);
+            }
+            else if (l || r)
                 return false;
         }
-        return leftq.empty() && rightq.empty();
+
+        return lq.empty() && rq.empty();
+    }
+};
+```
+
+Or
+
+```c++
+class Solution {
+public:
+    bool isSymmetric(TreeNode* root) {
+        if (!root) return true;
+        queue<TreeNode *> q;
+        q.push(root->left); q.push(root->right);
+
+        while (!q.empty()) {
+            TreeNode * l = q.front(); q.pop();
+            TreeNode * r = q.front(); q.pop();
+            if (l && r) {
+                if (l->val != r->val)
+                    return false;
+                q.push(l->left); q.push(r->right);
+                q.push(l->right); q.push(r->left);
+            }
+            else if (l || r)
+                return false;
+
+        }
+
+        return true;
+
     }
 };
 ```

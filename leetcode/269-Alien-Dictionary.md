@@ -70,8 +70,8 @@ public:
         // build graph and record each node's number of indegree
         for (int i = 0; i < words.size(); i++) {
             if (i + 1 >= words.size()) break;
-            int minlen = min(words[i].size(), words[i + 1].size());
-            for (int j = 0; j < minlen; j++) {
+            int j, minlen = min(words[i].size(), words[i + 1].size());
+            for (j = 0; j < minlen; j++) {
                 char src = words[i][j] - 'a';
                 char tgt = words[i + 1][j] - 'a';
                 // Caution: these two `if` can not be merged into one expression
@@ -83,11 +83,13 @@ public:
                     break;
                 }
             }
+            // for case when ["abc", "ab"], fk this alien
+            if (j == minlen && words[i].size() > words[i + 1].size())
+                return false;
         }
 
         string path;
         queue<char> q;
-        int num_chars = 0;
         for (int i = 0; i < 26; i++)
             if (allchars[i] && indeg[i] == 0)
                     q.push(i);

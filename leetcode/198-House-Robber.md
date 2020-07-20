@@ -23,10 +23,10 @@ Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (m
 
 - Support we choose to rob `n[i]` at some point, what's the larget amount of money we can achieve.
 - Obviuosly this question depends on where we robbed last time and the amount of money we achieved in the last step.
-    - I can assure that it's not `n[i - 1]` cause robbing two cotiguous house is forbidden.
+    - It can be enssured that it's not `n[i - 1]` cause robbing two cotiguous house is forbidden.
     - It can be `n[i - 2]`.
     - It can be `n[i - 3]`.
-    - It can not be `n[i - 4]` or any location before this point, if the last robbing point is `n[i - 4]`, it's clear that rob `n[i - 2]` then rob `n[i]` can achieve a higher amount of money and this contradict with the truth that we are searching the last robbing point.
+    - It can not be `n[i - 4]` or any location before this point, if the last robbing point is `n[i - 4]`, it's clear that rob `n[i - 2]` then rob `n[i]` can achieve a higher amount of money and this contradict with the truth that we are searching for the last robbing point.
 - So it's a dynamic programming problem, The answer of `n[i]` depends only on `n[i - 2]` and `n[i - 3]`.
 
 ```c++
@@ -48,6 +48,24 @@ int rob(int* nums, int numsSize){
 ```
 
 As only three values need to be reordered, we can remove the redundant dp table.
+
+```c++
+class Solution {
+public:
+    int rob(vector<int>& nums) {
+        if (nums.size() <= 1) return nums.size() ? nums[0] : 0;
+        vector<int> dp(nums.size());
+        int ppp, pp, p, res; ppp = pp = p = res = 0;
+        for (auto n : nums) {
+            int cur = max(pp, ppp) + n;
+            ppp = pp, pp = p;
+            p = cur;
+            res = max(cur, res);
+        }
+        return res;
+    }
+};
+```
 
 ```python
 # p mean previous, pp means previous of pevious ....

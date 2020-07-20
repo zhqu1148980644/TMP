@@ -24,7 +24,7 @@ Hint: Length of the given string will not exceed 100.
 
 #### Solutions
 
-- The main intuition is to firstly print border characters, then the problem can be divided into 2 subproblems.
+- The main intuition is to firstly print border characters in order to print as much as possible in less operations, then print characters in the middle.
 
 1. ##### dynamic programming with memoization
 
@@ -42,6 +42,7 @@ public:
         // firstly print the first character, then print the remaining characters.
         int time = 1 + solve(s, i + 1, j);
         // Or choose a character same as the first character, the first character will be printed when printing the left substring as these two characters are border characters.
+        /// a[*****a][****], the first a can be printed when printing the left half.
         for (int k = i + 1; k <= j; k++)
             if (s[i] == s[k])
                 time = min(time, solve(s, i + 1, k) + solve(s, k + 1, j));
@@ -71,11 +72,14 @@ public:
         for (int i = 0; i < n; i++)
             dp[i][i] = 1;
         // as we are extending i from j - 1 to 1, the current border characters is j
+        // else if we are extending from 0 to j - 1, the current border characters is i
         for (int j = 0; j < n; j++)
             for (int i = j - 1; i >= 0; i--) {
                 dp[i][j] = 1 + dp[i][j - 1];
                 for (int k = j - 1; k >= i; k--)
+                    // [****][a*****]a, the current a can be printed simultaneously in the second half.
                     if (s[k] == s[j])
+                        // or (k > 0 ? dp[i][k - 1] : 0)
                         dp[i][j] = min(dp[i][j], (k > i ? dp[i][k - 1] : 0) + dp[k][j - 1]);
             }
         return dp[0][n - 1];
@@ -100,7 +104,7 @@ class Solution {
 public:
     int strangePrinter(string s) {
         if (!s.size()) return 0;
-        int n = news.size();
+        int n = s.size();
         vector<vector<int>> dp(n, vector<int>(n, n));
         for (int i = 0; i < n; i++)
             dp[i][i] = 1;

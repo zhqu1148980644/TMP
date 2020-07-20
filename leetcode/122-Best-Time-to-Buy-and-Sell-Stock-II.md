@@ -34,15 +34,19 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 - This process equals to summing up all the price difference between two consecutive days.
 
 ```c++
-int maxProfit(int* prices, int pricesSize){
-    if (pricesSize < 2) return 0;
-    int SUM = 0;
-    for (int i = 1; i < pricesSize; i++) {
-        if (prices[i] >= prices[i - 1])
-            SUM += (prices[i] - prices[i - 1]);
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        if (prices.size() < 2) return 0;
+        int sum = 0;
+        for (int i = 1; i < prices.size(); i++) {
+            if (prices[i] > prices[i - 1])
+                sum += prices[i] - prices[i - 1];
+        }
+
+        return sum;
     }
-    return SUM;
-}
+};
 ```
 
 2. ##### Dynamic programming

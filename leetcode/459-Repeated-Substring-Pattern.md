@@ -36,7 +36,7 @@ Explanation: It's the substring "abc" four times. (And the substring "abcabc" tw
 - reference: https://leetcode-cn.com/problems/repeated-substring-pattern/solution/guan-yu-gou-zao-ssjin-xing-pan-duan-de-zheng-ming-/
 - Suppose `s` equals to `n * x`, `x` is a substring of s, denote `t` is `2 * s` containing  `2n` number of `x`.
 - Removing the first and the last characters, then `t` contains `2n - 2` number of `x`.
-    - if `s` can be found in double stripped `t`, we have `2n - 2 >= n  ==  n > 2` and s is constructed from `n > 2` substrings. 
+    - if `s` can be found in double stripped `t`, we have `2n - 2 >= n  ==  n >= 2` and s is constructed from `n > 2` substrings. 
     - else: `n = 1`, `s` is made of itself.
 
 ```c++
@@ -62,7 +62,7 @@ public:
         0  k           n
 prefix |*************   |
 suffix |   *************|
-       |*************-------------|  2 * s
+       |****************----------------|  2 * s
 ```
 
 - In next table, as the prefix equals to the suffix, the `first k` characters in prefix equals to the `first k` characters in suffix.

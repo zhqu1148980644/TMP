@@ -41,8 +41,7 @@ are considered different island shapes, because we do not consider reflection / 
 
 1. ##### dfs with recursion
 
-- As the first metting point of each island will be the top left point, the traversing path of two identical islands will be the same too.
-- We record each point's relative coordinate with respect to the first meeting point when traversing within a island.
+- We record each point's relative coordinate with respect to the top left point when traversing nodes in an island.
 
 ```c++
 class Solution {

@@ -70,6 +70,7 @@ public:
 3. ##### FenwickTree
 
 - Optimize the counting step(inner for-loop) in the second solution by using fenwick tree in `O(log(n))` time(Originally `O(n)`)
+- Discretize ratings by mapping all ratings to their corresponding positions in the sorted array.
 
 ```c++
 //  FenwickTree template

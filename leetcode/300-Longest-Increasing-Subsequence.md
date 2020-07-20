@@ -29,13 +29,10 @@ public:
         vector<int> dp(nums.size(), 1);
         int res = 0;
         for (int i = 0; i < nums.size(); i++) {
-            int maxcount = 1;
-            for (int j = 0; j < i; j++) {
+            for (int j = 0; j < i; j++)
                 if (nums[j] < nums[i])
-                    maxcount = max(maxcount, dp[j] + 1);
-            }
-            dp[i] = maxcount;
-            res = max(res, maxcount);
+                    dp[i] = max(dp[i], dp[j] + 1);
+            res = max(res, dp[i]);
         }
         return res;
     }
@@ -48,7 +45,7 @@ public:
 - `tails[i]` represents the minumum tail element among all increasing subsequences with length `i + 1`.
 - There are two situations when looping through the sequence:
     - The current number is larger than the tail of `tails`: Pushing it at the back repsents the newly found increasing subsequence with longer length.
-    - The current number is smaller than the tail: Use binary search to find the correct point in `tails` and replace the first larger one with the current number. This step does not change the correctness of `tails`(invariant).
+    - The current number is smaller than the tail: Use binary search to find the correct point in `tails` and replace the first larger/equal one with the current number. This step does not change the correctness of `tails`(invariant).
 
 ```c++
 class Solution {

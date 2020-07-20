@@ -39,9 +39,6 @@ Therefore, sum = 495 + 491 + 40 = 1026.
 
 1. ##### recursion
 
-
-Naive one. 
-
 ```c++
 /**
  * Definition for a binary tree node.
@@ -54,52 +51,20 @@ Naive one.
  */
 class Solution {
 public:
-    vector<int> path;
-    int totalsum = 0;
-
-    void preorder(TreeNode * root) {
-        path.push_back(root->val);
-        if (!root->left && !root->right) {
-            int s = 0;
-            for (int i = 0; i < path.size(); i++)
-                s = s * 10 + path[i];
-            totalsum += s;
-        } else {
-            if (root->left) preorder(root->left);
-            if (root->right) preorder(root->right);
-        }
-        path.pop_back();
-    }
-    int sumNumbers(TreeNode* root) {
-        if (root) preorder(root);
-
-        return totalsum;
-    }
-};
-```
-
-- Since nodes near the root node will be shared by many paths, massive redundant computations are wasted in the first solution.
-
-```c++
-class Solution {
-public:
-    vector<int> path;
-    int totalsum = 0;
-
-    void preorder(TreeNode * root, int num) {
-        if(!root) return;
-        num += root->val;
+    int res = 0;
+    void preorder(TreeNode * root, int cur) {
+        if (!root) return;
+        cur = cur * 10 + root->val;
         if (!root->left && !root->right)
-            totalsum += num;
+            res += cur;
         else {
-            preorder(root->left, num * 10);
-            preorder(root->right, num * 10);
+            preorder(root->left, cur);
+            preorder(root->right, cur);
         }
     }
     int sumNumbers(TreeNode* root) {
-        if (root) preorder(root, 0);
-
-        return totalsum;
+        preorder(root, 0);
+        return res;
     }
 };
 ```
@@ -109,17 +74,17 @@ Or without global variable.
 ```c++
 class Solution {
 public:
-    int summleaf(TreeNode * root, int num) {
+    int preorder(TreeNode * root, int cur) {
         if (!root) return 0;
-        num += root->val;
+        cur = cur * 10 + root->val;
         if (!root->left && !root->right)
-            return num;
+            return cur;
         else
-            return summleaf(root->left, num * 10) 
-                 + summleaf(root->right, num * 10);
+            return preorder(root->left, cur)
+                + preorder(root->right, cur);
     }
     int sumNumbers(TreeNode* root) {
-        return summleaf(root, 0);
+        return preorder(root, 0);
     }
 };
 ```
@@ -133,27 +98,27 @@ class Solution {
 public:
     int sumNumbers(TreeNode* root) {
         stack<TreeNode *> s;
-        int numsum = 0, curnum = 0;
+        int res = 0, cur = 0;
         TreeNode * prev = nullptr;
-
+        
         while (root || !s.empty()) {
             while (root) {
-                curnum = curnum * 10 + root->val;
-                s.push(root);
+                s.push(root); cur = cur * 10 + root->val;
                 root = root->left;
             }
             root = s.top();
-            if (!root->left && !root->right)
-                numsum += curnum;
             if (root->right && root->right != prev)
                 root = root->right;
             else {
-                curnum = (curnum - root->val) / 10; 
-                prev = root; s.pop();
+                s.pop();
+                if (!root->left && !root->right)
+                    res += cur;
+                cur = (cur - root->val) / 10;
+                prev = root;
                 root = nullptr;
             }
         }
-        return numsum;
+        return res;
     }
 };
 ```

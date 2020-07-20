@@ -23,14 +23,14 @@ class Solution {
 public:
     int minCost(vector<vector<int>>& costs) {
         if (!costs.size()) return 0;
-        vector<int> dp(costs[0].begin(), costs[0].end());
-        for (int i = 1; i < costs.size(); i++) {
-            int red = min(dp[1], dp[2]) + costs[i][0];
-            int blue = min(dp[0], dp[2]) + costs[i][1];
-            int green = min(dp[0], dp[1]) + costs[i][2];
-            dp =  {red, blue, green};
+        vector<int> dp(3);
+        for (auto & c : costs){
+            vector<int> dp1(3);
+            dp1[0] = min(dp[1], dp[2]) + c[0];
+            dp1[1] = min(dp[0], dp[2]) + c[1];
+            dp1[2] = min(dp[0], dp[1]) + c[2];
+            dp = move(dp1);
         }
-
         return min(dp[0], min(dp[1], dp[2]));
     }
 };

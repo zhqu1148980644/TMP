@@ -21,57 +21,34 @@ Output: False
 ```
 
 
-```c++
-class Solution {
-public:
-    bool checkRecord(string s) {
-        int counter = 0;
-        bool late = false;
-        int i = 0;
-        while (i < s.size()) {
-            if (s[i] == 'A') {
-                if (late) return false;
-                else late = true;
-            } else if (s[i] == 'L') {
-                if (i > 0 && s[i - 1] == 'L') {
-                    if (++counter == 3)
-                        return false;
-                }
-                else
-                    counter = 1;
-            }
-            i++;
-        }
-        return true;
-    }
-};
-```
+
 
 #### Solutions
 
 1. ##### Straight forward
 
-- one pass
 
 ```c++
 class Solution {
 public:
     bool checkRecord(string s) {
-        int late = 0;
-        bool absent = false;
-        for (int i = 0; i < s.size(); i++) {
-            if (s[i] == 'A') {
+        int late = 0, absent = false;
+        for (auto record : s) {
+            if (record == 'A') {
                 if (absent)
                     return false;
                 else
                     absent = true;
                 late = 0;
-            } else if (s[i] == 'L') {
+            }
+            else if (record == 'L') {
                 if (++late > 2)
                     return false;
-            } else
+            }
+            else
                 late = 0;
         }
+
         return true;
     }
 };

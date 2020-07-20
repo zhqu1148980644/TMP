@@ -35,7 +35,7 @@ The 6-th smallest number is 6 (1, 2, 2, 3, 4, 6).
 
 #### Solutions
 
-1. ##### binary search
+1. ##### binary search O(nlog(n2))
 
 - As m and n will be in the range(1, 300000), directly calculate all elements in the table could cause MLE.
 - We can use binarySearch to speed up the search process because every row are in an ascending order.

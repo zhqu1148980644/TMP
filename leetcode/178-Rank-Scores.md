@@ -37,17 +37,26 @@ For example, given the above Scores table, your query should generate the follow
 SELECT s1.Score as Score, 
     (SELECT COUNT(DISTINCT s2.Score) 
         FROM Scores s2 
-        WHERE s2.Score >= s1.Score) as Rank
+        WHERE s2.Score >= s1.Score) as 'Rank'
     FROM Scores s1
-    ORDER BY Score DESC
+    ORDER BY Score DESC;
 ```
 
+or
+
+```sql
+SELECT s1.Score, COUNT(DISTINCT s2.score) AS 'Rank'
+    FROM Scores s1, Scores s2
+    WHERE s1.Score <= s2.Score
+    GROUP BY s1.Id
+    ORDER BY s1.Score DESC;
+```
 
 2. dense rank
 
 - ranking/dense_rank/row_num
 
 ```sql
-SELECT Score, dense_rank() over(ORDER BY Score DESC) as Rank
+SELECT Score, dense_rank() over(ORDER BY Score DESC) as 'Rank'
     FROM Scores;
 ```

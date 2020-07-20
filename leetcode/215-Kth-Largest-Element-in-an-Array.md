@@ -67,7 +67,7 @@ public:
 ```
 
 
-3. ##### heap O(n) + 2(n - k)log(n)  S(k)
+3. ##### heap O(n) + nlog(k)  S(k)
 
 - Maintaing a min heap with k largest elements.
 - Other heap based selection algorithm also works.

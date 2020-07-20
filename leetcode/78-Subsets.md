@@ -24,6 +24,8 @@ Output:
 
 1. ##### backtracking
 
+- Similar to finding all combinations.
+
 ```c++
 class Solution {
     vector<vector<int>> res;
@@ -100,7 +102,7 @@ public:
         for (int i = 0; i < nums.size(); i++) {
             int size = res.size();
             while (size--) {
-                auto subset = res[size];
+                auto subet = res[size];
                 subset.push_back(nums[i]);
                 res.push_back(subset);
             }

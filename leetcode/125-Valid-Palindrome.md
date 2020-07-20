@@ -18,32 +18,24 @@ Output: false
 
 1. ##### Straight forward
 
-- Skip the undesirable characters when checking pakubdrome in the normal way(Two pointers).
+- Skip the undesirable characters when checking palindrome string in normal way(Two pointers).
 
 ```c++
-#define lower(x) (((x) <= 90) ? (x + 32) : (x)) 
-#define ischar(x) (x >='A' && x<='Z') || (x>='a' && x<='z') ||( x>='0' && x<='9')
-#define notchar(x) (!ischar(x))
-#define equal(x, y) (lower(x) == lower(y))
-#define convert(x) (ischar(x) ? (x) : 0)
-
 class Solution {
 public:
     bool isPalindrome(string s) {
-        int i = 0, j = s.length() - 1;
-        char left = '\0';
-        char right = '\0';
+        int i = 0, j = s.size() - 1;
         while (i < j) {
-            if (!convert(s[i])) {
+            if (!isalnum(s[i]))
                 i++;
-            } else if (!convert(s[j])) {
+            else if (!isalnum(s[j]))
                 j--;
-            } else {
-                // cout << s[i] << " " << s[j] << endl;
-                if (!equal(s[i], s[j]))
+            else {
+                if (!(tolower(s[i]) == tolower(s[j])))
                     return false;
-                else
-                {i++;j--;}
+                else {
+                    i++; j--;
+                }
             }
         }
         return true;

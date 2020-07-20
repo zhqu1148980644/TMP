@@ -46,7 +46,7 @@ rotate the input matrix in-place such that it becomes:
 
 1. #### transpose with reverse
 
--  transpose then reverse each row
+- transpose then reverse each row
 - reverse rows then transpose
 
 ```c++

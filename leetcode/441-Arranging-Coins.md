@@ -31,7 +31,7 @@ Because the 4th row is incomplete, we return 3.
 
 #### Solutions
 
-- Toal number of k rows:  n = (k * (k + 1)) / 2
+- Toal number of coins in k rows:  n = (k * (k + 1)) / 2
 
 1. ##### binary search
 

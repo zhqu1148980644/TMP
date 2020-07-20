@@ -79,7 +79,7 @@ public:
 
 Elegant solution borrowed from other.
 
-```c
+```c++
 class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {

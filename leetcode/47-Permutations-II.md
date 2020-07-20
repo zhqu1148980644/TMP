@@ -16,7 +16,7 @@ Output:
 
 - The difference with problems 46: Contain duplicates.
 - In general, use sort can remove duplicate permutation.
-- In a for loop in backtrack, we can only use each unused unique number once.
+- In a for loop in backtrack, we can only use each unique number once.
 
 
 1. #### backtracking with hashset
@@ -64,29 +64,26 @@ public:
 
 ```c++
 class Solution {
-private:
+public:
     vector<int> path;
     vector<vector<int>> res;
-    map<int, int> m;
-
-    void backtrace(int k, int n) {
+    unordered_map<int, int> m;
+    void backtrack(int k, int n) {
         if (k == n) {
             res.push_back(path); return;
         }
-        // since key are unique, no duplicate path will be generated.
-        for (auto & p : m) {
-            if (p.second == 0) continue;
-            --p.second;
-            path.push_back(p.first);
-            backtrace(k + 1, n);
-            ++p.second;
+        for (auto & it : m) {
+            if (!it.second) continue;
+            --it.second;
+            path.push_back(it.first);
+            backtrack(k + 1, n);
             path.pop_back();
+            ++it.second;
         }
     }
-public:
-    vector<vector<int>> permuteUnique(vector<int> & nums) {
-        for (auto x: nums) m[x]++;
-        backtrace(0, nums.size());
+    vector<vector<int>> permuteUnique(vector<int>& nums) {
+        for (auto & n : nums) m[n]++;
+        backtrack(0, nums.size());
         return res;
     }
 };

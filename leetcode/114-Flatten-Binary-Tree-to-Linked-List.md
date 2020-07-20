@@ -118,6 +118,7 @@ public:
 
 2. ##### postorder traversal
 
+- Reverse of the flattened sequence is the same as (reversed version)post traversal sequence.
 - recursion `left right root`
 - In preorder mode, the father's right child will be modified when returned from the function call.
 - We can use postorder traversal to prevent this modification though with additional cost in finding the right most child in a flattened tree.

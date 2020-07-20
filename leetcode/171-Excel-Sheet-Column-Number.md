@@ -35,7 +35,7 @@ Output: 701
 int titleToNumber(char * s){
     long num = 0;
     while (*s)
-        num = num * 26 + *s++ - '@';
+        num = num * 26 + *s++ - 'A' + 1;
     return num;
 }
 ```

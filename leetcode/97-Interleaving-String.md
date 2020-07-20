@@ -58,39 +58,33 @@ public:
 - reference: https://leetcode-cn.com/problems/interleaving-string/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-2-9/
 
 ```c++
+#define node(i, j) ((i) * ncol + (j))
 class Solution {
-private:
-    string s1;
-    string s2;
-    string s3;
-    set<pair<int, int>> forbid;
+public:
+    string s1, s2, s3;
+    int ncol;
+    // Or use set with pair<int, int> key. hash_map/set requires the key to be hashable within std
+    // while the tree map/set only requires to be comparable std::less<T>
+    unordered_set<int> forbid;
 
     bool dfs(int i, int j, int start) {
-
-        if (start == s3.size()) return true;
-        if (forbid.count(make_pair(i, j))) return false;
-
+        if (start == s3.size())
+            return true;
+        if (forbid.count(node(i, j)))
+            return false;
         bool sucess = false;
-
         if (i < s1.size() && s1[i] == s3[start])
             sucess = sucess || dfs(i + 1, j, start + 1);
-
         if (j < s2.size() && s2[j] == s3[start])
             sucess = sucess || dfs(i, j + 1, start + 1);
-
-        if (!sucess) forbid.insert(make_pair(i, j));
-
+        if (!sucess) forbid.insert(node(i, j));
         return sucess;
     }
-
-public:
     bool isInterleave(string s1, string s2, string s3) {
         if (s1.size() + s2.size() != s3.size())
             return false;
-
-        this->s1 = s1;
-        this->s2 = s2;
-        this->s3 = s3;
+        this->s1 = s1, this->s2 = s2, this->s3 = s3;
+        this->ncol = 2 * s3.size();
         return dfs(0, 0, 0);
     }
 };
@@ -106,50 +100,47 @@ class Solution:
 
         @lru_cache(None)
         def traverse(i, j, start):
-            if start == len3: return True
+            if start == len3:
+                return True
             sucess = False
             if i < len1 and s1[i] == s3[start]:
                 sucess = sucess or traverse(i + 1, j, start + 1)
             if j < len2 and s2[j] == s3[start]:
                 sucess = sucess or traverse(i, j + 1, start + 1)
-
             return sucess
-
-        len1, len2, len3 = len(s1), len(s2), len(s3)
-
-        return traverse(0, 0, 0) if len1 + len2 == len3 else False
+        
+        len1, len2, len3 = map(len, (s1, s2, s3))
+        return len1 + len2 == len3 and traverse(0, 0, 0)
 ```
 
 3. ###### bfs with queue.
 
 ```c++
-typedef pair<int, int> Pos;
-
+#define node(i, j) (((i) * ncol + (j)))
 class Solution {
 public:
     bool isInterleave(string s1, string s2, string s3) {
         if (s1.size() + s2.size() != s3.size())
             return false;
-        set<Pos> visited;
-        queue<Pos> q;
-        q.push(Pos(0, 0));
+        int ncol = 2 * s3.size();
+        unordered_set<int> visited;
+        queue<pair<int, int>> q;
+        q.push({0, 0});
 
         while (!q.empty()) {
-            auto cur = q.front(); q.pop();
-            int start = cur.first + cur.second;
-            if (start == s3.size())
+            auto [i, j] = q.front(); q.pop();
+            int st = i + j;
+            if (st == s3.size())
                 return true;
-
-            if (visited.count(cur))
+            if (visited.count(node(i, j)))
                 continue;
-            visited.insert(cur);
-            if (cur.first < s1.size() && s1[cur.first] == s3[start])
-                q.push(Pos(cur.first + 1, cur.second));
-
-            if (cur.second < s2.size() && s2[cur.second] == s3[start])
-                q.push(Pos(cur.first, cur.second + 1));
-
+            visited.insert(node(i, j));
+            if (i < s1.size() && s1[i] == s3[st])
+                q.push({i + 1, j});
+            if (j < s2.size() && s2[j] == s3[st])
+                q.push({i, j + 1});
         }
+
         return false;
     }
 };
@@ -159,7 +150,7 @@ public:
 
 - This problem can be thought as the worst case when aligning two DNA/Protein sequence with not a single pair of bases aligned.
 - So, it's a dynamic programming problem with no diagonal path in the 2d dp table.
-- Since the path may be not unique and the problem doesn't require the full path, we can solve it in `O(n)` space.
+- Since the problem doesn't require the full path, we can solve it in `O(n)` space.
 
 ```c++
 class Solution {
@@ -169,24 +160,22 @@ public:
             return false;
         vector<bool> dp(s2.size() + 1, false);
         dp[0] = true;
-        for (int i = 0, j = 0; s2[i] == s3[j] && i <= s2.size(); i++, j++)
+        for (int i = 0; s2[i] == s3[i] && i <= s2.size(); i++)
             dp[i + 1] = true;
 
         for (int i = 0; i < s1.size(); i++) {
             dp[0] = dp[0] && s1[i] == s3[i];
             for (int j = 0; j < s2.size(); j++) {
                 bool sucess = false;
-                // check the above position
-                if (dp[j + 1])
-                    sucess |= s1[i] == s3[i + j + 1];
-                // check the left position
-                if (dp[j])
-                    sucess |= sucess || s2[j] == s3[i + j + 1];
+                // s1[:i] and s2[:j - 1] matched, len is i + j + 1, thus the next charactor should
+                // be compared is s3[i + j + 1]
+                sucess = sucess || (dp[j] && s2[j] == s3[i + j + 1]);
+                sucess = sucess || (dp[j + 1] && s1[i] == s3[i + j + 1]);
                 dp[j + 1] = sucess;
             }
         }
 
-        return dp[s2.size()];
+        return dp.back();
     }
 };
 ```

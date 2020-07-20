@@ -32,57 +32,51 @@ Output: 5
 - Codes below are self-explanatory.
 
 ```c++
-#define isnum(x) (x >= '0')
-#define num(x) ((x - '0'))
 class Solution {
 public:
     int calculate(string s) {
         int cur = 0;
         char preopt = '+';
-        stack<int> nums;
+        vector<int> nums;
         s.push_back(' ');
+        
         for (int i = 0; i < s.size(); i++) {
-            if (isnum(s[i]))
-                cur = cur * 10 + num(s[i]);
+            if (isdigit(s[i]))
+                cur = cur * 10 + (s[i] - '0');
             else if (s[i] != ' ' || i == s.size() - 1) {
                 if (preopt == '+')
-                    nums.push(cur);
+                    nums.push_back(cur);
                 else if (preopt == '-')
-                    nums.push(-cur);
+                    nums.push_back(-cur);
                 else {
-                    int prenum = nums.top(); nums.pop();
+                    int prenum = nums.back(); nums.pop_back();
                     cur = preopt == '*' ? prenum * cur : prenum / cur;
-                    nums.push(cur);
+                    nums.push_back(cur);
                 }
                 preopt = s[i];
                 cur = 0;
             }
         }
-        int res = 0;
-        while (!nums.empty()) {
-            res += nums.top();
-            nums.pop();
-        }
-
-        return res;
+        return accumulate(nums.begin(), nums.end(), 0);
     }
 };
 ```
 
 2. ##### no stack
 
+- In the first solution, it's clear that only the top value of the stack is being used. A single variable is enough for storing the top value.
+
 ```c++
-#define isnum(x) (x >= '0')
 class Solution {
 public:
     int calculate(string s) {
         long cur = 0, prenum = 0, res = 0;
-        char preopt = '+';
+        char preopt = '+'; s.push_back(' ');
         for (int i = 0; i < s.size(); i++) {
-            if (isnum(s[i]))
+            if (isdigit(s[i]))
                 cur = cur * 10 + (s[i] - '0');
-            if ((!isnum(s[i]) && s[i] != ' ') || i == s.size() - 1) {
-                if (preopt == '+') {
+            else if (s[i] != ' ' || i == s.size() - 1) {
+                if  (preopt == '+') {
                     res += prenum;
                     prenum = cur;
                 }
@@ -94,12 +88,10 @@ public:
                     prenum *= cur;
                 else if (preopt == '/')
                     prenum /= cur;
-
                 preopt = s[i];
                 cur = 0;
             }
         }
-
         return res + prenum;
     }
 };

@@ -33,9 +33,9 @@ Could you do it in-place with O(1) extra space?
 2. ##### use cycle replacement
 
 - Due to the limitation of constant space, we need to move items in place.
-    - Each time we move an item to it's proper place, the item in that place need to be moved too.
+    - Each time we move an item to it's proper place, the item in that place needs to be moved too.
     - For simplicity, we can store the replaced item in the place of the moved item. Then back to the first step.
-    - As the step are always the same, this moving loop will finally back to the original place. i.e No need and no way to move anymore.
+    - As all steps are always the same, this moving loop will finally back to the original place. i.e No need and no way to move anymore.
     - Then start at the next index.
 
 

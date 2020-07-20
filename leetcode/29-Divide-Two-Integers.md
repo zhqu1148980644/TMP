@@ -41,7 +41,6 @@ public:
             dividend = -dividend;
         if (divisor > 0)
             divisor = -divisor;
-
         unsigned int res = 0, fold = 1;
         int _divisor = divisor;
         while (dividend <= _divisor) {
@@ -54,12 +53,14 @@ public:
                 divisor += divisor;
             }
             else {
-                divisor = _divisor;
-                fold = 1;
+                divisor >>= 1;
+                fold >>= 1;
             }
         }
-        
-        return neg ? 0 - res : res;
+
+        return neg ? -res : res;
     }
 };
 ```
+
+Or we can just starting from 2^31 * divisor to 2^0 * divisor

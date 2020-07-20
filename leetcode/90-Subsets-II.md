@@ -51,7 +51,7 @@ public:
 2. ##### divide and conquer with sorting
 
 - Compared to `problem 78`, duplicate subsets needs to be removed in this problem.
-- lastsize represents the number of subsets has been added to the resulting vector in the last step, and only these subsets can be used to generate non-duplicate subsets.
+- `size` represents the starting index of newlly generated subsets in the last step, only newly added subsets can be merged with a duplicate number.
 - reference: https://leetcode-cn.com/problems/subsets-ii/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-19/
 
 ```c++
@@ -60,7 +60,7 @@ public:
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
         sort(nums.begin(), nums.end());
         vector<vector<int>> res;
-        res.push_back(vector<int>());
+        res.push_back({});
         int size, start = 0;
 
         for (int i = 0; i < nums.size(); i++) {
@@ -71,7 +71,7 @@ public:
             while (start != size) {
                 auto subset = res[start];
                 subset.push_back(nums[i]);
-                res.push_back(subset);
+                res.push_back(move(subset));
                 start++;
             }
             start = size;
@@ -90,7 +90,7 @@ public:
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
         sort(nums.begin(), nums.end());
         vector<vector<int>> res;
-        res.push_back(vector<int>());
+        res.push_back({});
         int size, dupcount = 1;
 
         for (int i = 0; i < nums.size(); i++) {
@@ -120,7 +120,6 @@ public:
 
 3. ##### devide and conquer with hashmap
 
-- reference: https://leetcode-cn.com/problems/subsets-ii/solution/tong-ji-pin-ci-zai-zu-he-fa-by-mai-mai-mai-mai-zi/
 - Similar to the second iterative approach described above.
 
 ```python
@@ -137,12 +136,31 @@ class Solution:
         return res
 ```
 
+top-down
+
+```python
+class Solution:
+    def solve(self, nums: dict) -> List[List[int]]:
+        if not nums:
+            return [[]]
+        n, c = next(iter(nums.items()))
+        del nums[n]
+        subsets = self.solve(nums)
+        return subsets + [[n] * i + subset
+                            for subset in subsets
+                            for i in range(1, c + 1)]
+        
+
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        from collections import Counter
+        return self.solve(dict(Counter(nums)))
+
+```
+
 4. ##### bit operations
 
 - reference: https://leetcode-cn.com/problems/subsets-ii/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-19/
-- As we saw in the previous solution where duplicates of unique subsets containing duplicate numbers are always continous, thus, all subsets are guaranteed to be unique.
-- In this method, we only choose bit subsets with contiguous duplicates.
-- For a sorted nums `4444`. Only `1000` `1100` `1110` `1111` are selected.
+- In this method, we only choose bit subsets with contiguous duplicates. .e.g For nums `4444`. Only `1000` `1100` `1110` `1111` are selected.
 
 
 ```c++

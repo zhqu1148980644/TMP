@@ -40,19 +40,17 @@ public:
     int findPairs(vector<int>& nums, int k) {
         if (k < 0) return 0;
         unordered_map<int, int> m;
-        for (auto & num : nums)
-            m[num]++;
-
+        for (auto n : nums)
+            m[n]++;
+        
         int count = 0;
-        for (auto & it : m)
-            if (k == 0) {
-                if (it.second > 1)
-                    count++;
-            }
-            else if (m.count(it.first + k))
+        for (auto & [n, c] : m)
+            if (k == 0)
+                count += c > 1;
+            // for each smaller one, only count once
+            else if (m.count(n + k))
                 count++;
         return count;
-
     }
 };
 ```
@@ -72,6 +70,7 @@ public:
         unordered_set<int> pair;
 
         for (auto & num : nums) {
+            // only store the lower one
             if (seen.count(num + k))
                 pair.insert(num);
             if (seen.count(num - k))

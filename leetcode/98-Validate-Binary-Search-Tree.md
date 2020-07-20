@@ -32,7 +32,7 @@ Explanation: The root node's value is 5 but its right child's value is 4.
 
 #### Solutions
 
-1. ##### check lower bound and upper bound for each node
+1. ##### (preorder)check lower bound and upper bound for each node
 
 - Maintain a lowerbound and upper bound when traversing each item. 
 
@@ -72,21 +72,23 @@ public:
         stack<TreeNode *> s;
         stack<pair<long, long>> bounds;
         if (root) s.push(root);
-        bounds.push(make_pair<long, long>(LONG_MIN, LONG_MAX));
+        bounds.push({LONG_MIN, LONG_MAX});
+
         while (!s.empty()) {
             root = s.top(); s.pop();
-            auto bound = bounds.top(); bounds.pop();
-            if (!(bound.first < root->val && root->val < bound.second))
+            auto b = bounds.top(); bounds.pop();
+            if (root->val <= b.first || root->val >= b.second)
                 return false;
             if (root->right) {
                 s.push(root->right);
-                bounds.push(make_pair(root->val, bound.second));
+                bounds.push({root->val, b.second});
             }
             if (root->left) {
                 s.push(root->left);
-                bounds.push(make_pair(bound.first, root->val));
+                bounds.push({b.first,root->val});
             }
         }
+
         return true;
     }
 };

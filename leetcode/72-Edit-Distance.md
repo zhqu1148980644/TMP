@@ -41,17 +41,17 @@ exection -> execution (insert 'u')
     - else there are three possibilities: 
         - from `min[i - 1, j]`, insert a character `s2[j]` at the back of `s1[:i - 1]`. ie. one insertion in `s1`.
         - from `min[i, j - 1]`, the same. ie. one insertion in `s2`.
-        - from `min[i - 1, j - 2]`, just replace one of `s1[i]` and `s2[j]` to make them match. ie. one replacement in either `s1` or `s2`.
+        - from `min[i - 1, j - 1]`, just replace one of `s1[i]` and `s2[j]` to make them match. ie. one replacement in either `s1` or `s2`.
         - Thus we choose the `minimum` editing distance among these three situations, and `plus one`.
 
 ```c++
 class Solution {
 public:
     int minDistance(string word1, string word2) {
-        int dp[word2.size() + 1] = {0};
+        vector<int> dp(word2.size() + 1, 0);
         for (int j = 1; j <= word2.size(); j++)
             dp[j] = dp[j - 1] + 1;
-
+        
         int prel;
         for (int i = 0; i < word1.size(); i++) {
             prel = dp[0]++;
@@ -64,6 +64,7 @@ public:
                 prel = up;
             }
         }
+
         return dp[word2.size()];
     }
 };

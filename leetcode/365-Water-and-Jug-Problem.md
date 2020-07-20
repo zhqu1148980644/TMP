@@ -22,19 +22,20 @@ Output: False
 
 #### Solutions
 
-1. ##### bfs search
+1. ##### bfs search O(xy)
+
+- Time limit exceed
 
 ```c++
-#define node(i, j) ((long)(i) * (y + 1) + (j))
 class Solution {
 public:
+#define node(i, j) (((long)(i) * (y + 1) + (j)))
     bool canMeasureWater(int x, int y, int z) {
         queue<pair<int, int>> q;
         unordered_set<long> seen;
         q.push({0, 0});
         seen.insert(node(0, 0));
-        pair<int, int> states[6];
-
+        
         int curx, cury;
         while (!q.empty()) {
             curx = q.front().first;
@@ -43,28 +44,21 @@ public:
             if (curx == z || cury == z || curx + cury == z)
                 return true;
             pair<int, int> states[6] = {
-                {x, cury}, {curx, y}, 
+                {x, cury}, {curx, y},
                 {0, cury}, {curx, 0},
-                {x, 0}, {0, y}
+                {min(curx + cury, x), cury - min(x - curx, cury)}, 
+                {curx - min(y - cury, curx), min(curx + cury, y)}
             };
-            if (x - curx >= cury)
-                states[4].first = curx + cury;
-            else
-                states[4].second = cury - (x - curx);
-            if (y - cury >= curx)
-                states[5].second = curx + cury;
-            else
-                states[5].first = curx - (y - cury);
-            for (auto & s : states) {
+            for (auto & s : states)
                 if (!seen.count(node(s.first, s.second))) {
                     seen.insert(node(s.first, s.second));
                     q.push(s);
                 }
-            }
         }
         return false;
     }
 };
+
 ```
 
 
