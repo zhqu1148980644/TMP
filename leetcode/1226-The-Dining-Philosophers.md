@@ -48,6 +48,13 @@ output[i] = [a, b, c] (three integers)
 1. ##### mutex
 
 - reference: https://blog.csdn.net/Yun_Ge/article/details/89177918
+- deadlock example:
+    - Both A and B need lock a and b.
+    - When A acuquired the lock a, and at the same time B acuquired the lock b
+    - Then A waits for b and B waits for a, this state would remain the same forever.
+- Possible solutions
+    - use another lock block the operation of acquiring a or b.
+    - Let both A and B requires a first, then require b.    
 
 ```c++
 class DiningPhilosophers {
@@ -116,6 +123,30 @@ public:
 };
 ```
 
+```c++
+class DiningPhilosophers {
+public:
+    vector<mutex> mts = vector<mutex>(5);
+    DiningPhilosophers() {
+        
+    }
+
+    void wantsToEat(int philosopher,
+                    function<void()> pickLeftFork,
+                    function<void()> pickRightFork,
+                    function<void()> eat,
+                    function<void()> putLeftFork,
+                    function<void()> putRightFork) {
+		scoped_lock lk(mts[philosopher], mts[(philosopher + 1) % 5]);
+        pickLeftFork();
+        pickRightFork();
+        eat();
+        putRightFork();
+        putLeftFork();
+    }
+};
+```
+
 Python version
 
 ```python
@@ -148,4 +179,10 @@ class DiningPhilosophers:
         r.release()
 
         
+```
+
+2. ##### scoped lock
+
+```c++
+
 ```

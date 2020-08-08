@@ -88,50 +88,42 @@ public:
 ```
 
 - Instead of using bool table to prevent visiting each water multiple times, we can use inplace tag.
-- Borrowed from others
 
 ```c++
-#define node(x, y) (((x) * ncol) + (y))
 class Solution {
 public:
     int maxDistance(vector<vector<int>>& grid) {
-        int nrow = grid.size();
-        int ncol = grid[0].size();
-        queue<int> q;
-        for (int i = 0; i < nrow; i++)
-            for (int j = 0; j < ncol; j++)
-                if (grid[i][j] == 1)
-                    q.push(node(i, j));
+        int m = grid.size(), n = grid[0].size();
         
-        if (q.size() == nrow * ncol)
-            return -1;
+        int num1 = 0;
+        queue<pair<int, int>> q;
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++) {
+                if (!grid[i][j]) continue;
+                num1++;
+                q.emplace(i, j);
+            }
+        if (num1 == 0 || num1 == m * n) return -1;
+        int dirs[4][2] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
 
-        int dx[4] = {1, 0, -1, 0};
-        int dy[4] = {0, 1, 0, -1};
-        int dis = -1;
-        int x, y, nx, ny;
-        while (!q.empty()) {
+        int dis = 0;
+        while (q.size()) {
             int size = q.size();
-            dis++;
             while (size--) {
-                x = q.front() / ncol;
-                y = q.front() % ncol;
-                q.pop();
-                for (int d = 0; d < 4; d++) {
-                    nx = x + dx[d];
-                    ny = y + dy[d];
-                    int nextnode = node(nx, ny);
-                    if (nx >= 0 && ny >= 0 
-                        && nx < nrow && ny < ncol
-                        && grid[nx][ny] == 0) {
-                        q.push(nextnode);
-                        grid[nx][ny] = 1;
-                    }
+                auto [x, y] = q.front(); q.pop();
+                for (auto & d : dirs) {
+                    int nx = x + d[0], ny = y + d[1];
+                    if (nx < 0 || ny < 0 || 
+                        nx >= m || ny >= n || grid[nx][ny])
+                        continue;
+                    grid[nx][ny] = 2;
+                    q.emplace(nx, ny);
                 }
             }
+            dis++;
         }
 
-        return dis;
+        return dis - 1;
     }
 };
 ```
@@ -139,40 +131,36 @@ public:
 
 2. ##### dynamic programming
 
-- `dp[i] = min(dp[i - 1][j], dp[i][j - 1], dp[i + 1][j], dp[i][j + 1]) + 1`
+- `dp[i][j] = min(dp[i - 1][j], dp[i][j - 1], dp[i + 1][j], dp[i][j + 1]) + 1`
 
 
 ```c++
 class Solution {
 public:
     int maxDistance(vector<vector<int>>& grid) {
-        int nrow = grid.size();
-        int ncol = grid[0].size();
-        int tag = nrow * ncol + 1;
-        vector<vector<int>> dp(nrow, vector<int>(ncol));
-        //  top to bottom and left to right
-        for (int i = 0; i < nrow; i++)
-            for (int j = 0; j < ncol; j++) {
-                if (grid[i][j] == 1)
-                    continue;
-                int left = j > 0 ? dp[i][j - 1] : tag;
-                int up = i > 0 ? dp[i - 1][j] : tag;
+        int m = grid.size(), n = grid[0].size();
+        int INF = 0x3f3f3f3f;
+        vector<vector<int>> dp(m, vector<int>(n));
+
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++) {
+                if  (grid[i][j] == 1) continue;
+                int left = j ? dp[i][j - 1] : INF;
+                int up = i > 0 ? dp[i - 1][j] : INF;
                 dp[i][j] = min(left, up) + 1;
             }
-        // bottom to up and right to left
-        int maxdis = -1;
-        for (int i = nrow - 1; i >= 0; i--)
-            for (int j = ncol - 1; j >= 0; j--) {
-                if (grid[i][j] == 1)
-                    continue;
-                int right = j + 1 < ncol ? dp[i][j + 1] : tag;
-                int bottom = i + 1 < nrow ? dp[i + 1][j] : tag;
-                dp[i][j] = min(dp[i][j], min(right, bottom) + 1);
-                if (dp[i][j] < tag && dp[i][j] > maxdis)
-                    maxdis = dp[i][j];
+        
+        int res = -1;
+        for (int i = m - 1; i >= 0; i--)
+            for (int j = n - 1; j >= 0; j--) {
+                if (grid[i][j]) continue;
+                int right = j + 1 < n ? dp[i][j + 1] : INF;
+                int botom = i + 1 < m ? dp[i + 1][j] : INF;
+                dp[i][j] = min(dp[i][j], min(right, botom) + 1);
+                res = max(res, dp[i][j]);
             }
         
-        return maxdis;
+        return res > m * n ? -1 : res;
     }
 };
 ```

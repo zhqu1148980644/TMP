@@ -65,6 +65,37 @@ public:
 };
 ```
 
+or simplified version
+
+```c++
+class Solution {
+public:
+    string minWindow(string s, string t) {
+        if (s.size() < t.size()) return "";
+        vector<int> need(128), cur(128);
+        for (auto c : t) need[c]++;
+        
+        int i = 0, j = 0, cnt = 0;
+        int mini = 0, minlen = INT_MAX;
+        while (j < s.size()) {
+            int c = s[j++];
+            if (++cur[c] <= need[c] && ++cnt == t.size()) {
+                while (cnt == t.size()) {
+                    int c = s[i++];
+                    if (--cur[c] < need[c]) --cnt;
+                }
+                if (j - i + 1 < minlen) {
+                    minlen = j - i + 1;
+                    mini = i - 1;
+                }
+            }
+        }
+        
+        return minlen == INT_MAX ? "" : s.substr(mini, minlen);
+    }
+};
+```
+
 2. ##### optimized version
 
 - One hash map is sufficient to represent both the requirements in T and the character counts in the current window. i.e: deduce their counts when they appeared and increase their counts when they dispeared when shrinking the left pinters.

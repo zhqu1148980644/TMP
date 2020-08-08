@@ -136,13 +136,35 @@ public:
             double num = (nums[mid] < nums[0]) == (target < nums[0])
                        ? nums[mid]
                        : target < nums[0] ? -INFINITY : INFINITY;
-
+            // upper bound
             if (target < num)
                 hi = mid;
             else
                 lo = mid + 1;
         }
         return (lo && nums[lo - 1] == target) ? lo - 1 : -1;
+    }
+};
+```
+
+or
+
+```c++
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int lo = 0, hi = nums.size();
+        while (lo < hi) {
+            int mid = lo + ((hi - lo) >> 1);
+            int midval = (nums[mid] >= nums[lo] == target >= nums[lo]) 
+                ? nums[mid] : (target >= nums[lo] ? INT_MAX : INT_MIN);
+            // lower bound
+            if (target > midval)
+                lo = mid + 1;
+            else
+                hi = mid;
+        }
+        return lo != nums.size() && nums[lo] == target ? lo : -1;
     }
 };
 ```

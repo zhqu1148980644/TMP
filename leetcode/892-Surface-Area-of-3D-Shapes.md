@@ -43,23 +43,24 @@ Output: 46
 
 1. ##### straight forward
 
-- Count the maximum area can be made by all columns.
+- Count the maximum area can be made by all columns: ie `sum(1 + 1 + 4 * height for all bar) - 2 * (number of overlapping sefaces)`
 
 ```c++
 class Solution {
 public:
     int surfaceArea(vector<vector<int>>& grid) {
-        int area = 0;
-        for (int i = 0; i < grid.size(); i++)
-            for (int j = 0; j < grid.size(); j++) {
+        int n = grid.size(), res = 0, overlap = 0;
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++) {
                 if (!grid[i][j]) continue;
-                area += grid[i][j] * 4 + 2;
-                if (i + 1 < grid.size() && grid[i + 1][j])
-                    area -= 2 * min(grid[i][j], grid[i + 1][j]);
-                if (j + 1 < grid.size() && grid[i][j + 1])
-                    area -= 2 * min(grid[i][j], grid[i][j + 1]);
+                res += 2 + grid[i][j] * 4;
+                if (i + 1 < n && grid[i + 1][j])
+                    overlap += min(grid[i][j], grid[i + 1][j]);
+                if (j + 1 < n && grid[i][j + 1])
+                    overlap += min(grid[i][j], grid[i][j + 1]);
             }
-        return area;
+
+        return res -= 2 * overlap;
     }
 };
 ```

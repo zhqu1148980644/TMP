@@ -26,20 +26,20 @@ The rear part of the next smallest point must be monotonous increasing.
 class Solution {
 public:
     void nextPermutation(vector<int>& nums) {
-        int r = nums.size(); if (!r) return;
-        int rnext;
+        if (nums.size() <= 1) return;
+        int n = nums.size(), i = n - 2;
         // find the first reverse point.
-        while (--r) if (nums[r] > nums[r - 1]) break;
-        if (rnext = r) {
+        while (i >= 0 && nums[i] >= nums[i + 1]) i--;
+        if (i >= 0 && nums[i] < nums[i + 1]) {
+            int j = i;
             // find the last element lager than the reverse point.
-            while (rnext + 1 < nums.size() && nums[rnext + 1] > nums[r - 1])
-                rnext++;
-            swap(nums[r - 1], nums[rnext]);
+            while (j + 1 < n && nums[j + 1] > nums[i]) j++;
+            swap(nums[i], nums[j]);
         }
-        rnext = nums.size() - 1;
-        while (r < rnext)
-            // swap the region to make the next (smallest) permutaion.
-            swap(nums[r++], nums[rnext--]);
+        int j = n - 1; i++;
+        // swap the region to make the next (smallest) permutaion.
+        while (i < j)
+            swap(nums[i++], nums[j--]);
     }
 };
 ```

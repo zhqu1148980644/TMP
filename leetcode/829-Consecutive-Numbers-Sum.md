@@ -57,7 +57,7 @@ public:
 -reference: https://leetcode-cn.com/problems/consecutive-numbers-sum/solution/qiao-yong-zhi-yin-shu-fen-jie-by-erik_chen/
 - The sum of `x` consecutive numbers `a + (a + 1) + (a + 2) + ... + (a + x - 1)` is `x(a + (a + x - 1)) / 2`
 - ie: `2n = x * c` only if `x` and `c` are intergers.
-    - `2n % x = 0`
+    - `2n % x = 0` and  x * x < 2n
     - `2n / x - x = 2a - 1  % 2 = 1`
 ```c++
 class Solution {

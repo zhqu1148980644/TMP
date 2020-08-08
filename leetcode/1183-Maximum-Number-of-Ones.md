@@ -50,6 +50,7 @@ class Solution {
 public:
     int maximumNumberOfOnes(int width, int height, int sideLength, int maxOnes) {
         priority_queue<int, vector<int>, greater<int>> pq;
+        // try to set subsquare[i][j] to 1
         for (int i = 0; i < sideLength; i++)
             for (int j = 0; j < sideLength; j++) {
                 // count the number of 1 in the final matrix for each position

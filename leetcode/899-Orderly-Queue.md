@@ -42,8 +42,7 @@ In the second move, we move the 3rd character ("c") to the end, obtaining the fi
     - Iteratively moving the head character at the back till `[i, i + 1, 0, 1, ... i - 1]`.
     - Choose the second character `s[i + 1]` and push onto the back. `[i, 0, 1, ... i - 1, i + 1]`. 
     - Choose the first character `s[i]` and push onto the back. `[0, 1, ... i - 1, i + 1, i]`.
-    - Done.
-- Thus the whole string can be sorted by bubble sort.
+- Bubble sort sorts the array using the same strategy, thus the minimum string is the sorted string.
 
 ```c++
 class Solution {

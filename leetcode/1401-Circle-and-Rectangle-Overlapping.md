@@ -50,11 +50,16 @@ y1 < y2
 class Solution {
 public:
     bool checkOverlap(int radius, int x_center, int y_center, int x1, int y1, int x2, int y2) {
-        int cx = (x1 + x2) / 2, cy = (y1 + y2) / 2;
-        int vx = abs(x_center - cx), vy = abs(y_center - cy);
-        int hx = x2 - cx, hy = y2 - cy;
-        int ux = max(0, vx - hx), uy = max(0, vy - hy);
-        return ux * ux + uy * uy <= radius * radius; 
+        // center of rectangle as (0, 0)
+        double cx = (x2 + x1) / 2.0, cy = (y2 + y1) / 2.0;
+        // transform the circle into the first quadrant
+        double vx = abs(x_center - cx), vy = abs(y_center - cy);
+        // vector of the top right vertex of the rectangle
+        double hx = x2 - cx, hy = y2 - cy;
+        //  vector v - h, with negative value omitted.
+        double ux = max(0., vx - hx), uy = max(0., vy - hy);
+        // check |u|2 <= radius
+        return ux * ux + uy * uy <= radius * radius;
     }
 };
 ```

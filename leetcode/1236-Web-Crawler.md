@@ -83,20 +83,20 @@ Explanation: The startUrl links to all other pages that do not share the same ho
  *     vector<string> getUrls(string url);
  * };
  */
+
 class Solution {
 public:
     vector<string> crawl(string startUrl, HtmlParser htmlParser) {
-        int num = 0, i;
+        int num = 0, i = 0;
+        // be careful not to redefinite i
         for (i = 0; i < startUrl.size(); i++)
-            if (startUrl[i] == '/') {
+            if (startUrl[i] == '/')
                 if (++num == 3)
                     break;
-            }
         string host = startUrl.substr(0, i);
-
-        std::hash<std::string> hash;
+        hash<string> hasher;
         unordered_set<int> urls;
-        urls.insert(hash(startUrl));
+        urls.insert(hasher(startUrl));
         queue<string> q; q.push(startUrl);
         vector<string> res;
 
@@ -104,10 +104,10 @@ public:
             auto cur = q.front(); q.pop();
             res.push_back(cur);
             for (const auto & url : htmlParser.getUrls(cur)) {
-                if (urls.count(hash(url)) || url.find(host) == string::npos)
+                if (urls.count(hasher(url)) || url.find(host) == string::npos)
                     continue;
                 q.push(url);
-                urls.insert(hash(url));
+                urls.insert(hasher(url));
             }
         }
 

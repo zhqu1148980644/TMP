@@ -30,6 +30,8 @@ That partition would lead to a score of 5 + 2 + 6 = 13, which is worse.
 
 - `dp[j][k]` represents the the maximum sum of averages when `nums[:j]` is spliited into `k` continuous groups.
 - `dp[j][k] = max(dp[i][k - 1] + avg(nums[i + 1: j])) for i in (0, j)`
+- Note that `dp[i][1]` should be specifically handled while updating the dp table.
+- Notion: `K <= A.length()` means dp[n - 1][K] must be the answer, if `K > A.length()`, the answer is `dp[n - 1][A.length()()]`
 
 
 ```c++
@@ -38,20 +40,18 @@ public:
     double largestSumOfAverages(vector<int>& A, int K) {
         int n = A.size();
         vector<vector<double>> dp(n, vector<double>(K + 1));
-        vector<double> prefixsum(n);
-        for (int i = 0; i < n; i++)
-            prefixsum[i] = A[i] + (i ? prefixsum[i - 1] : 0);
-    
+        vector<double> sum(n);
+        dp[0][0] = 0;
         for (int j = 0; j < n; j++) {
-            dp[j][1] = prefixsum[j] / (j + 1);
-            for (int k = 2; k <= K && k <= j + 1; k++) {
-                for (int i = j - 1; i >= k - 2; i--) {
-                    dp[j][k] = max(dp[j][k], dp[i][k - 1] + (prefixsum[j] - prefixsum[i]) / (j - i));
-                }
-            }
+            sum[j] += A[j] + (j ? sum[j - 1] : 0);
+            dp[j][1] = sum[j] / (j + 1);
+            // can not start with 1, other wise dp[j][1] will be prefix[j]
+            for (int k = 2; k <= K && k <= j + 1; k++)
+                for (int i = j - 1; i >= k - 2; i--)
+                    dp[j][k] = max(dp[j][k], dp[i][k - 1] + (sum[j] - sum[i]) / (j - i));
         }
 
-        return *max_element(dp[n - 1].begin(), dp[n - 1].end());
+        return dp[n - 1][K];
     }
 };
 ```
@@ -64,21 +64,18 @@ class Solution {
 public:
     double largestSumOfAverages(vector<int>& A, int K) {
         int n = A.size();
-        vector<double> dp(n);
-        vector<double> prefixsum(n);
-        for (int i = 0; i < n; i++) {
-            prefixsum[i] = A[i] + (i ? prefixsum[i - 1] : 0);
-            dp[i] = prefixsum[i] / (i + 1);
+        vector<double> dp(n); dp[0] = A[0];
+        vector<int> sum(n); sum[0] = A[0];
+        for (int i = 1; i < n; i++) {
+            sum[i] += sum[i - 1] + A[i];
+            dp[i] = (double)sum[i] / (i + 1);
         }
-
-        for (int k = 2; k <= K; k++) {
+        
+        for (int k = 2; k <= K; k++)
             for (int j = n - 1; j >= 0; j--)
-                for (int i = j - 1; i >= k - 2; i--) {
-                    dp[j] = max(dp[j], dp[i] + (prefixsum[j] - prefixsum[i]) / (j - i));
-                }
-        }
-
-        // dp[i][k] must be greater than dp[i][k - 1]
+                for (int i = j - 1; i >= k - 2; i--)
+                    dp[j] = max(dp[j], dp[i] + double(sum[j] - sum[i]) / (j - i));
+        // dp[i][k] must be greater than dp[:i)[k]
         return dp[n - 1];
     }
 };
@@ -92,24 +89,25 @@ public:
     vector<double> sum;
     vector<vector<double>> memo;
     double solve(int end, int k) {
-        if (k < 2 || memo[end][k])
-            return memo[end][k];
+        if (k < 2 || memo[end][k]) return memo[end][k];
         for (int mid = end - 1; mid >= k - 2; mid--)
-            memo[end][k] = max(memo[end][k], solve(mid, k - 1) + (sum[end] - sum[mid]) / (end - mid));
+            memo[end][k] = max(memo[end][k], 
+                solve(mid, k - 1) + (sum[end] - sum[mid]) / (end - mid));
 
         return memo[end][k];
     }
     double largestSumOfAverages(vector<int>& A, int K) {
         int n = A.size();
-        sum = vector<double>(n);
         memo = vector<vector<double>>(n, vector<double>(K + 1));
+        sum = vector<double>(n);
 
         for (int i = 0; i < n; i++) {
-            sum[i] = A[i] + (i ? sum[i - 1] : 0);
+            sum[i] += A[i] + (i ? sum[i - 1] : 0);
             memo[i][1] = sum[i] / (i + 1);
         }
 
         return solve(n - 1, K);
     }
 };
+
 ```

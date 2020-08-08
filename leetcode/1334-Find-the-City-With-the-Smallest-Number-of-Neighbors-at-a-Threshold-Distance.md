@@ -72,11 +72,10 @@ public:
         for (int i = 0; i < n; i++) {
             int num = 0;
             for (int j = 0; j < n; j++)
-                if (i != j && dp[i][j] <= distanceThreshold)
-                    num++;
-            if (num < minnum || (num == minnum && i > city)) {
-                city = i;
+                num += i != j && dp[i][j] <= distanceThreshold;
+            if (num <= minnum) {
                 minnum = num;
+                city = i;
             }
         }
         return city;

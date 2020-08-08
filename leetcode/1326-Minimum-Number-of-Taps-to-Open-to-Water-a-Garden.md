@@ -103,7 +103,7 @@ public:
             if (jumps[l] < r - l)
                 jumps[l] = r - l;
         }
-
+        // furthest represents the maximum point can be reched in the last jumping range
         int furthest = 0, end = 0, count = 0;
         for (int i = 0; i < n; i++) {
             furthest = max(i + jumps[i], furthest);
@@ -111,6 +111,7 @@ public:
                 count++;
                 break;
             }
+            // reach the end of the current jumping range, plus step by 1 representing the last jump
             if (i == end) {
                 if (furthest <= end)
                     return -1;

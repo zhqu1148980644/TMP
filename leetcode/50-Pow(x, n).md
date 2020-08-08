@@ -33,27 +33,20 @@ n is a 32-bit signed integer, within the range [−231, 231 − 1]
 - Time complexity can be reduced to log2(n)
 
 ```c++
-#define sqr(x) ((x) * (x))
 class Solution {
 public:
     double pow(double x, long n) {
-        if (n == 0)
-            return 1;
+        if (n == 1) return x;
         double half = pow(x, n >> 1);
-        return (n & 1) ? half * half * x : half * half;
+        return n & 1 ? x * half * half : half * half;
     }
-
     double myPow(double x, int n) {
-        // in case of : -2147583648
-        long N = n;
-        if (!x)
-            return 0;
-        else if (x == 1)
-            return 1;
-        else if (x == -1)
-            return (n % 2) == 0 ? 1 : -1;
-        else
-            return n >= 0 ? pow(x, N) : (1.0 / pow(x, -N));
+        if (x == 1 || x == 0) return x;
+        if (n == 0) return 1;
+        if (n < 0) x = 1 / x;
+        // incase of n == INT_MIN, abs(INT_MIN) would cuase overflow
+        long N = abs(long(n));
+        return pow(x, N);
     }
 };
 ```

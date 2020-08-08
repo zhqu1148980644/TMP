@@ -41,8 +41,10 @@ n == satisfaction.length
 
 1. ##### greedy approach
 
+- reference: https://leetcode-cn.com/problems/reducing-dishes/solution/reducing-dishes-by-ikaruga/
 - Obviuosly, dishes with higher satisfaction score should be aranged more delayed.
-- Thus the first step should be sorting the satisfaction array in ascending order and the next step is to find a starting point and discard dishes before this point.
+- Thus the first step should be sorting the satisfaction array in ascending order and the next step is to find a starting point and discard dishes before this point. However this strategy has `O(n2)` time complexity.
+- Another method is to traversing dishes reversely, and iteratively add dishes as long as the prefix sum is greater than 0. By using prefix sum we can calculate `n1 * 1 + n2 * 2 + n3 * 3 ...` in `O(1)` time based on `n2 * 1 + n3 * 2 ....`
 
 ```c++
 class Solution {
@@ -54,6 +56,7 @@ public:
         for (auto n : satisfaction) {
             sum += n;
             if (sum < 0) break;
+            // + prefix sum equals to add another copy for all elements before.
             res += sum;
         }
 

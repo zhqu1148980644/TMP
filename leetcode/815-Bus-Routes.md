@@ -23,7 +23,6 @@ The best strategy is take the first bus to the bus stop 7, then take the second 
 
 1. ##### bfs with queue
 
-- Find all buses will be acrossed at each stop.
 - The traffic network is a graph composed of multiple stops and these stops are connected by buses.
 - Then this problem equals to find the minumum path in a graph.
 - Caution: `Do not use vector` to store buses as some test case contains TOO MANY duplicate stops.
@@ -34,34 +33,34 @@ class Solution {
 public:
     int numBusesToDestination(vector<vector<int>>& routes, int S, int T) {
         if (S == T) return 0;
-        unordered_map<int, set<int>> out_buses;
-        for (int bus = 0; bus < routes.size(); bus++)
-            for (auto & stop : routes[bus])
-                out_buses[stop].insert(bus);
-
+        unordered_map<int, unordered_set<int>> g;
+        for (int route = 0; route < routes.size(); route++)
+            for (auto & stop : routes[route])
+                g[stop].insert(route);
+            
         unordered_set<int> seen;
         queue<int> q;
-        int bus_count = 0;
-        q.push(S);
-        seen.insert(S);
-
+        int bus_cnt = 0;
+        q.push(S); seen.insert(S);
+        
         while (!q.empty()) {
             int size = q.size();
             while (size--) {
                 int stop = q.front(); q.pop();
-                for (auto & bus : out_buses[stop]) {
-                    for (auto & nextstop : routes[bus]) {
+                for (auto route : g[stop]) {
+                    for (auto nextstop : routes[route]) {
                         if (seen.count(nextstop))
                             continue;
                         if (nextstop == T)
-                            return bus_count + 1;
+                            return bus_cnt + 1;
                         q.push(nextstop);
                         seen.insert(nextstop);
                     }
-                    routes[bus].clear();
+                    // do not use one route multiple times
+                    routes[route].clear();
                 }
             }
-            bus_count++;
+            bus_cnt++;
         }
 
         return -1;
@@ -69,51 +68,44 @@ public:
 };
 ```
 
-
-2. ##### Another method
-
-- Treat buses as nodes.
+or
 
 ```c++
 class Solution {
 public:
     int numBusesToDestination(vector<vector<int>>& routes, int S, int T) {
         if (S == T) return 0;
-        unordered_map<int, set<int>> out_buses;
-        for (int bus = 0; bus < routes.size(); bus++)
-            for (auto & stop : routes[bus])
-                out_buses[stop].insert(bus);
-
-        vector<bool> seen(routes.size(), false);
+        unordered_map<int, unordered_set<int>> g;
+        for (int route = 0; route < routes.size(); route++)
+            for (auto stop : routes[route])
+                g[stop].insert(route);
+        
+        vector<bool> seen(routes.size());
         queue<int> q;
-        int bus_count = 0;
-        for (auto & bus : out_buses[S]) {
-            q.push(bus);
-            seen[bus] = true;
+        int bus_cnt = 0;
+        for (auto route : g[S]) {
+            q.push(route);
+            seen[route] == true;
         }
 
         while (!q.empty()) {
-            bus_count++;
+            bus_cnt++;
             int size = q.size();
             while (size--) {
-                int bus = q.front(); q.pop();
-                for (auto & stop : routes[bus]) {
-                    if (stop == T)
-                        return bus_count;
-                    for (auto & bus : out_buses[stop]) {
-                        if (seen[bus])
+                auto route = q.front(); q.pop();
+                for (auto stop : routes[route]) {
+                    if (stop == T) return bus_cnt;
+                    for (auto outroute : g[stop]) {
+                        if (seen[outroute])
                             continue;
-                        q.push(bus);
-                        seen[bus] = true;
+                        q.push(outroute);
+                        seen[outroute] = true;
                     }
                 }
+                routes[route].clear();
             }
-
         }
-
         return -1;
     }
 };
-
-
 ```

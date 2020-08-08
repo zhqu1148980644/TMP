@@ -61,10 +61,9 @@ public:
     ListNode* middleNode(ListNode* head) {
         int len = 0;
         ListNode * tmp = head;
-        while (tmp) {
-            len++;tmp = tmp->next;
-        }
-        len = len / 2;
+        while (tmp && ++len) tmp = tmp->next;
+
+        len /= 2;
         while (len--)
             head = head->next;
         return head;

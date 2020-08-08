@@ -31,6 +31,7 @@ This question is the same as 1009: https://leetcode.com/problems/complement-of-
 class Solution {
 public:
     int findComplement(int num) {
+        if (num == 0) return 1;
         int n = num, c = 0;
         while (n) {
             n >>= 1;

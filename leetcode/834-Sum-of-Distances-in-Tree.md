@@ -32,7 +32,10 @@ Note: 1 <= N <= 10000
 - `sum(y)` is the sum of distances between every node in subtree `Y` and the root node `y`.
 - `count(y)` is the total number of nodes in subtree `Y`.
     - Then `ans[x] = sum(x) + sum(y) + count(y)`
-    - if `x` is the parent node of `y` and `ans[x]` is available, according to the formula above, `ans[y]` can be calculated as `ans[y] = ans[x] + sum(x) - sum(y)`
+    - if `p` is the parent node of `c` and `ans[p]` is available, according to the formula above, `ans[c]` can be calculated as `ans[c] = ans[p] + count(p) - count(c)`
+        - `ans[x] =  sum(x) + sum(y) + count(y)`
+        - `ans[y] = sum(y) + sum(x) + count(x)`
+        - `ans[x] - ans[y] = count(y) - count(x)`
 - We use dfs to update `count` and `sum` in a bottom-up way.
 - After the first dfs, `sum(0)` equals to `ans[0]`, thus we can do dfs the second time and update `ans[i]` in a top-down manner with the second formula mentioned above.
 

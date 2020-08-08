@@ -26,6 +26,9 @@ Output: [0,0,1,1,2,5]
 
 1. ##### sort
 
+- stable: the order of elements with the same value are reserved as their initial order.
+- adaptable: the method should run faster in cases when parts of elements are already sorted.
+
 - bubble sort: `O(n2) S(1) stable adaptable`
     - iteratively reversing reversed pairs.
 - selection sort: `O(n2) S(1) stable inadaptable`
@@ -89,10 +92,11 @@ public:
     }
 
     void insertion_sort(vector<int> & nums, int lo, int hi) {
-        // binart seach the insertion position
-        auto binary_search = [&] (int lo, int hi, int target) {
+        // binary search for the insertion pos
+        // or use lower_bound
+        auto binary_search = [&](int lo, int hi, int target) {
             if (target >= nums[hi])
-                return hi;
+                return hi + 1;
             while (lo < hi) {
                 int mid = lo + ((hi - lo) >> 1);
                 if (nums[mid] < target)
@@ -102,15 +106,14 @@ public:
             }
             return lo;
         };
-
-        int start = lo;
+        int start = lo++;
         while (lo < hi) {
             int cur = nums[lo];
-            size_t pos = lo == start ? start : binary_search(start, lo - 1, cur);
+            size_t pos = binary_search(start, lo - 1, cur);
             // move sorted items after insertion point one step rightwards
             for (int i = lo; i > pos; i--)
                 nums[i] = nums[i - 1];
-            nums[pos] = cur;
+            nums[pos] =  cur;
             lo++;
         }
     }
@@ -208,7 +211,6 @@ public:
             else
                 cur++;
         }
-        nums[i] = pivot;
         // Cautious, we can ignore the duplicate region.
         quick_sort(nums, lo, i);
         quick_sort(nums, cur, hi);
@@ -217,10 +219,8 @@ public:
     void percolate_down(vector<int> & nums, int lo, int hi, int cur) {
         int curnum = nums[cur];
         while (cur < hi) {
-            int max = curnum;
-            int maxi = cur;
-            int lc = 2 * cur + 1;
-            int rc = 2 * cur + 2;
+            int max = curnum, maxi = cur;
+            int lc = 2 * cur + 1, rc = 2 * cur + 2;
             if (lc < hi && nums[lc] > max)
                 max = nums[maxi = lc];
             if (rc < hi && nums[rc] > max)
@@ -237,14 +237,17 @@ public:
     }
 
     void heapify(vector<int> & nums, int lo, int hi) {
+        // O(n)
         for (int i = hi - 1; i >= lo; i--) {
             percolate_down(nums, lo, hi, i);
         }
     }
 
     void heap_sort(vector<int> & nums, int lo, int hi) {
+        // O(n)
         heapify(nums, lo, hi);
         int front = hi - 1;
+        // O(nlog(n))
         while (front) {
             swap(nums[0], nums[front]);
             percolate_down(nums, lo, front--, 0);
@@ -266,31 +269,26 @@ public:
     }
 
     void bucket_sort(vector<int> & nums, int lo, int hi, int n) {
-        n = std::max(10, n);
         vector<vector<int>> buckets(n, vector<int>());
-        cout << n << endl;
-        auto minmax = minmax_element(nums.begin() + lo, nums.begin() + hi);
-        int min = *minmax.first, max = *minmax.second;
+        auto mm = minmax_element(nums.begin() + lo, nums.begin() + hi);
+        int min = *mm.first, max = *mm.second;
         int step = (max - min + 1) / n + 1;
         for (int i = lo; i < hi; i++) {
             int cur = nums[i];
-            vector<int> & bucket = buckets[(cur - min) / step];
+            auto & bucket = buckets[(cur - min) / step];
             bucket.push_back(cur);
-            // insert into the right point
-            if (bucket.size() >= 2) {
-                int j = bucket.size() - 2;
-                while (j >= 0 && bucket[j] > cur) {
-                    bucket[j + 1] = bucket[j];
-                    j--;
-                }
-                // Cautious, it's j + 1 not j
-                bucket[j + 1] = cur;
+            if (buckets.size() < 2) continue;
+            int j = bucket.size() - 2;
+            while (j >= 0 && bucket[j] > cur) {
+                bucket[j + 1] = bucket[j];
+                j--;
             }
+            // cautious, it's j + 1 not j
+            bucket[j + 1] = cur;
         }
         for (auto & bucket : buckets)
-            for (auto & num : bucket)
-                nums[lo++] = num;
-
+            for (auto n : bucket)
+                nums[lo++] = n;
     }
 
     vector<int> sortArray(vector<int>& nums) {

@@ -61,6 +61,7 @@ Output: 0
 #### Solutions
 
 - reference: https://leetcode-cn.com/problems/minimum-cost-to-make-at-least-one-valid-path-in-a-grid/solution/shi-wang-ge-tu-zhi-shao-you-yi-tiao-you-xiao-lu-2/
+- Convert the problem into a shortestpath problem with `0` weight for connected edges(same sign in two nodes) and `1` weight/cost for nonconnected nodes.
 
 1. ##### dijkstra O(mnlog(mn)) O((e + v) * log(e + v))
 
@@ -151,3 +152,42 @@ public:
 
 
 3. ##### SPFA
+
+```c++
+class Solution {
+public:
+    int minCost(vector<vector<int>>& grid) {
+        int m = grid.size(); if (!m) return 0;
+        int n = grid[0].size();
+        
+        queue<int> q;
+        vector<int> dis(m * n, INT_MAX);
+        // seen is used to ensuring there are no duplicates nodes in the queue
+        vector<bool> seen(m * n);
+        q.push(0); dis[0] = 0;
+
+        int target = m * n - 1;
+        int dirs[5][2] = {{0, 0}, {0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+
+        while (q.size()) {
+            int cur = q.front(); q.pop();
+            seen[cur] = false;
+            int x = cur / n, y = cur % n;
+            for (int i = 1; i <= 4; i++) {
+                int nx = x + dirs[i][0], ny = y + dirs[i][1];
+                if (nx < 0 || ny < 0 || nx >= m | ny >= n) continue;
+                int next = nx * n + ny;
+                int newdis = dis[cur] + (i != grid[x][y]);
+                if (newdis < dis[next]) {
+                    dis[next] = newdis;
+                    if (!seen[next]) {
+                        seen[next] = true;
+                        q.push(next);
+                    }
+                }
+            }
+        }
+        return dis[target];
+    }
+};
+```

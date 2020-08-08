@@ -41,25 +41,24 @@ public:
             string diag = "";
             for (int j = 1; j < n + 1; j++) {
                 string tmp = dp[j];
-                if (s1[i - 1] == s2[j - 1]) {
-                    dp[j] = diag; dp[j].push_back(s1[i - 1]);
-                }
+                if (s1[i - 1] == s2[j - 1])
+                    dp[j] = diag + s1[i - 1];
                 else if (dp[j - 1].size() > dp[j].size())
                     dp[j] = dp[j - 1];
                 diag = tmp;
             }
         }
-
         return dp[n];
     }
-    string shortestCommonSupersequence(string str1, string str2) {
+    string shortestCommonSupersequence(string str1, string & str2) {
         if (str1.size() < str2.size())
             swap(str1, str2);
+        
         int m = str1.size(), n = str2.size();
         int i = 0, j = 0;
         string res;
 
-        for (auto & c : lcs(str1, str2)) {
+        for (auto c : lcs(str1, str2)) {
             while (i < m && str1[i] != c)
                 res.push_back(str1[i++]);
             while (j < n && str2[j] != c)

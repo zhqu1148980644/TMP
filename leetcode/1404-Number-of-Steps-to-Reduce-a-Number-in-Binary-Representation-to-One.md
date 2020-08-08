@@ -67,3 +67,28 @@ public:
     }
 };
 ```
+
+- or
+- reference: https://leetcode-cn.com/problems/number-of-steps-to-reduce-a-number-in-binary-representation-to-one/solution/pan-duan-01zi-fu-er-yi-by-cieusy/
+
+```c++
+class Solution {
+public:
+    int numSteps(string s) {
+        bool carry = false;
+        int res = 0;
+        // remember not to visit i == 0
+        for (int i = s.size() - 1; i > 0; i--) {
+            if (carry) {
+                res += s[i] == '1' ? 1 : 2;
+            }
+            else {
+                res += s[i] == '1' ? 2 : 1;
+                carry = s[i] == '1';
+            }
+        }
+        
+        return res + carry;
+    }
+};
+```

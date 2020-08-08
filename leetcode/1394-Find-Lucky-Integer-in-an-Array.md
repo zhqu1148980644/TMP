@@ -64,14 +64,13 @@ Or search backwards
 class Solution {
 public:
     int findLucky(vector<int>& arr) {
-        int m[501] = {0};
-        for (auto n : arr)
-            m[n]++;
-        int res = -1;
-        for (int n = 500; n >= 1; n--)
-            if (m[n] == n && n > res)
-                return n;
-        return res;
+        vector<int> count(501);
+        for (auto n : arr) count[n]++;
+
+        for (int i = 500; i > 0; i--)
+            if (count[i] == i)
+                return i;
+        return -1;
     }
 };
 ```

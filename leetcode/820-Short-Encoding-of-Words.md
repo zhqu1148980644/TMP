@@ -84,8 +84,7 @@ public:
 };
 ```
 
-3. ##### reverse and trie O(nw)
-
+3. ##### suffix trie O(nw)
 
 ```c++
 class Solution {
@@ -122,6 +121,44 @@ public:
             if (pend->isend)
                 res += pend->size + 1;
 
+        return res;
+    }
+};
+```
+
+or
+
+```c++
+struct Trie {
+    Trie * links[26] = {nullptr};
+    const string * ps = nullptr;
+    Trie(const string * ps = nullptr) : ps(ps) {}
+    Trie * insert(const string & w) {
+        Trie * root = this;
+        for (auto c : w) {
+            if (!root->links[c - 'a'])
+                root->links[c - 'a'] = new Trie(&w);
+            root->ps = nullptr;
+            root = root->links[c - 'a'];
+        }
+        return root;
+    }
+};
+class Solution {
+public:
+    int minimumLengthEncoding(vector<string>& words) {
+        for (auto & w : words)
+            reverse(w.begin(), w.end());
+        Trie root;
+        unordered_set<Trie *> ends;
+        for (auto & w : words)
+            ends.insert(root.insert(w));
+        
+        int res = 0;
+        for (auto pend : ends)
+            if (pend->ps)
+                res += pend->ps->size() + 1;
+        
         return res;
     }
 };

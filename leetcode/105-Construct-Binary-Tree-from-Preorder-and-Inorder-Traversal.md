@@ -68,23 +68,20 @@ class Solution:
 class Solution {
 public:
     unordered_map<int, int> m;
-    int rootindex = 0;
-
-    TreeNode * build(vector<int> & preorder, int left, int right) {
-        if (left == right)
-            return nullptr;
-        int rootval = preorder[rootindex++];
-        TreeNode * root = new TreeNode(rootval);
-        root->left = build(preorder, left, m[rootval]);
-        root->right = build(preorder, m[rootval] + 1, right);
+    int cur = 0;
+    TreeNode * build(vector<int> & preorder, int lo, int hi) {
+        if (lo >= hi) return nullptr;
+        int val = preorder[cur++];
+        TreeNode * root = new TreeNode(val);
+        root->left = build(preorder, lo, m[val]);
+        root->right = build(preorder, m[val] + 1, hi);
         return root;
     }
-
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
         int index = 0;
-        for (auto & n : inorder)
+        for (auto n : inorder)
             m[n] = index++;
-        return build(preorder, 0, inorder.size());
+        return build(preorder, 0, preorder.size());
     }
 };
 ```
@@ -98,27 +95,29 @@ public:
     - For left child tree, the stop marker is the root's value.
     - For right child tree, the stop marker is the stop marker received as parameter from the parent call. i.e right boundary of the parent tree.
     - In other words, inindex represents the current node are being built in each step, when inindex reaches the `root node` of the current subtree, the building terminate.
-- It's hard to proof the correctness of this method, however, I successfully applied the same method described here to recover the binary tree from postorder and inorder traversal.
+- This strategy can also be applied to recover the binary tree from postorder and inorder traversal sequence.
 
 ```c++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
 class Solution {
 public:
-    int preindex = 0;
-    int inindex = 0;
-
+    int prei = 0, ini = 0;
     TreeNode * build(vector<int> & preorder, vector<int> & inorder, int stop) {
-        if (inindex >= inorder.size() || inorder[inindex] == stop)
-            return nullptr;
-        else {
-            int rootval = preorder[preindex++];
-            TreeNode * root = new TreeNode(rootval);
-            root->left = build(preorder, inorder, root->val);
-            inindex++;
-            root->right = build(preorder, inorder, stop);
-            return root;
-        }
+        if (ini >= inorder.size() || inorder[ini] == stop) return nullptr;
+        TreeNode * root = new TreeNode(preorder[prei++]);
+        root->left = build(preorder, inorder, root->val);
+        ini++;
+        root->right = build(preorder, inorder, stop);
+        return root;
     }
-
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
         return build(preorder, inorder, INT_MAX);
     }
@@ -164,7 +163,7 @@ public:
             }
             // link this right child as her father's right child.
             // Note: inorder[ino] doesn't equal to preorder[pre].
-            // inorder[ino] is the successor of the inorder[ino - 1] which is the left most leaf node of preorder[pre].
+            // inorder[ino] is the successor of the inorder[ino - 1] which is the left most leaf node of preorder[pre]'s right subtree.
             if (pre < preorder.size()) {
                 root = root->right = new TreeNode(preorder[pre++]);
                 s.push(root);

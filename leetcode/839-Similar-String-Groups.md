@@ -29,8 +29,11 @@ Output: 2
 
 #### Solutions
 
-- One way is check all pairs of words and build a graph based on their similarities. `O(n2 * l)  l: length of each word.`
-- Another way is to generate all possible similar strings for each word. `O(n * l2) l: length of each word.`
+
+- Check similarity: two words are similar only if the num of different char pairs is <= 2 when compared for each position.
+- Grouping
+    - One way is check all pairs of words and build a graph based on their similarities. `O(n2 * l)  l: length of each word.`
+    - Another way is to generate all possible similar strings for each word. `O(n * l2) l: length of each word.`
 
 1. ##### union find O(n2 * l)
 
@@ -38,61 +41,46 @@ Output: 2
 
 ```c++
 struct UnionFind {
-    int * nodes;
-    int * sizes;
-    UnionFind(int size) {
-        nodes = new int[size];
-        sizes = new int[size];
-        for (int i = 0; i < size; i++) {
-            nodes[i] = i;
-            sizes[i] = 1;
-        }
+    vector<int> nodes, sizes;
+    UnionFind(int size) : nodes(size), sizes(size, 1) {
+        iota(nodes.begin(), nodes.end(), 0);
     }
     int find(int node) {
-        while (nodes[node] != node) {
-            nodes[node] = nodes[nodes[node]];
-            node = nodes[node];
-        }
-        return node;
+        if (nodes[node] != node)
+            return nodes[node] = find(nodes[node]);
+        return nodes[node];
     }
     bool merge(int node1, int node2) {
-        int f1 = find(node1);
-        int f2 = find(node2);
-        if (f1 == f2)
-            return false;
-        else {
-            if (sizes[f1] > sizes[f2])
-                swap(f1, f2);
-            nodes[f1] = f2;
-            sizes[f2] += sizes[f1];
-            return true;
-        }
+        int f1 = find(node1), f2 = find(node2);
+        if (f1 == f2) return false;
+        if (sizes[f1] > sizes[f2])
+            swap(f1, f2);
+        sizes[f2] += sizes[f1];
+        nodes[f1] = f2;
+        return true;
     }
 };
-
 class Solution {
 public:
-    bool similar(const string & s1, const string & s2) {
+    bool similar(string_view s1, string_view s2) {
         int diff = 0;
+        if (s1.size() != s2.size()) return false;
         for (int i = 0; i < s1.size(); i++)
             if (s1[i] != s2[i] && ++diff > 2)
                 return false;
         return true;
     }
-
     int numSimilarGroups(vector<string>& A) {
-        unordered_set<string> seen(A.begin(), A.end());
-        vector<string> v(seen.begin(), seen.end());
+        unordered_set<string_view> seen(A.begin(), A.end());
+        vector<string_view> v(seen.begin(), seen.end());
 
         UnionFind uf(v.size());
         int numcom = v.size();
-
         for (int i = 0; i < v.size(); i++)
             for (int j = i + 1; j < v.size(); j++)
-                if (similar(v[i], v[j]))
-                    if (uf.merge(i, j))
-                        numcom--;
-
+                if (similar(v[i], v[j]) && uf.merge(i, j))
+                    numcom--;
+        
         return numcom;
     }
 };
@@ -104,48 +92,40 @@ public:
 ```c++
 class Solution {
 public:
-    vector<unordered_set<int>> g;
-    vector<int> coms;
-
-    bool similar(const string & s1, const string & s2) {
+    bool similar(const string_view & s1, const string_view & s2) {
         int diff = 0;
+        if (s1.size() != s2.size()) return false;
         for (int i = 0; i < s1.size(); i++)
             if (s1[i] != s2[i] && ++diff > 2)
                 return false;
         return true;
     }
-    
-    void dfs(int node, int id) {
-        coms[node] = id;
-        for (auto & outnode : g[node]) {
-            if (coms[outnode] == id)
-                continue;
-            dfs(outnode, id);
-        }
+    void dfs(vector<unordered_set<int>> & g, int cur, vector<int> & coms, int index) {
+        coms[cur] = index;
+        for (auto & outnode : g[cur])
+            if (coms[outnode] != index)
+                dfs(g, outnode, coms, index);
     }
-
     int numSimilarGroups(vector<string>& A) {
-        unordered_set<string> seen(A.begin(), A.end());
-        vector<string> v(seen.begin(), seen.end());
+        unordered_set<string_view> seen(A.begin(), A.end());
+        vector<string_view> v(seen.begin(), seen.end());
 
         int n = v.size();
-        coms = vector<int>(n);
-        g = vector<unordered_set<int>>(n);
-        for (int i = 0; i < n; i++) {
-            coms[i] = -1;
+        vector<unordered_set<int>> g(n);
+        for (int i = 0; i < n; i++)
             for (int j = i + 1; j < n; j++)
-                if (similar(v[i], v[j])) {
+                if (similar(A[i], A[j])) {
                     g[i].insert(j);
                     g[j].insert(i);
                 }
-        }
-
-        int id = 0;
-        for (int node = 0; node < n; node++)
-            if (coms[node] == -1) 
-                dfs(node, id++);
         
-        return id;
+        int index = 0;
+        vector<int> coms(n, -1);
+        for (int node = 0; node < n; node++)
+            if (coms[node] == -1)
+                dfs(g, node, coms, ++index);
+
+        return index;
     }
 };
 ```

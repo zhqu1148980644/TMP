@@ -59,6 +59,7 @@ public:
     - for example: `9 9 6 0 6 6 9  ->  0 1 2 1 0 -1 -2 -1`
     - Segments with maximum difference must start at these positions:
         - `0 5 6` with monotonically decreasing prefix sum: `0 -1 -2`.
+- This method is the same as that of `problem 962`
 
 ```c++
 class Solution {
@@ -67,29 +68,30 @@ public:
         int n = hours.size();
         vector<int> sum(n + 1);
         stack<int> s; s.push(0);
-
-        for (int i = 1; i < n + 1; i++) {
+        
+        for (int i = 1; i <= n; i++) {
             sum[i] = sum[i - 1] + (hours[i - 1] > 8 ? 1 : -1);
             if (sum[i] < sum[s.top()])
                 s.push(i);
         }
 
-        int maxn = 0;
+        int res = 0;
         for (int i = n; s.size() && i > 0; i--) {
             while (s.size() && sum[s.top()] < sum[i]) {
-                maxn = max(maxn, i - s.top());
+                res = max(res, i - s.top());
                 s.pop();
             }
         }
 
-        return maxn;
+        return res;
     }
 };
 ```
 
-3. ##### hashmap O(n)
+3. ##### greedy with hashmap O(n)
 
-- As prefix sums are continuous, we can fetch the segments with difference of 1 in `O(1)` time with a hashmap.
+- use hash map to record the `first` shown index of each prefix sum.
+- For a negative prefix `sum[i]`, we only need to check the distance between `sum[i]` and `sum[i] - 1`, this is due to the fact that `sum[i] - 1` must occur before `sum[i] - 2/3/4/5...`. ie: when the first time `sum[i] - 2` shows up, it's left element must be `sum[i] - 1`.
 
 ```c++
 class Solution {
@@ -100,18 +102,18 @@ public:
         unordered_map<int, int> m;
         m[0] = 0;
 
-        int maxl = 0;
-        for (int i = 1; i < n + 1; i++) {
+        int res = 0;
+        for (int i = 1; i <= n; i++) {
             sum[i] = sum[i - 1] + (hours[i - 1] > 8 ? 1 : -1);
             if (!m.count(sum[i]))
                 m[sum[i]] = i;
             if (sum[i] > 0)
-                maxl = max(maxl, i);
+                res = max(res, i);
             else if (m.count(sum[i] - 1))
-                maxl = max(i - m[sum[i] - 1], maxl);
+                res = max(i - m[sum[i] - 1], res);
         }
 
-        return maxl;
+        return res;
     }
 };
 ```

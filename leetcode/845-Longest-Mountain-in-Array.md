@@ -38,39 +38,7 @@ Explanation: There is no mountain.
 
 1. ##### straight forward
 
-```c++
-class Solution {
-public:
-    int longestMountain(vector<int>& A) {
-        int size = 1;
-        int maxsize = 0;
-        bool inc = false;
-        for (int i = 1; i < A.size(); i++) {
-            if (A[i] > A[i - 1]) {
-                size++;
-                inc = true;
-            }
-            else if (A[i] < A[i - 1] && inc) {
-                size++;
-                // end of a mountain
-                if (i == A.size() - 1 || A[i + 1] >= A[i]) {
-                    maxsize = max(maxsize, size);
-                    size = 1;
-                    inc = false;
-                }
-            }
-            else {
-                size = 1;
-                inc = false;
-            }
-        }
-
-        return maxsize >= 3 ? maxsize : 0;
-    }
-};
-```
-
-- Another version borrowed from others.
+- Borrowed from others.
 
 ```c++
 class Solution {

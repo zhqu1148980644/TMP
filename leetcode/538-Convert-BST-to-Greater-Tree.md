@@ -63,8 +63,7 @@ public:
                 root = root->right;
             }
             root = s.top(); s.pop();
-            accum += root->val;
-            root->val = accum;
+            root->val = accum += root->val;
             root = root->left;
         }
 
@@ -96,8 +95,7 @@ public:
                     continue;
                 }
             }
-            accum += root->val;
-            root->val = accum;
+            root->val = accum += root->val;
             root = root->left;
         }
 

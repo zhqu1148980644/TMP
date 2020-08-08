@@ -88,23 +88,19 @@ class Solution {
 public:
     string stoneGameIII(vector<int>& stoneValue) {
         int n = stoneValue.size();
+        // can also simply use 3 variables
         vector<int> dp(n + 1, INT_MIN);
         dp[n] = 0;
-
+        
         for (int i = n - 1; i >= 0; i--) {
-            int curscore = 0;
-            for (int j = i + 1; j <= i + 3 && j <= n; j++) {
-                curscore += stoneValue[j - 1];
-                dp[i] = max(dp[i], curscore - dp[j]);
+            int sumcsore = 0;
+            for (int j = i; j < i + 3 && j + 1 <= n; j++) {
+                sumcsore += stoneValue[j];
+                dp[i] = max(dp[i], sumcsore - dp[j + 1]);
             }
         }
 
-        if (dp[0] > 0)
-            return "Alice";
-        else if (dp[0] < 0)
-            return "Bob";
-        else
-            return "Tie";
+        return dp[0] == 0 ? "Tie" : (dp[0] > 0 ? "Alice" : "Bob");
     }
 };
 ```

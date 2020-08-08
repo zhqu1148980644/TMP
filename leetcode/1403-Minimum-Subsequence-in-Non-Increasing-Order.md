@@ -34,6 +34,8 @@ Constraints:
 
 1. ##### sort
 
+- By adding items from the largest to smallest, the first matching subsequence is the best choice.
+
 ```c++
 class Solution {
 public:
@@ -51,6 +53,31 @@ public:
         }
 
         return res;
+    }
+};
+```
+
+or
+
+```c++
+class Solution {
+public:
+    vector<int> minSubsequence(vector<int>& nums) {
+        vector<int> buckets(101), res;
+        int sum = 0, cursum = 0;
+        for (auto n : nums) {
+            buckets[n]++; sum += n;
+        }
+
+        for (int n = 100; n > 0; n--)
+            for (int i = 0; i < buckets[n]; i++) {
+                cursum += n; sum -= n;
+                res.push_back(n);
+                if (cursum > sum)
+                    return res;
+            }
+
+        return {};
     }
 };
 ```

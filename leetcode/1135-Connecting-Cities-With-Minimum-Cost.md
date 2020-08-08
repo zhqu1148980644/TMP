@@ -36,7 +36,7 @@ There is no way to connect all cities even if all edges are used.
 
 - Equivalent to build a minimum spanning tree.
 
-1. ##### kruskal algorithm with UnionFind
+1. ##### kruskal algorithm with UnionFind O(elog(e))
 
 - Sort connections by their costs in an increasing order.
 - Then iteratively put connections into the min spanning tree if cities in connection is not connected.
@@ -109,44 +109,32 @@ public:
 - Use min heap to speed up the process of searching edge with the minimal cost.
 
 ```c++
-typedef pair<int, int> Edge;
 class Solution {
 public:
     int minimumCost(int N, vector<vector<int>>& connections) {
-        vector<vector<Edge>> adjs(N + 1, vector<Edge>());
+        using E = pair<int, int>;
+        vector<vector<E>> adjs(N + 1, vector<E>());
         for (auto & e : connections) {
-            adjs[e[0]].push_back(make_pair(e[1], e[2]));
-            adjs[e[1]].push_back(make_pair(e[0], e[2]));
+            adjs[e[0]].emplace_back(e[2], e[1]);
+            adjs[e[1]].emplace_back(e[2], e[0]);
         }
-        auto greater = [](Edge & e1, Edge & e2) {
-            return e1.second > e2.second;
-        };
-        priority_queue<Edge, vector<Edge>, decltype(greater)> pq(greater);
 
+        int cost = 0, numnodes = 1;
+        // visited represent nodes within the MSP
+        vector<bool> visited(N + 1, false);
+        visited[1] = true;
+        priority_queue<E, vector<E>, greater<>> pq;
         for (auto & e : adjs[1])
             pq.push(e);
 
-        int total_cost = 0;
-        vector<bool> visited(N + 1, false);
-        visited[1] = true;
-        int num_nodes = 1;
-
         while (!pq.empty()) {
-            auto cur_edge = pq.top(); pq.pop();
-            // be carefull. Though we push only nonvisited nodes into priority queue, there may be duplicate nodes being pushed.
-            if (!visited[cur_edge.first]) {
-                int cur = cur_edge.first;
-                total_cost += cur_edge.second;
-                num_nodes++;
-
-                if (num_nodes == N)
-                    return total_cost;
-
-                visited[cur] = true;
-                for (auto & outnode : adjs[cur])
-                    if (!visited[outnode.first])
-                        pq.push(outnode);
-            }
+            auto [w, cur] = pq.top(); pq.pop();
+            if (visited[cur]) continue;
+            visited[cur] = true; cost += w;
+            if (++numnodes == N) return cost;
+            for (auto [outw, out] : adjs[cur])
+                if (!visited[out])
+                    pq.emplace(outw, out);
         }
 
         return -1;

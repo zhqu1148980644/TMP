@@ -36,38 +36,30 @@ a + b + c > 0
 
 1. ##### greedy approach
 
-- To fetch the longest string satisfying all constraints, the most ideal string should be looked like this: `aabaabccb` ie: char pairs separated by single char.
+- To fetch the longest string satisfying all constraints, the most ideal string should be looked like this: `aabaabccb` ie: char pairs(limit = 2) separated by single char.
+- reference: https://leetcode-cn.com/problems/longest-happy-string/solution/c-zhong-gui-zhong-ju-de-4msjie-fa-ji-shu-by-gary-2/
 
 ```c++
 class Solution {
 public:
     string longestDiverseString(int a, int b, int c) {
+        int limit = 2;
         vector<pair<int, char>> v = {{a, 'a'}, {b, 'b'}, {c, 'c'}};
-        static int limit = 2;
+
         string res;
-        while (true) {
-            // add char pairs with the largest amount
-            sort(v.begin(), v.end(), greater<>());
-            // remove empty characters.
-            while (v.size() && v.back().first == 0)
-                v.pop_back();
-            if (v.empty()) break;
-            auto & maxchar = *v.begin();
-            // bbca a  or bbcbb aa
-            int n = (res.size() && res.back() == maxchar.second)
-                    ? 1 : min(limit, maxchar.first);
-            while (n--) {
-                res.push_back(maxchar.second);
-                maxchar.first--;
+        int n = a + b + c;
+        while (res.size() < n) {
+            sort(v.rbegin(), v.rend());
+            if (res.empty() || res.back() != v[0].second) {
+                for (int i = 0; i < limit; i++)
+                    if (v[0].first-- > 0)
+                        res += v[0].second;
             }
-            // add a single character with the smallest amount
-            if (v.size() >= 2) {
-                res.push_back(v.back().second);
-                v.back().first--;
-            }
+            else if (v[1].first-- > 0)
+                res += v[1].second;
             else break;
         }
-
+        
         return res;
     }
 };

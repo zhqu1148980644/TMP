@@ -55,31 +55,56 @@ In total you spent $17 and covered all the days of your travel.
 ```c++
 class Solution {
 public:
-    int mincost(vector<bool> & plans, vector<int> & costs, int day, vector<int> & memo) {
+    vector<int> memo, plans;
+    int mincost(vector<int> & costs, int day) {
         if (day < 1) return 0;
-        if (memo[day] != INT_MAX)
-            return memo[day];
+        if (memo[day] != INT_MAX) return memo[day];
         if (!plans[day])
-            return memo[day] = mincost(plans, costs, day - 1, memo);
-        // check the minimum cost to pay for tickets
-        // ie: money paied in today | today - 6 | today - 29 plus previous cost
-        int min1 = costs[0] + mincost(plans, costs, day - 1, memo);
-        int min7 = costs[1] + mincost(plans, costs, day - 7, memo);
-        int min30 = costs[2] + mincost(plans, costs, day - 30, memo);
+            return mincost(costs, day - 1);
+        int min1 = costs[0] + mincost(costs, day - 1);
+        int min7 = costs[1] + mincost(costs, day - 7);
+        int min30 = costs[2] + mincost(costs, day - 30);
         return memo[day] = min(min1, min(min7, min30));
     }
     int mincostTickets(vector<int>& days, vector<int>& costs) {
-        vector<bool> plans(366, false);
-        for (auto & day : days)
-            plans[day] = true;
-        vector<int> memo(366, INT_MAX);
-
-        return mincost(plans, costs, 365, memo);
+        plans = vector<int>(366, false);
+        memo = vector<int>(366, INT_MAX);
+        for (auto d : days)
+            plans[d] = true;
+        return mincost(costs, 365);
     }
 };
 ```
 
 - Iterative version
+
+```c++
+class Solution {
+public:
+    int mincostTickets(vector<int>& days, vector<int>& costs) {
+        vector<int> plans(366, false), dp(366, INT_MAX);
+        for (auto d : days)
+            plans[d] = true;
+
+        dp[0] = 0;
+        for (int d = 1; d < 366; d++) {
+            if (!plans[d])
+                dp[d] = dp[d - 1];
+            else {
+                int min1 = costs[0] + dp[d - 1];
+                int min7 = costs[1] + (d - 7 >= 0 ? dp[d - 7] : 0);
+                int min30 = costs[2] + (d - 30 >= 0 ? dp[d - 30] : 0);
+                dp[d] = min(min1, min(min7, min30));
+            }
+        }
+        return dp[365];
+    }
+};
+```
+
+
+or
+
 
 ```c++
 class Solution {

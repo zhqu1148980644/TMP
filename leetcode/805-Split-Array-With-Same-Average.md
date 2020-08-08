@@ -49,7 +49,7 @@ public:
 };
 ```
 
-- Optimized version, use bit position represents k.
+- Optimized version, use bit position represents k. O(sum * len)
 
 
 ```c++

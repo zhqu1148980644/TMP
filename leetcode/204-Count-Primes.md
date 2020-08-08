@@ -23,6 +23,7 @@ public:
 
         for (int i = 2; i * i < n; i++) {
             // start from i * i instead of i * 2  i * 3..., because these number was marked as non-prime when visiting 2, 3 .... i - 1.
+            // or add one line above. if (isprime[i])
             for (int j = i * i; j < n; j += i)
                 isPrime[j] = false;
 

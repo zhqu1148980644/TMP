@@ -65,3 +65,51 @@ public:
     }
 };
 ```
+
+
+# 300 Metting room V in lintcode.com
+
+1. ##### dynamic programing with binary search O(nlog(n))
+
+- The same as `problem 1235`
+- reference: https://www.geeksforgeeks.org/weighted-job-scheduling-log-n-time/
+- sorting rooms by their finish time, then search for the nearest nonoverlapping room visited before. The search can be conducted by a naive lear scanning strategy or by binary search.
+- It seems like sorting rooms by `start` works too, however, it won't be possible to use binary search to speed up the seaching process.
+
+```c++
+class Solution {
+public:
+    /**
+     * @param meeting: the meetings
+     * @param value: the value
+     * @return: calculate the max value
+     */
+    int maxValue(vector<vector<int>> &meeting, vector<int> &value) {
+        // write your code here
+        for (int i = 0; i < meeting.size(); i++)
+            meeting[i].push_back(value[i]);
+        
+        sort(meeting.begin(), meeting.end(), [&](auto & v1, auto & v2) {
+            return v1[1] < v2[1]; 
+        });
+
+        vector<int> dp(meeting.size());
+        int res = 0;
+        for (int j = 0; j < meeting.size(); j++) {
+            auto  & v = meeting[j];
+            int st = v[0], ed = v[1], val = v[2];
+            dp[j] = val;
+            vector<int> target = {INT_MAX, st, INT_MAX};
+            auto find = upper_bound(meeting.begin(), meeting.end(), target, [&](auto & v1, auto  & v2) {
+                return v1[1] < v2[1];
+            });
+            if (find != meeting.begin()) {
+                dp[j] += dp[prev(find) - meeting.begin()];
+            }
+            dp[j] = max(j ?  dp[j - 1] : 0, dp[j]);
+            res = max(res, dp[j]);
+        }
+        return res;
+    }
+};
+```

@@ -29,7 +29,7 @@ There is no way to divide the array using the conditions required.
 
 1. ##### count frequency
 
-- To satisfy the condition which requires all subarrays are in strict ascending order, the minimum number(c) of arrays equals to the most frequent elements. ie: Put this elements into `c` arrays.
+- To make all subarrays are in strict ascending order(no duplidate are witin one subsequence), the minimum number of arrays equals to the frequency of the most frequent elements.
 
 ```c++
 class Solution {
@@ -46,7 +46,6 @@ public:
 ```
 
 2. ##### one pass
-
 
 ```c++
 class Solution {

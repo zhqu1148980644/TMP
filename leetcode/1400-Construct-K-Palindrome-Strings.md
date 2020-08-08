@@ -43,9 +43,9 @@ All characters in s are lower-case English letters.
 
 #### Solutions
 
-1. ##### straight forward
+1. ##### math
 
-- characters with even numbers can be placed in any palindrome strings, while each character with odd numbers can only be placed at the center of one palindrome.
+- characters with even numbers can be placed in any palindrome strings, while each character with odd numbers can only be placed at the center of one palindrome. This implies that the minimum number of palindromes can be constructed is `max(1, numodd)`, and obviously the upper bound is the total number characters.
 
 ```c++
 class Solution {

@@ -40,56 +40,23 @@ Constraints:
 ```c++
 class Solution {
 public:
-    inline int sum(int n) {
-        int s = 0;
+    int sum(int n) {
+        int res = 0;
         while (n) {
-            s += n % 10;
+            res += n % 10;
             n /= 10;
         }
-        return s;
-    }
-    int countLargestGroup(int n) {
-        unordered_map<int, vector<int>> m;
-        for (int i = 1; i <= n; i++)
-            m[sum(i)].push_back(i);
-
-        int maxsize = 1;
-        for (auto [s, v] : m)
-            maxsize = max((int)v.size(), maxsize);
-
-        int res = 0;
-        for (auto [s, v] : m)
-            res += v.size() == maxsize;
-
         return res;
     }
-};
-```
-
-Or update the maxsize when iterating.
-
-```c++
-class Solution {
-public:
-    inline int sum(int n) {
-        int s = 0;
-        while (n) {
-            s += n % 10;
-            n /= 10;
-        }
-        return s;
-    }
     int countLargestGroup(int n) {
-        unordered_map<int, vector<int>> m;
-        int maxsize = 1, res = 0;
-
-        for (int i = 1; i <= n; i++) {
-            int s = sum(i);
-            m[s].push_back(i);
-            maxsize = max(maxsize, (int)m[s].size());
-        }
-        for (auto [s, v] : m)
-            res += v.size() == maxsize;
+        int maxc = 0;
+        vector<int> count(40);
+        for (int i = 1; i <= n; i++)
+            maxc = max(maxc, ++count[sum(i)]);
+        
+        int res = 0;
+        for (auto c : count)
+            res += c == maxc;
 
         return res;
     }

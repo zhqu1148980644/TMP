@@ -40,9 +40,10 @@ Your position goes from 0->1->3->7->7->6.
 1. ##### dynamic programming with recursion  O(nlog(n)) S(nlog(n))
 
 - After moved `n` times, the total length is: `2^0 + 2^1 + .. 2^(n - 1) = 2^n - 1`.
-- This solution is based on the intuition that the number of steps is minimum when we firstly moving staight forward to the place nearest to the target. There are two cases, suppose `2 * (n - 1) < target < 2 * n`:
-    - Move `n` steps, then move backwards, ie: solve a minimal subproblem with `target = 2 * n - 1 - target`
-    - Move `n - 1` steps, move backwards, then move forward, ie: solve two minimal subproblems.
+- This solution is based on the intuition that the number of steps is minimum when we firstly moving staight forward to the place nearest to the target. There are two cases, suppose `2 ^ (n - 1) < target < 2 ^ n`:
+    - Move `n` steps, then move backwards, ie: solve a minimal subproblem with `target = 2 ^ n - 1 - target`
+    - Move `n - 1` steps, move n steps backwards, then move forward, ie: solve two minimal subproblems.
+        -  Or move `backwards 1 step` after moved n - 1 steps, then try to move n steps forward.
 - As there are `n` subproblems in total and we need to scan(backward) `log(n)` times when solving each subproblem, the time complexity is `nlog(n)`.
 
 ```c++
@@ -63,9 +64,10 @@ public:
         // choose fstep - 1, move to the nearst point before target
         fstep--;
         foward = (1 << fstep) - 1;
+        // bstep = 0 is valid too, just use two steps to slow down
         for (int bstep = 0; bstep < fstep; bstep++) {
             int backward = (1 << bstep) - 1;
-            // reverse 2 times
+            // reverse 2 times, backwards plus forwards
             minstep = min(minstep, fstep + 2 + bstep + solve(target - (foward - backward)));
         }
 
@@ -88,9 +90,8 @@ class Solution {
 public:
     int racecar(int target) {
         vector<int> dp(target + 1, INT_MAX);
-
         dp[0] = 0; dp[1] = 1;
-        for (target = 2; target < dp.size(); target++) {
+        for (int target = 2; target < dp.size(); target++) {
             int fstep = ceil(log2(target + 1));
             if (target == (1 << fstep) - 1) {
                 dp[target] = fstep;
@@ -103,11 +104,11 @@ public:
             forward = (1 << fstep) - 1;
             for (int b = 0; b < fstep; b++) {
                 int backward = (1 << b) - 1;
-                dp[target] = min(dp[target], fstep + 2 + b + dp[target - (forward - backward)]);
+                dp[target] = min(dp[target], fstep + 2 + b + dp[target - forward + backward]);
             }
         }
 
-        return dp[target - 1];
+        return dp[target];
     }
 };
 ```
@@ -116,7 +117,42 @@ public:
 
 3. ##### bfs search
 
+- reference: https://leetcode.com/problems/race-car/discuss/124312/Straightforward-C%2B%2B-BFS-solution-with-Explanation
+- Use pruning to avoid TLE. Ie. dont geting away from the target.
 
+```c++
+class Solution {
+public:
+    struct hash {
+        size_t operator()(const pair<int, int> & p) const {
+            return p.first * (size_t)1e6 + p.second;
+        }
+    };
+    int racecar(int target) {
+        unordered_set<pair<int, int>, hash> seen;
+        queue<pair<int, int>> q;
+        q.push({0, 1}); seen.insert({0, 1});
+
+        int step = 0;
+        while (!q.empty()) {
+            int size = q.size();
+            while (size--) {
+                auto [pos, sp] = q.front(); q.pop();
+                int newpos = pos + sp;
+                if (newpos == target)
+                    return step + 1;
+                // key step, if the distance is larger than (target - 0), skip
+                if (seen.insert({newpos, 2 * sp}).second && abs(newpos - target) < target)
+                    q.push({newpos, 2 * sp});
+                if (seen.insert({pos, sp > 0 ? -1 : 1}).second)
+                    q.push({pos, sp > 0 ? -1 : 1});
+            }
+            step++;
+        }
+        return -1;
+    }
+};
+```
 
 
 4. ##### dijkstra

@@ -65,25 +65,23 @@ class Solution {
 public:
     string sortString(string s) {
         int num = s.size(), m[128] = {0};
-        for (auto c : s)
-            m[c]++;
+        for (auto c : s) m[c]++;
 
         string mins;
         for (int c = 0; c < 128; c++)
-            if (m[c] > 0)
-                mins.push_back(c);
-
+            if (m[c] > 0) mins.push_back(c);
+        
         string res;
         while (res.size() < num) {
-            for (int i = 0; i < mins.size() && res.size() < num; i++)
-                if (m[mins[i]]-- > 0)
-                    res.push_back(mins[i]);
-            for (int i = mins.size() - 1; i >= 0 && res.size() < num; i--)
-                if (m[mins[i]]-- > 0)
-                    res.push_back(mins[i]);
+            // pick in ascending order
+            for (int i = 0; i < mins.size(); i++)
+                if (m[mins[i]]-- > 0) res.push_back(mins[i]);
+            // pick in decreasing order
+            for (int i = mins.size() - 1; i >= 0; i--)
+                if (m[mins[i]]-- > 0) res.push_back(mins[i]);
         }
-        return res;
 
+        return res;
     }
 };
 ```

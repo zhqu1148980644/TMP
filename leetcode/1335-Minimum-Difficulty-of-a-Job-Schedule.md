@@ -60,28 +60,26 @@ Output: 843
 class Solution {
 public:
     int minDifficulty(vector<int>& jobDifficulty, int d) {
-        if (jobDifficulty.size() < d)
-            return -1;
+        if (jobDifficulty.size() < d) return -1;
         int n = jobDifficulty.size(), day = d;
         vector<vector<int>> dp(n, vector<int>(d, INT_MAX));
-
         dp[0][0] = jobDifficulty[0];
         for (int i = 1; i < n; i++)
             dp[i][0] = max(dp[i - 1][0], jobDifficulty[i]);
         
         for (int d = 1; d < day; d++) {
             // each day must finish at least one job
-            for (int i = d; i < n; i++) {
+            for (int jobi = d; jobi < n; jobi++) {
                 int maxd = INT_MIN;
                 // each day must finish at least one job
-                for (int k = i - 1; k >= d - 1; k--) {
-                    maxd = max(maxd, jobDifficulty[k + 1]);
-                    dp[i][d] = min(dp[i][d], dp[k][d - 1] + maxd);
+                for (int prevjobi = jobi - 1; prevjobi >= d - 1; prevjobi--) {
+                    maxd = max(jobDifficulty[prevjobi + 1], maxd);
+                    dp[jobi][d] = min(dp[jobi][d], dp[prevjobi][d - 1] + maxd);
                 }
             }
         }
 
-        return dp[n - 1][day - 1];
+        return dp[n - 1][d - 1];
     }
 };
 ```

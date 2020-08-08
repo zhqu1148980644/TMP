@@ -119,3 +119,25 @@ public:
     }
 };
 ```
+
+or neat solution from stephan.
+
+```c++
+class Solution {
+public:
+    int numMatchingSubseq(string S, vector<string>& words) {
+        vector<const char *> buckets[126];
+        for (auto & w : words)
+            buckets[w[0]].push_back(w.c_str());
+        
+        for (auto c : S) {
+            auto advance = buckets[c];
+            buckets[c].clear();
+            for (auto ps : advance)
+                buckets[*++ps].push_back(ps);
+        }
+
+        return buckets[0].size();
+    }
+};
+```

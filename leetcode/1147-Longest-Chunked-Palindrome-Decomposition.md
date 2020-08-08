@@ -51,7 +51,7 @@ Explanation: We can split the string on "(a)(a)(a)".
 2. ##### greedy strategy O(n2)
 
 - reference: https://leetcode.com/problems/longest-chunked-palindrome-decomposition/discuss/350560/JavaC%2B%2BPython-Easy-Greedy-with-Prove
-- Firstly, this problem must contain at least one solution, ie: 1, the whole string
+- Firstly, this problem must has at least one solution, ie: 1, the whole string
 - How to get the solution with the largest number of substrings?
     - Suppose there exists two substrings that can be matched from the start and the back, `s1` and `s2` with `len(s1) < len(s2)`.
     - We can prove that choosing the shorter one eagerly can also leads to valid solution, and number of substrings is larger than that of the longer one.

@@ -33,10 +33,12 @@ Explanation: In this case, the given string "bcbcbc" is the longest because all 
 1. ##### prefix xor sum O(n)
 
 - reference: https://leetcode-cn.com/problems/find-the-longest-substring-containing-vowels-in-even-counts/solution/jian-dan-de-si-lu-by-mnizy/
+- A naive strategy using ordinary prefix sum(counting) would leads to `O(n2)` time complexity.
+    - However the counting of each elements are not necessarily needed, only the `odd/even` properties matters due to the fact that `odd - odd` and `even - even` are always even numbers. To record the maximum length, we record the first appearance of `odd count` and `even count`.    
 - The occurrence of each vowel character has two states(odd or even). Thus there are 32(2^5) states in total when taking all 5 vowel chatacters into consideration.
     - Use a integer to represent a certain state. For example, the lowest bit is 1 represents `a` appeared odd times, the second lowest bit is 1 represents `e` appeared odd times......
 - More specifically, we choose to record xor sums of each prefix, by using this representation, `s[i + 1: j]` is a valid substring when `prefix_state[i] == prefix_state[j]`. ie: even number of vowel characters were xored to 0 in this substring `s[i + 1: j]`.
-    - `prefix_state[0] = -1` suits for cases when the prefix itself is a valid substring.
+    - `prefix_state[0] = -1` suits for cases when the prefix itself is a valid substring(i - -1 == i + 1 == len of prefix)
     - To record valid substring with the maximum length, use a hashtable to record the first appearence of each state.
 
 ```

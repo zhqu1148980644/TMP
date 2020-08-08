@@ -43,47 +43,41 @@ Explanation:  Since there are already no fresh oranges at minute 0, the answer i
 ```c++
 class Solution {
 public:
-
     int orangesRotting(vector<vector<int>>& grid) {
-        int nrow = grid.size();
-        int ncol = grid[0].size();
+        int m = grid.size(), n = grid[0].size();
         queue<int> q;
-        vector<bool> visited(nrow * ncol, false);
-        vector<vector<int>> dirs{{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+        int dirs[4][2] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
 
         int good = 0;
-        for (int i = 0; i < nrow; i++)
-            for (int j = 0; j < ncol; j++)
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++)
                 if (grid[i][j] == 2)
-                    q.push(i * ncol + j);
+                    q.push(i * n + j);
                 else if (grid[i][j] == 1)
                     good++;
-
+        
         int minutes = 0;
-        int x, y, curx, cury;
         while (!q.empty()) {
-            // break if there are no good oranges.
             if (good == 0) break;
             int size = q.size();
             while (size--) {
-                x = q.front() / ncol;
-                y = q.front() % ncol;
+                int x = q.front() / n;
+                int y = q.front() % n;
                 q.pop();
-                for (auto dir : dirs) {
-                    curx = x + dir[0];
-                    cury = y + dir[1];
-                    if (curx < 0 || cury < 0
-                        || curx >= nrow || cury >= ncol
+                for (auto & d : dirs) {
+                    int curx = x + d[0];
+                    int cury = y + d[1];
+                    if (curx < 0 || cury < 0 
+                        || curx >= m || cury >= n 
                         || grid[curx][cury] != 1)
                         continue;
                     grid[curx][cury] = 2;
-                    q.push(curx * ncol + cury);
-                    good--;
+                    q.push(curx * n + cury);
+                    if (--good == 0) return minutes + 1;
                 }
             }
             minutes++;
         }
-
         return good > 0 ? -1 : minutes;
     }
 };
