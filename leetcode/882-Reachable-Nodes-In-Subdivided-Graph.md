@@ -49,7 +49,58 @@ Output: 23
 
 1. ##### dijkstra method
 
-- `curw` represent the weight sum of the shortest path containing the current node. ie. we moved `curw` steps and reached the current node.
+- `curw` denotes moved steps from the initial node.
+- The result is composed of two pairts, one is the number of real nodes traversed using shortest paths algorithm, another is the extra steps can be made along the edge within the constraint of `M`, each edge may be recorded two times from both sides.
+
+```
+
+    ->node1.............node2
+        -> *****    **** <-
+```
+
+```c++
+class Solution {
+public:
+#define edge(n1, n2) ((n1) * N + (n2))
+    int reachableNodes(vector<vector<int>>& edges, int M, int N) {
+        using E = pair<int, int>;
+        vector<vector<E>> g(N + 1);
+        for (auto & e : edges) {
+            g[e[0]].push_back({e[2], e[1]});
+            g[e[1]].push_back({e[2], e[0]});
+        }
+        vector<int> costs(N + 1, M + 1);
+        unordered_map<int, int> used;
+        costs[0] = used[edge(0, 0)] = 0;
+        priority_queue<E, vector<E>, greater<>> pq;
+        pq.push({0, 0});
+    
+        int res = 0;
+        while (pq.size()) {
+            auto [curw, cur] = pq.top(); pq.pop();
+            if (curw > costs[cur]) continue;
+            res++;
+            for (auto [w, out] : g[cur]) {
+                used[edge(cur, out)] = min(w, M - curw);
+                int neww = curw + w + 1;
+                if (neww < min(costs[out], M + 1)) {
+                    costs[out] = neww;
+                    pq.push({neww, out});
+                }
+            }
+        }
+
+        for (auto & e : edges) {
+            int n1 = e[0], n2 = e[1], w = e[2];
+            res += min(w, used[edge(n1, n2)] + used[edge(n2, n1)]);
+        }
+
+        return res;
+    }
+};
+```
+
+or 
 
 ```c++
 #define edge(x, y) (x < y ? x * N + y : y * N + x)
@@ -105,61 +156,4 @@ public:
         return res;
     }
 };
-```
-
-- Another version
-- In this version, `curw` denotes the moved steps.
-
-```c++
-typedef pair<int, int> E;
-
-class Solution {
-public:
-    int reachableNodes(vector<vector<int>>& edges, int M, int N) {
-        unordered_map<int, vector<E>> g;
-        for (vector<int> & e: edges) {
-            g[e[0]].push_back({e[1], e[2]});
-            g[e[1]].push_back({e[0], e[2]});
-        }
-
-        auto cmp = [](E & e1, E & e2) {
-            return e1.second > e2.second;
-        };
-    
-        map<E, int> used;
-        unordered_map<int, int> cost;
-        for (int i = 1; i < N; ++i)
-            cost[i] = M + 1;
-
-        priority_queue<E, vector<E>, decltype(cmp)> pq(cmp);
-        pq.push({0, 0}); cost[0] = 0;
-        int res = 0;
-    
-        while (!pq.empty()) {
-            int cur = pq.top().first;
-            int curw = pq.top().second;
-            pq.pop();
-            if (curw > cost[cur])
-                continue;
-            res++;
-            // No need to worry about when M - curw == 0, as each edge(directed) will only be visited once
-            for (auto & e: g[cur]) {
-                int next = e.first, weight = e.second;
-                used[{cur, next}] = min(weight, M - curw);
-
-                int neww = curw + weight + 1;
-                if (neww < min(cost[next], M + 1)) {
-                    pq.push({next, neww});
-                    cost[next] = neww;
-                }
-            }
-        }
-
-        for (vector<int> & e: edges)
-            res += min(e[2], used[{e[0], e[1]}] + used[{e[1], e[0]}]);
-
-        return res;
-    }
-};
-
 ```

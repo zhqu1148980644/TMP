@@ -79,16 +79,16 @@ public:
             return points;
         auto cmp = [&](auto & p1, auto & p2) {
             return p1[0] * p1[0] + p1[1] * p1[1] 
-                 > p2[0] * p2[0] + p2[1] * p2[1];
+                 < p2[0] * p2[0] + p2[1] * p2[1];
         };
         nth_element(
-            points.rbegin(), 
-            points.rbegin() + points.size() - K, 
-            points.rend(), 
+            points.begin(), 
+            points.begin() + K, 
+            points.end(), 
             cmp
         );
 
-        return {points.rbegin() + points.size() - K, points.rend()};
+        return {points.begin(), points.begin() + K};
     }
 };
 ```

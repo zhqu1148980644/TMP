@@ -56,26 +56,24 @@ Explanation: The order is invalid, so return "".
 class Solution {
 public:
     string alienOrder(vector<string>& words) {
-        vector<char> allchars(26, 0);
-        vector<char> indeg(26, 0);
-        vector<vector<char>> graph(26, vector<char>(26, 0));
+        vector<char> seen(26), indeg(26);
+        vector<vector<char>> graph(26, vector<char>(26));
         int dictsize = 0;
-        for (auto & word : words)
-            for (auto & c : word) {
-                if (!allchars[c - 'a']) {
+        for (auto & w : words)
+            for (auto c : w)
+                if (!seen[c - 'a']) {
                     dictsize++;
-                    allchars[c - 'a'] = 1;
+                    seen[c - 'a'] = 1;
                 }
-            }
-        // build graph and record each node's number of indegree
-        for (int i = 0; i < words.size(); i++) {
-            if (i + 1 >= words.size()) break;
+        // build graph and record each node's number of indegre
+        int n = words.size();
+        for (int i = 0; i < n - 1; i++) {
             int j, minlen = min(words[i].size(), words[i + 1].size());
             for (j = 0; j < minlen; j++) {
                 char src = words[i][j] - 'a';
                 char tgt = words[i + 1][j] - 'a';
-                // Caution: these two `if` can not be merged into one expression
                 if (src != tgt) {
+                    if (graph[tgt][src]) return "";
                     if (!graph[src][tgt]) {
                         graph[src][tgt] = 1;
                         indeg[tgt]++;
@@ -83,24 +81,23 @@ public:
                     break;
                 }
             }
-            // for case when ["abc", "ab"], fk this alien
-            if (j == minlen && words[i].size() > words[i + 1].size())
-                return false;
+            // for case when ["abc", "ab"], fk this alie
+            if (j == minlen && words[i].size() > j) return "";
         }
 
         string path;
         queue<char> q;
-        for (int i = 0; i < 26; i++)
-            if (allchars[i] && indeg[i] == 0)
-                    q.push(i);
-
+        for (int c = 0; c < 26; c++)
+            if (seen[c] && indeg[c] == 0)
+                q.push(c);
         // iteratively remove nodes with zero indegrees
-        while (!q.empty()) {
+        while (q.size()) {
             char cur = q.front(); q.pop();
-            path.push_back(cur + 'a');
-            for (int out = 0; out < 26; out++)
+            path += cur + 'a';
+            for (int out = 0; out < 26; out++) {
                 if (graph[cur][out] && --indeg[out] == 0)
                     q.push(out);
+            }
         }
         // Check whether the topological sorting sequence is complete.
         return path.size() == dictsize ? path : "";

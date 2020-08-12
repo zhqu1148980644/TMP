@@ -39,18 +39,14 @@ Space: O(n)
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        vector<int> res;
-        std::map<int, int> ci;
-        for (int i = 0; i < nums.size(); ++i) {
-            auto it = ci.find(target - nums[i]);
-            if (it != ci.end()) {
-                res = {it->second, i};
-                break;
-            } else {
-                ci.insert({nums[i], i});
-            }
+        unordered_map<int, int> m;
+        for (int i = 0; i < nums.size(); i++) {
+            if (m.count(target - nums[i]))
+                return {m[target - nums[i]], i};
+            else
+                m[nums[i]] = i;
         }
-        return res;
+        return {0, 0};
     }
 };
 ```

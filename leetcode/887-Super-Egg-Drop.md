@@ -52,6 +52,11 @@ Output: 4
 ```c++
 class Solution {
 public:
+// for 1 egg, we must test k floors to know the F within [0:k]
+// for example k = 3
+// drop at 1, break, F = 0, otherwist F must within[1:k]
+// drop at 2, break, F = 1, otherwise F must within[2:k]
+// drop at 3, break, F = 2, otherwise F = 3
     vector<vector<int>> memo;
     int solve(int k, int n) {
         if (k == 1) return n;
@@ -59,7 +64,11 @@ public:
         if (memo[k][n] != -1)
             return memo[k][n];
         int res = INT_MAX;
+        // drop at each floor form 1...n
         for (int i = 1; i <= n; i++) {
+            // choose the worst case between these two cases.
+            // egg break when drop at floor i, both floors and eggs reduce by 1
+            // egg don't break when drop at floor i, when egg break at i + 1 floor, we know the F is the current floor, thus the subproblem only contains (i:n].
             res = min(res, max(solve(k - 1, i - 1), solve(k, n - i)) + 1);
         }
 
@@ -74,7 +83,8 @@ public:
 
 
 - binary search O(knlog(n))
-- `dp(k, n)` increases when n increases.
+- `dp(k, n)` increases when n increases, when `f1(i) cross f2(i)`, `dp[k][n] = f1(i) + f2(i)` reaches the minimum value. we use binary search to find the corresponding `i`.
+- This can be seen as finding the valley for `f2(i) - f1(i)`.
 
 ```c++
 class Solution {
@@ -83,24 +93,28 @@ public:
     int solve(int k, int n) {
         if (k == 1) return n;
         if (n == 0) return 0;
-        if (memo[k][n] != -1)
-            return memo[k][n];
+        if (memo[k][n] != -1) return memo[k][n];
         int lo = 1, hi = n;
+
+        int res = INT_MAX;
         while (lo < hi) {
             int mid = lo + ((hi - lo) >> 1);
             int broken = solve(k - 1, mid - 1);
             int unbroken = solve(k, n - mid);
-            if (broken < unbroken)
+            if (broken < unbroken) {
                 lo = mid + 1;
-            else
+                res = min(res, 1 + unbroken);
+            }
+            else {
                 hi = mid;
+                res = min(res, 1 + broken);
+            }
         }
-
-        return memo[k][n] = max(solve(k - 1, hi - 1), solve(k, n - hi)) + 1;
+        res = min(res, 1 + max(solve(k - 1, lo - 1), solve(k, n - lo)));
+        return memo[k][n] = res;
     }
-
     int superEggDrop(int K, int N) {
-        memo =  vector<vector<int>>(K + 1, vector<int>(N + 1, -1));
+        memo = vector<vector<int>>(K + 1, vector<int>(N + 1, -1));
         return solve(K, N);
     }
 };

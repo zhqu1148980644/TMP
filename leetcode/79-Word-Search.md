@@ -26,48 +26,28 @@ Given word = "ABCB", return false.
 
 ```c++
 class Solution {
-private:
-    int nrow;
-    int ncol;
-    string word;
-
 public:
-
-    bool dfs(vector<vector<char>> & board, int i, int j, int start) {
-        if (start == word.size())
-            return true;
-
-        if (i < 0 || i >= nrow 
-            || j < 0 || j >= ncol 
-            || board[i][j] != word[start]
-            || board[i][j] == '.')
+    int m, n;
+    bool dfs(vector<vector<char>> & board, string & word, int i, int j, int st) {
+        if (st == word.size()) return true;
+        if (i < 0 || j < 0 || i >= m || j >= n || board[i][j] != word[st])
             return false;
+        board[i][j] = '@';
+        bool find = dfs(board, word, i + 1, j, st + 1)
+                    || dfs(board, word, i - 1, j , st + 1)
+                    || dfs(board, word, i, j + 1, st + 1)
+                    || dfs(board, word, i, j - 1, st + 1);
 
-        board[i][j] = '.';
-        bool find = dfs(board, i + 1, j, start + 1)
-                    || dfs(board, i - 1, j, start + 1)
-                    || dfs(board, i, j + 1, start + 1)
-                    || dfs(board, i, j - 1, start + 1);
-        board[i][j] = word[start];
-
+        board[i][j] = word[st];
         return find;
     }
-
     bool exist(vector<vector<char>>& board, string word) {
-        nrow = board.size();
-        if (!nrow) return false;
-        ncol = board[0].size();
-        if (nrow * ncol < word.size() || !ncol) return false;
-
-        this->word = word;
-        for (int i = 0; i < nrow; i++)
-            for (int j = 0; j < ncol; j++)
-                if (board[i][j] == word[0] && dfs(board, i, j, 0))
+        m = board.size(); n = board[0].size();
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++)
+                if (board[i][j] == word[0] && dfs(board, word, i, j, 0))
                     return true;
-
-
         return false;
-
     }
 };
 ```

@@ -44,22 +44,17 @@ public:
     string minRemoveToMakeValid(string s) {
         vector<int> brac;
         for (int i = 0; i < s.size(); i++) {
-            if (!(s[i] == '(' || s[i] == ')'))
-                continue;
-            if (s[i] == '(')
-                brac.push_back(i);
-            else if (brac.size() && s[brac.back()] == '(')
+            if (isalpha(s[i])) continue;
+            else if (brac.size() && s[i] == ')' && s[brac.back()] == '(')
                 brac.pop_back();
             else
                 brac.push_back(i);
         }
         for (auto pos : brac)
-            s[pos] = 'X';
-
+            s[pos] = '@';
         string res;
         for (auto c : s)
-            if (c != 'X') res += c;
-        
+            if (c != '@') res += c;
         return res;
     }
 };

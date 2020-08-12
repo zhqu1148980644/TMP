@@ -52,9 +52,9 @@ public:
 
         if (root->val + leftgain + rightgain > maxsum)
             maxsum = root->val + leftgain + rightgain;
-
+        // since a path can not contain branches, we choose the maximum one
         int gain = root->val + max(leftgain, rightgain);
-
+        // if the pathsum < 0, no contribution for path passes through the parent node
         return gain > 0 ? gain : 0;
     }
 
@@ -68,7 +68,7 @@ public:
 
 2. ##### postorder  O(n) S(log(n))
 
-- For each node, we calculate the maxinum-sum path that passed through the current node and only contains nodes with highth lower than this node.
+- Replace the system stack with custom stack.
 - `cursum` represents the maximum path sum across the current node(not higher than this).
 - For a certain root node, as the right child will be the previous visited node, we can use a variable `right` to record the right child's `cursum`, While the left child is not, we instead use a `stack` to store `cursum` of these left children.
 

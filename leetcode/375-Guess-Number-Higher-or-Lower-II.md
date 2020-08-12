@@ -21,6 +21,7 @@ Given a particular n ≥ 1, find out how much money you need to have to guarante
 
 #### Solutions
 
+- Binary search saves times, while dynamic programming saves costs.
 - `dp[k] = min(max(dp[lo, k - 1], dp[k + 1, hi]) + k  for k in [lo:hi])`
 
 1. ##### dfs with memoization
@@ -50,6 +51,7 @@ public:
 class Solution {
 public:
     int getMoneyAmount(int n) {
+        // must be n + 1
         vector<vector<int>> dp(n + 2, vector<int>(n + 2));
 
         for (int len = 2; len <= n; len++)
@@ -65,8 +67,7 @@ public:
 };
 ```
 
-or
-
+or manually check border cases;
 ```c++
 class Solution {
 public:

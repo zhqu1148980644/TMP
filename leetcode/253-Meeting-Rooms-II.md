@@ -24,18 +24,17 @@ Output: 1
 class Solution {
 public:
     int minMeetingRooms(vector<vector<int>>& intervals) {
-        map<int, int> delta;
-        for (auto & v : intervals) {
-            delta[v[0]]++;
-            delta[v[1]]--;
+        map<int, int> cnt;
+        for (auto & e : intervals) {
+            cnt[e[0]]++;
+            cnt[e[1]]--;
         }
-        int max_meeting = 0;
-        int num_meeting = 0;
-        for (auto & it : delta) {
-            num_meeting += it.second;
-            max_meeting = max(max_meeting, num_meeting);
-        }
-        return max_meeting;
+
+        int curc = 0, maxc = 0;
+        for (auto [t, c] : cnt)
+            maxc = max(maxc, curc += c);
+
+        return maxc;
     }
 };
 ```

@@ -43,8 +43,6 @@ public:
 
 2. #### recursion with backtracking
 
-Time complexity: complicated
-
 - Keeping track of left and right brackets.
 - Add right brackt only when the number of left brackets is larger than the number of right brackets.
 

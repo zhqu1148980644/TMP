@@ -41,3 +41,28 @@ class Solution:
 ```
 
 2. #### Backtracking
+
+```c++
+class Solution {
+public:
+    string cur;
+    vector<string> res;
+    string chars[10] = {"", "", "abc", "def", "ghi", "jkl", 
+                        "mno", "pqrs", "tuv", "wxyz"};
+    void dfs(string & digits, int st) {
+        if (st == digits.size())
+            res.push_back(cur);
+        else {
+            for (auto c : chars[digits[st] - '0']) {
+                cur += c;
+                dfs(digits, st +1);
+                cur.pop_back();
+            }
+        }
+    }
+    vector<string> letterCombinations(string digits) {
+        if (digits.size()) dfs(digits, 0);
+        return res;
+    }
+};
+```

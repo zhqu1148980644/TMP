@@ -22,7 +22,7 @@ Try to solve it in O(n log k) time and O(n) extra space.
 
 - Similar to `problem 347 Top K frequent elements`.
 
-1. ##### count sort
+1. ##### count sort O(n + klog(k))
 
 
 ```c++
@@ -58,7 +58,7 @@ public:
 ```
 
 
-2. ##### heap
+2. ##### heap O(nlog(k))
 
 ```c++
 class Solution {
@@ -96,8 +96,29 @@ public:
 ```
 
 
-3. ##### quick partition
+3. ##### quick partition O(n + klog(k))
 
 ```c++
+class Solution {
+public:
+    vector<string> topKFrequent(vector<string>& words, int k) {
+        unordered_map<string_view, int> m;
+        for (auto & w : words) m[w]++;
+        vector<string_view> vs;
+        for (auto & [s, c] : m)
+            vs.push_back(s);
+        auto cmp = [&] (auto & s1, auto & s2) {
+            int c1 = m[s1], c2 = m[s2];
+            return c1 == c2 ? s1 < s2 : c1 > c2;
+        };
+        nth_element(vs.begin(), vs.begin() + k, vs.end(), cmp);
+        vs.resize(k);
+        sort(vs.begin(), vs.end(), cmp);
 
+        vector<string> res;
+        for (auto & s : vs) res.push_back(string(s));
+
+        return res;
+    }
+};
 ```

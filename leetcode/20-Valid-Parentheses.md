@@ -39,19 +39,16 @@ This application is widely taught in textbooks related to data structure and alg
 class Solution {
 public:
     bool isValid(string s) {
-        int len;
-        if ((len = s.length()) % 2) return false;
-        stack<char> S;
-        for (int i = 0; i < len; i++) {
-            if (!S.empty()) {
-                int a = abs(S.top() - s[i]);
-                if (a && (a < 3)) {
-                    S.pop(); continue;
-                }
-            }
-            S.push(s[i]);
+        stack<char> st;
+        for (auto c : s) {
+            // speculated that ( and )  or [ and ] are very close in ascii code
+            if (st.size() && abs(st.top() - c) <= 3 && st.top() != c)
+                st.pop();
+            else
+                st.push(c);
         }
-        return S.empty();
+
+        return st.empty();
     }
 };
 ```

@@ -53,7 +53,31 @@ class Solution:
         return list(m.values())
 ```
 
-2. #### prime number multiplication
+
+2. ##### sorting
+
+```c++
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        unordered_map<string, vector<string>> m;
+        for (auto & s : strs) {
+            auto key = s;
+            // or use count sort incase of the string is too long
+            sort(key.begin(), key.end());
+            m[key].push_back(move(s));
+        }
+
+        vector<vector<string>> res;
+        for (auto & [k, vs] : m)
+            res.push_back(move(vs));
+
+        return res;
+    }
+};
+```
+
+3. #### prime number multiplication
 
 - The idea is that the mulplication result of different prime numbers within a set are unique.
     - map each character a-z to different prime numbers. Then use multiplication as the group key.

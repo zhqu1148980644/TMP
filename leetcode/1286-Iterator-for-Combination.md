@@ -146,43 +146,44 @@ public:
 
 ```c++
 class CombinationIterator {
-private:
-    string characters;
-    string com;
-    bool finished = false;
-
 public:
+    string chars;
+    vector<int> com;
+    bool finished = false;
     CombinationIterator(string characters, int combinationLength) {
-        this->characters = characters;
+        chars = characters;
         com.resize(combinationLength);
-        for (int i = 0; i < combinationLength; i++)
-            com[i] = i;
+        iota(com.begin(), com.end(), 0);
     }
-
+    
     string next() {
         string res;
         for (auto & index : com)
-            res += characters[index];
-
-        int len = characters.size(), comlen = com.size();
-        int liftup = comlen - 1;
-        while (liftup >= 0 && com[liftup] == len - comlen + liftup)
-            liftup--;
-
-        if (liftup == -1)
+            res += chars[index];
+        int len = chars.size(), comlen = com.size();
+        int i= comlen - 1;
+        while (i >= 0 && com[i] == len - (comlen - i))
+            i--;
+        if (i == -1)
             finished = true;
         else {
-            com[liftup]++;
-            while (++liftup < comlen)
-                com[liftup] = com[liftup - 1] + 1;
+            com[i]++;
+            while (++i < comlen)
+                com[i] = com[i - 1] + 1;
         }
 
         return res;
     }
-
+    
     bool hasNext() {
-        return !finished; 
+        return !finished;
     }
 };
 
+/**
+ * Your CombinationIterator object will be instantiated and called as such:
+ * CombinationIterator* obj = new CombinationIterator(characters, combinationLength);
+ * string param_1 = obj->next();
+ * bool param_2 = obj->hasNext();
+ */
 ```

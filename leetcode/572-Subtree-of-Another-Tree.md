@@ -215,6 +215,7 @@ public:
         auto hr = hash(root->right, target, find);
         sprintf(buff, "%d,%d|%d", root->val, hl, hr);
         size_t curh = hasher(buff);
+        // the pair also contains the target tree, could be used for collision checking
         if (target.second && target.first == curh)
             find = true;
 
