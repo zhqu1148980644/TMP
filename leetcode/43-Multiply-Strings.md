@@ -68,11 +68,11 @@ public:
 };
 ```
 
-2. ##### 
+2. ##### math
 
 - borrowed for others
 - Instead of calculating level by level and suming up all numbers, we calculate each digit in the result number from the last to the first.
-    - The multiplication's digit length will not be longer than the sum length of two mutiplier's digit length.
+    - The multiplication's digit length will be no longer than the sum length of two mutiplier's digit length.
     - The multiplication of two digits `num1[i]` and `num2[j]` will contribute to digits in position `i + j` and `i + j + 1` of the final result.
 
 ![](https://drscdn.500px.org/photo/130178585/m%3D2048/300d71f784f679d5e70fadda8ad7d68f)

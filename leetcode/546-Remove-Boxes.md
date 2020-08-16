@@ -35,36 +35,27 @@ Explanation:
     - The dp table needs another dimension to records the number of continous elements with the same color as the last element of the current subarray.
     - `dp[i][j][k]` denotes the maximum points in subarray `s[i:j]` with `k` number of continous elements right to `s[j]`(not include s[j]) with value equal to `s[j]` after the last merge operation.
     - Thus, the dp transition formula is:
-    - `dp[i][j][k] = max(dp[i][mid][k + 1] + dp[mid + 1, j - 1][0]) for mid in range(i, j) if s[mid] == s[j]`. ie: Firstly erases the middle parts, then leaves `k + 1` continous elements after `s[mid]` and merge the this remaining parts.
+    - `dp[i][j][k] = max(dp[i][mid][k + 1] + dp[mid + 1, j - 1][0]) for mid in range(i, j) if s[mid] == s[j]`. ie: Firstly erases the middle parts `s[mid + 1: j - 1]`, then leaves `k + 1` continous elements after `s[j:]` and merge this trailing part with prefix `s[:mid]`if `s[mid] == s[j]`.
 
 
 ```c++
 class Solution {
 public:
-    int solve(int dp[100][100][100], vector<int> & boxes, int i, int j, int k) {
+    int solve(int (&dp)[100][100][100], vector<int> & boxes, int i, int j, int len) {
         if (i > j) return 0;
-        if (dp[i][j][k]) return dp[i][j][k];
-        while (j > i && boxes[j] == boxes[j - 1]) {
-            k++;
-            j--;
+        if (dp[i][j][len]) return dp[i][j][len];
+        while (i < j && boxes[j] == boxes[j - 1]) {
+            len++; j--;
         }
-        dp[i][j][k] = solve(dp, boxes, i, j - 1, 0) + (k + 1) * (k + 1);
-        for (int mid = i; mid < j; mid++) {
-            if (boxes[mid] != boxes[j])
-                continue;
-            dp[i][j][k] = max(
-                dp[i][j][k], 
-                solve(dp, boxes, mid + 1, j - 1, 0) + solve(dp, boxes, i, mid, k + 1)
-            );
-        }
-        return dp[i][j][k];
+        dp[i][j][len] = solve(dp, boxes, i, j - 1, 0) + (len + 1) * (len + 1);
+        for (int mid = j - 1; mid >= i; mid--)
+            if (boxes[mid] == boxes[j])
+                dp[i][j][len] = max(dp[i][j][len], solve(dp, boxes, i, mid, len + 1)
+                                                 + solve(dp, boxes, mid + 1, j - 1, 0));
+        return dp[i][j][len];
     }
     int removeBoxes(vector<int>& boxes) {
-        int dp[100][100][100];
-        for (auto & v1 : dp)
-            for (auto & v2 : v1)
-                for (auto & num : v2)
-                    num = 0;
+        int dp[100][100][100] = {0};
         return solve(dp, boxes, 0, boxes.size() - 1, 0);
     }
 };
