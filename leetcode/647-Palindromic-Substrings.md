@@ -68,8 +68,65 @@ public:
 };
 ```
 
+or
+
+```c++
+class Solution {
+public:
+    int countSubstrings(string s) {
+        int res = 0;
+        int len = s.size();
+        for (int i = 0; i < 2 * len - 1; i++) {
+            // two ways.   aba    or      abba
+            int l = i / 2;
+            int r = l + i % 2;
+            while (l >= 0 && r < len && s[l] == s[r]) {
+                l--; r++;
+                res++;
+            }
+        }
+        return res;
+    }
+};
+```
+
 3. ##### manarchar algorithm O(n)
 
 ```c++
+class Solution {
+public:
+    int radius(const string & s, int i, int j) {
+        while (i >= 0 && j < s.size() && s[i] == s[j]) {
+            i--; j++;
+        }
+        
+        return (j - i - 1) / 2;
+    }
+    int countSubstrings(string s) {
+        string tmp;
+        for (auto c : s) {
+            tmp += '#'; tmp += c;
+        }
+        s = tmp + "#";
 
+        int c = -1, r = -1, res = 0;
+        vector<int> rv(s.size());
+        for (int i = 0; i < s.size(); i++) {
+            int baser = 0;
+            // reuse former info
+            if (c + r > i)
+                baser = min(rv[c - (i - c)], c + r - i);
+            int curr = radius(s, i - baser - 1, i + baser + 1);
+            
+            rv[i] = curr;
+            res += (curr + 1) / 2;
+            if (i + curr > c + r) {
+                r = curr;
+                c = i;
+            }
+        }
+
+        return res;
+ }
+};
 ```

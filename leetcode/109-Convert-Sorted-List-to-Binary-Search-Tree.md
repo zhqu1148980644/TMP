@@ -63,6 +63,33 @@ public:
 };
 ```
 
+or
+
+```c++
+class Solution {
+public:
+    TreeNode * build(ListNode * head, int len) {
+        if (!head || !len) return nullptr;
+        if (len == 1) return new TreeNode(head->val);
+        ListNode * mid = head;
+        int l = 0;
+        while (l++ < len / 2)
+            mid = mid->next;
+        TreeNode *root = new TreeNode(mid->val);
+        root->left  = build(head, len / 2);
+        root->right = build(mid->next, len - len / 2 - 1);
+        return root;
+    }
+    TreeNode* sortedListToBST(ListNode* head) {
+        int len = 0;
+        ListNode * cur = head;
+        while (cur && ++len) cur = cur->next;
+
+        return build(head, len);
+    }
+};
+```
+
 
 3. ##### trade space for time with array
 
