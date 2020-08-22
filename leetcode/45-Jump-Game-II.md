@@ -29,6 +29,7 @@ You can assume that you can always reach the last index.
 #define max(x, y) (x > y ? x : y);
 int jump(int* nums, int numsSize){
     int furthest = 0, end = 0, jumps = 0;
+    // be caurefull, here the maximum possible i is `last - 1`
     for (int i = 0; i < numsSize - 1; i++) {
         furthest = max(furthest, nums[i] + i);
         if (furthest >= numsSize - 1) {
