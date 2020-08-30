@@ -150,6 +150,8 @@ int kmp(char * P, char * T) {
 
 3. #### divide and conquer Worst case O(n2)
 
+- borrowed from others.
+- ???????
 - The idea is to shorten the searching space for longest palindrome prefix at each iteration.
 - The correctness is hard to understand, however if you assume that the `s[:i)` prefix at the end of each iteration must contain the target palindrome, the code below makes sense.
 
@@ -170,4 +172,73 @@ public:
 };
 ```
 
-4. ##### manarchar method O(n)
+4. ##### manarchar method O(2n)
+
+- Find the longest `prefix of s` and `suffix of reverse(s)` equals to find the longest `palindrome prefix` of s.
+- check palindrome related problem for detailed explanation of this method.
+
+```c++
+class Solution {
+public:
+    int expand(const string & s, int i, int j) {
+        while (i >= 0 && j < s.size() && s[i] == s[j]) {
+            i--; j++;
+        }
+        return (j - i - 1) / 2;
+    }    
+    string shortestPalindrome(string s) {
+        if (s.size() <= 1) return s;
+        string tmp, rs(s.rbegin(), s.rend());
+        for (auto c : s) {
+            tmp += '#';
+            tmp += c;
+        }
+        s = (tmp + '#');
+        vector<int> radius(s.size());
+        int prevc = -1, prevr = 0, maxpr = 0;
+        for (int i = 0; i < s.size(); i++) {
+            int baser = 0;
+            if (prevc + prevr > i) {
+                baser = min(prevc + prevr - i, radius[prevc - (i - prevc)]);
+            }
+            int curr = expand(s, i - baser - 1, i + baser + 1);
+            if (i - curr == 0)
+                maxpr = curr;
+            if (i + curr > prevc + prevr) {
+                prevc = i; prevr = curr;
+            }
+            radius[i] = curr;
+        }
+
+        return rs.substr(0, rs.size() - maxpr) + string(rs.rbegin(), rs.rend());
+    }
+};
+```
+
+
+5. ##### rabin-karp or rolling hash
+
+```c++
+class Solution {
+public:
+#define num(i) ((s[i] - 'a'))
+    string shortestPalindrome(string s) {
+        if (s.size() <= 1) return s;
+        string rs(s.rbegin(), s.rend());
+        long MOD = pow(2, 32) + 1, ML = 1, R = 27;
+
+        long h1 = 0, h2 = 0, maxpr = 0;
+        for (int i = 0; i < (int)s.size(); i++) {
+            h1 = (h1 * R + num(i)) % MOD; // append  chars
+            h2 = (num(i) * ML + h2) % MOD;// prepend chars
+            if (h1 < 0) h1 += MOD;
+            if (h2 < 0) h2 += MOD;
+            if (h1 == h2)
+                maxpr = i + 1;
+            ML = (ML * R) % MOD; 
+        }
+        
+        return rs.substr(0, s.size() - maxpr) + s;
+    }
+};
+```
