@@ -94,6 +94,7 @@ public:
             int index = (k / factoral[n - i - 1]);
             res += nums[index];
             k = k - index * factoral[n - i - 1];
+            // to ensure each number is used only once
             nums.erase(nums.begin() + index);
         }
 

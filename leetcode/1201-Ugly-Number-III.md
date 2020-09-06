@@ -34,6 +34,7 @@ It's guaranteed that the result will be in range [1, 2 * 10^9]
 #### Solutions
 
 - The same as problem 878
+- Note that this problem differs with `problem ugly number II` in the definition of ugly number. ie: from factorization to division.
 
 1. ##### merge sorted list O(n)
 

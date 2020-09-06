@@ -185,7 +185,7 @@ public:
         vector<int> last0(k), last1(k, INT_MIN);
         for (int i = 0; i < prices.size(); i++) {
             int prel = last0[0];
-            // reverse looping to avoid overwiriting last0 in the previous day
+            // reverse looping to avoid overwriting last0 in the previous day
             for (int j = k - 1; j >= 1; j--) {
                 last0[j] = max(last0[j], last1[j] + prices[i]);
                 last1[j] = max(last1[j], last0[j - 1] - prices[i]);
