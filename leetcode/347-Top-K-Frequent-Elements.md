@@ -154,6 +154,48 @@ public:
 };
 ```
 
+or
+
+```c++
+#include <experimental/random>
+class Solution {
+public:
+    template <typename It, typename Cmp>
+    void nth_element(It lo, It mid, It hi, Cmp && cmp) {
+        typename iterator_traits<It>::difference_type zero {0};
+        while (lo < hi) {
+            iter_swap(lo, lo + std::experimental::randint(zero, hi - lo - 1));
+            auto pivot = *lo;
+            It st = lo, ed = hi - 1;
+            while (st < ed) {
+                while (st < ed && !cmp(*ed, pivot)) --ed;
+                *st = *ed;
+                while (st < ed && cmp(*st, pivot)) ++st;
+                *ed = *st;
+            }
+            *st = pivot;
+            if (!(mid < st)) lo = st + 1;
+            if (!(st < mid)) hi = st;
+        }
+    }
+
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        unordered_map<int, int> m;
+        for (auto n : nums) m[n]++;
+        
+        vector<int> res;
+        for (auto [k, v] : m) res.push_back(k);
+
+        nth_element(res.begin(), res.begin() + k, res.end(), 
+        [&](auto n1, auto n2) {
+            return m[n1] > m[n2];
+        });
+        
+        return {res.begin(), res.begin() + k};
+    }
+};
+```
+
 3. ##### bucket sort with hash map
 
 - Collect items into buckets based on their frequency.

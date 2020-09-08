@@ -30,16 +30,15 @@ public:
         int n = nums.size(), i = n - 2;
         // find the first reverse point.
         while (i >= 0 && nums[i] >= nums[i + 1]) i--;
-        if (i >= 0 && nums[i] < nums[i + 1]) {
+        if (i >= 0) {
             int j = i;
             // find the last element lager than the reverse point.
             while (j + 1 < n && nums[j + 1] > nums[i]) j++;
             swap(nums[i], nums[j]);
         }
-        int j = n - 1; i++;
         // swap the region to make the next (smallest) permutaion.
-        while (i < j)
-            swap(nums[i++], nums[j--]);
+        while (i < n - 1)
+            swap(nums[++i], nums[--n]);
     }
 };
 ```

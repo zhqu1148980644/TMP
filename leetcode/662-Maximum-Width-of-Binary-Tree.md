@@ -57,8 +57,8 @@ Note: Answer will in the range of 32-bit signed integer.
 
 ##### Solutions
 
-- map each node to index when the tree is raveled and is layed out level by level.
-- `root(i), leftchild(2 * i), rightchild(2*i + 1)`
+- Map each node to index when the tree is raveled and is layed out level by level. `root(i), leftchild(2 * i), rightchild(2*i + 1)`
+- Then, record the leftmost nodes' index in each level.
 
 1. ##### recursion
 

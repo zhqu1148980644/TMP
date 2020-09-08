@@ -19,45 +19,13 @@ solution.pick(1);
 
 1. ##### Reservoir Sampling
 
-```c++
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
-class Solution {
-public:
-    /** @param head The linked list's head.
-        Note that the head is guaranteed to be not null, so it contains at least one node. */
-    ListNode * head, * cur;
-    Solution(ListNode* head) {
-        this->head = cur = head;
-    }
-    
-    /** Returns a random node's value. */
-    int getRandom() {
-        int cnt = 2;
-        cur = head->next;
-        int val = head->val;
-        while (cur) {
-            if (rand() % cnt == 0) val = cur->val;
-            cur = cur->next; cnt++;
-        }
-        return val;
-    }
-};
-
-/**
- * Your Solution object will be instantiated and called as such:
- * Solution* obj = new Solution(head);
- * int param_1 = obj->getRandom();
- */
-```
-
-or
+- reference: https://leetcode-cn.com/problems/random-pick-index/solution/xu-shui-chi-chou-yang-wen-ti-by-an-xin-9/
+- Sample each element with probability 1 / n;
+- Suppose there are `4` items, following the rule of selecting each encountered index with probability of `1 / numseen`(include self). we have:
+- the prob of selected the first element at last is: `3/4 * 2/3 * 1/2 == 1/4`
+-                          second                   `3/4 * 2/3 * 1/2 == 1/4`
+-                          third                    `3/4 * 1/3       == 1/4`
+-                          fourth                   `1/4             == 1/4`
 
 ```c++
 class Solution {
@@ -71,6 +39,7 @@ public:
         for (int i = 0; i < nums.size(); i++)
             if (nums[i] == target) {
                 cnt++;
+                // (1 / cnt) prob to slect the current index 
                 if (rand() % cnt == 0)
                     index = i;
             }

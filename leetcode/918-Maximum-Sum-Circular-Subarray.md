@@ -98,9 +98,9 @@ public:
             maxsum = max(maxsum, curmax = n + max(curmax, 0));
             minsum = min(minsum, curmin = n + min(curmin, 0));
         }
-        // sum == minres only when minres contains all numbers(or numers outside minres are all zeros) and sum <= 0
+        // sum == minsum only when minres contains all numbers(or numers outside minres are all zeros) and sum <= 0
         // if this is true, then maxsum must be the answer
-        return max(maxres, sum != minres ? sum - minres : INT_MIN);
+        return max(maxsum, sum != minsum ? sum - minsum : INT_MIN);
     }
 };
 ```
