@@ -143,3 +143,32 @@ public:
 ```
 
 6. ##### introselect
+
+
+
+7. ##### binary search
+
+- Speculate the target number in the range of 32bit interger by counting the number of elements slower than it. For the target k'th larget number, numbers in the array <= it should be at least k.
+
+```c++
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k) {
+        if (k > nums.size()) return -1;
+        k = nums.size() - k + 1;
+        long lo = INT_MIN, hi = INT_MAX;
+        while (lo < hi) {
+            long mid = lo + ((hi - lo) >> 1);
+            int less = 0;
+            for (auto n : nums) less += n <= mid;
+            // for the target, numbers less(<=) should be at least k(may have duplicates).
+            // if not satisfy, we can ensure the target is at least mid + 1
+            if (less < k)
+                lo = mid + 1;
+            else
+                hi = mid;
+        }
+        return lo;
+    }
+};
+```

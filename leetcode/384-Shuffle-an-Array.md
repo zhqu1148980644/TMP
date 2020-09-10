@@ -38,7 +38,7 @@ public:
         vector<int> nums(this->nums);
         int len = nums.size();
         for (int i = 0; i < len; i++)
-            swap(nums[i], nums[i + rand() % len - i]);
+            swap(nums[i], nums[i + (rand() % (len - i))]);
         return nums;
     }
 };

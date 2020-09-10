@@ -79,11 +79,14 @@ public:
 
 - For finding maximum sum of subarray within noncircular array: `dp[i] = max(dp[i - 1], 0)`. `dp[i]` represents the maxisum sum of subarrays end at `nums[i]`.
 - For subarrays spanning over two arrays(circular), finding the maxisum sum range equals to `total_sum - minimum_sumrange`.
+- In ohter words, the maximum range sum has two cases in total:
+    - Sum of middle range.
+    - Sum of prefix plus sum of suffix.
 
 ```
 aaaaaaaccccccccbbbbb aaaaaaaacccccccbbbbb
                |   maximum  |
-to make bbbbb+aaaaa hash the largest sum, sum of cccccc has to be minimum
+to make bbbbb+aaaaa has the largest sum, sum of cccccc has to be minimum
 ```
 
 ```c++
