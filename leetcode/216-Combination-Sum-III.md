@@ -46,3 +46,30 @@ public:
     }
 };
 ```
+
+or
+
+```c++
+class Solution {
+public:
+    vector<int> path;
+    vector<vector<int>> res;
+    void solve(int st, int k, int sum) {
+        if (k == 0 || sum == 0) {
+            if (k == 0 && sum == 0)
+                res.push_back(path);
+        }
+        else {
+            for (int i = st; i <= 9; i++) {
+                path.push_back(i);
+                solve(i + 1, k - 1, sum - i);
+                path.pop_back();
+            }
+        }
+    }
+    vector<vector<int>> combinationSum3(int k, int n) {
+        solve(1, k, n);
+        return res;
+    }
+};
+```

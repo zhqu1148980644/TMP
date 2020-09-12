@@ -26,22 +26,24 @@ The range of node's value is in the range of 32-bit signed integer.
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+
 class Solution {
 public:
     vector<double> averageOfLevels(TreeNode* root) {
-        queue<TreeNode *> q; if (root) q.push(root);
+        if (!root) return {};
+        queue q { deque{root} };
 
         vector<double> res;
-        while (!q.empty()) {
-            int size = q.size();
-            double sum = 0, num = size;
+        while (q.size()) {
+            int size = q.size(), cnt = size;
+            double sum = 0;
             while (size--) {
-                root = q.front(); q.pop();
-                sum += root->val;
-                if (root->left) q.push(root->left);
-                if (root->right) q.push(root->right);
+                auto [val, left, right] = *q.front();
+                q.pop(); sum += val;
+                if (left) q.push(left);
+                if (right) q.push(right);
             }
-            res.push_back(sum / num);
+            res.push_back(sum / cnt);
         }
 
         return res;
