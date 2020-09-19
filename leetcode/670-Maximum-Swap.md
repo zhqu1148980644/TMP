@@ -15,22 +15,27 @@ The given number is in the range [0, 108]
 
 1. ##### straight forward O(n)
 
-- Start from the beginning of the string, replace the first character with the lasgest charater after it if it's greater than self.
+- Start from the beginning of the string, replace the current character with the lasgest charater after it if it's greater than self.
 
 ```c++
 class Solution {
 public:
     int maximumSwap(int num) {
         string s = to_string(num);
-        vector<int> v(s.size());
 
-        v.back() = v.size() - 1;
-        for (int i = s.size() - 2; i >= 0; i--)
-            v[i] = s[i + 1] > s[v[i + 1]] ? i + 1 : v[i + 1];
-        
-        for (int i = 0; i < v.size() - 1; i++)
-            if (s[v[i]] > s[i]) {
-                swap(s[i], s[v[i]]);
+        vector<int> maxv(s.size());
+        int maxi = s.size() - 1;
+        // find the larget one each each one
+        for (int i = (int)s.size() - 1; i >= 0; i--) {
+            if (s[i] > s[maxi]) {
+                maxi = i;
+            }
+            maxv[i] = maxi;
+        }
+
+        for (int i = 0; i < s.size(); i++)
+            if (s[i] < s[maxv[i]]) {
+                swap(s[i], s[maxv[i]]);
                 break;
             }
 
