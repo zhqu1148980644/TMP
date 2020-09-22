@@ -20,7 +20,7 @@ Return the following binary tree:
 
 #### Solutions
 
-- It's clear hat the reversed version of the postorder traversal is similar to the preorder traversal, except that the right node is visited before the left node. Thus by selecting the root nodes backwards and reversing the visiting order of left/right node, you can apply the same idea/method to this problem as in `problem 106`.
+- It's clear hat the reversed version of the postorder traversal is similar to the preorder traversal, except that the right node is visited before the left node. Thus by selecting the root nodes backwards and reversing the visiting order of left/right node, you can apply the same idea/method to this problem as in `problem 105`.
     - preorder: `root left ritght` reversed postorder: `root right left`.
 
 1. ##### recursion
