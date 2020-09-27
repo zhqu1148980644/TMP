@@ -146,21 +146,19 @@ public:
                 root = root->left;
             } else {
                 root = s.top(); s.pop();
-
-                if (root == p || root == q)
-                    find++;
+                find += root == p || root == q;
                 // record the highest level
                 if (find && s.size() < lca_level) {
                     lca = root;
                     lca_level = s.size();
                 }
-                if (find == 2)
-                    return lca;
+                if (find >= 2)
+                    break;
 
                 root = root->right;
             }
         }
-        return nullptr;
+        return lca;
     }
 };
 ```
