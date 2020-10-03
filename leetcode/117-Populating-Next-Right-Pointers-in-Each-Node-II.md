@@ -128,27 +128,42 @@ The iteration one can be much more complicated and many edge cases need to be co
 - Inspired by the queue solution, we can use a `container` to maintain nodes founded in the current level and link them one by one. Here we use a `dummy node` as the container.
 
 ```c++
+/*
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    Node* left;
+    Node* right;
+    Node* next;
+
+    Node() : val(0), left(NULL), right(NULL), next(NULL) {}
+
+    Node(int _val) : val(_val), left(NULL), right(NULL), next(NULL) {}
+
+    Node(int _val, Node* _left, Node* _right, Node* _next)
+        : val(_val), left(_left), right(_right), next(_next) {}
+};
+*/
+
 class Solution {
 public:
     Node* connect(Node* root) {
-        Node * r = root;
+        Node * head = root;
         while (root) {
-            Node dummy;
-            Node * tail = & dummy;
+            Node dummy, * tail = &dummy;
             while (root) {
                 if (root->left) {
-                    tail->next = root->left;
-                    tail = tail->next;
+                    tail = tail->next = root->left;
                 }
                 if (root->right) {
-                    tail->next = root->right;
-                    tail = tail->next;
+                    tail = tail->next = root->right;
                 }
                 root = root->next;
             }
-            root = dummy.next; // the first item in the next level
+            root = dummy.next;    // the first iem in the next level
         }
-        return r;
+        return head;
     }
 };
 ```
