@@ -80,3 +80,44 @@ public:
     }
 };
 ```
+
+or
+
+```c++
+class Solution {
+public:
+    vector<vector<int>> g;
+    vector<int> dis, sizes;
+    int count(int node, int father) {
+        int size = 0, sumdis = 0;
+        for (auto out : g[node]) {
+            if (out == father) continue;
+            size += count(out, node);
+            sumdis += dis[out];
+        }
+        dis[node] = size + sumdis;
+        return sizes[node] = 1 + size;
+    }
+
+    void dp(int node, int father) {
+        for (auto ch : g[node]) {
+            if (ch == father) continue;
+            dis[ch] = dis[node] + g.size() - 2 * sizes[ch];
+            dp(ch, node);
+        }
+    }
+
+    vector<int> sumOfDistancesInTree(int N, vector<vector<int>>& edges) {
+        g.resize(N);
+        for (auto & e : edges) {
+            g[e[0]].push_back(e[1]);
+            g[e[1]].push_back(e[0]);
+        }
+        dis = sizes = vector<int>(N);
+        count(0, -1);
+        dp(0, -1);
+        
+        return dis;
+    }
+};
+```
