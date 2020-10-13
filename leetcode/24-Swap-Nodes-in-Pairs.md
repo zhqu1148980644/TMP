@@ -2,7 +2,7 @@
 
 You may not modify the values in the list's nodes, only nodes itself may be changed.
 
- 
+
 
 ```
 Example:
@@ -14,8 +14,7 @@ Given 1->2->3->4, you should return the list as 2->1->4->3.
 
 1. #### Iteration
 
-- Borrowed from stephan.
-- The trick of pointer of pointer will be used again in problem 25.
+- Simplify the logic with a dummy node.
 
 ```c++
 /**
@@ -23,10 +22,38 @@ Given 1->2->3->4, you should return the list as 2->1->4->3.
  * struct ListNode {
  *     int val;
  *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-// solution.  So so beautiful.
+class Solution {
+public:
+    ListNode* swapPairs(ListNode* head) {
+        if (!head) return nullptr;
+        ListNode dummy {0, head};
+
+        ListNode * cur = &dummy;
+
+        while (cur->next && cur->next->next) {
+            ListNode * nnext = cur->next->next;
+            cur->next->next = nnext->next;
+            nnext->next = cur->next;
+            cur->next = nnext;
+            cur = nnext->next;
+        }
+
+        return dummy.next;
+    }
+};
+```
+
+
+- Borrowed from stephan.
+- The trick of pointer of pointer will be used again in problem 25.
+
+```c++
+// solution.  So so elegant.
 class Solution {
 public:
     ListNode* swapPairs(ListNode* head) {
@@ -42,4 +69,18 @@ public:
 };
 ```
 
-2. #### recursion.
+2. #### recursion
+
+```c++
+class Solution {
+public:
+    ListNode* swapPairs(ListNode* head) {
+        if (!head || !head->next)
+            return head;
+        ListNode * next = head->next;
+        head->next = swapPairs(next->next);
+        next->next = head;
+        return next;
+    }
+};
+```
