@@ -35,4 +35,39 @@ class Solution:
         return datetime.date(year, month, day).strftime("%A")
 ```
 
-2. ##### math
+2. ##### straight forward O(year - 1971)
+
+- reference: https://leetcode-cn.com/problems/day-of-the-week/solution/c-fei-mo-fa-jie-fa-by-daxianwa/
+- Count the number of days after 1971.1.1(friday).
+- Then the answer is `day % 7` + friday.
+
+```c++
+class Solution {
+public:
+    int days_after_197111(int year, int month, int day) {
+        vector<int> months {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        // remove the first day 19970101
+        int res = (year - 1971) * 365 + day - 1;
+        for (int i = 1; i < month; i++)
+            res += months[i];
+        // add one day for each rune year
+        for (int y = 1971; y <= year; y++) {
+            if ((y % 4 == 0 && y % 100 != 0) || (y % 400 == 0))
+                if (y < year || (month > 2))
+                    res++;
+        }
+
+        return res;
+    }
+
+    string dayOfTheWeek(int day, int month, int year) {
+        vector<string> weeks = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+        int days = days_after_197111(year, month, day);
+        return weeks[(4 + days) % 7];
+    }
+};
+```
+
+3. ##### math O(1)
+
+- Kim larsen calculation formula

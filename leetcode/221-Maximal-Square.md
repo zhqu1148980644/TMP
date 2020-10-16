@@ -18,6 +18,7 @@ Output: 4
 
 - `dp[i][j]` represent the maximum length of the square with `matrix[i][j]` as the right-bottom corner.
 - `dp[i][j] = min(dp[i - 1, j], dp[i - 1][j - 1], dp[i][j - 1]) + 1 if matrix[i][j] == '1' else 0`
+- Check the official answer for detailed proof.
 
 ```c++
 class Solution {

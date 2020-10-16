@@ -22,20 +22,39 @@ A is sorted in non-decreasing order.
 
 1. #### merge sorted list
 
-- When the first element is already a positive integer, simply return the square forms.
-
 ```c++
 class Solution {
 public:
     vector<int> sortedSquares(vector<int>& A) {
         if (!A.size()) return {};
         vector<int> res(A.size());
-        int i = 0, j = A.size() - 1, w = A.size() - 1;
-        while (i <= j) {
-            if (A[j] * A[j] > A[i] * A[i])
-                res[w--] = A[j] * A[j--];
+        int i = 0, j = A.size() - 1, w = j;
+
+        while (w >= 0) {
+            if (abs(A[j]) > abs(A[i]))
+                res[w--] = pow(A[j--], 2);
             else
-                res[w--] = A[i] * A[i++];
+                res[w--] = pow(A[i++], 2);
+        }
+
+        return res;
+    }
+};
+```
+
+or
+
+```c++
+class Solution {
+public:
+    vector<int> sortedSquares(vector<int>& A) {
+        vector<int> res(A.size());
+        int i = 0, j = A.size() - 1, w = j;
+
+        while (w >= 0) {
+            res[w--] = abs(A[i]) > abs(A[j]) 
+                ? pow(A[i++], 2) 
+                : pow(A[j--], 2);
         }
 
         return res;
