@@ -87,40 +87,42 @@ Or save `key-value` pair in double linked list and store each node's iterator in
 
 ```c++
 class LRUCache {
-private:
-    typedef pair<int, int> kv;
-    int size;
-    list<kv> lru;
-    unordered_map<int, list<kv>::iterator> mp;
-
 public:
-    LRUCache(int capacity) : size(capacity) {}
+    using kv = pair<int, int>;
+    int cap = 0;
+    list<kv> lru;
+    unordered_map<int, list<kv>::iterator> m;
+    LRUCache(int capacity) : cap(capacity) {
 
+    }
+    
     int get(int key) {
-        if (!mp.count(key))
+        if (!m.count(key))
             return -1;
         else {
-            update(key, mp[key]->second);
-            return mp[key]->second;
+            update(key, m[key]->second);
+            return m[key]->second;
         }
     }
-
+    
     void put(int key, int value) {
-        if (mp.size() == size && !mp.count(key)) evict();
+        if (lru.size() >= cap && !m.count(key))
+            evict();
         update(key, value);
     }
-
+    
     void evict() {
-        auto & kvpair = lru.back();
-        mp.erase(kvpair.first);
-        lru.pop_back();
+        if (lru.size()) {
+            m.erase(lru.back().first);
+            lru.pop_back();
+        }
     }
-
-    void update(int & key, int value) {
-        if (mp.count(key))
-            lru.erase(mp[key]);
-        lru.push_front(make_pair(key, value));
-        mp[key] = lru.begin();
+    
+    void update(int key, int value) {
+        if (m.count(key))
+            lru.erase(m[key]);
+        lru.emplace_front(key, value);
+        m[key] = lru.begin();
     }
 };
 ```

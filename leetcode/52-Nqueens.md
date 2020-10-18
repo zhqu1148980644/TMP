@@ -120,30 +120,33 @@ public:
 ```c++
 class Solution {
 public:
-    bool contain(vector<int> & com, int pos) {
-        int curr = pos, curc = com[pos];
-        for (int r = 0; r < pos; r++) {
+    bool valid(vector<int> & com, int curr) {
+        int curc = com[curr];
+        for (int r = 0; r < curr; r++) {
             int c = com[r];
-            if ((c == curc) || (curr + curc == r + c) || (curr - curc == r - c))
-                return true;
+            // three cross cases, same column, same diagonal, same anti-diagonal
+            if (c == curc 
+            || curc - c == curr - r 
+            || curc - c == r - curr)
+                return false;
         }
-        return false;
+        return true;
     }
     int totalNQueens(int n) {
-        int res = 0;
+        // com[r] represents the point grid[r][com[r]]
         vector<int> com(n + 1, -1);
-        int pos = 0;
+        int res = 0, pos = 0;
+
         while (pos >= 0) {
             com[pos]++;
-            if (pos >= n) { // record results
+            if (pos >= n) { // record results, go back to the top row
                 res++;
                 pos--;
             }
-            else if (com[pos] >= n) // invalid, reture to former level
+            else if (com[pos] >= n) // No valid point, go back to the lower row
                 pos--;
-            else if (!contain(com, pos)) { // valid go to next level
-                com[++pos] = -1;
-            }
+            else if (valid(com, pos)) // find valid pint, go to upper row
+                com[++pos] = -1;      // must set to -1
         }
 
         return res;

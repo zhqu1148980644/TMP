@@ -22,12 +22,12 @@ If you have figured out the O(n) solution, try coding another solution using the
 ```c++
 #define max(x, y) ((x > y) ? x : y)
 int maxSubArray(int* nums, int numsSize){
-    int m = INT_MIN, last = 0;
+    int res = INT_MIN, sum = 0;
     while (numsSize--) {
-        last = max(nums[numsSize] + last, nums[numsSize]);
-        m = max(m, last);
+        sum = max(nums[numsSize] + sum, nums[numsSize]);
+        res = max(res, sum);
     }
-    return m;
+    return res;
 }
 ```
 
