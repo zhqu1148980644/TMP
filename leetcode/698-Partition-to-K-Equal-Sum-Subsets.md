@@ -26,28 +26,34 @@ Note:
 class Solution {
 public:
     bool canPartitionKSubsets(vector<int>& nums, int k) {
-        int total = accumulate(nums.begin(), nums.end(), 0);
+        if (!nums.size() || !k) return false;
+        size_t total = accumulate(nums.begin(), nums.end(), size_t{0});
+        
         if (total % k) return false;
-        int target = total / k, allused = 0, len = nums.size();
-        for (int i = 0; i < len; i++) {
-            allused <<= 1; allused |= 1;
-        }
-        sort(nums.begin(), nums.end());
-        if (nums.back() > target) return false;
+        size_t target = total / k, len = nums.size();
+        int allused = (1 << len) - 1;
+
+        sort(nums.rbegin(), nums.rend());
+        if (nums[0] > target) return false;
 
         // state is a interger representing usage info for each num, you could instead use a `visited` hash set
-        function<bool(int, int, int)> solve = [&](int state, int sum, int ed) {
+        function<bool(int, int, int)> solve = [&](int state, int sum, int st) {
             if (state == allused) return true;
             int max = target - (sum % target);
-            for (int i = ed; i >= 0; i--) {
-                if ((state & (1 << i)) || nums[i] > max) continue;
-                if (solve(state | (1 << i), sum + nums[i], nums[i] == max ? len - 1 : i - 1))
+            for (int i = st; i < len; i++) {
+                if (state & (1 << i) || nums[i] > max)
+                    continue;
+                if (solve(state | (1 << i), sum + nums[i], nums[i] == max ? 0 : i + 1))
                     return true;
             }
             return false;
         };
 
-        return solve(0, 0, len - 1);
+        return solve(0, 0, 0);
     }
 };
 ```
+
+2. ##### dynamic programming
+
+- Check the official answer.

@@ -53,7 +53,32 @@ public:
 };
 ```
 
-2. ##### backward two pointers O(n) S(1)
+2. ##### use inplace stack O(n) S(1)
+
+```c++
+class Solution {
+public:
+    int type(string & s) {
+        int st = 0;
+        for (auto c : s) {
+            if (c != '#')
+                s[st++] = c;
+            else if (st > 0)
+                st--;
+        }
+        return st;
+    }
+    bool backspaceCompare(string S, string T) {
+        int len1 = type(S), len2 = type(T);
+        return len1 == len2 && equal(
+            S.begin(), S.begin() + len1,
+            T.begin(), T.begin() + len2
+        );
+    }
+};
+```
+
+3. ##### backward two pointers O(n) S(1)
 
 ```c++
 class Solution {
