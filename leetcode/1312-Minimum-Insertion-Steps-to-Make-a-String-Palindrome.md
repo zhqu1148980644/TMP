@@ -50,7 +50,7 @@ Output: 1
 
 - similar to `problem 516`
 - `dp[i][j]` represents the minimum number of steps to make `s[i:j]` a palindrome, then:
-    - if `s[i] == s[j]`, `dp[i][j] = dp[i][j]`. It's definitely a palindrome.
+    - if `s[i] == s[j]`, `dp[i][j] = dp[i + 1][j - 1]`. It's definitely a palindrome.
     - else `dp[i][j] = min(dp[i + 1][j], dp[i][j - 1]) + 1`. Insert `s[i]` at `s[j + 1]` or insert `s[j]` at the front of `s[i:j]` makes `s[i: j - 1]/s[i + 1: j]` a palindrome.
 
 ```c++
