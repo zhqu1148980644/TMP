@@ -84,7 +84,7 @@ public:
 3. ##### mono stack
 
 - Use mono stack to find the smallest valley and largest peak.
-- Elements in stack are always sorted in ascending order and smaller/greater than or equal to the smallest/largest valley/peak element.
+- Elements in stack are always in ascending/desending order.
 
 ```c++
 class Solution {
