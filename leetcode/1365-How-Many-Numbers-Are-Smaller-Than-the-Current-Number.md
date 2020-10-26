@@ -36,25 +36,42 @@ Output: [0,0,0,0]
 
 #### Solutions
 
+1. ##### bucket sort O(nlog(n))
 
-1. ##### sort
+```c++
+class Solution {
+public:
+    vector<int> smallerNumbersThanCurrent(vector<int>& nums) {
+        vector<int> sorted(nums.begin(), nums.end());
+        sort(sorted.begin(), sorted.end());
+
+        for (auto & n : nums)
+            n = lower_bound(sorted.begin(), sorted.end(), n) - sorted.begin();
+
+        return nums;
+    }
+};
+```
+
+
+2. ##### count sort O(n)
 
 ```c++
 class Solution {
 public:
     vector<int> smallerNumbersThanCurrent(vector<int>& nums) {
         vector<int> count(101);
-        for (auto n : nums) count[n]++;
-        vector<int> numsmall(101);
-        int num = 0;
-        for (int i = 0; i < 101; i++)
+        for (auto n : nums) ++count[n];
+        
+        vector<int> numlower(101);
+        for (int i = 0, cnt = 0; i < 101; i++)
             if (count[i]) {
-                numsmall[i] = num;
-                num += count[i];
+                numlower[i] = cnt;
+                cnt += count[i];
             }
-
+        
         for (auto & n : nums)
-            n = numsmall[n];
+            n = numlower[n];
         
         return nums;
     }
