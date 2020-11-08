@@ -39,86 +39,27 @@ Output:
 
 #### Solutions
 
-
-1. ##### dynamic programming
-
-```c++
-class Solution {
-public:
-    bool canbreak(string & s, unordered_set<string> & words) {
-        vector<bool> breakable(s.size() + 1);
-        breakable[0] = true;
-        int minl = INT_MAX, maxl = INT_MIN;
-        for (auto & word : words) {
-            minl = min(minl, (int)word.size());
-            maxl = max(maxl, (int)word.size());
-        }
-        for (int i = minl; i <= s.size(); i++)
-            for (int j = max(i - maxl, 0); j <= i - minl; j++)
-                if (breakable[j] && words.count(s.substr(j, i - j))) {
-                    breakable[i] = true;
-                    break; 
-                }
-        return breakable.back();
-    }
-
-    vector<string> wordBreak(string s, vector<string>& wordDict) {
-        unordered_set<string> words(wordDict.begin(), wordDict.end());
-        if (!canbreak(s, words)) return {};
-
-        vector<vector<string>> dp{{""}};
-        for (int i = 1; i <= s.size(); i++) {
-            dp.push_back({});
-            for (int j = 0; j < i; j++) {
-                auto word = s.substr(j, i - j);
-                if (words.count(word))
-                    for (auto & sent : dp[j])
-                        dp[i].push_back(sent.size() ? sent + " " + word : word);
-            }
-        }
-        return dp[s.size()];
-    }
-};
-```
-
-
-
-2. ##### backtrack with recursion
+1. ##### backtrack with recursion
 
 ```c++
 class Solution {
 public:
-    bool canbreak(string & s, unordered_set<string> & words) {
-        vector<bool> breakable(s.size() + 1);
-        breakable[0] = true;
-        int minl = INT_MAX, maxl = INT_MIN;
-        for (auto & word : words) {
-            minl = min(minl, (int)word.size());
-            maxl = max(maxl, (int)word.size());
-        }
-        for (int i = minl; i <= s.size(); i++)
-            for (int j = max(i - maxl, 0); j <= i - minl; j++)
-                if (breakable[j] && words.count(s.substr(j, i - j))) {
-                    breakable[i] = true;
-                    break; 
-                }
-        return breakable.back();
-    }
     vector<string> wordBreak(string s, vector<string>& wordDict) {
         unordered_map<int, vector<string>> mem {{s.size(), {""}}};
-        unordered_set<string> m(wordDict.begin(), wordDict.end());
+        unordered_set<string> words(wordDict.begin(), wordDict.end());
 
         function<vector<string>(int)> Break = [&](int st) {
             if (!mem.count(st)) {
                 for (int i = st; i < s.size(); i++) {
                     auto w = s.substr(st, i - st + 1);
-                    if (!m.count(w)) continue;
+                    if (!words.count(w)) continue;
                     for (auto & sent : Break(i + 1))
                         mem[st].push_back(w + (sent.size() ? " " : "") + sent);
                 }
             }
             return mem[st];
         };
+
         return Break(0);
     }
 };
@@ -141,4 +82,49 @@ class Solution:
         words, length = set(wordDict), len(s)
   
         return list(Break(0))
+```
+
+
+2. ##### dynamic programming
+
+```c++
+class Solution {
+public:
+    // not nesserary, for pre-exit
+    bool canbreak(string & s, unordered_set<string> & words, int minl, int maxl) {
+        vector<bool> breakable(s.size() + 1);
+        breakable[0] = true;
+        for (int i = minl; i <= s.size(); i++)
+            for (int j = max(i - maxl, 0); j <= i - minl; j++)
+                if (breakable[j] && words.count(s.substr(j, i - j))) {
+                    breakable[i] = true; break;
+                }
+        
+        return breakable.back();
+    }
+    vector<string> wordBreak(string s, vector<string>& wordDict) {
+        unordered_set<string> words(wordDict.begin(), wordDict.end());
+        // not nesserary, for optimization
+        int minl = INT_MAX, maxl = INT_MIN;
+        for (auto & w : words) {
+            minl = min(minl, (int)w.size());
+            maxl = max(maxl, (int)w.size());
+        }
+        // pre-exit if not possible
+        if (!canbreak(s, words, minl, maxl)) return {};
+
+        vector<vector<string>> dp (s.size() + 1);
+        dp[0].push_back("");
+        for (int i = minl; i <= s.size(); i++) {
+            for (int j = max(0, i - maxl); j <= i - minl; j++) {
+                auto w = s.substr(j, i - j);
+                if (dp[j].size() && words.count(w))
+                    for (auto & sent : dp[j])
+                        dp[i].push_back(sent.size() ? sent + " " + w : w);
+            }
+        }
+        
+        return dp[s.size()];
+    }
+};
 ```

@@ -22,12 +22,14 @@ input types have been changed on April 15, 2019. Please reset to default code de
 
 1. #### straight forward
 
-- collect intervals whose end is smaller than inserted interval' start.
-- collect intervals whose start is larger than inserted interval's end.
-- Choose the smallest between inserted intervals's start and the first overlapped interval's start as the start.
-- The same for choosing the end as the end.
-- Finally build a new interval with the start and end.
-- Concatenate.
+- Collect intervals don't overlap with the newInterval.
+    - collect intervals whose end is smaller than inserted interval' start.
+    - collect intervals whose start is larger than inserted interval's end.
+- Merge overlapping intervals by finding the minimum start and the maximum end among them.
+    - Choose the smallest between inserted intervals's start and the first overlapped interval's start as the start.
+    - The same for choosing the end as the end.
+    - Finally build a new interval with the start and end.
+- Concatenate these three parts.
 
 ```c++
 class Solution {
@@ -42,18 +44,19 @@ public:
             else
                 merged.push_back(i);
         }
+
         vector<vector<int>> res;
-        for (auto i : left)
+        for (int i : left)
             res.push_back(intervals[i]);
         int st = newInterval[0], ed = newInterval[1];
         if (merged.size()) {
-            st = min(intervals[merged.front()][0], newInterval[0]);
-            ed = max(intervals[merged.back()][1], newInterval[1]);
+            st = min(intervals[merged.front()][0], st);
+            ed = max(intervals[merged.back()][1], ed);
         }
         res.push_back({st, ed});
-        for (auto i : right)
+        for (int i : right)
             res.push_back(intervals[i]);
-
+        
         return res;
     }
 };
