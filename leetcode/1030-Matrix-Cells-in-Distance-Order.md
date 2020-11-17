@@ -34,7 +34,52 @@ Note:
 
 #### Solutions
 
-1. ##### bfs
+1. ##### sort O(nlog(n))
+
+```c++
+class Solution {
+public:
+    vector<vector<int>> allCellsDistOrder(int R, int C, int r0, int c0) {
+        vector<vector<int>> res;
+        for (int i = 0; i < R; i++)
+            for (int j = 0; j < C; j++) {
+                res.push_back({i, j});
+            }
+        
+        sort(res.begin(), res.end(), [&](auto & p1, auto & p2){
+            return abs(p1[0] - r0) + abs(p1[1] - c0)
+                 < abs(p2[0] - r0) + abs(p2[1] - c0);
+        });
+
+        return res;
+    }
+};
+```
+
+2. ##### bucket sort O(n)
+
+```c++
+class Solution {
+public:
+    vector<vector<int>> allCellsDistOrder(int R, int C, int r0, int c0) {
+        // the size of buckets can be optimized
+        vector<vector<vector<int>>> buckets(R + C);
+        for (int i = 0; i < R; i++)
+            for (int j = 0; j < C; j++)
+                buckets[abs(i - r0) + abs(j - c0)].push_back({i, j});
+        
+        vector<vector<int>> res;
+        for (auto & bv : buckets)
+            for (auto & p : bv)
+                res.push_back(move(p));
+
+        return res;
+    }
+};
+```
+
+
+3. ##### bfs O(n)
 
 ```c++
 class Solution {
@@ -44,18 +89,18 @@ public:
         int dirs[4][2] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
         vector<vector<int>> res;
 
-        unordered_set<int> visited;
+        vector<bool> visited(R * C);
         queue<pair<int, int>> q;
-        q.push({r0, c0}); visited.insert(node(r0, c0));
+        q.push({r0, c0}); visited[node(r0, c0)] = true;
 
         while (!q.empty()) {
             auto [r, c] = q.front(); q.pop();
             res.push_back({r, c});
             for (auto & d : dirs) {
                 int x = r + d[0], y = c + d[1];
-                if (x < 0 || y < 0 || x >= R || y >= C || visited.count(node(x, y)))
+                if (x < 0 || y < 0 || x >= R || y >= C || visited[node(x, y)])
                     continue;
-                visited.insert(node(x, y));
+                visited[node(x, y)] = true;
                 q.push({x, y});
             }
         }
@@ -64,3 +109,7 @@ public:
     }
 };
 ```
+
+4. ##### math
+
+- Check the official answer.
