@@ -33,30 +33,34 @@ Output: -1->0->3->4->5
  * Definition for singly-linked list.
  * struct ListNode {
  *     int val;
- *     struct ListNode *next;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+class Solution {
+public:
+    ListNode* insertionSortList(ListNode* head) {
+        if (!head || !head->next) return nullptr;
+        ListNode dummy {INT_MIN, head}, * cur = &dummy; 
+        // cur represents the tail head of the sorted list
+        while (cur->next) {
+            int next_val = cur->next->val;
+            // simply move tail one node forward
+            if (next_val >= cur->val)
+                cur = cur->next;
+            else {
+                // find the fist node whose next node is larger than the inserting node.
+                head = &dummy;
+                while (head->next->val <= next_val)
+                    head = head->next;
+                ListNode * nnext = cur->next->next;
+                cur->next->next = head->next;
+                head->next = cur->next;
+                cur->next = nnext;
+            }
+        }
 
-
-typedef struct ListNode node;
-
-struct ListNode* insertionSortList(struct ListNode* head){
-    if (!head || !head->next) return head;
-    node * cur = head;
-    node fake_head; fake_head.next = head;
-
-    while (cur->next) {
-        if (cur->next->val < cur->val) {
-            head = &fake_head;
-            while (head->next->val < cur->next->val)
-                head = head->next;
-            node * inode = cur->next;
-            cur->next = inode->next;
-            inode->next = head->next;
-            head->next = inode;
-        } else
-            cur = cur->next;
+        return dummy.next;
     }
-    return fake_head.next;
-}
+};
 ```
