@@ -26,66 +26,66 @@ Output: -1->0->3->4->5
  * struct ListNode {
  *     int val;
  *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-
-typedef ListNode node;
-
 class Solution {
-private:
-    // Find the sublist's tail and return
-    // Set next to NULL to mark the end of the sublist that will be used in merge.
-    node * split(node * head, int n) {
-        for (int i = 1; head && i < n; i++)
-            head = head->next;
-        if (head) {
-            node * tail = head->next;
-            head->next = NULL;
-            return tail;
-        } else
-            return NULL;
-    }
-    // merge two sorted list. head is the pointer of the node before left.
-    node * merge(node * l, node * r, node * head) {
+public:
+    // merge two sorted lists and return the tail node
+    ListNode * merge(ListNode * l, ListNode * r, ListNode * head) {
+        if (!head) return nullptr;
         while (l && r) {
-            if (r->val < l->val) {
-                head->next = r; r = r->next;
-            } else {
-                head->next = l; l = l->next;
+            if (l->val <= r->val) {
+                head = head->next = l;
+                l = l->next;
             }
-            head = head->next;
+            else {
+                head = head->next = r;
+                r = r->next;
+            }
         }
-        // can not be both NULL
-        l = l ? l : r; head->next = l;
-        while (l->next) l = l->next;
-        // return the merged list's last node. this node will be the head parameter in the next merge call.
-        return l;
+        head->next = l ? l : r;
+        while (head->next)
+            head = head->next;
+        return head;
     }
 
-public:
+    // move node forward and 
+    // return tail's next as the next head
+    // set the tail's next to nullptr
+    ListNode * forward(ListNode * head, int step) {
+        ListNode * tail = nullptr;
+        while (step && head) {
+            tail = head;
+            head = head->next;
+            step--;
+        }
+        if (tail) tail->next = nullptr;
+        return head;
+    }
+
     ListNode* sortList(ListNode* head) {
         if (!head || !head->next) return head;
-        node * cur = head;
+        ListNode * cur = head;
         int len = 0;
         while (cur && ++len) cur = cur->next;
-
-        // use a dummy node to make the loop work.
-        // can also use a pointer to pointer trick the save the space.
-        node fake_head(0); fake_head.next = head;
-        node * tail, * left, * right;
-        for (int step = 1; step < len; step <<= 1) {
-            tail = &fake_head;
-            cur = tail->next;
+        // tail represents the tail node of former nodes
+        // cur repreents the head of the current nodes
+        ListNode dummy(0, head), * h1, * h2;
+        for (int step = 1; step < len; step *= 2) {
+            ListNode * tail = &dummy;
+            ListNode * cur = tail->next;
             while (cur) {
-                left = cur;
-                right = split(left, step);
-                cur = split(right, step);
-                tail = merge(left, right, tail);
-                // When execution reachs here:   tail->cur
+                h1 = cur;
+                h2 = forward(h1, step);
+                cur = forward(h2, step);
+                tail = merge(h1, h2, tail);
             }
         }
-        return fake_head.next;
+
+        return dummy.next;
     }
 };
 ```
@@ -153,51 +153,42 @@ class Solution:
  * struct ListNode {
  *     int val;
  *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-
-typedef ListNode node;
 class Solution {
 public:
     ListNode* sortList(ListNode* head) {
-        return head ? mergeSort(head) : NULL;
-    }
-
-    node * mergeSort(node * head) {
-        if (!head || !(head->next)) return head;
-        node * slow, * fast, * right;
-        slow = fast = head;
-        // find the mid point
+        if (!head || !head->next) return head;
+        ListNode * slow = head, * fast = head;
+        // find the midpoint
         while (fast->next && fast->next->next) {
-            slow = slow->next;
             fast = fast->next->next;
+            slow = slow->next;
         }
-        // make sure each recursion are the same. i.e. corretly splited
-        right = slow->next;
-        slow->next = NULL;
-        // divide into two subproblem
-        head = mergeSort(head);
-        right = mergeSort(right);
+        fast = slow->next;
+        slow->next = nullptr;
+        slow = head;
+        // solve two subproblem
+        slow = sortList(slow); 
+        fast = sortList(fast);
         // merge two sorted list
-        return mergeSorted(head, right);
-    }
-
-    node * mergeSorted(node * left, node * right) {
-        if (!left || !right) return left ? left : right;
-        node * head, ** phead = &head;
-        while (left && right) {
-            if (right->val < left->val) {
-                *phead = right; phead = &(right->next);
-                right = right->next;
-            } else {
-                *phead = left; phead = &(left->next);
-                left = left->next;
+        ListNode dummy; head = &dummy;
+        while (slow && fast) {
+            if (slow->val <= fast->val) {
+                head = head->next = slow;
+                slow = slow->next;
+            }
+            else {
+                head = head->next = fast;
+                fast = fast->next;
             }
         }
-        *phead = left ? left : right;
-        return head;
+        head->next = slow ? slow : fast;
+
+        return dummy.next;   
     }
 };
-
 ```
