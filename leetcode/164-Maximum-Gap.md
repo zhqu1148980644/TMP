@@ -49,32 +49,34 @@ public:
 class Solution {
 public:
     int maximumGap(vector<int>& nums) {
-        if (nums.empty() || nums.size() < 2) return 0;
-        int  maxval = *max_element(nums.begin(), nums.end());
+        if (nums.size() < 2) return 0;
+        int maxval = *max_element(nums.begin(), nums.end());
         int exp = 1, radix = 10;
-
+        // use virtual 1d buckets
+        // buckets are represented as continuous regions in the array.
         vector<int> sorted(nums.size());
-
+        // sort by the last(least significant) digit to the first(most significant) digit.
         while (maxval / exp > 0) {
             vector<int> count(radix, 0);
-            for (int i = 0; i < nums.size(); i++)
-                count[(nums[i] / exp) % 10]++;
+            for (auto n : nums)
+                count[(n / exp) % 10]++;
             for (int i = 1; i < count.size(); i++)
                 count[i] += count[i - 1];
-            // must start from the back, otherwise the order sorted in the last step could be shuffled
+            // must start from the back, otherwise the order sorted in the last step will be reversed
             for (int i = nums.size() - 1; i >= 0; i--)
                 sorted[--count[(nums[i] / exp) % 10]] = nums[i];
-            
-            nums = sorted;
+            swap(nums, sorted);
             exp *= 10;
         }
-        int maxgap = 0;
-        for (int i = 0; i < nums.size() - 1; i++)
-            maxgap = max(nums[i + 1] - nums[i], maxgap);
 
+        int maxgap = 0;
+        for (int i = 0; i < (int)nums.size() - 1; i++)
+            maxgap = max(maxgap, nums[i + 1] - nums[i]);
+        
         return maxgap;
     }
 };
+
 ```
 
 3. ##### bucket
@@ -92,31 +94,30 @@ public:
 class Solution {
 public:
     int maximumGap(vector<int>& nums) {
-        if (nums.size() <= 1) return 0;
+        if (nums.size() < 2) return 0;
         auto mm = minmax_element(nums.begin(), nums.end());
-        int mi = *mm.first, ma = *mm.second;
-        int gap = (ma - mi) / (nums.size() - 1);
-        gap = gap < 1 ? 1 : gap;
-        int m = (ma - mi) / gap + 1;
-        // bmin contain the minimum number droped into each bucket.
-        // bmax contain the maximum number dropped into each bucket.
-        vector<int> bmin(m, INT_MAX);
-        vector<int> bmax(m, INT_MIN);
-        for (auto num : nums) {
-            int bi = (num - mi) / gap;
-            if (num < bmin[bi]) bmin[bi] = num;
-            if (num > bmax[bi]) bmax[bi] = num;
+        int minn = *mm.first, maxn = *mm.second;
+        int gap = max(1ul, (maxn - minn) / (nums.size() - 1));
+        int numb = (maxn - minn) / gap + 1;
+        // record the minimum and maximum number in each interval
+        vector<int> bmin(numb, INT_MAX), bmax(numb, INT_MIN);
+        for (auto n : nums) {
+            int bi = (n - minn) / gap;
+            bmin[bi] = min(bmin[bi], n);
+            bmax[bi] = max(bmax[bi], n);
         }
-        int i = 0, j = 1, maxd = 0;
-        while (j < m) {
-            // Some buckets may contain no items.
-            while (j < m && bmin[j] == INT_MAX) j++;
-            if (j < m) {
-                maxd = max(maxd, bmin[j] - bmax[i]);
+        // find the maximum gap between numbers in two nonempty intervals
+        int i = 0, j = 1, maxgap = 0;
+        while (j < numb) {
+            // may has multiple empty intervals between two nonempty intervals 
+            while (j < numb && bmin[j] == INT_MAX) j++;
+            if (j < numb) {
+                maxgap = max(maxgap, bmin[j] - bmax[i]);
                 i = j++;
             }
         }
-        return maxd;
+
+        return maxgap;
     }
 };
 ```
