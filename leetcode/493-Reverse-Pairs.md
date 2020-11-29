@@ -174,6 +174,62 @@ public:
 };
 ```
 
+
+or
+
+
+```c++
+struct FenwickTree {
+    vector<int> sums;
+    FenwickTree(int num) : sums(num + 1) {}
+    void update(int n, int delta) {
+        while (n < sums.size()) {
+            sums[n] += delta;
+            n += lowbit(n);
+        }
+    }
+    
+    int query(int n) {
+        int sum = 0;
+        while (n > 0) {
+            sum += sums[n];
+            n -= lowbit(n);
+        }
+        return sum;
+    }
+
+    static inline int lowbit(int n) {
+        return n & -n;
+    }
+};
+
+class Solution {
+public:
+    int reversePairs(vector<int>& nums) {
+        // long long for handling 2 * n > INT_MAX
+        vector<long long> sorted(nums.size());
+        for (int i = 0; i < nums.size(); i++)
+            sorted[i] = nums[i];
+        sort(sorted.begin(), sorted.end());
+        // add index by 1 to cater for the requirement for FenwickTree
+        auto index = [&](long long n) {
+            return lower_bound(sorted.begin(), sorted.end(), n) - sorted.begin() + 1;
+        };
+        int res = 0;
+        int ftsize = nums.size() + 1;
+        FenwickTree ft(ftsize);
+        for (auto n : nums) {
+            // search lowerbound index of 2 * n + 1
+            int min_index = index(2ll * n + 1);
+            res += ft.query(ftsize) - ft.query(min_index - 1);
+            ft.update(index(n), 1);
+        }
+
+        return res;
+    }
+};
+```
+
 4. ##### segment tree
 
 ```c++
