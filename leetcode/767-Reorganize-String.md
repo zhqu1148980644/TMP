@@ -18,7 +18,7 @@ S will consist of lowercase letters and have length in range [1, 500].
 
 1. ##### greedy strategy priority queue
 
-- Return false is the `max(count)` of any characters is larger than `(n + 1) / 2`;
+- Return false if the `max(count)` of all characters is larger than `(n + 1) / 2`;
     - It seems like all strings with `max(count) <= (n + 1) / 2` can yield valid results.
     - How to prove?
 - Iteratively add two different characters that with the highest frequency.
@@ -81,7 +81,7 @@ public:
 
         for (int i = 0; i < 26; i++)
             if (count[i]) avail.emplace_back(count[i], i + 'a');
-        // if you sort by descending order, to make max(count) character is putted at the end
+        // if you sort by descending order, make sure to make max(count) character is putted at the end
         // change w to 0 and reset w to 1 if w exceed
         sort(avail.begin(), avail.end());
 
