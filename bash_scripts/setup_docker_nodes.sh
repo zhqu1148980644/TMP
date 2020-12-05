@@ -1,7 +1,7 @@
 #!/bin/bash
 show_help() {
     echo "Usage: $(basename $0) create/remove NUM_NODES INIT_PORT SUBNETS GATEWAY"
-    echo "Example: $(basename $0) create 20 2345 192.168.3.0/24 192.168.3.254"
+    echo "Example: $(basename $0) create 2 2345 192.168.3.0/24 192.168.3.254"
     exit
 }
 
@@ -16,7 +16,7 @@ num=$2
 port=$3
 subnet=$4
 gateway=$5
-network_name=$4_$4_$2
+network_name=$4
 
 declare -a nodes
 declare -a containers
@@ -30,7 +30,7 @@ if [ "$command" == "create" ]; then
     do
         nodes[i]="${network_name}_node_${i}"
         echo "Created node-${i}-${port}"
-        containers[i]=$(docker run -d -p $port:22 --name "node-${i}-${port}" --network $network_name ilemonrain/centos-sshd)
+        containers[i]=$(docker run -d -p $port:22 --name "node-${i}-${port}" --network $network_name --privileged zhqu1148980644/centos7-systemd-sshd usr/sbin/init)
         port=$((port+1))
     done
 else
