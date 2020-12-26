@@ -16,7 +16,7 @@ Output: 6
 
 #### Solutions
 
-- For each column, we can thought the number of continuous `1` left to each item as the height of each bar, then this problem is converted to `problem 84`.
+- For a given row, we can thought the number of continuous `1` above as bars with different heights, then this problem is converted to `problem 84`.
 - In `problem 84`, we can fetch the maximum area within a histogram in `O(n)` time, thus the complexity of this problem can reach `O(n2)`. ie: `O(ncol * O(nrow))`.
 
 1. ##### straight forward O(n3)
@@ -25,7 +25,42 @@ Output: 6
 
 
 ```c++
-// treat as  horizontal bars.
+class Solution {
+public:
+    int area(vector<int> & nums) {
+        int res = 0;
+        for (int j = 0; j < nums.size(); j++) {
+            int h = nums[j];
+            res = max(res, h);
+            for (int i = j - 1; i >= 0; i--) {
+                h = min(h, nums[i]);
+                res = max(res, h * (j - i + 1));
+            }
+        }
+        return res;
+    }
+    int maximalRectangle(vector<vector<char>>& matrix) {
+        int m = matrix.size(); if (!m) return 0;
+        int n = matrix[0].size();
+        
+        int res = 0;
+        vector<int> heights(n);
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++)
+                heights[j] = matrix[i][j] == '1' ? heights[j] + 1: 0;
+            res = max(res, area(heights));
+        }
+
+        return res;
+    }
+};
+```
+
+
+or combine loops in two functions.
+
+```c++
+// treat as horizontal bars.
 class Solution {
 public:
     int maximalRectangle(vector<vector<char>>& matrix) {
@@ -98,9 +133,10 @@ public:
 
 - See official answer for details.
 - The maximum rectangle extened from a given position(at the bottom of the rectangle) can be fetched by:
-    - streches up untill meets a 0 cell which represents the top edge of the rectangle.
+    - streches up untill meets a `0` cell which represents the top edge of the rectangle.
     - streches left/right to find the left/right edge.
-- `left[j] = coln` means the leftmost column that can be covered for the largest rectangle extended from `matrix[i][j]`.
+    - The rectangle after streching contains only `1` cells.
+- `left[j] = coln` means the leftmost column that can be streched to when extending from `matrix[i][j]`(as the bottom of the rectangle).
 
 ```c++
 class Solution {
@@ -108,40 +144,45 @@ public:
     int maximalRectangle(vector<vector<char>>& matrix) {
         int m = matrix.size(); if (!m) return 0;
         int n = matrix[0].size();
-        int height[n] = {0}, left[n] = {0}, right[n] = {0};
-        for (int j = n - 1; j >= 0; j--)
-            right[j] = n - 1;
+
+        vector<int> height(n), left(n), right(n, n - 1);
+
         int res = 0;
         for (int i = 0; i < m; i++) {
-            int curleft = 0, curright = n - 1;
-
+            int curl = 0, curr = n - 1;
             for (int j = n - 1; j >= 0; j--) {
+                // if the current cell is 1, then the right bound will be constrained by both rows(the current row and the above row)
+                // as the stretching may reach the above row.
                 if (matrix[i][j] == '1')
-                    right[j] = min(right[j], curright);
+                    right[j] = min(curr, right[j]);
+                // else, the stretching in the current column will not reach this row, the right bound is freed
                 else {
-                    // right[j] = n - 1 means the next row doest not depends on the current row
                     right[j] = n - 1;
-                    curright = j - 1;
+                    curr = j - 1;
                 }
             }
+
             for (int j = 0; j < n; j++) {
-                if (matrix[i][j] == '1') {
-                    height[j] = i ? height[j] + 1 : 1;
-                    left[j] = max(left[j], curleft);
-                }
+                if (matrix[i][j] == '1')
+                    left[j] = max(curl, left[j]);
+                // the same, the left bound in the next row will not depend on the current row
                 else {
-                    // left[j] = 0 means the next row donesn't depends in the current row
-                    height[j] = left[j] = 0;
-                    curleft = j + 1;
+                    left[j] = 0;
+                    curl = j + 1;
                 }
-                res = max(res, (right[j] - left[j] + 1) * height[j]);
+            }
+            // This for loop can be combined with the previous one.
+            for (int j = 0; j < n; j++) {
+                if (matrix[i][j] == '1')
+                    res = max(res, ++height[j] * (right[j] - left[j] + 1));
+                else
+                    height[j] = 0;
             }
         }
-
         return res;
     }
 };
 ```
 
-- Python version bit bit operation.
+- Python version with bit operation.
 - reference: https://leetcode-cn.com/problems/maximal-rectangle/comments/65610
