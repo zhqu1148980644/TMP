@@ -173,25 +173,25 @@ int maxProfit(int* prices, int pricesSize){
 class Solution {
 public:
     int maxProfit(int k, vector<int>& prices) {
-        if (!prices.size()) return 0;
-        int size = prices.size();
-        if (k > size / 2) {
+        int n = prices.size();
+        if (k > n / 2) {
             int res = 0;
-            for (int i = 1; i < size; i++)
+            for (int i = 1; i < n; i++)
                 res += max(0, prices[i] - prices[i - 1]);
             return res;
         }
-        k += 1;
-        vector<int> last0(k), last1(k, INT_MIN);
-        for (int i = 0; i < prices.size(); i++) {
-            int prel = last0[0];
-            // reverse looping to avoid overwriting last0 in the previous day
-            for (int j = k - 1; j >= 1; j--) {
-                last0[j] = max(last0[j], last1[j] + prices[i]);
-                last1[j] = max(last1[j], last0[j - 1] - prices[i]);
+        else {
+            vector<vector<int>> dp(2, vector<int>(k + 1));
+            fill(dp[1].begin(), dp[1].end(), INT_MIN);
+            // reverse looping to prevent overwriting dp[0][j - 1]
+            for (int d = 0; d < n; d++) {
+                for (int j = k; j > 0; j--) {
+                    dp[0][j] = max(dp[0][j], dp[1][j] + prices[d]);
+                    dp[1][j] = max(dp[0][j - 1] - prices[d], dp[1][j]);
+                }
             }
+            return dp[0].back();
         }
-        return last0.back();
     }
 };
 ```
