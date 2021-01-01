@@ -68,3 +68,25 @@ public:
     }
 };
 ```
+
+
+```rust
+impl Solution {
+    pub fn can_place_flowers(mut nums: Vec<i32>, mut n: i32) -> bool {
+        nums.push(0); nums.push(1);        
+        let mut zero = if nums[0] == 0  {1} else {0};
+        for i in 0..nums.len() {
+            if nums[i] == 1 {
+                n -= (zero - 1) / 2;
+                zero = 0;
+            } else {
+                zero += 1;
+            }
+            if n <= 0 {
+                break;
+            }
+        }
+        n <= 0
+    }
+}
+```
