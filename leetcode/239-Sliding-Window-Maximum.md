@@ -94,6 +94,65 @@ public:
 };
 ```
 
+or
+
+```c++
+class Solution {
+public:
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        deque<int> q;
+        vector<int> res;
+
+        for (int i = 0; i < nums.size(); i++) {
+            if (q.size() && q.front() <= i - k)
+                q.pop_front();
+            while (q.size() && nums[i] >= nums[q.back()])
+                q.pop_back();
+            q.push_back(i);
+            if (i >= k - 1)
+                res.push_back(nums[q.front()]);
+        }
+
+        return res;
+
+    }
+};
+```
+
+or
+
+```rust
+use std::collections::VecDeque;
+
+impl Solution {
+    pub fn max_sliding_window(nums: Vec<i32>, k: i32) -> Vec<i32> {
+        let mut res = vec![];
+        let mut q = VecDeque::new();
+        for (i, n) in nums.iter().enumerate() {
+            if !q.is_empty() {
+                if q[0] + k as usize - 1 < i {
+                    q.pop_front();
+                }
+                while let Some(qi) = q.back() {
+                    if *n > nums[*qi] {
+                        q.pop_back();
+                    }
+                    else {
+                        break;
+                    }
+                }
+            }
+            q.push_back(i);
+            if i >= (k - 1) as usize {
+                res.push(nums[q[0]]);
+            }
+        }
+        res
+    }
+}
+```
+
+
 3. ##### dynamic programming O(n) S(n)
 
 - See official answer in https://leetcode-cn.com/problems/sliding-window-maximum/solution/hua-dong-chuang-kou-zui-da-zhi-by-leetcode-3/
