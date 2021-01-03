@@ -31,7 +31,7 @@ input types have been changed on April 15, 2019. Please reset to default code de
     - Finally build a new interval with the start and end.
 - Concatenate these three parts.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) {

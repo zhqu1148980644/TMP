@@ -18,7 +18,7 @@ Output: true
 
 1. ##### intervals overlapping check with sort
 
-```c++
+```cpp
 class Solution {
 public:
     bool canAttendMeetings(vector<vector<int>>& intervals) {
@@ -39,7 +39,7 @@ public:
 - `num_meeting` represents the number of meeting being hold at each time point.
 - return false if there are two or more meetings at the same time.
 
-```c++
+```cpp
 class Solution {
 public:
     bool canAttendMeetings(vector<vector<int>>& intervals) {

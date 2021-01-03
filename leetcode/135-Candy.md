@@ -29,7 +29,7 @@ Explanation: You can allocate to the first, second and third child with 1, 2, 1 
 - The second time, scanning from the end to the start, ensuring the same rule for their right neighbor child.(Only update candies if the required candies are larger than what they already have.)
 - Proof of correctness ?
 
-```c++
+```cpp
 class Solution {
 public:
     int candy(vector<int>& ratings) {
@@ -62,7 +62,7 @@ public:
     - If the final assignment of candies are need the two pass method should be more proper.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int candy(vector<int>& ratings) {

@@ -48,7 +48,7 @@ Because there are no blocked cells, it's possible to reach the target square.
 ```
 
 
-```c++
+```cpp
 
 #define node(x, y) (((x) * 1000000l) + (y))
 class Solution {
@@ -100,7 +100,7 @@ public:
 - Think of the best case when there are 200 blocked cells surrounded the source cell which is the center of the circle, when bfs reaches this circle, the queue size will be 200.
 - When the queue size is larger than 200, there must be holes in the circle,.
 
-```c++
+```cpp
 #define node(x, y) (((x) * 1000000l) + (y))
 class Solution {
 public:
@@ -147,7 +147,7 @@ public:
 
 2. ##### dfs
 
-```c++
+```cpp
 #define node(x, y) ((x) * 1000000l + (y))
 class Solution {
 public:

@@ -20,7 +20,7 @@ Note:
 
 1. ##### two points
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> sortArrayByParity(vector<int>& A) {
@@ -37,7 +37,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> sortArrayByParity(vector<int>& A) {

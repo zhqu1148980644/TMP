@@ -23,7 +23,7 @@ A.length % 2 == 0
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> sortArrayByParityII(vector<int>& A) {
@@ -45,7 +45,7 @@ public:
 
 2. ##### inplace with two pointers
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> sortArrayByParityII(vector<int>& A) {

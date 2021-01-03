@@ -20,7 +20,7 @@ s = "2[abc]3[cd]ef", return "abcabccdcdcdef".
 
 - Reference: https://leetcode-cn.com/problems/decode-string/solution/decode-string-fu-zhu-zhan-fa-di-gui-fa-by-jyd/
 
-```c++
+```cpp
 class Solution {
 public:
     string decodeString(string s) {
@@ -56,7 +56,7 @@ public:
 
 2. ##### recursion
 
-```c++
+```cpp
 class Solution {
 private:
     int end = 0;

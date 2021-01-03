@@ -41,7 +41,7 @@ The cells are adjacent in only four directions: up, down, left and right.
 
 1. ##### bfs
 
-```c++
+```cpp
 #define node(x, y) (((x) * n + y))
 class Solution {
 public:
@@ -81,7 +81,7 @@ public:
 
 - `dp[i][j]` represents the minimum distance between `matrix[i][j]` and the nearest zero.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> updateMatrix(vector<vector<int>>& matrix) {

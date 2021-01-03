@@ -28,7 +28,7 @@ Explanation: There are two distinct solutions to the 4-queens puzzle as shown be
 
 - Since all path traversed by depth first search is unique, this problem is the simplified version of `problem 51`
 
-```c++
+```cpp
 typedef pair<int, int> pos;
 
 class Solution {
@@ -75,7 +75,7 @@ public:
 2. ##### backtrack with recursion
 
 
-```c++
+```cpp
 class Solution {
 public:
     using pos = pair<int, int>;
@@ -117,7 +117,7 @@ public:
 
 - Use the code pattern in `problem 77`.
 
-```c++
+```cpp
 class Solution {
 public:
     bool valid(vector<int> & com, int curr) {

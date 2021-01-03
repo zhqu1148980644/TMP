@@ -25,7 +25,7 @@ Output: 45
 - IOU is used for object detection.
 - Find 4 borders of overlapped area.
 
-```c++
+```cpp
 class Solution {
 public:
     int computeArea(int A, int B, int C, int D, int E, int F, int G, int H) {

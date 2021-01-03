@@ -39,7 +39,7 @@ The answer is guaranteed to be less than 2 ^ 31.
 
 - Be careful about the order setting, faces north is `(0, 1)`.
 
-```c++
+```cpp
 class Solution {
 public:
     struct hash {

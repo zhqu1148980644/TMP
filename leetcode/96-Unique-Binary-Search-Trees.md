@@ -22,7 +22,7 @@ Given n = 3, there are a total of 5 unique BST's:
 
 - `g[n] = g[j - 1] * g[n - j] for j = 1 to n`
 
-```c++
+```cpp
 class Solution {
 public:
     int numTrees(int n) {
@@ -39,7 +39,7 @@ public:
 
 2. ##### catlan number
 
-```c++
+```cpp
 int numTrees(int n){
     long c = 1;
     for (int i = 0; i < n; i++)

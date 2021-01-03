@@ -15,7 +15,7 @@ m.next(5) = (10 + 3 + 5) / 3
 
 1. ##### queue
 
-```c++
+```cpp
 class MovingAverage {
 public:
     int size, cursum = 0;

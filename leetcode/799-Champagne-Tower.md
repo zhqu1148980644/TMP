@@ -30,7 +30,7 @@ query_glass and query_row will be in the range of [0, 99].
 
 1. ##### simulation
 
-```c++
+```cpp
 class Solution {
 public:
     double champagneTower(int poured, int query_row, int query_glass) {

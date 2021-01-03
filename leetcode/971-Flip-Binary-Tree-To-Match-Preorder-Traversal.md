@@ -42,7 +42,7 @@ Note:
 
 1. ###### recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

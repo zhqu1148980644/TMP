@@ -27,7 +27,7 @@ The n will be in the range [1, 1000].
 
 - If the current number is a number denoted a `n` with valid divisors(prime), the smallest divisor is `d`, then `n` must be constructed from `1` copy and `d` times paste of `n/d`.
 
-```c++
+```cpp
 class Solution {
 public:
     int minSteps(int n) {

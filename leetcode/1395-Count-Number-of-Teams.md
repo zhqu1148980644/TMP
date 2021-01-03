@@ -38,7 +38,7 @@ n == rating.length
 
 2. ##### enumerate all mid points O(n2)
 
-```c++
+```cpp
 class Solution {
 public:
     int numTeams(vector<int>& rating) {
@@ -72,7 +72,7 @@ public:
 - Optimize the counting step(inner for-loop) in the second solution by using fenwick tree in `O(log(n))` time(Originally `O(n)`)
 - Discretize ratings by mapping all ratings to their corresponding positions in the sorted array.
 
-```c++
+```cpp
 //  FenwickTree template
 struct FWTree {
     vector<int> sums;

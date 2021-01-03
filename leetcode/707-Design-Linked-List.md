@@ -39,7 +39,7 @@ At most 2000 calls will be made to get, addAtHead, addAtTail,  addAtIndex a
 
 - circular double linked list. ie: `end->next == begin` and `end->prev == back`
 
-```c++
+```cpp
 template <typename T>
 class List {
 private:

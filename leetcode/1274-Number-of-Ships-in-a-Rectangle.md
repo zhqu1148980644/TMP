@@ -30,7 +30,7 @@ On the input ships is only given to initialize the map internally. You must sol
 
 1. ##### partition
 
-```c++
+```cpp
 /**
  * // This is Sea's API interface.
  * // You should not implement it, or speculate about its implementation

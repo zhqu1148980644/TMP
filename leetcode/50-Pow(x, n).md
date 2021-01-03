@@ -32,7 +32,7 @@ n is a 32-bit signed integer, within the range [−231, 231 − 1]
 - When the n increases with n, the bit numbers of exponent increases with log2(n).
 - Time complexity can be reduced to log2(n)
 
-```c++
+```cpp
 class Solution {
 public:
     double pow(double x, long n) {
@@ -55,7 +55,7 @@ public:
 
 - `x^4 = x^0b100 = x^(2^2 * 1 + 2^1 * 0 + 2^0 * 0) = x^(2^2) * X^0 * X^0`
 
-```c++
+```cpp
 class Solution {
 public:
     double myPow(double x, int n) {

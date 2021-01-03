@@ -35,7 +35,7 @@ Note:
 
 1. ##### window
 
-```c++
+```cpp
 class Solution {
 public:
     int minSwaps(vector<int>& data) {

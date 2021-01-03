@@ -20,7 +20,7 @@ Output: 3
 
 - Count the number of contiguous 1 in each row, column, diagonal and anti-diagonal
 
-```c++
+```cpp
 class Solution {
 public:
     int longestLine(vector<vector<int>>& M) {

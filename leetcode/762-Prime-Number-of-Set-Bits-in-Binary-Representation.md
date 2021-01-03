@@ -31,7 +31,7 @@ R - L will be at most 10000.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     vector<bool> checkprime(int n) {

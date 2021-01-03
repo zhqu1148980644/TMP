@@ -23,7 +23,7 @@ Output: false
 
 - `2 ** n` means set the n'th bit to 1.
 
-```c++
+```cpp
 class Solution {
 public:
     bool isPowerOfTwo(int n) {

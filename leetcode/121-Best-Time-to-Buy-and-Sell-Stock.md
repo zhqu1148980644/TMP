@@ -24,7 +24,7 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
 - Traverse all buy-sell pairs and record the max profit.
 
-```c++
+```cpp
 int maxProfit(int * prices, int pricesSize) {
     int max = 0;
     for (int i = 0; i < pricesSize - 1; i++)
@@ -39,7 +39,7 @@ int maxProfit(int * prices, int pricesSize) {
 
 - Record the minimum price before each time point and upadte the maximum profit we can get if sell at that point when traversing each day.
 
-```c++
+```cpp
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
@@ -61,7 +61,7 @@ public:
 - Then this problem equals to calculating the maximum continues sum problem(problem 53 Maximum subarray).
 
 
-```c++
+```cpp
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {

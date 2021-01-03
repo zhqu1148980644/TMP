@@ -28,7 +28,7 @@ words[i] only consists of English lowercase letters.
 - `dp[w]` represents the length of the longest chain ends with `w`.
     - `dp[w] = 1 + max(dp[wx])` wx are any words with length `w.size() - 1`
 
-```c++
+```cpp
 class Solution {
 public:
     bool ispre(string_view s1, string_view s2) {

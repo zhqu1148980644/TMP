@@ -30,7 +30,7 @@ Could you do it without using any loop / recursion?
 
 2. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     bool isPowerOfThree(int n) {
@@ -47,7 +47,7 @@ public:
 - Find the largest number that `x % 3 == 0`  ie. 3 ** 19.
 - Divisors of `3 ** 19` are `3 ** 0`, `3 ** 1` .....
 
-```c++
+```cpp
 class Solution {
 public:
     bool isPowerOfThree(int n) {

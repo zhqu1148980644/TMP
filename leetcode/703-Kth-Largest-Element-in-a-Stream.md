@@ -22,7 +22,7 @@ You may assume that nums' length ≥ k-1 and k ≥ 1.
 
 1. ##### min heap push/pop O(log(n))
 
-```c++
+```cpp
 class KthLargest {
 public:
     int k;
@@ -48,7 +48,7 @@ public:
 
 2. ##### multiset insert/delete O(log(n))
 
-```c++
+```cpp
 class KthLargest {
 public:
     int k;

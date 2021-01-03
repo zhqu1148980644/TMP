@@ -25,7 +25,7 @@ Could you optimize your algorithm to use only O(k) extra space?
 - To save the space used for recording the overriten pascal number in the last layer, we calculate from the end to the beginning.
 - Only a half of a certain layer needs to be calculated since numbers in each layer are symmetric.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> getRow(int rowIndex) {

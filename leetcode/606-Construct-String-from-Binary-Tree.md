@@ -35,7 +35,7 @@ except we can't omit the first parenthesis pair to break the one-to-one mapping 
 
 1. ##### preorder traversal with recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -67,7 +67,7 @@ public:
 
 2. ##### postorder traversal with iteration
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -114,7 +114,7 @@ public:
 
 3. ##### preorder traversal wtih iteration
 
-```c++
+```cpp
 
 
 ```

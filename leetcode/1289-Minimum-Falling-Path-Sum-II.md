@@ -32,7 +32,7 @@ The falling path with the smallest sum is [1,5,7], so the answer is 13.
 - Actually, iteratively exlcuding the same column and finding the smallest value is redundant, only the `minimum` number and the `second minimum` number are needed.
     - If the number in the same column in the last row is the minimum, then the second minimum is what we need.
 
-```c++
+```cpp
 class Solution {
 private:
     int rowmin(int * row, int length, int exclude) {
@@ -67,7 +67,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     int minFallingPathSum(vector<vector<int>>& arr) {

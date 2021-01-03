@@ -67,7 +67,7 @@ Total calls of find() is between [1, 10^4]
 
 1. ##### hash map
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -120,7 +120,7 @@ public:
 
 ```
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

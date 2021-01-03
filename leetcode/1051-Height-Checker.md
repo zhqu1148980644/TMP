@@ -38,7 +38,7 @@ Constraints:
 - `one move` represents the student's initial position is unequal to the final position in the sorted array.
 - In case of the student's size is much larger the range of height, use bucket sort.
 
-```c++
+```cpp
 class Solution {
 public:
     int heightChecker(vector<int>& heights) {

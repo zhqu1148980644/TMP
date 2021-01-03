@@ -26,7 +26,7 @@ Note:
 
 1. ##### maximum window
 
-```c++
+```cpp
 class Solution {
 public:
     int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int X) {

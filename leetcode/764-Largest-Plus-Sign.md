@@ -58,7 +58,7 @@ mines[i] will be length 2 and consist of integers in the range [0, N-1].
 
 1. #### dynamic programming O(n2)
 
-```c++
+```cpp
 class Solution {
 public:
 #define node(x, y) ((x) * N + (y))

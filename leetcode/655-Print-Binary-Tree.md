@@ -47,7 +47,7 @@ Note: The height of binary tree is in the range of [1, 10].
 
 - Count the number of rows and columns of the results in the first traversal, then traverse again to fill the result table.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -85,7 +85,7 @@ public:
 
 - it's clear that the number of columns equals the number of nodes in a full binary tree with the same height. ie: `2^h - 1`
 
-```c++
+```cpp
 class Solution {
 public:
     void fill(vector<vector<string>>::iterator rowit, TreeNode * root, int lo, int hi) {
@@ -112,6 +112,6 @@ public:
 
 2. ##### iteration
 
-```c++
+```cpp
 
 ```

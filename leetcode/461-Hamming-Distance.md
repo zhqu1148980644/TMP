@@ -26,7 +26,7 @@ The above arrows point to positions where the corresponding bits are different.
 
 - Use xor to set bit positions where two numbers differ to 1.
 
-```c++
+```cpp
 class Solution {
 public:
     int hammingDistance(int x, int y) {
@@ -44,7 +44,7 @@ public:
 
 Or
 
-```c++
+```cpp
 class Solution {
 public:
     int hammingDistance(int x, int y) {

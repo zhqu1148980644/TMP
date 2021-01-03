@@ -29,7 +29,7 @@ word[i] is an English lowercase letter.
 
 1. ##### hash map
 
-```c++
+```cpp
 class Solution {
 public:
     int calculateTime(string keyboard, string word) {

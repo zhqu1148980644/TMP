@@ -28,7 +28,7 @@ Every nums[i] will be an integer in the range [0, 99].
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     int dominantIndex(vector<int>& nums) {

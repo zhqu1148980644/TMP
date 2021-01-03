@@ -15,7 +15,7 @@ Output: 1->2->2->4->3->5
 
 - use two dummy heads to store nodes with values smaller than x and larger than x respectively.
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -42,6 +42,47 @@ struct ListNode* partition(struct ListNode* head, int x){
     psmall->next = large.next;
     plarge->next = NULL;
     return small.next;
+}
+```
+
+```rust
+// Definition for singly-linked list.
+// #[derive(PartialEq, Eq, Clone, Debug)]
+// pub struct ListNode {
+//   pub val: i32,
+//   pub next: Option<Box<ListNode>>
+// }
+// 
+// impl ListNode {
+//   #[inline]
+//   fn new(val: i32) -> Self {
+//     ListNode {
+//       next: None,
+//       val
+//     }
+//   }
+// }
+
+
+impl Solution {
+    pub fn partition(mut head: Option<Box<ListNode>>, x: i32) -> Option<Box<ListNode>> {
+        let (mut lt, mut gt) = (ListNode::new(-1), ListNode::new(-1));
+        let (mut plt, mut pgt) = (&mut lt, &mut gt);
+        while let Some(cur) = head {
+            if cur.val < x {
+                plt.next = Some(cur);
+                plt = plt.next.as_mut().unwrap();
+                head = plt.next.take();
+            }
+            else {
+                pgt.next = Some(cur);
+                pgt = pgt.next.as_mut().unwrap();
+                head = pgt.next.take();
+            }
+        }
+        plt.next = gt.next;
+        lt.next
+    }
 }
 ```
 

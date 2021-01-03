@@ -30,7 +30,7 @@ Assume we are dealing with an environment which could only store integers within
 - Convert inputs to negative numbers to get rid of overflow problems.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int divide(int dividend, int divisor) {

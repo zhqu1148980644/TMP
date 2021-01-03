@@ -39,7 +39,7 @@ All strings consist of lowercase English letters.
 - `solve(s)` represents the number of good strings in the range of `[0-s]`, thus the answer equals to `solve(s2) - solve(s1 - 1)`
 - `dp[pos][match_len][is_equal]` represents the number of strings with prefix lower than `s[:pos)` or equal to `s[:pos)` with `pattern[:match_len) == suffix of these prefixs`.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> next;

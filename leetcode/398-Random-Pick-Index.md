@@ -27,7 +27,7 @@ solution.pick(1);
 -                          third                    `3/4 * 1/3       == 1/4`
 -                          fourth                   `1/4             == 1/4`
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> nums;

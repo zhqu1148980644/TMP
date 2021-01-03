@@ -20,7 +20,7 @@ For example, given n = 3, a solution set is:
 
 Iteratively build lists of k-valid parentheses untill k reaches n.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> generateParenthesis(int n) {
@@ -46,7 +46,7 @@ public:
 - Keeping track of left and right brackets.
 - Add right brackt only when the number of left brackets is larger than the number of right brackets.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> res;

@@ -56,7 +56,7 @@ Output: 7
 
 - `dp[i][c1][c2`] represents the minimum cost when typed `word[i]` with one finger on `c1` and the other on `c2`.
 
-```c++
+```cpp
 class Solution {
 public:
     int dis(int l, int r) {

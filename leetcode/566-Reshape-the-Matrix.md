@@ -35,7 +35,7 @@ The given r and c are all positive.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> matrixReshape(vector<vector<int>>& nums, int r, int c) {

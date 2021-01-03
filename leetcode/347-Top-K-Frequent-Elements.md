@@ -21,7 +21,7 @@ Output: [1]
 
 1. ##### hashmap with priority queue
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
@@ -51,7 +51,7 @@ public:
 
 2. ##### hashmap with quick sort
 
-```c++
+```cpp
 #include <experimental/random>
 typedef pair<int, int> Count;
 class Solution {
@@ -95,7 +95,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     template <typename V>
@@ -156,7 +156,7 @@ public:
 
 or
 
-```c++
+```cpp
 #include <experimental/random>
 class Solution {
 public:
@@ -200,7 +200,7 @@ public:
 
 - Collect items into buckets based on their frequency.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {

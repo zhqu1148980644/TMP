@@ -23,7 +23,7 @@ Inputs:
 
 1. ##### dynamic programming O(2^n * n2)
 
-```c++
+```cpp
 #include <bits/stdc++.h>
 using namespace std;
 

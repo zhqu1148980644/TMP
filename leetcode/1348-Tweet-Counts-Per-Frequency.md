@@ -49,7 +49,7 @@ tweetCounts.getTweetCountsPerFrequency("hour", "tweet3", 0, 210);  // return [4]
 - Insertion: `O(log(n))`
 - CountFreq: `O(number of tweet)`
 
-```c++
+```cpp
 class TweetCounts {
     unordered_map<string, multiset<int>> cache;
 

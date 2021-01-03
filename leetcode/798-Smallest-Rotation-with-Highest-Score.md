@@ -53,7 +53,7 @@ To cater for steps changing to a negative number, we use `(index(0)) + 5 - 2 + 1
 ```
 
 
-```c++
+```cpp
 class Solution {
 public:
     int bestRotation(vector<int>& A) {

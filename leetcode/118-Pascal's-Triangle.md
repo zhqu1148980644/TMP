@@ -23,7 +23,7 @@ Output:
 
 1. ##### Straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> generate(int numRows) {

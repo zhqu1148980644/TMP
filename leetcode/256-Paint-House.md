@@ -18,7 +18,7 @@ Explanation: Paint house 0 into blue, paint house 1 into green, paint house 2 in
 
 1. ##### dynamic programming
 
-```c++
+```cpp
 class Solution {
 public:
     int minCost(vector<vector<int>>& costs) {

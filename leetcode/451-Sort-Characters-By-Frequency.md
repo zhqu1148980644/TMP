@@ -39,7 +39,7 @@ Note that 'A' and 'a' are treated as two different characters.
 
 1. ##### sort by frequency O(n2)
 
-```c++
+```cpp
 class Solution {
 public:
     string frequencySort(string s) {
@@ -58,7 +58,7 @@ public:
 
 2. ##### heap O(n)
 
-```c++
+```cpp
 class Solution {
 public:
     string frequencySort(string s) {

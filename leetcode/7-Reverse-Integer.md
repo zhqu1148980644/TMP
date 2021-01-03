@@ -35,7 +35,7 @@ Assume we are dealing with an environment which could only store integers within
     - Since the first digit will not be larger than `2`, `base * 10 + remainder` will be `INT_MAX / 10 + 2` in the worst case, which is a valid number, thus we only need to ensure `base < INT_MAX / 10`.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int reverse(int x) {
@@ -56,7 +56,7 @@ public:
 
 Or
 
-```c++
+```cpp
 class Solution {
 public:
     int reverse(int x) {

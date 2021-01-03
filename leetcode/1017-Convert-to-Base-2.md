@@ -34,7 +34,7 @@ Note:
     - this links says there is no negative remainders.
 - reference: https://en.wikipedia.org/wiki/Positional_notation#Base_conversion
 
-```c++
+```cpp
 class Solution {
 public:
     string baseconvert(int n, int k) {
@@ -63,7 +63,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     string baseNeg2(int N) {

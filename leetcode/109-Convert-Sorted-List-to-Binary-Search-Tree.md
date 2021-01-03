@@ -25,7 +25,7 @@ One possible answer is: [0,-3,9,-10,null,5], which represents the following heig
 - This method is similar to `problem 108`. Since linked list does not support efficient indexing, we need to find the middle node in a linked list in each subproblem.
 - Another option is to set the middle node's next pointer to `NULL`, then the inorder function can works only with the root parameter. However, this will change the structure of the original linked list which may be unacceptable in real world.
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -65,7 +65,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode * build(ListNode * head, int len) {
@@ -95,7 +95,7 @@ public:
 
 - Store the ordered list into a vector, then apply the same method used above.
 
-```c++
+```cpp
 class Solution {
 private:
     TreeNode * inorder(vector<int *> & nums, int lo, int hi) {
@@ -131,7 +131,7 @@ public:
     - Whenever the left tree has been created from a recursive call, we will move the node one step further to match the process of inorder traversal.
     - To terminate the recursive inorder traversal in the right point, we need to fetch the total length of the linked list.
 
-```c++
+```cpp
 class Solution {
 public:
     ListNode * head;

@@ -28,7 +28,7 @@ Output: return the tree root node representing the following tree:
 
 - After each recursive call, the `lo` pointer will always points to the character next to the right bracket of the subtree.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -69,7 +69,7 @@ public:
 
 2. ##### iteration with stack
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

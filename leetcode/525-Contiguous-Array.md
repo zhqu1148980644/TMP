@@ -16,7 +16,7 @@ Note: The length of the given binary array will not exceed 50,000.
 
 - The idea is to count the number of 1 and 0 meeted before and record when the difference between these two counts has been met before.
 
-```c++
+```cpp
 class Solution {
 public:
     int findMaxLength(vector<int>& nums) {
@@ -40,7 +40,7 @@ public:
 
 Or replace diff to count of 1. This approach can be seen as replacing all 0s to -1, and finding continous ranges with equal number of 1 and 0 equals to find ranges with sum `0`.
 
-```c++
+```cpp
 class Solution {
 public:
     int findMaxLength(vector<int>& nums) {

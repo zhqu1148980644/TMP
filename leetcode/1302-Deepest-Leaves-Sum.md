@@ -23,7 +23,7 @@ Output: 15
 
 1. ##### dfs with recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -59,7 +59,7 @@ public:
 
 2. ##### bfs with queue
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

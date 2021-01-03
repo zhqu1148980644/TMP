@@ -39,7 +39,7 @@ Could you do it in-place with O(1) extra space?
     - Then start at the next index.
 
 
-```c++
+```cpp
 void rotate(int* nums, int numsSize, int k){
     k = k % numsSize;
     for (int i = 0, times = 0; times < numsSize; i++) {
@@ -62,7 +62,7 @@ void rotate(int* nums, int numsSize, int k){
 - reverse the front `k` items;
 - reverse the left `n - k` items.
 
-```c++
+```cpp
 class Solution {
 public:
     void rotate(vector<int>& nums, int k) {

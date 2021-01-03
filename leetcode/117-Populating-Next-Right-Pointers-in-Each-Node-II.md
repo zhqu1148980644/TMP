@@ -42,7 +42,7 @@ Explanation: Given the above binary tree (Figure A), your function should popula
 
 1. ##### bfs with queue O(n) S(n)
 
-```c++
+```cpp
 /*
 // Definition for a Node.
 class Node {
@@ -86,7 +86,7 @@ public:
 
 - Because nodes in one level is fully linked after multiple recursive call, the right tree must be linked before the left tree. 
 
-```c++
+```cpp
 class Solution {
 public:
     Node* connect(Node* root) {
@@ -127,7 +127,7 @@ The iteration one can be much more complicated and many edge cases need to be co
     - Find the first non-null item is O(1), find the previous non-null item is O(1);
 - Inspired by the queue solution, we can use a `container` to maintain nodes founded in the current level and link them one by one. Here we use a `dummy node` as the container.
 
-```c++
+```cpp
 /*
 // Definition for a Node.
 class Node {

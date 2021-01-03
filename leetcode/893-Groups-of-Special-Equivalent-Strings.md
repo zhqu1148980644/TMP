@@ -40,7 +40,7 @@ All A[i] consist of only lowercase letters.
 
 - Use sort.
 
-```c++
+```cpp
 class Solution {
 public:
     int numSpecialEquivGroups(vector<string>& A) {

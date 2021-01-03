@@ -27,7 +27,7 @@ Note:
 
 - Y is a leap year only if `(Y % 4 == 0 && Y % 100 %= 0) || (Y % 400 == 0)`
 
-```c++
+```cpp
 class Solution {
 public:
     int days[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};

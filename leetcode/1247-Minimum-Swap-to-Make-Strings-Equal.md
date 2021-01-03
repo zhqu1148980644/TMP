@@ -55,7 +55,7 @@ Then for each pair, we can use 1 swap to make them the same
 ```
 
 
-```c++
+```cpp
 class Solution {
 public:
     int minimumSwap(string s1, string s2) {

@@ -34,7 +34,7 @@ Return 3. The paths that sum to 8 are:
 
 - Use a hashmap to record the sum at each node before the current node in the same backtracking path.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -76,7 +76,7 @@ public:
 
 - Similar to problem 113.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

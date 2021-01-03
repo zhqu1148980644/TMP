@@ -30,7 +30,7 @@ Constraints:
 
 - Note that subsequence are made of elements with the `same order` in the original array.
 
-```c++
+```cpp
 class Solution {
 public:
     int longestSubsequence(vector<int>& arr, int difference) {

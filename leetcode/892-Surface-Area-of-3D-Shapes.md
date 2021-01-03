@@ -45,7 +45,7 @@ Output: 46
 
 - Count the maximum area can be made by all columns: ie `sum(1 + 1 + 4 * height for all bar) - 2 * (number of overlapping sefaces)`
 
-```c++
+```cpp
 class Solution {
 public:
     int surfaceArea(vector<vector<int>>& grid) {

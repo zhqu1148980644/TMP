@@ -19,7 +19,7 @@ Both of the given trees will have values between 0 and 200
 
 1. #### straight forward
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -52,7 +52,7 @@ public:
 
 - Borrowed from others.
 
-```c++
+```cpp
 class Solution {
 public:
     double hash(TreeNode * root, double n) {

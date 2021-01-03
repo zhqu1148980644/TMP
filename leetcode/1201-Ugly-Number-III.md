@@ -40,7 +40,7 @@ It's guaranteed that the result will be in range [1, 2 * 10^9]
 
 - TLE
 
-```c++
+```cpp
 class Solution {
 public:
     int nthUglyNumber(int n, int a, int b, int c) {
@@ -64,7 +64,7 @@ public:
 
 2. ##### binary search
 
-```c++
+```cpp
 class Solution {
 public:
     inline size_t gcd(size_t a, size_t b) {

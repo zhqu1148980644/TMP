@@ -32,7 +32,7 @@ str1[i] and str2[i] are English uppercase letters.
 - `s1 + s2 == s2 + s1` is the sufficient requirement for the existence of `x` such that `s1 = nx, s2 = mx`
 
 
-```c++
+```cpp
 class Solution {
 public:
     int gcd(int a, int b) {

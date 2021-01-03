@@ -42,7 +42,7 @@ Output: ["CIC","OSO","N M","T I","E N","S G","T"]
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> printVertically(string s) {

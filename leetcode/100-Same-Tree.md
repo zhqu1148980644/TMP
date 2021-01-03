@@ -37,7 +37,7 @@ Output: false
 1. ##### recursion(dfs)
 
 
-```c++
+```cpp
 class Solution {
 public:
     bool isSameTree(TreeNode* p, TreeNode* q) {
@@ -52,7 +52,7 @@ public:
 
 stack
 
-```c++
+```cpp
 class Solution {
 public:
     bool isSameTree(TreeNode* p, TreeNode* q) {
@@ -81,7 +81,7 @@ public:
 
 Queue
 
-```c++
+```cpp
 class Solution {
 public:
     bool isSameTree(TreeNode* p, TreeNode* q) {

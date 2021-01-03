@@ -44,7 +44,7 @@ For C programmers, try to solve it in-place in O(1) extra space.
     - otherwise the `end` pointer has been moved one step further. We need to move one step back an set this position as `\0`.
         - Moving back one step happens only when we met at leat one word before. ie. when the input string contains only space, `0 - 1` will be invalid.
 
-```c++
+```cpp
 void reverse(char * st, char * ed) {
     while (st < ed) {
         char tmp = *st;

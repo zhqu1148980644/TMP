@@ -37,7 +37,7 @@ If A.length > 1, then A[0] != 0
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> addToArrayForm(vector<int>& A, int K) {

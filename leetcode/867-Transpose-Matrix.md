@@ -25,7 +25,7 @@ Note:
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> transpose(vector<vector<int>>& A) {

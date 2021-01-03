@@ -42,7 +42,7 @@ Output: 4
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     int maxNumberOfFamilies(int n, vector<vector<int>>& reservedSeats) {

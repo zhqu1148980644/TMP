@@ -31,7 +31,7 @@ K will be an integer in the range [1, 2^(N-1)].
 
 - Exp: `01101001`'s next row is `01101001 10010110`, the first part is the the same as the previous row, the second part is the reversed(bit reverse) version.
 
-```c++
+```cpp
 class Solution {
 public:
     int kthGrammar(int N, int K) {
@@ -47,7 +47,7 @@ public:
 - Exp: `0` ->  `01`  -> `01 10` -> `01 10 10 01`, `digit[N, K]` comes from `digit(N - 1, (K + 1) / 2)`, and `digit[N, K] = (!(K % 2) ^ digit[N - 1, (k + 1) / 2])`.
     - the formular is deduced from 1 -> 10 and 0 -> 01
 
-```c++
+```cpp
 class Solution {
 public:
     int kthGrammar(int N, int K) {

@@ -27,7 +27,7 @@ We say a point is a good point if we can jump to it.
 
 - A point can jump to the last good point(the end) if only it can jump to the first good point left the last good point.
 
-```c++
+```cpp
 bool canJump(int* nums, int numsSize){
     int cur = numsSize - 1;
     for (int i = numsSize - 2; i >= 0; i--) {
@@ -44,7 +44,7 @@ bool canJump(int* nums, int numsSize){
     - If the maximum index is smaller than the current index. There is no way to get to the last.
     - Pre-exit when we already can get to the last.
 
-```c++
+```cpp
 #define max(x, y) (x > y ? x : y)
 bool canJump(int* nums, int numsSize){
     int max_index = 0;

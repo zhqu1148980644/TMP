@@ -28,7 +28,7 @@ Note:
 
 1. ##### priority queue
 
-```c++
+```cpp
 class Solution {
 public:
     int lastStoneWeight(vector<int>& stones) {
@@ -50,7 +50,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     int lastStoneWeight(vector<int>& stones) {

@@ -40,7 +40,7 @@ The observations in richer are all logically consistent.
 
 1. ##### recursion with memoization O(n2)
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> memo;

@@ -43,7 +43,7 @@ All words in A[i] are unique: there isn't i != j with A[i] == A[j].
 
 - The key optimization is to merge all words in `B`.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> wordSubsets(vector<string>& A, vector<string>& B) {

@@ -35,7 +35,7 @@ Output: true
 
 This application is widely taught in textbooks related to data structure and algorithms.
 
-```c++
+```cpp
 class Solution {
 public:
     bool isValid(string s) {

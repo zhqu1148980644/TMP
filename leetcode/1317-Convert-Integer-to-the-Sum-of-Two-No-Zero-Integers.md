@@ -48,7 +48,7 @@ Output: [11,999]
 1. ##### brute force
 
 
-```c++
+```cpp
 class Solution {
 public:
     bool ok(int n) {

@@ -25,7 +25,7 @@ You may assume that row1 ≤ row2 and col1 ≤ col2.
 
 1. ##### binary index tree(fenwick tree)
 
-```c++
+```cpp
 struct FenwickTree {
     int m, n;
     vector<vector<int>> sums;

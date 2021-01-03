@@ -53,7 +53,7 @@ Output: 1
     - if `s[i] == s[j]`, `dp[i][j] = dp[i + 1][j - 1]`. It's definitely a palindrome.
     - else `dp[i][j] = min(dp[i + 1][j], dp[i][j - 1]) + 1`. Insert `s[i]` at `s[j + 1]` or insert `s[j]` at the front of `s[i:j]` makes `s[i: j - 1]/s[i + 1: j]` a palindrome.
 
-```c++
+```cpp
 class Solution {
 public:
     int minInsertions(string s) {
@@ -79,7 +79,7 @@ public:
 
 - The same as in `problem 516`, we can simply use a `1d` table.
 
-```c++
+```cpp
 class Solution {
 public:
     int minInsertions(string s) {

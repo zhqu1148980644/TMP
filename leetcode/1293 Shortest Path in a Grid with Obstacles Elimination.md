@@ -46,7 +46,7 @@ grid[0][0] == grid[m-1][n-1] == 0
 
 1. ##### bfs
 
-```c++
+```cpp
 class Solution {
 public:
     int shortestPath(vector<vector<int>>& grid, int k) {

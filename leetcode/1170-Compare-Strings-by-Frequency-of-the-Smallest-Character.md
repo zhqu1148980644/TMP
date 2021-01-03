@@ -27,7 +27,7 @@ queries[i][j], words[i][j] are English lowercase letters.
 
 1. ##### binary search
 
-```c++
+```cpp
 class Solution {
 public:
     int f(string & s) {

@@ -47,7 +47,7 @@ Output: 1
 
 1. ##### sliding window O(n) S(1)
 
-```c++
+```cpp
 class Solution {
 public:
     int numOfSubarrays(vector<int>& arr, int k, int threshold) {

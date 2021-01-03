@@ -64,7 +64,7 @@ Explanation: Only team M in the competition so it has the first rank.
 
 - count received vote in each position for all teams.
 
-```c++
+```cpp
 class Solution {
 public:
     string rankTeams(vector<string>& votes) {

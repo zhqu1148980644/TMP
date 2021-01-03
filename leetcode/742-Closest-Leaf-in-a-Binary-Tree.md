@@ -53,7 +53,7 @@ There exists some node in the given binary tree for which node.val == k.
 - Use postorder traversal to calculate the mininum distance between self and leaf nodes within the current subtree.
 - Then traverse again to update the mininum distance with parent's mindis.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -101,7 +101,7 @@ public:
 
 - After the unordered graph has been built, use bfs to find the first node with 1 degree(leaf node).
 
-```c++
+```cpp
 class Solution {
 public:
     using G = unordered_map<TreeNode *, vector<TreeNode *>>;

@@ -17,7 +17,7 @@ Note: The length of the input array will not exceed 20,000.
 
 - numbers in the final subsequence must be two consecutive numbers `(a, a+1)`
 
-```c++
+```cpp
 class Solution {
 public:
     int findLHS(vector<int>& nums) {
@@ -36,7 +36,7 @@ public:
 
 or update the result during the counting process
 
-```c++
+```cpp
 class Solution {
 public:
     int findLHS(vector<int>& nums) {

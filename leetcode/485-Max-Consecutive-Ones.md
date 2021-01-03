@@ -18,7 +18,7 @@ Explanation: The first two digits or the last three digits are consecutive 1s.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     int findMaxConsecutiveOnes(vector<int>& nums) {

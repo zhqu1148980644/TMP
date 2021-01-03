@@ -19,7 +19,7 @@ Output: false
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     unordered_map<char, char> m = {{'6', '9'}, {'9', '6'}, {'1', '1'}, {'0', '0'}, {'8', '8'}};
@@ -38,7 +38,7 @@ public:
 
 OR
 
-```c++
+```cpp
 class Solution {
 public:
     unordered_map<char, char> m = {{'6', '9'}, {'9', '6'}, {'1', '1'}, {'0', '0'}, {'8', '8'}};

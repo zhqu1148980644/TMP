@@ -43,7 +43,7 @@ Output: 12
 
 1. ##### straight forward O(log(n))
 
-```c++
+```cpp
 class Solution {
 public:
     int numberOfSteps (int num) {
@@ -59,7 +59,7 @@ public:
 
 Or
 
-```c++
+```cpp
 class Solution {
 public:
     int numberOfSteps (int num) {

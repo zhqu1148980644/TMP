@@ -29,7 +29,7 @@ Possible solutions:
     - `problem 658`
 
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -67,7 +67,7 @@ public:
 2. ##### precursor and successor O(log(n) + O(k)) S(log(n))
 
 
-```c++
+```cpp
 class Solution {
 public:
     int successor(stack<TreeNode *> & s) {

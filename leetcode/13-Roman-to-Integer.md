@@ -54,7 +54,7 @@ Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 1. ##### straight forward
 
 
-```c++
+```cpp
 class Solution {
 public:
     int romanToInt(string s) {

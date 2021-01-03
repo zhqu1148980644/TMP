@@ -56,7 +56,7 @@ Output: 1
 
 - Since each `dp[i]` depends merely on bars with heights lower than `height[i]`, we need to fill the `dp` table from the lowest bar to the heighest.
 
-```c++
+```cpp
 class Solution {
 public:
     int maxJumps(vector<int>& arr, int d) {

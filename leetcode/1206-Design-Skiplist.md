@@ -52,7 +52,7 @@ At most 50000 calls will be made to search, add, and erase.
     - Different `p` can change the number of elements in each level and further infulence the space costs/time complexity.
 - (Not implemented) In order to support rank/rankrange selection, each zskiplistNode has another member named `span`, represents the number of nodes acrossed. `span` need to be updated during the insertion and erasion.
 
-```c++
+```cpp
 static const int SKIPLIST_P_VAL = RAND_MAX / 2, MAX_LEVEL = 16;
 
 class Skiplist {

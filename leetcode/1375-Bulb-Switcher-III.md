@@ -57,7 +57,7 @@ Output: 6
 - All opened bubbles are blue when the number of open bubbles equals to the last(max) index of open bubbles.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int numTimesAllBlue(vector<int>& light) {

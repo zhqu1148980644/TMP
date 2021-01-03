@@ -24,7 +24,7 @@ Constraints:
 
 1. ##### bit operation
 
-```c++
+```cpp
 class Solution {
 public:
     string encode(int num) {

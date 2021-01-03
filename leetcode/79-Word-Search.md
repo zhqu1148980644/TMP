@@ -24,7 +24,7 @@ Given word = "ABCB", return false.
 - As each character can be used only once, we should use a visited table to record the passed character.
 - Or use in-place mark. ie. mark traversed character to `.` and restore the original character when tracebacked.
 
-```c++
+```cpp
 class Solution {
 public:
     int m, n;

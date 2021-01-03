@@ -42,7 +42,7 @@ What if the matrix is so large that you can only load up a partial row into the 
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     bool isToeplitzMatrix(vector<vector<int>>& matrix) {
@@ -69,7 +69,7 @@ public:
 
 - or reverse the checking order
 
-```c++
+```cpp
 class Solution {
 public:
     bool isToeplitzMatrix(vector<vector<int>>& matrix) {
@@ -90,7 +90,7 @@ public:
 
 - Solution for the first follow up
 
-```c++
+```cpp
 class Solution {
 public:
     bool isToeplitzMatrix(vector<vector<int>>& matrix) {

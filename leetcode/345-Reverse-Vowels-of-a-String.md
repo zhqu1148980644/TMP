@@ -19,7 +19,7 @@ The vowels does not include the letter "y".
 
 #### Solutions
 
-```c++
+```cpp
 class Solution {
 public:
     string reverseVowels(string s) {

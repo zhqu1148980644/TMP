@@ -23,7 +23,7 @@ Multiplication of any three numbers in the input won't exceed the range of 32-bi
 
 - Denote `min1,2, max1,2,3` as the minimum/maximum numbers in the sorted array, the maximum product of three numbers must be one of `min1(<0) * min2(<)) * max1` and `max1 * max2 * max3`.
 
-```c++
+```cpp
 class Solution {
 public:
     int maximumProduct(vector<int>& nums) {

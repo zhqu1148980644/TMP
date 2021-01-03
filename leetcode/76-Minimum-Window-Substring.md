@@ -28,7 +28,7 @@ If there is such window, you are guaranteed that there will always be only one u
     - Invariant: the window during the shrinking process is always valid.
 - Time comlexity: `j` start at `0` ends with `len(s)`, though for each `j`, `i` may step forward several time, but `i` can only go forward till the end `len(s)`, thus the worst case is `O(2len(s))`;
 
-```c++
+```cpp
 class Solution {
 public:
     string minWindow(string s, string t) {
@@ -67,7 +67,7 @@ public:
 
 or simplified version
 
-```c++
+```cpp
 class Solution {
 public:
     string minWindow(string s, string t) {
@@ -101,7 +101,7 @@ public:
 - One hash map is sufficient to represent both the requirements in T and the character counts in the current window. i.e: deduce their counts when they appeared and increase their counts when they dispeared when shrinking the left pinters.
 
 
-```c++
+```cpp
 class Solution {
 public:
     string minWindow(string s, string t) {
@@ -129,7 +129,7 @@ public:
 
 OR
 
-```c++
+```cpp
 class Solution {
 public:
     string minWindow(string s, string t) {
@@ -162,7 +162,7 @@ check `problem 3` for detailed solution for this kind of problem.
 - We can use a vector to record the the position of characters in S that is appeared in T.
 - Then use the same method above to loop through this sequence.
 
-```c++
+```cpp
 class Solution {
 public:
     string minWindow(string s, string t) {

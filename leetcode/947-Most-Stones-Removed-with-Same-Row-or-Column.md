@@ -33,7 +33,7 @@ Note:
 
 - Merging stones. Need to check all pairs, O(n2) complexity
 
-```c++
+```cpp
 struct UnionFind {
     vector<int> nodes, sizes;
     UnionFind(int size) : nodes(size), sizes(size, 1) {
@@ -77,7 +77,7 @@ public:
 
 - mergging rows with columns, O(n)
 
-```c++
+```cpp
 struct UnionFind {
     vector<int> nodes, sizes;
     UnionFind(int size) : nodes(size), sizes(size, 1) {
@@ -123,6 +123,6 @@ public:
 
 - Find all communities and their corresponding sizes using dfs.
 
-```c++
+```cpp
 
 ```

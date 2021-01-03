@@ -39,7 +39,7 @@ Therefore, sum = 495 + 491 + 40 = 1026.
 
 1. ##### recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -71,7 +71,7 @@ public:
 
 Or without global variable.
 
-```c++
+```cpp
 class Solution {
 public:
     int preorder(TreeNode * root, int cur) {
@@ -93,7 +93,7 @@ public:
 
 - Other traversal orders could also work.
 
-```c++
+```cpp
 class Solution {
 public:
     int sumNumbers(TreeNode* root) {

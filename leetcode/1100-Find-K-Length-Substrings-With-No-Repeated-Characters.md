@@ -26,7 +26,7 @@ All characters of S are lowercase English letters.
 
 1. ##### hashmap
 
-```c++
+```cpp
 class Solution {
 public:
     int numKLenSubstrNoRepeats(string S, int K) {

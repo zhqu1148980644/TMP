@@ -36,7 +36,7 @@ so the 0th and 2nd students are indirect friends. All of them are in the same fr
 
 1. ##### dfs O(n2) S(n)
 
-```c++
+```cpp
 class Solution {
 public:
     void dfs(int i, vector<vector<int>> & M, vector<bool> & visited) {
@@ -65,7 +65,7 @@ public:
 
 2. ##### bfs O(n2) S(n)
 
-```c++
+```cpp
 class Solution {
 public:
     int findCircleNum(vector<vector<int>>& M) {
@@ -96,7 +96,7 @@ public:
 
 3. ##### Union Find O(n2) S(n)
 
-```c++
+```cpp
 class UnionFind {
 private:
     int * nodes;

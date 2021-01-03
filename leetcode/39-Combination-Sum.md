@@ -34,7 +34,7 @@ A solution set is:
 - Use backtrack to check each path.
 - Pre-exit(prune) when the path is impossible to extend benifited from sorting.
 
-```c++
+```cpp
 class Solution {
 private:
     vector<int> path;

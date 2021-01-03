@@ -22,7 +22,7 @@ The rear part of the next smallest point must be monotonous increasing.
 - swap this number with the first(most close) larger one in the rear subtring.
 - Reverse the rear substring.
 
-```c++
+```cpp
 class Solution {
 public:
     void nextPermutation(vector<int>& nums) {

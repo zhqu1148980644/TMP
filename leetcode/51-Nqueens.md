@@ -27,7 +27,7 @@ Explanation: There exist two distinct solutions to the 4-queens puzzle as shown 
 
 1. ##### dfs with stack
 
-```c++
+```cpp
 typedef pair<int, int> pos;
 
 class Solution {

@@ -50,7 +50,7 @@ Operation #4: addLand(2, 1) turns the water at grid[2][1] into a land.
 - With the strategy of path compression and union by rank, the average time complexity of unionfind is `log(n)`.
 - Whenever make and operation, plus the number of islands by 1, and check the neighbors of this added island, deduce the number of islands by 1 whenever merged with a neighbor island.
 
-```c++
+```cpp
 class UnionFind {
 private:
     int * sizes;
@@ -133,7 +133,7 @@ public:
 
 Or
 
-```c++
+```cpp
 struct UnionFind {
     vector<int> nodes, sizes;
     UnionFind(int size, int initial) : nodes(size, initial), sizes(size, 1) {}

@@ -22,7 +22,7 @@ The given address is a valid IPv4 address.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     string defangIPaddr(string address) {
@@ -40,7 +40,7 @@ public:
 or
 
 
-```c++
+```cpp
 class Solution {
 public:
     string defangIPaddr(string address) {
@@ -61,7 +61,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     string defangIPaddr(string address) {

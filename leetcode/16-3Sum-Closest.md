@@ -13,7 +13,7 @@ The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
 
 1. #### The same method in problem `15-3Sum` O(nlog(n) + n2)
 
-```c++
+```cpp
 class Solution {
 public:
     int threeSumClosest(vector<int>& nums, int target) {

@@ -26,7 +26,7 @@ Constraints:
 
 1. ##### dynamic programming
 
-```c++
+```cpp
 class Solution {
 public:
     int minFallingPathSum(vector<vector<int>>& A) {

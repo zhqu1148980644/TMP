@@ -38,7 +38,7 @@ s[i] is one of  '(' , ')' and lowercase English letters.
 
 1. ##### stack
 
-```c++
+```cpp
 class Solution {
 public:
     string minRemoveToMakeValid(string s) {

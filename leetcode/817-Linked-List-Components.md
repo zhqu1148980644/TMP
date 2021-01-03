@@ -31,7 +31,7 @@ G is a subset of all values in the linked list.
 
 1. ##### UnionFind O(n)
 
-```c++
+```cpp
 struct UnionFind {
     vector<int> nodes, sizes;
     UnionFind(int size) : nodes(size), sizes(size, 1) {
@@ -85,7 +85,7 @@ public:
 
 - Find the last element in a community.
 
-```c++
+```cpp
 class Solution {
 public:
     int numComponents(ListNode* head, vector<int>& G) {

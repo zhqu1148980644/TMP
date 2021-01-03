@@ -17,7 +17,7 @@ Follow up: Could you do it in-place without allocating extra space?
 
 - check problem 151
 
-```c++
+```cpp
 class Solution {
 public:
     void reverseWords(vector<char>& s) {

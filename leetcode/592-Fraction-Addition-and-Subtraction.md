@@ -26,7 +26,7 @@ The numerator and denominator of the final result are guaranteed to be valid and
 - `lcm(a, b) = a * b / gcd(a, b)`
 - `lcm(a, b, c, d, e ..) = lcm(lcm(lcm(a, b), c), d)...`
 
-```c++
+```cpp
 class Solution {
 public:
     vector<pair<int, int>> split(string & s) {
@@ -70,7 +70,7 @@ public:
 
 or split with regex
 
-```c++
+```cpp
 class Solution {
 public:
     string fractionAddition(string expression) {

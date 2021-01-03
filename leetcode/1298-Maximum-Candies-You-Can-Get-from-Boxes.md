@@ -58,7 +58,7 @@ Output: 7
 
 1. ##### bfs
 
-```c++
+```cpp
 class Solution {
 public:
     int maxCandies(vector<int>& status, vector<int>& candies, vector<vector<int>>& keys, vector<vector<int>>& containedBoxes, vector<int>& initialBoxes) {
@@ -105,7 +105,7 @@ public:
 - use bfs to find all visible(may not be openable) boxes and collect all keys
 - For each box we find, fetch candies within the box if the box is open or we can open it use keys collected.
 
-```c++
+```cpp
 class Solution {
 public:
     int maxCandies(vector<int>& status, vector<int>& candies, vector<vector<int>>& keys, vector<vector<int>>& containedBoxes, vector<int>& initialBoxes) {

@@ -39,7 +39,7 @@ Return false.
 - Calculating the height of subtrees and checking if two subtrees are balanced at the same time.
 - Use `-1` as indication of unbalanced tree.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

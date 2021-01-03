@@ -37,7 +37,7 @@ The answer is guaranteed to exist and be less than 2 * 10^8.
 - All palindrome numbers(except for 11) with even number of digits is not a prime number(n % 11 == 0). ie: pass all numbers with(len(n) % 2 == 0).
 
 
-```c++
+```cpp
 class Solution {
 public:
     inline bool isprime(int n) {

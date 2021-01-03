@@ -21,7 +21,7 @@ Output:
 
 - Use in-place hashmap, set appeared numbers with negative flag.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> findDisappearedNumbers(vector<int>& nums) {
@@ -45,7 +45,7 @@ public:
 
 - Similar to problem 41/442.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> findDisappearedNumbers(vector<int>& nums) {

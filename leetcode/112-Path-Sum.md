@@ -22,7 +22,7 @@ return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
 
 1. ##### recursion(dfs)
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -47,7 +47,7 @@ public:
 
 - Because the number may be negative, we can not pre-exit(prune).
 
-```c++
+```cpp
 class Solution {
 public:
     bool hasPathSum(TreeNode * root, int sum) {

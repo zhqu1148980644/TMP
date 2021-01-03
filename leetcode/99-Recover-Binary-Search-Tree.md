@@ -59,7 +59,7 @@ Could you devise a constant space solution?
 
 recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -98,7 +98,7 @@ public:
 
 stack
 
-```c++
+```cpp
 class Solution {
 public:
     void recoverTree(TreeNode* root) {
@@ -137,7 +137,7 @@ public:
 
 morris
 
-```c++
+```cpp
 class Solution {
 public:
     void recoverTree(TreeNode* root) {

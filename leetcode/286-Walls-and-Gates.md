@@ -26,7 +26,7 @@ After running your function, the 2D grid should be:
 
 - The key point is to start searching from `multiple gates` simultaneously.
 
-```c++
+```cpp
 class Solution {
 public:
     int nrow, ncol;

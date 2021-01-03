@@ -14,7 +14,7 @@ All the scores of athletes are guaranteed to be unique.
 
 1. ##### sort
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> findRelativeRanks(vector<int>& nums) {

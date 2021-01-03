@@ -19,7 +19,7 @@ The integers in the m arrays will be in the range of [-10000, 10000].
 
 - For each array, find the difference between the cuurent `array.back()(largest)` and the lowest `front()` among `other arrays`.
 
-```c++
+```cpp
 class Solution {
 public:
     int maxDistance(vector<vector<int>>& arrays) {
@@ -39,7 +39,7 @@ public:
 
 or find out the smallest and the second smallest value.
 
-```c++
+```cpp
 class Solution {
 public:
     int maxDistance(vector<vector<int>>& arrays) {

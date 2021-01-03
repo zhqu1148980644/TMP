@@ -38,7 +38,7 @@ S contains only lowercase letters.
     - The current character is a new character. Then `dp[i] = dp[i - 1] * 2` denotes for all uniq subsequences in `S[:i - 1)`, adding the current character at the back could build a new uniq subsequence.
     - The current character has been added before(duplicate), `dp[i] = dp[i - 1] * 2 - dp[last[S[i]]]`, `dp[last[S[i]]]` represents the previous `dp` when adding the same character at the last time.
 
-```c++
+```cpp
 class Solution {
 public:
     int distinctSubseqII(string S) {

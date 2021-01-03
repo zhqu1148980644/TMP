@@ -33,7 +33,7 @@ You can assume that all directory names and file names only contain lower-case l
 
 1. ##### path tree
 
-```c++
+```cpp
 struct File {
     bool isfile;
     string content;

@@ -27,7 +27,7 @@ Constraints:
 
 #### Solutions
 
-```c++
+```cpp
 class Solution {
 public:
     int sumOfDigits(vector<int>& A) {

@@ -26,7 +26,7 @@ Output: "No solution"
 
 1. #####  straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     pair<int, int> parse(string s) {
@@ -64,7 +64,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     pair<int, int> parse(string s) {
@@ -103,6 +103,6 @@ public:
 
 2. ##### regex matching
 
-```c++
+```cpp
 
 ```

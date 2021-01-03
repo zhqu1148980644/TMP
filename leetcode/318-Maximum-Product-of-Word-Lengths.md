@@ -20,7 +20,7 @@ Explanation: No such pair of words.
 
 1. ##### bit hashmap O(n2)
 
-```c++
+```cpp
 class Solution {
 public:
     int maxProduct(vector<string>& words) {

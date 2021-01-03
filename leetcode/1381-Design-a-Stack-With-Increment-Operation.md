@@ -50,7 +50,7 @@ customStack.pop();                            // return -1 --> Stack is empty re
 - Use `pair<int, int>` to store the increment in the last element will be covered.
 - Whenever an element is popped, accumulate the increment at the inc of the top element.
 
-```c++
+```cpp
 class CustomStack {
 public:
     vector<pair<int, int>> s;

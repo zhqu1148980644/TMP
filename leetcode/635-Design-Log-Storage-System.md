@@ -24,7 +24,7 @@ Output for Retrieve has no order required.
 
 - Note that `Month` and `day` are both 1-based, all timestamps will not be uniquely mapped to intergers if we choose to represent `M/D` with `12 x *` and `31 x *`. ie: either convert `M/D` to 0-based or plus unit by `1`(13 X *).
 
-```c++
+```cpp
 class LogSystem {
 public:
     map<int, int> m;

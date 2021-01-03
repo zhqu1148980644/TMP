@@ -29,7 +29,7 @@ Tilt of binary tree : 0 + 0 + 1 = 1
 
 1. ##### postorder with recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -61,7 +61,7 @@ public:
 
 - use stack to record the sum of left tree and a single variable to record the sum of right tree.
 
-```c++
+```cpp
 class Solution {
 public:
     int findTilt(TreeNode* root) {

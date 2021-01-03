@@ -25,7 +25,7 @@ For each student, there are at least 5 scores
 
 1. ##### tree map
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> highFive(vector<vector<int>>& items) {
@@ -52,7 +52,7 @@ public:
 
 2. ##### sort
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> highFive(vector<vector<int>>& items) {

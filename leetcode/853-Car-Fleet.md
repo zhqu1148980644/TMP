@@ -40,7 +40,7 @@ All initial positions are different.
 - Check the official answer
 - Sort by cars' distance to the target, and scan from the car nearest to the target, check the arrival time of the next car, if the time is earlier than self's, the next car will meet the current car and merge into a fleet. As the speed is determined by the head of the fleet, the arrival time of this fleet is the same as that of the head car.
 
-```c++
+```cpp
 class Solution {
 public:
     int carFleet(int target, vector<int>& position, vector<int>& speed) {

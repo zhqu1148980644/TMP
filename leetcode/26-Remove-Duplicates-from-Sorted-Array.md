@@ -43,7 +43,7 @@ for (int i = 0; i < len; i++) {
 
 1. #### Stack non-duplicate numbers at the left
 
-```c++
+```cpp
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {

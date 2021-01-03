@@ -44,7 +44,7 @@ Output: "abcdefghijklmnopqrstuvwxyz"
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     string freqAlphabets(string s) {
@@ -66,7 +66,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     string freqAlphabets(string s) {

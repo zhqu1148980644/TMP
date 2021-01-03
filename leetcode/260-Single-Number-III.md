@@ -22,7 +22,7 @@ Output: [3,5]
 - Thus, we separate all numbers into two groups with each single number inside one group.
 - Bits setted to 1 in `num1 ^ num2` represents the bits where num1 and num2 differ.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> singleNumber(vector<int>& nums) {

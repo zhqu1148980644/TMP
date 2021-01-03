@@ -18,7 +18,7 @@ Explanation: 13 = 4 + 9.
 1. ##### dynamic programming O(n^1.5)
 
 
-```c++
+```cpp
 class Solution {
 public:
     int numSquares(int n) {
@@ -43,7 +43,7 @@ public:
 
 2. ##### dfs
 
-```c++
+```cpp
 class Solution {
 public:
     bool solve(unordered_set<int> & squares, int n, int num) {
@@ -72,7 +72,7 @@ public:
 
 3. ##### bfs
 
-```c++
+```cpp
 class Solution {
 public:
     int numSquares(int n) {
@@ -106,7 +106,7 @@ public:
 - f `n == 4^a(8b + 7)`, then n can be represented as the sum of `four` squares
 
 
-```c++
+```cpp
 class Solution {
 public:
     bool issquaire(int n) {

@@ -17,7 +17,7 @@ The given number is in the range [0, 108]
 
 - Start from the beginning of the string, replace the current character with the lasgest charater after it if it's greater than self.
 
-```c++
+```cpp
 class Solution {
 public:
     int maximumSwap(int num) {

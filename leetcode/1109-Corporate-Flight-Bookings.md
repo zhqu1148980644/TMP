@@ -24,7 +24,7 @@ Constraints:
 
 - The same as counting occupied meeting rooms at each time point.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> corpFlightBookings(vector<vector<int>>& bookings, int n) {

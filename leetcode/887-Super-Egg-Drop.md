@@ -49,7 +49,7 @@ Output: 4
 - TLE O(kn2)
 - `dp[k][n]` represents the minimum number of moves need to know `F` with `k` eggs and `n` floors.
 
-```c++
+```cpp
 class Solution {
 public:
 // for 1 egg, we must test k floors to know the F within [0:k]
@@ -86,7 +86,7 @@ public:
 - `dp(k, n)` increases when n increases, when `f1(i) cross f2(i)`, `dp[k][n] = f1(i) + f2(i)` reaches the minimum value. we use binary search to find the corresponding `i`.
 - This can be seen as finding the valley for `f2(i) - f1(i)`.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> memo;
@@ -124,7 +124,7 @@ public:
 - Another version. O(nk)
 - `dp[k][m]` represents the maximum of floors can be investigated with `k` eggs and `m` moves.
 
-```c++
+```cpp
 class Solution {
 public:
     int superEggDrop(int K, int N) {
@@ -142,7 +142,7 @@ public:
 
 - Or with single 1d array.
 
-```c++
+```cpp
 class Solution {
 public:
     int superEggDrop(int K, int N) {

@@ -22,7 +22,7 @@ Note:
 
 - guess the k-th smallest distance using binary search, check if the number of pairs less/eq to the guessed distance is smaller than k, if this is true, the gussed distance must be underestimated, thus choose a higher one as the lower bound(mid + 1).
 
-```c++
+```cpp
 class Solution {
 public:
     int count(vector<int> & nums, int dis) {

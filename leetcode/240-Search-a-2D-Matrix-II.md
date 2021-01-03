@@ -31,7 +31,7 @@ Given target = 20, return false.
 - As two pointers can move at most `m + n` steps, thus the complexity is `O(m + n)`.
 
 
-```c++
+```cpp
 class Solution {
 public:
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
@@ -54,7 +54,7 @@ public:
 
 2. ##### binary search along each row and column
 
-```c++
+```cpp
 
 
 ```

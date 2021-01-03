@@ -21,7 +21,7 @@ Length of the array will not exceed 10^4.
 
 - For each bit, the distance in this bit equals to `nzero * none`, `nzero` represents the number of elements with this bit set to `0`.
 
-```c++
+```cpp
 class Solution {
 public:
     int totalHammingDistance(vector<int>& nums) {
@@ -43,7 +43,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     int totalHammingDistance(vector<int>& nums) {

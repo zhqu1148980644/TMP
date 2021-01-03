@@ -22,7 +22,7 @@ The maximum number of employees won't exceed 2000.
 
 1. ##### dfs
 
-```c++
+```cpp
 /*
 // Definition for Employee.
 class Employee {
@@ -53,7 +53,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     int getImportance(vector<Employee*> employees, int id) {
@@ -72,7 +72,7 @@ public:
 
 2. ##### bfs
 
-```c++
+```cpp
 class Solution {
 public:
     int getImportance(vector<Employee*> employees, int id) {

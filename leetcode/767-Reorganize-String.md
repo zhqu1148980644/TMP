@@ -23,7 +23,7 @@ S will consist of lowercase letters and have length in range [1, 500].
     - How to prove?
 - Iteratively add two different characters that with the highest frequency.
 
-```c++
+```cpp
 class Solution {
 public:
     string reorganizeString(string S) {
@@ -68,7 +68,7 @@ public:
 
 - Iteratively putting the same character with another character spaced. As there is only one possiblity when `max(count) == (n + 1) / 2`, e.g `aba`, make sure the character with the maximum count will be putted at the last position.
 
-```c++
+```cpp
 class Solution {
 public:
     string reorganizeString(string S) {

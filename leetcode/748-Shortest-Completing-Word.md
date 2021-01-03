@@ -27,7 +27,7 @@ Every words[i] will consist of lowercase letters, and have length in range [1, 1
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     string shortestCompletingWord(string licensePlate, vector<string>& words) {

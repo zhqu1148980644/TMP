@@ -24,7 +24,7 @@ The input string length won't exceed 1000.
 
 1. ##### dynamic programming O(n2)
 
-```c++
+```cpp
 class Solution {
 public:
     int countSubstrings(string s) {
@@ -46,7 +46,7 @@ public:
 
 2. ##### expanding O(n2)
 
-```c++
+```cpp
 class Solution {
 public:
     int countSubstrings(string s) {
@@ -70,7 +70,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     int countSubstrings(string s) {
@@ -92,7 +92,7 @@ public:
 
 3. ##### manarchar algorithm O(n)
 
-```c++
+```cpp
 class Solution {
 public:
     int radius(const string & s, int i, int j) {

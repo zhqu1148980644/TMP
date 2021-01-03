@@ -31,7 +31,7 @@ S and all words in words consist only of lowercase letters
 
 1. ##### straight forward
     
-```c++
+```cpp
 class Solution {
 public:
     bool stretchy(string & w, const vector<pair<char, int>> & m) {

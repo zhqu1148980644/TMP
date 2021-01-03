@@ -22,7 +22,7 @@ Output: false
     - the graph is a `DAG` with topological ordering(not cycle).
     - The graph contains one single connected component.
 
-```c++
+```cpp
 struct UnionFind {
     vector<int> nodes, sizes;
     UnionFind(int size) : nodes(size), sizes(size, 1) {
@@ -70,7 +70,7 @@ public:
 - Use a variable `prenode` to represent the previous node.  `a --> b` when visiting the neighbors of b, as the adjacency table is undirected, `a` will be a neigbor of `b` and `a` has been visited before.
 - Return false if there is a visited node in the current node's neighbors except for the previous node.
 
-```c++
+```cpp
 class Solution {
 public:
     int dfs(int node, vector<vector<int>> & adjs, vector<bool> & visited, int prenode) {
@@ -101,7 +101,7 @@ public:
 
 Or use set to count the number of visited nodes.
 
-```c++
+```cpp
 class Solution {
 public:
     bool dfs(int node, vector<vector<int>> & adjs, unordered_set<int> & visited, int prenode) {
@@ -134,7 +134,7 @@ public:
 
 3. ##### bfs with queue
 
-```c++
+```cpp
 class Solution {
 public:
     bool validTree(int n, vector<vector<int>>& edges) {

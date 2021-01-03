@@ -34,7 +34,7 @@ S only consists of '0' and '1' characters.
 
 - `dp1` represents the minimum number of swaps to make the prefix be monotone increasing with the last character(may be swapped) as `1`.
 
-```c++
+```cpp
 class Solution {
 public:
     int minFlipsMonoIncr(string S) {
@@ -56,7 +56,7 @@ public:
 
 - Iterating all possible i, swap the left side into 0s, nad wap the other side into 1s, these two sides can be 0 sized.
 
-```c++
+```cpp
 class Solution {
 public:
     int minFlipsMonoIncr(string S) {

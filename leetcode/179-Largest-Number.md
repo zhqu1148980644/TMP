@@ -31,7 +31,7 @@ Output: "9534330"
     - 6: `s1s3 < s3s1`
 - Proof the concatenation of the sorted array is the maximum string.
     - Suppose strings A and B in the maxinum string `**BA***`(there must be an ajacent reverse pair in an unsorted array) does not satisfy the sorting rule(AB > BA). Since replacing `BA` with `AB` does not change positions of other characters, `**AB***` must be greater than `**BA***`, which is contrary to the supposition.
-```c++
+```cpp
 class Solution {
 public:
     string largestNumber(vector<int>& nums) {

@@ -35,7 +35,7 @@ Output: "holasss"
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     string generateTheString(int n) {

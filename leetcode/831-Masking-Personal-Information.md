@@ -65,7 +65,7 @@ Phone numbers have length at least 10.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     string maskPII(string S) {

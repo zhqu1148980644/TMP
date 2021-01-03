@@ -30,7 +30,7 @@ queue.empty(); // returns false
 
 - Use two stack to reverse the popping order.
 
-```c++
+```cpp
 class MyQueue {
 private:
     stack<int> input;

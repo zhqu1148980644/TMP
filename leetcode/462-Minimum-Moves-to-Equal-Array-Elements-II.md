@@ -28,7 +28,7 @@ Only two moves are needed (remember each move increments or decrements one eleme
 
 1. ##### sort O(nlog(n))
 
-```c++
+```cpp
 class Solution {
 public:
     int minMoves2(vector<int>& nums) {
@@ -44,7 +44,7 @@ public:
 
 2. ##### quick select O(n)
 
-```c++
+```cpp
 class Solution {
 public:
     int minMoves2(vector<int>& nums) {

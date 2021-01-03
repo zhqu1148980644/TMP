@@ -47,7 +47,7 @@ Output: "/a/b/c"
 
 1. ##### stack
 
-```c++
+```cpp
 class Solution {
 public:
     string simplifyPath(string path) {

@@ -47,7 +47,7 @@ Output: 14
     - i.e.: `0-1-4  1-1-3 2-1-2 3-1-1 4-1-0`
     - `dp[i] = dp[0][n - 1] +  dp[1][n - 2] + dp[2][n - 3] ....`
 
-```c++
+```cpp
 class Solution {
 public:
     int numberOfWays(int num_people) {

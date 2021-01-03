@@ -31,7 +31,7 @@ Note:
 
 1. ##### binary search
 
-```c++
+```cpp
 class Solution {
 public:
     int fixedPoint(vector<int>& A) {

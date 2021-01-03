@@ -34,7 +34,7 @@ All buildings in grid[i][j] occupy the entire grid cell: that is, they are a 1 x
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     int maxIncreaseKeepingSkyline(vector<vector<int>>& grid) {

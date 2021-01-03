@@ -33,7 +33,7 @@ Output:
 
 - reference: https://leetcode-cn.com/problems/create-maximum-number/solution/cshou-xian-qiu-jie-zi-wen-ti-zai-he-bing-zi-wen-ti/
 
-```c++
+```cpp
 class Solution {
 public:
     // find the maximum number with length of len and reserved ordering

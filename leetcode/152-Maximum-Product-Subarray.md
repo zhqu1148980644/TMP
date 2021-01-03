@@ -21,7 +21,7 @@ Explanation: The result cannot be 2, because [-2,-1] is not a subarray.
 - Use a dp table to record maximum product and minimum product of continuous subarrays ends with each position.
 - `maxp[i] = maxp[i] * num if num > 0 else max(minp[i] * num, num)`
 
-```c++
+```cpp
 class Solution {
 public:
     int maxProduct(vector<int>& nums) {
@@ -46,7 +46,7 @@ public:
 - reference: https://leetcode-cn.com/problems/maximum-product-subarray/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by--36/
 - The maximum product subarray must contain even number of negative numbers(0 is even).
 
-```c++
+```cpp
 class Solution {
 public:
     int maxProduct(vector<int>& nums) {

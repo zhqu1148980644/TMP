@@ -37,7 +37,7 @@ Explanation: F(4) = F(3) + F(2) = 2 + 1 = 3.
 
 1. ##### iteration
 
-```c++
+```cpp
 class Solution {
 public:
     int fib(int N) {
@@ -53,7 +53,7 @@ public:
 
 2. ##### memoization
 
-```c++
+```cpp
 class Solution {
 private:
     vector<int> mem;

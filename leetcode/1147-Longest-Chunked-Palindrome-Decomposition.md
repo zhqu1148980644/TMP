@@ -43,7 +43,7 @@ Explanation: We can split the string on "(a)(a)(a)".
 
 1. ##### dynamic programming
 
-```c++
+```cpp
 
 ```
 
@@ -64,7 +64,7 @@ Explanation: We can split the string on "(a)(a)(a)".
             |---s3       |----s4
 ```
 
-```c++
+```cpp
 class Solution {
 public:
     int longestDecomposition(string text) {
@@ -88,7 +88,7 @@ public:
 
 - recursive version
 
-```c++
+```cpp
 class Solution {
 public:
     int longestDecomposition(string text) {
@@ -108,7 +108,7 @@ public:
 - In the greedy approach, as strings are allocated in comtinous memory, adding characters at the front of string and comparing them is time-consuming.
 - The idea is to use rolling hash to compare two growing head/tail substrings that can leads to O(n) time complexity.(without collisions)
 
-```c++
+```cpp
 #define num(x) ((x) - 'a')
 class Solution {
 public:

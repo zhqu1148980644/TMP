@@ -16,7 +16,7 @@ The range of node's value is in the range of 32-bit signed integer.
 
 1. ##### level order traversal
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -55,7 +55,7 @@ public:
 2. ##### recursion
 
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

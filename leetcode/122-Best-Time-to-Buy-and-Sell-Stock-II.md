@@ -33,7 +33,7 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 - To achieve the maximum profit, we need to buy at the start of each ascending slope and sell at the end the slope.
 - This process equals to summing up all the price difference between two consecutive days.
 
-```c++
+```cpp
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {

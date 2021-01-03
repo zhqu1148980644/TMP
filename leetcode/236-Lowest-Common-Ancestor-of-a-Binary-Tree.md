@@ -34,7 +34,7 @@ Explanation: The LCA of nodes 5 and 4 is 5, since a node can be a descendant of 
 
 - Use inorder traversal to find the `first` root node contains both the given two nodes.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -70,7 +70,7 @@ public:
 - borrowed from others.
 - This version would be a little slower in cases when two target nodes are in a relationship of ancestor and descendant.
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
@@ -94,7 +94,7 @@ public:
 - Traverse the binary tree and record each node's parent in a hashmap until fathers of `p` and `q` are found.
 - Find the first common ancestor of `p` and `q` along their lineage tree.
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
@@ -132,7 +132,7 @@ public:
 
 - Use `lcalevel` to record the highest level(backwards from leafs) that contains both two target nodes.
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {

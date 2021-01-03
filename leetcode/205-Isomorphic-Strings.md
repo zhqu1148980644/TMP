@@ -32,7 +32,7 @@ You may assume both s and t have the same length.
 - Record each character's nearest appearance(index).
 - Return false is two characters in two string has a different appearance history.
 
-```c++
+```cpp
 class Solution {
 public:
     bool isIsomorphic(string s, string t) {

@@ -30,7 +30,7 @@ Note:  1 <= S.length <= 1000
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> largeGroupPositions(string S) {

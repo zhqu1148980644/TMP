@@ -29,7 +29,7 @@ Return:
 
 1. ##### backtrack
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -72,7 +72,7 @@ public:
 - preorder or postder?
 - The same as the method used in previous problem.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

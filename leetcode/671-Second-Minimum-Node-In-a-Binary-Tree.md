@@ -36,7 +36,7 @@ Explanation: The smallest value is 2, but there isn't any second smallest value.
 
 - borrowed from others
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -69,7 +69,7 @@ public:
 - borrowed from others.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int findSecondMinimumValue(TreeNode* root) {
@@ -98,7 +98,7 @@ public:
 - Do not pre-exit when finding a node with larger value, if there are still nodes with values equal to the minimum value in the current level, the second minimum value may exit in deeper levels.
 - Exit only if the minimum value of the current level is larger than the minimum value.
 
-```c++
+```cpp
 class Solution {
 public:
     int findSecondMinimumValue(TreeNode* root) {

@@ -45,7 +45,7 @@ Explanation:
 - In order to count the maximum possible ones, we use priority queue to store the number of `1` for each possible position such that the total number of `1` is the heighest.
 - reference: https://leetcode-cn.com/problems/maximum-number-of-ones/solution/java-osidelength2-by-gaaakki/
 
-```c++
+```cpp
 class Solution {
 public:
     int maximumNumberOfOnes(int width, int height, int sideLength, int maxOnes) {
@@ -79,7 +79,7 @@ public:
 
 - Though the time complexity is higher than the first version, this solution is much faster than the first one in test cases.
 
-```c++
+```cpp
 class Solution {
 public:
     int maximumNumberOfOnes(int width, int height, int sideLength, int maxOnes) {

@@ -112,7 +112,7 @@ K will be in range [0, heights.length - 1].
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> pourWater(vector<int>& heights, int V, int K) {

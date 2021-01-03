@@ -34,7 +34,7 @@ That partition would lead to a score of 5 + 2 + 6 = 13, which is worse.
 - Notion: `K <= A.length()` means dp[n - 1][K] must be the answer, if `K > A.length()`, the answer is `dp[n - 1][A.length()()]`
 
 
-```c++
+```cpp
 class Solution {
 public:
     double largestSumOfAverages(vector<int>& A, int K) {
@@ -59,7 +59,7 @@ public:
 
 - Or use a simple 1-d dp array and filling the dp table column by column.
 
-```c++
+```cpp
 class Solution {
 public:
     double largestSumOfAverages(vector<int>& A, int K) {
@@ -83,7 +83,7 @@ public:
 
 2. ##### dfs with memoization
 
-```c++
+```cpp
 class Solution {
 public:
     vector<double> sum;

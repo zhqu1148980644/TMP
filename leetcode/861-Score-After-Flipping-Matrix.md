@@ -31,7 +31,7 @@ A[i][j] is 0 or 1.
     - `2 ^ n > 2^(n - 1) + 2^(n - 2) + ... 2^1`
 - Then reversing `colums[1:]` to maximize the number of `1` in each column.
 
-```c++
+```cpp
 class Solution {
 public:
     int matrixScore(vector<vector<int>>& A) {

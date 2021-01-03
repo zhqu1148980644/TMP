@@ -59,7 +59,7 @@ The given board size is always 9x9.
 - Use `hashtable` to record the occurrence of each number in each row, column and block.
 - Since the numers are no more than 9, a bit map can be used as hashtable.
 
-```c++
+```cpp
 class Solution {
 private:
     int rowm[9];

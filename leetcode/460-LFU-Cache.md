@@ -51,7 +51,7 @@ freq.begin() + 1 <5> <12, 123 ,1 12312, 1 34123>
 freq.end();
 ```
 
-```c++
+```cpp
 using Freq = list<pair<int, list<int>>>;
 struct Node {
     int key, value;
@@ -131,7 +131,7 @@ public:
 
 or
 
-```c++
+```cpp
 
 
 ```

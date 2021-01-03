@@ -22,7 +22,7 @@ Recursive solution is trivial, could you do it iteratively?
 
 1. ##### recursion O(n) S(log(n))
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -52,7 +52,7 @@ public:
 
 2. ##### Iteration with stack O(n) S(log(n))
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> inorderTraversal(TreeNode * root) {
@@ -76,7 +76,7 @@ public:
 
 OR
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> inorderTraversal(TreeNode * root) {
@@ -98,7 +98,7 @@ public:
 
 OR
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> inorderTraversal(TreeNode* root) {
@@ -130,7 +130,7 @@ public:
         - When we are at the rightmost leaf node of a tree, the left child is `NULL` thus we will(set by rule one) go visit the right child which is the current tree's parent node.
 
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

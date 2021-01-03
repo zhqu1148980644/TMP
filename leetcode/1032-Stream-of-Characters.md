@@ -35,7 +35,7 @@ The number of queries is at most 40000.
 
 - reference: https://leetcode-cn.com/problems/stream-of-characters/solution/hen-jian-dan-de-qian-zhui-shu-ban-zi-by-xiaoneng/
 
-```c++
+```cpp
 struct Trie {
     Trie * links[26] = {nullptr};
     bool isend = false;

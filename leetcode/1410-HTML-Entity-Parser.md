@@ -47,7 +47,7 @@ The string may contain any possible characters out of all the 256 ASCII charact
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     string entityParser(string text) {
@@ -84,7 +84,7 @@ public:
 
 - Since there are only few entities, the efficiency of trie may not be prominent.
 
-```c++
+```cpp
 class Trie {
 public:
     struct TrieNode {

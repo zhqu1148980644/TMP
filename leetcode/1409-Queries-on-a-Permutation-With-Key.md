@@ -36,7 +36,7 @@ Constraints:
 
 1. ##### map
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> processQueries(vector<int>& queries, int m) {
@@ -63,7 +63,7 @@ public:
 
 - Simulate the whole process using linked list with `O(1)` insertion(push_front) cost;
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> processQueries(vector<int>& queries, int m) {
@@ -95,7 +95,7 @@ public:
 - Use fenwick tree to fetch the index of each query number by counting the number of elements before it in `O(log(n))` time.
 - In order to simulate the insertion process, additional space are reserved at the front of the fenwicktree.
 
-```c++
+```cpp
 // FenwickTree template
 struct FenwickTree {
     vector<int> nums;

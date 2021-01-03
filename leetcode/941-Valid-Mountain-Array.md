@@ -34,7 +34,7 @@ Note:
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     bool validMountainArray(vector<int>& A) {
@@ -59,7 +59,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     bool validMountainArray(vector<int>& A) {

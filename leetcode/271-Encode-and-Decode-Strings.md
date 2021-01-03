@@ -34,7 +34,7 @@ Do not rely on any library method such as eval or serialize methods. You should 
 
 1. ##### http encode
 
-```c++
+```cpp
 class Codec {
 public:
     string len2s(unsigned int n) {

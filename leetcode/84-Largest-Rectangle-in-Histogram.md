@@ -21,7 +21,7 @@ Output: 10
 
 1. ##### straight forward O(n2)
 
-```c++
+```cpp
 class Solution {
 public:
     int largestRectangleArea(vector<int>& heights) {
@@ -45,7 +45,7 @@ public:
     - The right boundary bar denoted as `j` with the same rule as above.
     - Them maximum area can be calculated as `h[k] * (j - i)`
 - Codes below find the first bar with height lower than the center bar, thus the fomulation has changed to `h[k] * (j - i - 1)`.
-```c++
+```cpp
 
 class Solution {
 public:
@@ -87,7 +87,7 @@ public:
 - Push `-1` into the `stack` as a left guard.
 - Push `-1` into the `heights` as the imaginary right boundary.
 
-```c++
+```cpp
 class Solution {
 public:
     int largestRectangleArea(vector<int>& heights) {

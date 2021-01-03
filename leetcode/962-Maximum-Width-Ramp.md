@@ -29,7 +29,7 @@ Note:
 
 - Mataining a monotonically decreasing stack stating with the first element of the array, then the target `i` must be within the stack. After the stack has been built, scanning the array `backwards(j)` and pop back the top element when the current `j` is larger/eq than the `top`(All availanle `j` to the left of the current `j` must has less `j - i`).
 
-```c++
+```cpp
 class Solution {
 public:
     int maxWidthRamp(vector<int>& A) {

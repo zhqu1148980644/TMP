@@ -27,7 +27,7 @@ Return the pairs [i,j] in sorted order (i.e. sort them by their first coordinate
 
 1. ##### trie
 
-```c++
+```cpp
 struct Trie {
     Trie * links[26] = {nullptr};
     bool isend = false;

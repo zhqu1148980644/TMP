@@ -27,7 +27,7 @@ The answer is the sum of divisors of 21 only.
 
 1. ##### straight forward O(n * sqrt(n))
 
-```c++
+```cpp
 class Solution {
 public:
     int sumFourDivisors(vector<int>& nums) {

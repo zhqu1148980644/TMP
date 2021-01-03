@@ -44,7 +44,7 @@ Can you solve it using O(1) (i.e. constant) memory?
 
 - Think of the case when two runners with different speed in a stadium track, these two runners will absolutely meet at some point.
 
-```c++
+```cpp
 typedef ListNode node;
 class Solution {
 public:

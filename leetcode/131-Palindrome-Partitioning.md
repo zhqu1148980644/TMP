@@ -24,7 +24,7 @@ Output:
 - Iterativey find the next split point to generate valid palindrome, store partitions that can partition the original string into non-overlapping palindrome chunks.
 - Backtrack to the last split point if the remaining string can not be patitioned further.
 
-```c++
+```cpp
 class Solution:
     def partition(self, s: str) -> List[List[str]]:
         return [[s[:i]] + parts
@@ -54,7 +54,7 @@ class Solution:
 
 - Use method in `problem 5` to check if a substring is a valid palindrome for every substring and store the result in a dp table.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<bool>> ispalin;
@@ -99,7 +99,7 @@ public:
 ```
 
 
-```c++
+```cpp
 class Solution {
 private:
     vector<string> path;
@@ -141,7 +141,7 @@ public:
 - `res[pos]`. represents all solutions that end with the pos character(`right closed`).
 - Whenever we find a new `palindrome[l:r]`, then `res[r + 1]`(solutions ends with r + 1) can be calculated by extending every solution in `res[l]` with this new palindrome.
 
-```c++
+```cpp
 class Solution {
 public:
     using Path = vector<string>;

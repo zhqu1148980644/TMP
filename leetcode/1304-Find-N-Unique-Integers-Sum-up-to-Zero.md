@@ -28,7 +28,7 @@ Output: [0]
 
 1. #####
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> sumZero(int n) {

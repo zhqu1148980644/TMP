@@ -29,7 +29,7 @@ Every value of a given or inserted node is between 0 and 5000.
 
 - Store all nodes in the last full(with size it should be) level.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -106,7 +106,7 @@ public:
 - In this version, only uncompleted nodes would be stored and the front of deque is the first parent node needs to be filled.
 
 
-```c++
+```cpp
 class CBTInserter {
 public:
     TreeNode * root;

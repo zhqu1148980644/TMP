@@ -30,7 +30,7 @@ Please do not use the built-in HashMap library.
 
 - The same as `problem 705`, similar to `unorderd_map` in stl, use `pair<Key, Val>` as the Node value type.
 
-```c++
+```cpp
 class MyHashMap {
 public:
     /** Initialize your data structure here. */

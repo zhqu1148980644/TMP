@@ -35,7 +35,7 @@ board[i][j] will be a permutation of [0, 1, 2, 3, 4, 5].
 
 1. ##### bfs
 
-```c++
+```cpp
 class Solution {
 public:
     int slidingPuzzle(vector<vector<int>>& board) {

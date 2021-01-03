@@ -31,7 +31,7 @@ Build a dp table to record each position's longest valid parentheses ending in t
     - if `dp[i - dp[i - 1] - 1] == "("`, then `dp[i] = dp[i - 2] + dp[i - dp[i - 1] - 2] + 2`
     - else `dp[i] = 0`;
 
-```c++
+```cpp
 class Solution {
 public:
     int longestValidParentheses(string s) {
@@ -57,7 +57,7 @@ public:
 
 Or unify the last two cases since `dp[i - 1] == 0` when `s[i - 1] == '('`.
 
-```c++
+```cpp
 class Solution {
 public:
     int longestValidParentheses(string s) {
@@ -90,7 +90,7 @@ eg: 1 2 3 2 1 0 1 2 1 0 -1 So the largest valid string is from 1 to 0:  10 but n
 - Why need to scan twice: https://leetcode-cn.com/problems/longest-valid-parentheses/solution/zui-chang-you-xiao-gua-hao-by-leetcode/218953
 
 
-```c++
+```cpp
 class Solution {
 public:
     int longestValidParentheses(string s) {
@@ -124,7 +124,7 @@ public:
 
 - The top of the stack represents the former index of the valid substring.
 
-```c++
+```cpp
 class Solution {
 public:
     int longestValidParentheses(string s) {

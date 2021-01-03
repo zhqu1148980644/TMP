@@ -19,7 +19,7 @@ The characters in J are distinct.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     int numJewelsInStones(string J, string S) {

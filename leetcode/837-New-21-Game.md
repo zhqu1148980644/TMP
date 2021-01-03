@@ -38,7 +38,7 @@ The judging time limit has been reduced for this question.
     - `dp[K - 1]`. Since the current points(K - 1 = 16) is smaller than end mark(`K = 17`), we can select numbers between `[1:W]` with the probability of selecting each number equals to `1 / W`, this leads to `dp[K - 1] = sum(dp[k] + .... + dp[K + W - 1]) / W`.
     - In general, `dp[i] = sum(dp[i + 1] + ... + dp[i + W]) / W`
 
-```c++
+```cpp
 class Solution {
 public:
     double new21Game(int N, int K, int W) {

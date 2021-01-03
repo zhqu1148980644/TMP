@@ -33,7 +33,7 @@ You are not allowed to buy more items than you want, even if that would lower th
 
 1. ##### backtrack
 
-```c++
+```cpp
 class Solution {
 public:
     int shoppingOffers(vector<int>& price, vector<vector<int>>& special, vector<int>& needs) {
@@ -64,7 +64,7 @@ public:
 
 - Since `special` and `price` remain the same during the search, only `needs` changes, a hashmap can be used for storing the minimum price at each state. 
 
-```c++
+```cpp
 class Solution {
 public:
     // or use unordered_map with custome hasher

@@ -47,7 +47,7 @@ bills[i] will be either 5, 10, or 20.
 
 1. ##### greedy strategy
 
-```c++
+```cpp
 class Solution {
 public:
     bool lemonadeChange(vector<int>& bills) {

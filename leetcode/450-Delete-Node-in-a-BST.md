@@ -42,7 +42,7 @@ Another valid answer is [5,2,6,null,4,null,7].
 
 - Ensure the property of binary search tree not be corrupted.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -86,7 +86,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode* deleteNode(TreeNode* root, int key) {

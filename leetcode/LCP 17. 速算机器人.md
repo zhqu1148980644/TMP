@@ -23,7 +23,7 @@ s 由 'A' 和 'B' 组成
 
 #### Solutions
 
-```c++
+```cpp
 class Solution {
 public:
     int calculate(string s) {

@@ -32,7 +32,7 @@ stack.empty(); // returns false
 - push O(n)
 - pop/top O(1)
 
-```c++
+```cpp
 class MyStack {
 private:
     queue<int> q;

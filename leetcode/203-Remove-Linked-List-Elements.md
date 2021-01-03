@@ -11,7 +11,7 @@ Output: 1->2->3->4->5
 
 1. ##### Straight forward
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {

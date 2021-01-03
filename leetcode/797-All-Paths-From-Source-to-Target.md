@@ -20,7 +20,7 @@ You can print different paths in any order, but you should keep the order of nod
 
 1. ##### dfs
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> res;

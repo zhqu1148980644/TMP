@@ -30,7 +30,7 @@ The difficulty lies in always keeping tack of the current minimum number in the 
 - When find a more small value, push the current minimum item into the stack before this new minimum is pushed back.
     - When the minimum element is poped, the second minimum number can be easily fetched from the top of the stack thus the minimum can be correctly recorded.
 
-```c++
+```cpp
 class MinStack {
 private:
     stack<int> s;
@@ -72,7 +72,7 @@ public:
 - Use another stack to keep tack of the minimum numbers.
 
 
-```c++
+```cpp
 class MinStack {
 private:
     stack<int> s;

@@ -26,7 +26,7 @@ What if the inputs contain unicode characters? How would you adapt your solution
 
 - For unicode characters, we can use a dynamic hash table.
 
-```c++
+```cpp
 class Solution {
 public:
     bool isAnagram(string s, string t) {

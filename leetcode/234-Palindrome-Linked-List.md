@@ -23,7 +23,7 @@ Could you do it in O(n) time and O(1) space?
 - When the fast pointer moves to the end, the first half of the link list is reversed and the slower pointer is right at the middle(if the length is odd) of the link list.
 - Check if the linked list is a palindrome by moving two linked lists simultaneously.
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -85,7 +85,7 @@ public:
 - Loop through the linked list to count the length.
 - Then reverse the first half of the link list and the following steps are the same as steps in the first method.
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {

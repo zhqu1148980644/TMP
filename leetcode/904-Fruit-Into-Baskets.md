@@ -48,7 +48,7 @@ Note:
 
 - Maintaining a window contains at most two fruit types of fruits.
 
-```c++
+```cpp
 class Solution {
 public:
     int totalFruit(vector<int>& tree) {
@@ -75,7 +75,7 @@ public:
 - After each iteration, `m` must be set as `m + 1`, for example:
     - [2,1,2,3,3,4], the current window is `[2:3)`, the number `1` can be find out in the next window search only if `m` is set to `m + 1`.
 
-```c++
+```cpp
 class Solution {
 public:
     int totalFruit(vector<int>& tree) {

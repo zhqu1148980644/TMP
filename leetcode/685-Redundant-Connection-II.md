@@ -69,7 +69,7 @@ case 3: Cycle exists after removeed the last duplicate edge(5->1), remove the ot
 
 1. ##### union find
 
-```c++
+```cpp
 struct UnionFind {
     int * nodes;
     int * sizes;
@@ -146,7 +146,7 @@ public:
 
 2. ##### cycle
 
-```c++
+```cpp
 class Solution {
 public:
     bool hascycle(vector<int> & parents, int node) {
@@ -200,7 +200,7 @@ public:
 
 or more concisely
 
-```c++
+```cpp
 class Solution {
 public:
     bool hascycle(vector<int> & parents, int node) {

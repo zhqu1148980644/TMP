@@ -31,7 +31,7 @@ where the largest sum among the two subarrays is only 18.
     - If `n > m`, `mid` must be underestimated, thus we search in the upper range `[mid + 1, hi]`.
     - Else search in `[lo, mid]`
 
-```c++
+```cpp
 class Solution {
 public:
     int splitArray(vector<int>& nums, int m) {
@@ -71,7 +71,7 @@ public:
 - `dp[j][k]` represents the last subarray sum when `array[:j]` has been divided into `k` parts.
 - `j` is 0-based.
 
-```c++
+```cpp
 class Solution {
 public:
     int splitArray(vector<int>& nums, int m) {
@@ -93,7 +93,7 @@ public:
 
 - Or we can just use a 1-d array by filling the dp table column by column.
 
-```c++
+```cpp
 class Solution {
 public:
     int splitArray(vector<int>& nums, int m) {

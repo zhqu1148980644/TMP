@@ -31,7 +31,7 @@ Output: "gctaagttcatgcatc"
 
 - `com` is an integer representing strings have been used in the current path.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> overlap;
@@ -93,7 +93,7 @@ public:
 - Codes below find the permutation with the maximum length of overlaps which is similar to the official answer.
     - These two criterias are basically the same.
 
-```c++
+```cpp
 class Solution {
 public:
     string shortestSuperstring(vector<string>& A) {
@@ -152,7 +152,7 @@ public:
 
 - Got TLE.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> dp;

@@ -40,7 +40,7 @@ s contains only lowercase English letters.
 
 1. ##### hashs set
 
-```c++
+```cpp
 class Solution {
 public:
     int numSplits(string s) {

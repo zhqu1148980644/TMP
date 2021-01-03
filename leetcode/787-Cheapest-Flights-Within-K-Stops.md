@@ -41,7 +41,7 @@ There will not be any duplicated flights or self cycles.
 1. ##### Bellman-Ford O(ke)
 
 
-```c++
+```cpp
 class Solution {
 public:
     int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int K) {
@@ -74,7 +74,7 @@ public:
 - In ordinary dijkstra algorihtm, the minimum cost with steps > K would forbid other costs with lower steps to be recorded. A simple solution is to put all path into the heap and discard the `mincost and visited` table. As a consequence, duplicate path or impossible path would be recorded, the time complexity would be much higher than traditional dijkstra.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int K) {
@@ -107,7 +107,7 @@ public:
 - A minor optimization is to keep track of both cost and step info, permitting multiple path being recorded while still discard path with low priority(The same step but with more cost).
 - In particular we use `nstep * 1000 + node` as the unique key representing the minimum cost at `node` with exactly `nstep` steps passed.
 
-```c++
+```cpp
 class Solution {
 public:
     int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int K) {
@@ -144,7 +144,7 @@ public:
 
 3. ##### bfs
 
-```c++
+```cpp
 class Solution {
 public:
     int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int K) {
@@ -179,7 +179,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int K) {

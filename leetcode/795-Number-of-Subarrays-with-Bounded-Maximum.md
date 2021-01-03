@@ -20,7 +20,7 @@ The length of A will be in the range of [1, 50000].
 
 - `res = numunder(R) - numunder(L - 1)`, numunder(n) means the number of subarrays with the maximum number <= n.
 
-```c++
+```cpp
 class Solution {
 public:
     int numunder(vector<int> & A, int bound) {
@@ -44,7 +44,7 @@ public:
 - `Window `A(abover: cur)` are numbers not greater than the upper_bound.
 - `abovel` is the index of the first number >= lower_bound within the window.
 
-```c++
+```cpp
 class Solution {
 public:
     int numSubarrayBoundedMax(vector<int>& A, int L, int R) {
@@ -80,7 +80,7 @@ public:
 
 ### if the question asks the number of subarrays with sum at least L and at least R
 
-```c++
+```cpp
 class Solution {
 public:
     int numSubarrayBoundedMax(vector<int>& A, int L, int R) {

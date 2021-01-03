@@ -31,7 +31,7 @@ Explanation: Cheapest is start on cost[0], and only step on 1s, skipping cost[3]
 - Note: the top of the floor is the position next to the last step.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int minCostClimbingStairs(vector<int>& cost) {
@@ -54,7 +54,7 @@ public:
 
 - Or thought `dp[i]` as the cost need to pay when jumping at `staircase[i]`.
 
-```c++
+```cpp
 class Solution {
 public:
     int minCostClimbingStairs(vector<int>& cost) {

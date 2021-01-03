@@ -42,7 +42,7 @@ dp[i][0b11] comes from
 
 ```
 
-```c++
+```cpp
 class Solution {
 public:
     int numTilings(int N) {
@@ -73,7 +73,7 @@ public:
 
 ```
 
-```c++
+```cpp
 class Solution {
 public:
     const int MOD = 1e9 + 7;
@@ -104,7 +104,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     const int MOD = 1e9 + 7;

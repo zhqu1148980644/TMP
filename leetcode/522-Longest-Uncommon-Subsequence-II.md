@@ -20,7 +20,7 @@ The length of the given list will be in the range of [2, 50].
     - Suppose `subs1` is the longest common subsequence, then `s1` must be a subsequence of other strings. If a string is a subsequence of other strings, then it's subsequence must also be a subsequence, which leads to the inconsistency with the supposition.
 - Use sort to start scanning from the largest to the smallest string and preexit if we find a uncommon
 
-```c++
+```cpp
 class Solution {
 public:
     bool isubseq(string & s1, string & s2) {

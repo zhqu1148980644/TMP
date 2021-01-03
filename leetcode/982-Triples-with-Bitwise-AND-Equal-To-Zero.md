@@ -36,7 +36,7 @@ Note:
 
 - Note that `&` operator's priority is `lower` than `==`.
 
-```c++
+```cpp
 class Solution {
 public:
     int countTriplets(vector<int>& A) {

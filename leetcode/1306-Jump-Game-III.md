@@ -38,7 +38,7 @@ Explanation: There is no way to reach at index 1 with value 0.
 
 1. ##### dfs with recursion
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> visited;
@@ -57,7 +57,7 @@ public:
 
 2. ##### bfs with queue
 
-```c++
+```cpp
 class Solution {
 public:
     bool canReach(vector<int>& arr, int start) {

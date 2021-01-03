@@ -21,7 +21,7 @@ Output: false
 
 - we can remove items in hasmap added before `i - k` to save space.
 
-```c++
+```cpp
 class Solution {
 public:
     bool containsNearbyDuplicate(vector<int>& nums, int k) {

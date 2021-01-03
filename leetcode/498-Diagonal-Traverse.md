@@ -29,7 +29,7 @@ The total number of elements of the given matrix will not exceed 10,000.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> findDiagonalOrder(vector<vector<int>>& matrix) {

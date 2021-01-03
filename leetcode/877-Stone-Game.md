@@ -31,7 +31,7 @@ sum(piles) is odd.
 
 1. ##### dfs with memoization O(n2)
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> memo;
@@ -53,7 +53,7 @@ public:
 
 2. ##### dynamic programming O(n2)
 
-```c++
+```cpp
 class Solution {
 public:
     bool stoneGame(vector<int>& piles) {

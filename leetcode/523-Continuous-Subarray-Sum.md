@@ -26,7 +26,7 @@ You may assume the sum of all the numbers is in the range of a signed 32-bit int
 - Caution: `k = 0` should be considered separately.
 - Since all numbers are positive, even though `k` may be negative, `positive % negative` are always positive.
 
-```c++
+```cpp
 class Solution {
 public:
     bool checkSubarraySum(vector<int>& nums, int k) {
@@ -59,7 +59,7 @@ public:
 
 or when k equals to 0, degrade the algorithm into normal version. ie: record real prefixsum. Sum of continuous subarray equals to 0 only when `prefixsum[cur] == prefixsum[index before cur]`.
 
-```c++
+```cpp
 class Solution {
 public:
     bool checkSubarraySum(vector<int>& nums, int k) {

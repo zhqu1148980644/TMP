@@ -38,7 +38,7 @@ Output: 0
 
 1. ##### straight forward
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {

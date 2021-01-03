@@ -24,7 +24,7 @@ Be carefull with this case: 9 is not left leaf
 
 1. ##### recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -51,7 +51,7 @@ public:
 
 - Level order traversal
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -86,7 +86,7 @@ public:
 
 or preorder traversal
 
-```c++
+```cpp
 class Solution {
 public:
     int sumOfLeftLeaves(TreeNode* root) {
@@ -114,7 +114,7 @@ public:
 
 or inorder traversal
 
-```c++
+```cpp
 class Solution {
 public:
     int sumOfLeftLeaves(TreeNode* root) {

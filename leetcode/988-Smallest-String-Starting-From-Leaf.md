@@ -38,7 +38,7 @@ Each node in the tree will have a value between 0 and 25.
 - The solution below is an example of wrong answer in which postorder traversal are used.
 - For example: The string from the left child is `abab`, and the right one is `ab`, in normal case, we would choose `ab` as the smallest one, however, their true lexicographically order is not soly depends on the current, but also the current node's ascendant. if the parent node is `z`, then `ababz` would be smaller than `abz`.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -64,7 +64,7 @@ public:
 
 - the correct version
 
-```c++
+```cpp
 class Solution {
 public:
     string res = string(100, 'z');

@@ -7,7 +7,7 @@ For example: `n` is 4, then `41312432` satisfies the requirement.
 
 1. ##### dfs
 
-```c++
+```cpp
 vector<int> solve(int n) {
     vector<int> used(n + 1), res(2 * n, -1);
 

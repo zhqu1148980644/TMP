@@ -38,7 +38,7 @@ Each call to RLEIterator.next(int n) will have 1 <= n <= 10^9.
 
 1. ##### straight forward O(n)
 
-```c++
+```cpp
 class RLEIterator {
 public:
     vector<int> nums;
@@ -69,7 +69,7 @@ public:
 
 2. ##### binary search O(log(n))
 
-```c++
+```cpp
 class RLEIterator {
 public:
     long cur = 0;

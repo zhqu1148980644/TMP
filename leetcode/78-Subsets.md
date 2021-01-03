@@ -26,7 +26,7 @@ Output:
 
 - Similar to finding all combinations.
 
-```c++
+```cpp
 class Solution {
     vector<vector<int>> res;
     vector<int> path;
@@ -68,7 +68,7 @@ class Solution:
 
 - Treat a subset of given numers as bit combination where `1` bit represents the occurrence of a certain number. ie  `132` is a subset of `1232` that can be represented as `1110` or `1011`.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> subsets(vector<int>& nums) {
@@ -92,7 +92,7 @@ public:
 
 - bottom-up
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> subsets(vector<int>& nums) {

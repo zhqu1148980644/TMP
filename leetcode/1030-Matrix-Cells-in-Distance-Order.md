@@ -36,7 +36,7 @@ Note:
 
 1. ##### sort O(nlog(n))
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> allCellsDistOrder(int R, int C, int r0, int c0) {
@@ -58,7 +58,7 @@ public:
 
 2. ##### bucket sort O(n)
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> allCellsDistOrder(int R, int C, int r0, int c0) {
@@ -81,7 +81,7 @@ public:
 
 3. ##### bfs O(n)
 
-```c++
+```cpp
 class Solution {
 public:
 #define node(x, y) ((x) * C + (y))

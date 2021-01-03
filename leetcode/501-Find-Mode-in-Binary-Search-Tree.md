@@ -34,7 +34,7 @@ return [2].
 
 1. ##### inorder traversal
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -72,7 +72,7 @@ public:
 
 2. ##### morris inorder traversal
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

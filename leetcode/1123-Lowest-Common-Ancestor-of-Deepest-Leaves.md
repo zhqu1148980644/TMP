@@ -36,7 +36,7 @@ Each node of the tree will have a distinct value between 1 and 1000.
 
 - Heights of lca's left and right subtree are the same.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

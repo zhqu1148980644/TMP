@@ -43,7 +43,7 @@ The height of a rooted tree is the number of edges on the longest downward path 
 - Iteratively removing leaf nodes from the tree.
 - Root numbers can only be `2` or `1`.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> findMinHeightTrees(int n, vector<vector<int>>& edges) {

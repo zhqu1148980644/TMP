@@ -20,7 +20,7 @@ Output: -1->0->3->4->5
 - In each for loop, `findTaill` will taverse the whole linked list in `O(n)` time and merge two sorted sublist will cost `O(n)` time, thus the total time is asymptotic `O(n)`.
 - The final result is `n(nlog(n))`.
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -147,7 +147,7 @@ class Solution:
 - Does not satisfy the O(1) sapce requirement.
 - Recursively sovle two subproblem using divide and conquer strategy.
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {

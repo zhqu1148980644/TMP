@@ -32,7 +32,7 @@ The flattened tree should look like:
 - It's clear that nodes from the top left to the lower right in the flattened tree follow a preorder traversal order. Thus we can use a `prev` pointer to record the previous visited node and set `it's` right child to the  current node when traversing the tree in preorder.
 - Do not forget to store the right child before flattening the left child tree as the right pointer will be pointed to the left child tree when the function returned.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -64,7 +64,7 @@ public:
 - iteration with morris
 - in the original morris method, whenever we come back to he root node, we always have to search for the rightmost child in the left child tree. In the meantime, we can link the flattened left tree as the root node's right child and link this right child to the tail of the flattened left tree.
 
-```c++
+```cpp
 class Solution {
 public:
     void flatten(TreeNode* root) {
@@ -94,7 +94,7 @@ public:
 - reference: https://leetcode-cn.com/problems/flatten-binary-tree-to-linked-list/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by--26/
 - Remove the `if-else` expression in the previous version.
 
-```c++
+```cpp
 class Solution {
 public:
     void flatten(TreeNode* root) {
@@ -125,7 +125,7 @@ public:
 
 Recursive version.
 
-```c++
+```cpp
 class Solution {
 public:
     void flatten(TreeNode* root) {
@@ -148,7 +148,7 @@ public:
 - The iead is to reverse the traversal order to `right left root`, this can be seen as a bottom-up approach.
 - Use a `last` pointer to represent the visited node in the returned function.
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode * last = nullptr;
@@ -166,7 +166,7 @@ public:
 
 - Iteration with stack `right left root`
 
-```c++
+```cpp
 class Solution {
 public:
     void flatten(TreeNode* root) {

@@ -24,7 +24,7 @@ Output: 6
 - This solution uses the brute-force method in `problem 84` after we transformed the input matrix into bars.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int area(vector<int> & nums) {
@@ -59,7 +59,7 @@ public:
 
 or combine loops in two functions.
 
-```c++
+```cpp
 // treat as horizontal bars.
 class Solution {
 public:
@@ -93,7 +93,7 @@ public:
 
 - The same as the optimized stack solution in `problem 84`.
 
-```c++
+```cpp
 // treat as vertical bars
 class Solution {
 public:
@@ -138,7 +138,7 @@ public:
     - The rectangle after streching contains only `1` cells.
 - `left[j] = coln` means the leftmost column that can be streched to when extending from `matrix[i][j]`(as the bottom of the rectangle).
 
-```c++
+```cpp
 class Solution {
 public:
     int maximalRectangle(vector<vector<char>>& matrix) {

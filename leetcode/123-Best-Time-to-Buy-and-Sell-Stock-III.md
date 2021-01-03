@@ -60,7 +60,7 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
 - Since `dp[i]` depends solely on `dp[i - 1]`, we can simply use two variales to represent `dp[i - 1][0]` and `dp[i - 1][1]` to save O(n) space which is supposed to be costed by dp table.
 
-```c++
+```cpp
 #define max(x, y) (((x) > (y)) ? (x) : (y))
 int maxProfit(int *prices, int pricesSize) {
     int last0 = 0, last1 = INT_MIN;
@@ -78,7 +78,7 @@ int maxProfit(int *prices, int pricesSize) {
     - `dp[i][0] = max(dp[i - 1][0], dp[i - 1][1] + p[i])`
     - `dp[i][1] = max(dp[i - 1][1], dp[i - 1][0] - p[i])`
 
-```c++
+```cpp
 #define max(x, y) (((x) > (y)) ? (x) : (y))
 int maxProfit(int* prices, int pricesSize){
     int last0 = 0, last1 = INT_MIN;
@@ -105,7 +105,7 @@ int maxProfit(int* prices, int pricesSize){
 
 
 
-```c++
+```cpp
 
 #define max(x, y) (((x) > (y)) ? (x) : (y))
 int maxProfit(int* prices, int pricesSize){
@@ -127,7 +127,7 @@ int maxProfit(int* prices, int pricesSize){
     - `dp[i][0] = max(dp[i - 1][0], dp[i - 1][1] + p[i])`
     - `dp[i][1] = max(dp[i - 1][1], dp[i - 1][0] - p[i]) - fee`
 
-```c++
+```cpp
 #define max(x, y) (((x) > (y)) ? (x) : (y))
 int maxProfit(int* prices, int pricesSize, int fee){
     int last0 = 0, last1 = INT_MIN;
@@ -148,7 +148,7 @@ int maxProfit(int* prices, int pricesSize, int fee){
     - `dp[i][1][0] = max(dp[i - 1][1][0], dp[i - 1][1][1] + p[i])`
     - `dp[i][1][1] = max(dp[i - 1][1][1], - p[i])`
 
-```c++
+```cpp
 #define max(x, y) (((x) > (y)) ? (x) : (y))
 int maxProfit(int* prices, int pricesSize){
     int last10 = 0, last11 = INT_MIN;
@@ -169,7 +169,7 @@ int maxProfit(int* prices, int pricesSize){
 - `k = n`
 - Only one loop are used in former example because k are ignored when filling the table. `k` in this problem cannot be ignored anymore, so a additional for loop will be used to iterate dimension `k`.
 
-```c++
+```cpp
 class Solution {
 public:
     int maxProfit(int k, vector<int>& prices) {

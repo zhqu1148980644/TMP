@@ -17,7 +17,7 @@ Elements of the given array will be in the range [-10,000, 10,000].
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     double findMaxAverage(vector<int>& nums, int k) {

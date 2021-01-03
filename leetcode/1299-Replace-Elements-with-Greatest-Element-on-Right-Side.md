@@ -21,7 +21,7 @@ Output: [18,6,6,6,1,-1]
 
 1. Straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> replaceElements(vector<int>& arr) {

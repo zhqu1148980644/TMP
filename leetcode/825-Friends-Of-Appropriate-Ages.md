@@ -39,7 +39,7 @@ Notes:
 
 - Be sure to taken acount of people with the same age.
 
-```c++
+```cpp
 class Solution {
 public:
     int numFriendRequests(vector<int>& ages) {
@@ -60,7 +60,7 @@ public:
 
 or with bucket sort
 
-```c++
+```cpp
 class Solution {
 public:
     int numFriendRequests(vector<int>& ages) {

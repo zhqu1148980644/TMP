@@ -30,7 +30,7 @@ logs[i] is guaranteed to have an identifier, and a word after the identifier.
 
 - Remember to stable_sort, the default sort in stl uses unstable quick sort.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> reorderLogFiles(vector<string>& logs) {

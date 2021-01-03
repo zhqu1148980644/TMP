@@ -25,7 +25,7 @@ Both start and end will only consist of characters in {'L', 'R', 'X'}.
 - Only conversion from "RX" and "XL" to "XR" and "LX" are permitted, this denotes that `start` and `end` will be the same after excluding all "X".
 - As moveing orders of `R` and `L` are unidirectional and length of two strings are the same, for each `R` in `start` with index `i`, it's corresponding 'R' in `end` must be pisitioned `>= i`. The same relation for L(<=).
 
-```c++
+```cpp
 class Solution {
 public:
     bool canTransform(string start, string end) {

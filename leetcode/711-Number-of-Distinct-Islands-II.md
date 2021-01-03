@@ -73,7 +73,7 @@ are considered same island shapes. Because if we flip the first array in the up/
 
 1. ##### dfs
 
-```c++
+```cpp
 class Solution {
 public:
     void dfs(vector<vector<int>> & grid, vector<pair<int, int>> & coor, int x, int y) {

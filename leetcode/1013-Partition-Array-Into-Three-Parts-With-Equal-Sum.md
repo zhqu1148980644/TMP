@@ -31,7 +31,7 @@ Constraints:
 
 - Find the first two part with sum equals to `total/3`, then break and check if the remaining sum is equal to `total/3`.
 
-```c++
+```cpp
 class Solution {
 public:
     bool canThreePartsEqualSum(vector<int>& A) {
@@ -55,7 +55,7 @@ public:
 
 2. ##### two pointers
 
-```c++
+```cpp
 class Solution {
 public:
     bool canThreePartsEqualSum(vector<int>& A) {

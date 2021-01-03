@@ -38,7 +38,7 @@ Explanation: Longest consecutive sequence path is 2-3, not 3-2-1, so return 2.
 
 1. ##### postorder traversal with iteration
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -86,7 +86,7 @@ public:
 
 - bottom up
 
-```c++
+```cpp
 class Solution {
 public:
     int res = 0;

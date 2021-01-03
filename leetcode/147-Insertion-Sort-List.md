@@ -28,7 +28,7 @@ Output: -1->0->3->4->5
 
 - `cur` pointer represents the last element has been sorted.
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {

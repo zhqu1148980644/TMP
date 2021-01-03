@@ -24,7 +24,7 @@ You may assume that word1 does not equal to word2, and word1 and word2 are both 
     - if `index1 < index2` moving the index2 forward will not gain a shorter distance, so we need to move `index1` forward.
     - The scanning ends when one of two pointers reaches the end.
 
-```c++
+```cpp
 class WordDistance {
 private:
     unordered_map<string, vector<int>> records;

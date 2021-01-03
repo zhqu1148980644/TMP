@@ -27,7 +27,7 @@ All points are distinct.
 
 - From the official answer
 
-```c++
+```cpp
 class Solution {
 public:
     int minAreaRect(vector<vector<int>>& points) {
@@ -60,7 +60,7 @@ public:
 - From the official answer
 - For all possible lines made of two points(excluding lines within the same column or row), check if the other two points in the antidiagonal exists.
 
-```c++
+```cpp
 class Solution {
 public:
     int minAreaRect(vector<vector<int>>& points) {

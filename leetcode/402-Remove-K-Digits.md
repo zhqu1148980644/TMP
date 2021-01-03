@@ -27,7 +27,7 @@ Explanation: Remove all the digits from the number and it is left with nothing w
 - For number like `xxx54`, since 5 is larger than 4, replacing(deleting) 5 with 4 could generate a smaller number.
 - Do not forget to remove leading zeroes and return 0 if the final string is empty.
 
-```c++
+```cpp
 class Solution {
 public:
     string removeKdigits(string num, int k) {

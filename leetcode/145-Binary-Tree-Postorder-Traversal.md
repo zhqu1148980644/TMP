@@ -20,7 +20,7 @@ Recursive solution is trivial, could you do it iteratively?
 
 1. ##### recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -57,7 +57,7 @@ public:
 - Thus we need a marker to record if we have visited the right child because we could visit the root node twice and the first time we just peek it.
     - Use a hashet to record this information, when there is no record in hashset, that means it's the first time come to the root node and need to go right.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> postorderTraversal(TreeNode* root) {
@@ -91,7 +91,7 @@ public:
 - It turns out that the previous node of the current root node is either the left child or the right child, we could simply use a variable to record the previous node.
 
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> postorderTraversal(TreeNode* root) {
@@ -124,7 +124,7 @@ public:
 - As metioned above, the difficulty lies in figuring out wheather the current node comes from after visiting the left tree or the right tree.
 - Instead of using additional marker, we can mark this information right in the stack by pushing the same node twice onto the stack, the first time we come back to the left tree, there must be two duplicate nodes on the top of the stack(otherwise we comes from the right tree).
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> postorderTraversal(TreeNode* root) {
@@ -159,7 +159,7 @@ public:
 - reference: comments in https://leetcode.com/problems/binary-tree-postorder-traversal/discuss/45551/Preorder-Inorder-and-Postorder-Iteratively-Summarization
 - I choose to set the root to `NULL` so that the next visit will pop a new one instead of continuing visit the left tree.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> postorderTraversal(TreeNode* root) {
@@ -198,7 +198,7 @@ public:
 - Another options is to inseart the new node into the head of visited nodes, then we can save the revsering process. This method requires fast O(1) insertion, thus a linked list would be good.
 - Knowing this relation between preorder and postorder, we can use morris method of preorder traversal to reduce the problem's space complexity to O(1).
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> postorderTraversal(TreeNode* root) {
@@ -226,7 +226,7 @@ public:
 Morris version.
 
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> postorderTraversal(TreeNode* root) {
@@ -268,7 +268,7 @@ public:
 
 ![](https://pic.leetcode-cn.com/5a136b884028d63dbc037994bf441debcc923960bfc69299cf8e2db23bc4abdb.jpg)
 
-```c++
+```cpp
 typedef TreeNode node;
 class Solution {
 public:
@@ -322,7 +322,7 @@ public:
 
 Or use a temporary array to store the reversed node values.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> postorderTraversal(TreeNode* root) {
@@ -363,7 +363,7 @@ public:
 
 Or reversed assignment.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> postorderTraversal(TreeNode* root) {

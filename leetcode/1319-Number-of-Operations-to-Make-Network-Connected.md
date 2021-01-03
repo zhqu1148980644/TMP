@@ -48,7 +48,7 @@ Output: 0
 
 1. ##### Union Find/ greedy
 
-```c++
+```cpp
 class UnionFind {
 public:
     int * nodes;

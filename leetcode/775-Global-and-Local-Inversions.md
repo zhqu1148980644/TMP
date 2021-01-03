@@ -28,7 +28,7 @@ The time limit for this problem has been reduced.
 
 - Check if numbers in the array are monotonically increasing except local inversion points.
 
-```c++
+```cpp
 class Solution {
 public:
     bool isIdealPermutation(vector<int>& A) {
@@ -56,7 +56,7 @@ public:
 
 - Or chcek if all `i` satisfies `max[:i] <= nums[i + 2]`.
 
-```c++
+```cpp
 class Solution {
 public:
     bool isIdealPermutation(vector<int>& A) {
@@ -75,7 +75,7 @@ public:
 
 - Borrowed from the official answer.
 
-```c++
+```cpp
 class Solution {
 public:
     bool isIdealPermutation(vector<int>& A) {

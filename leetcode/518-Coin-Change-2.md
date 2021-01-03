@@ -40,7 +40,7 @@ the answer is guaranteed to fit into signed 32-bit integer
 -  Note that if we `swap` the looping order of coins and amounts, the final result is the number of permutations sums to the given amount.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int change(int amount, vector<int>& coins) {

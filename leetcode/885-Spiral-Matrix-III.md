@@ -41,7 +41,7 @@ Note:
 
 - Whenever the order has been changed 2 times, steps needs to be forward increases by `1`.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> spiralMatrixIII(int R, int C, int r0, int c0) {

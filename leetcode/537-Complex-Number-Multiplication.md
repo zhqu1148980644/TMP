@@ -20,7 +20,7 @@ The input strings will be given in the form of a+bi, where the integer a and b w
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     string complexNumberMultiply(string a, string b) {

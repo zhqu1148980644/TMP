@@ -22,7 +22,7 @@ Explanation: The robot moves left twice. It ends up two "moves" to the left of t
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     bool judgeCircle(string moves) {

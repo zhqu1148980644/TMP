@@ -27,7 +27,7 @@ n >= 1.
 
 1. ##### bfs search
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> killProcess(vector<int>& pid, vector<int>& ppid, int kill) {
@@ -52,7 +52,7 @@ public:
 
 2. ##### UnionFind
 
-```c++
+```cpp
 struct UnionFind {
     vector<int> nodes;
     UnionFind(int size) : nodes(size) {

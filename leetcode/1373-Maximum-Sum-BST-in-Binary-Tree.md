@@ -54,7 +54,7 @@ Output: 7
 
 - A tree is not a bst as long as there is one subtree is not bst.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

@@ -28,7 +28,7 @@ Each node will have value between 0 and 100000.
 
 1. ##### dfs
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

@@ -40,7 +40,7 @@ Output: [5,3,4,2,8,6,7,1,3]
 1. ##### straight forward
 
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> arrayRankTransform(vector<int>& arr) {
@@ -68,7 +68,7 @@ public:
 
 2. ##### hash map
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> arrayRankTransform(vector<int>& arr) {

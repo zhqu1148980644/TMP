@@ -38,7 +38,7 @@ Constraints:
 
 1. ##### binary search
 
-```c++
+```cpp
 /**
  * // This is the MountainArray's API interface.
  * // You should not implement it, or speculate about its implementation

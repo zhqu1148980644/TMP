@@ -29,7 +29,7 @@ Return:
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> fizzBuzz(int n) {

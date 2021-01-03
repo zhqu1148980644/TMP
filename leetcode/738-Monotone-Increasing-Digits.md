@@ -19,7 +19,7 @@ Note: N is an integer in the range [0, 10^9].
 
 - Find the last reversing point(num pair that a > b), and deduce the greater number by 1 and setting all numbers followed to 9. Recursively repeating this process until all numbers are non-decreasing.
 
-```c++
+```cpp
 class Solution {
 public:
     int monotoneIncreasingDigits(int N) {
@@ -46,7 +46,7 @@ public:
 
 or iterative version
 
-```c++
+```cpp
 class Solution {
 public:
     int monotoneIncreasingDigits(int N) {

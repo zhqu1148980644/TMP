@@ -51,7 +51,7 @@ pickIndex will be called at most 10000 times.
 
 1. ##### prefix weight sum
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> psum;

@@ -18,7 +18,7 @@ Output:
 
 1. ##### hash map
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<string>> groupStrings(vector<string>& strings) {

@@ -43,7 +43,7 @@ efficiency.length == n
 - Sort engineers based on their efficiency in an descending order.
 - Maintaining a group of engineers with top k speeds when traversing engineers from the highest efficiency to the lowest, since each traversed engineer's efficiency is the lowest among those have been met, performance can be calculated in O(1) time.
 
-```c++
+```cpp
 class Solution {
 public:
     int maxPerformance(int n, vector<int>& speed, vector<int>& efficiency, int k) {

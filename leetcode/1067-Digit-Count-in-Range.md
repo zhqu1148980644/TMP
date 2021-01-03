@@ -38,7 +38,7 @@ The digit d=3 occurs 35 times in 103,113,123,130,131,...,238,239,243.
         - The remainder part: `min(223 % 100 - 10 * 0 + 1, 10) = 10`, ie: `201 202 203 204 205 ... 209`. 
         - Thus the deduced count offsets the count of invalid numbers in the main part.
 
-```c++
+```cpp
 class Solution {
 public:
     long digitsCount(int d, int n) {

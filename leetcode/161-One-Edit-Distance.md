@@ -32,7 +32,7 @@ Explanation: We can replace '0' with '1' to get t.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     bool isOneEditDistance(string s, string t) {

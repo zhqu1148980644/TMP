@@ -40,7 +40,7 @@ The decoded string is guaranteed to have less than 2^63 letters.
 
 1. ##### recursion
 
-```c++
+```cpp
 class Solution {
 public:
     struct Word {
@@ -86,7 +86,7 @@ public:
 2. ##### iteration
 
 
-```c++
+```cpp
 class Solution {
 public:
     string decodeAtIndex(string S, int K) {

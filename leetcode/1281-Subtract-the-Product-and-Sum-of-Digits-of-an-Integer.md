@@ -25,7 +25,7 @@ Constraints:
 
 #### Solution
 
-```c++
+```cpp
 class Solution {
 public:
     int subtractProductAndSum(int n) {

@@ -56,7 +56,7 @@ Output: 843
 - `dp[i][d]` represents we have finished `jobs[:i]` at the end of `day[d]`.
 - `dp[i][d] = min(dp[i][d], d[k][d - 1] + maxdifficulty(k + 1, i))` means finished `i - k` jobs at day `d` and `k` jobs at the end of day `d - 1`
 
-```c++
+```cpp
 class Solution {
 public:
     int minDifficulty(vector<int>& jobDifficulty, int d) {

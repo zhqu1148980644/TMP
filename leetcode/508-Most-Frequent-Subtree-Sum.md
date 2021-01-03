@@ -20,7 +20,7 @@ Note: You may assume the sum of values in any subtree is in the range of 32-bit 
 
 1. ##### postorder traversal with recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -54,7 +54,7 @@ public:
 2. ##### iteration
 
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

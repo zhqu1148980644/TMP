@@ -25,7 +25,7 @@ Output: "56088"
 - Multipy the first number with each digit of the second number.
 - Add these multiplied number.
 
-```c++
+```cpp
 class Solution {
 public:
     string multiply(string num1, string num2) {
@@ -77,7 +77,7 @@ public:
 
 ![](https://drscdn.500px.org/photo/130178585/m%3D2048/300d71f784f679d5e70fadda8ad7d68f)
 
-```c++
+```cpp
 #define num(x) ((x - '0'))
 class Solution {
 public:

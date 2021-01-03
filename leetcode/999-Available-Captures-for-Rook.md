@@ -44,7 +44,7 @@ There is exactly one cell with board[i][j] == 'R'
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     int numRookCaptures(vector<vector<char>>& board) {

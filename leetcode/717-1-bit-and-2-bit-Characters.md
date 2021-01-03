@@ -25,7 +25,7 @@ bits[i] is always 0 or 1.
 
 - checking each character from beginning to the end.
 
-```c++
+```cpp
 class Solution {
 public:
     bool isOneBitCharacter(vector<int>& bits) {
@@ -40,7 +40,7 @@ public:
 
 As `0` must be the end bit of a character, we can start checking characters after the first `0` to the left of the final `0`.
 
-```c++
+```cpp
 class Solution {
 public:
     bool isOneBitCharacter(vector<int>& bits) {

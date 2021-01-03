@@ -21,7 +21,7 @@ You may assume that you have an infinite number of each kind of coin.
 
 1. ##### dynamic programming O(nk) k: number of coins
 
-```c++
+```cpp
 class Solution {
 public:
     int coinChange(vector<int>& coins, int amount) {
@@ -59,7 +59,7 @@ class Solution:
 
 3. ##### greedy strategy with dfs
 
-```c++
+```cpp
 class Solution {
 public:
     int res;
@@ -93,6 +93,6 @@ public:
 
 4. ##### bfs
 
-```c++
+```cpp
 
 ```

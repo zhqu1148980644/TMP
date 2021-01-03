@@ -20,7 +20,7 @@ solution.shuffle();
 
 1. ##### Fisher-Yates
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> nums;

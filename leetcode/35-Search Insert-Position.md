@@ -29,7 +29,7 @@ Output: 0
 
 Find the first one not smaller than the target.
 
-```c++
+```cpp
 int searchInsert(int* nums, int numsSize, int target){
     if (!numsSize) return 0;
     int lo = 0, hi = numsSize;

@@ -45,7 +45,7 @@ arr contains distinct integers.
 
 1. ##### mono stack
 
-```c++
+```cpp
 class Solution {
 public:
     int getWinner(vector<int>& arr, int k) {
@@ -67,7 +67,7 @@ public:
 
 2. ##### simulation
 
-```c++
+```cpp
 class Solution {
 public:
     int getWinner(vector<int>& arr, int k) {

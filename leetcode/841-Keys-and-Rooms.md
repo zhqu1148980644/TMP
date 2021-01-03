@@ -32,7 +32,7 @@ The number of keys in all rooms combined is at most 3000.
 
 1. ##### bfs
 
-```c++
+```cpp
 class Solution {
 public:
     bool canVisitAllRooms(vector<vector<int>>& rooms) {
@@ -58,7 +58,7 @@ public:
 
 2. ##### dfs
 
-```c++
+```cpp
 class Solution {
 public:
     bool canVisitAllRooms(vector<vector<int>>& rooms) {

@@ -32,7 +32,7 @@ A[i] is 0 or 1 
 
 - The problem equals to find the length of the longest window with at most `k` zeros.
 
-```c++
+```cpp
 class Solution {
 public:
     int longestOnes(vector<int>& A, int K) {

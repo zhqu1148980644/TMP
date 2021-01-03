@@ -22,7 +22,7 @@ mat[i] is sorted in strictly increasing order.
 
 - For each element in the first row, search in other rows using binary search to check if the current element exists.
 
-```c++
+```cpp
 class Solution {
 public:
     int smallestCommonElement(vector<vector<int>>& mat) {

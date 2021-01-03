@@ -60,7 +60,7 @@ Notice each digit has it's own entry in the array.
 
 1. ##### two pointers
 
-```c++
+```cpp
 class Solution {
 public:
     int compress(vector<char>& chars) {

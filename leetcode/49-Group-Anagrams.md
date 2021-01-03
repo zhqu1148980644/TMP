@@ -56,7 +56,7 @@ class Solution:
 
 2. ##### sorting
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
@@ -83,7 +83,7 @@ public:
     - map each character a-z to different prime numbers. Then use multiplication as the group key.
 - Use double to avoid interger overflow.
 
-```c++
+```cpp
 template <unsigned int N>
 constexpr array<int, N> primenums() {
     array<int, N> primes;

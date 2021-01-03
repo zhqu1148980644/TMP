@@ -35,7 +35,7 @@ The total time limit for this problem has been reduced by 75% for C++, and 50%
 
 1. ##### mono stack
 
-```c++
+```cpp
 class StockSpanner {
 public:
     int index = 0;
@@ -62,7 +62,7 @@ public:
 
 or store then count of less numbers in the pair
 
-```c++
+```cpp
 class StockSpanner {
 public:
     stack<pair<int, int>> s;

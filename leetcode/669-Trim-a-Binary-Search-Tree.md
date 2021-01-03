@@ -37,7 +37,7 @@ Output:
 
 1. ##### recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -66,6 +66,6 @@ public:
 
 2. ##### iteration
 
-```c++
+```cpp
 
 ```

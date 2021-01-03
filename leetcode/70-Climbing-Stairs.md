@@ -27,7 +27,7 @@ Explanation: There are three ways to climb to the top.
 
 1. ##### fibnacci sequence
 
-```c++
+```cpp
 long long fibbnocci(int n) {
     long long pprev = 0, prev = 1;
     while (n--) {

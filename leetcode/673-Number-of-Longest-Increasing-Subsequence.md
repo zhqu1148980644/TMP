@@ -23,7 +23,7 @@ Explanation: The length of longest continuous increasing subsequence is 1, and t
 
 - Add another `dp table` to record the `number` of longest increasing subsequences ending with each position based on the solution in `problem 300`.
 
-```c++
+```cpp
 class Solution {
 public:
     int findNumberOfLIS(vector<int>& nums) {
@@ -66,7 +66,7 @@ public:
 - Internally, this method will record the whole process while updating the lcs sequence using binary search, further more, it will also assign a count value to each number, representing the count of lcs ending with `nums >= cur`.
     - To improve the counting complexity from O(n) to O(log(n)), use both binary search and prefix-sum.
 
-```c++
+```cpp
 class Solution {
 public:
     int findNumberOfLIS(vector<int>& nums) {
@@ -108,7 +108,7 @@ public:
 or tuple maxlen and cnt into a pair.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int findNumberOfLIS(vector<int>& nums) {
@@ -144,7 +144,7 @@ public:
 
 - reference: https://leetcode-cn.com/problems/number-of-longest-increasing-subsequence/solution/yi-bu-yi-bu-tui-dao-chu-zui-you-jie-fa-2-zui-chang/
 
-```c++
+```cpp
 // the same as normal FenwickTree, except that the node type is variable
 template <typename T>
 struct FenwickTree {

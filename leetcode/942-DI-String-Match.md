@@ -25,7 +25,7 @@ Output: [3,2,0,1]
 
 - Maximise the range of available numbers. ie: meets I, then push the minimum available number, vice versa.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> diStringMatch(string S) {

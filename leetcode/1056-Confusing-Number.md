@@ -47,7 +47,7 @@ After the rotation we can ignore leading zeros, for example if after rotation we
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     int valid[10] = {1, 1, 0, 0, 0, 0, 1, 0, 1, 1};

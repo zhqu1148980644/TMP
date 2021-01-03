@@ -56,7 +56,7 @@ output[i] = [a, b, c] (three integers)
     - use another lock block the operation of acquiring a or b.
     - Let both A and B requires a first, then require b.    
 
-```c++
+```cpp
 class DiningPhilosophers {
 public:
     mutex forks[5];
@@ -88,7 +88,7 @@ public:
 
 Or
 
-```c++
+```cpp
 class DiningPhilosophers {
 public:
     mutex forks[5];
@@ -123,7 +123,7 @@ public:
 };
 ```
 
-```c++
+```cpp
 class DiningPhilosophers {
 public:
     vector<mutex> mts = vector<mutex>(5);
@@ -183,6 +183,6 @@ class DiningPhilosophers:
 
 2. ##### scoped lock
 
-```c++
+```cpp
 
 ```

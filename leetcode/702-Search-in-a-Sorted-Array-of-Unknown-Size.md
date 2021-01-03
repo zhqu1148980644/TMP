@@ -28,7 +28,7 @@ The length of the array will be in the range [1, 10^4].
 
 - As out of boundary elements are all bigger than elements in the array, the searching space will always be correctly shrinked.
 
-```c++
+```cpp
 /**
  * // This is the ArrayReader's API interface.
  * // You should not implement it, or speculate about its implementation
@@ -56,7 +56,7 @@ public:
 
 or firsly find a valid upper bound.
 
-```c++
+```cpp
 class Solution {
 public:
     int search(const ArrayReader& reader, int target) {

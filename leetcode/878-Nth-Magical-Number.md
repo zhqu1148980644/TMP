@@ -34,7 +34,7 @@ Note:
 
 - TLE
 
-```c++
+```cpp
 class Solution {
 public:
     int nthMagicalNumber(int N, int A, int B) {
@@ -60,7 +60,7 @@ public:
 
 - least common multiple equals to `(a * b) / gcd(a, b)`.
 
-```c++
+```cpp
 class Solution {
 public:
     int gcd(int a, int b) {
@@ -90,6 +90,6 @@ public:
 
 - Check the official answer.
 
-```c++
+```cpp
 
 ```

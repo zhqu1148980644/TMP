@@ -34,7 +34,7 @@ Note:
 
 1. ##### max heap
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> kClosest(vector<vector<int>>& points, int K) {
@@ -71,7 +71,7 @@ public:
 
 - Use stl's nth_element as example
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> kClosest(vector<vector<int>>& points, int K) {

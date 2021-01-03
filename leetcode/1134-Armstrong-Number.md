@@ -24,7 +24,7 @@ Note:
 
 #### Solutions
 
-```c++
+```cpp
 class Solution {
 public:
     bool isArmstrong(int N) {

@@ -30,7 +30,7 @@ Output: 5
 
 1. ##### recursion
 
-```c++
+```cpp
 /*
 // Definition for a Node.
 class Node {
@@ -66,7 +66,7 @@ public:
 
 2. ##### iteration with bfs
 
-```c++
+```cpp
 class Solution {
 public:
     int maxDepth(Node* root) {

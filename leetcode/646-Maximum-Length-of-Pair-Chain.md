@@ -17,7 +17,7 @@ The number of given pairs will be in the range [1, 1000].
 
 1. ##### greedy strategy sort by end
 
-```c++
+```cpp
 class Solution {
 public:
     int findLongestChain(vector<vector<int>>& pairs) {
@@ -41,7 +41,7 @@ public:
 
 or sort by start
 
-```c++
+```cpp
 class Solution {
 public:
     int findLongestChain(vector<vector<int>>& pairs) {
@@ -69,7 +69,7 @@ public:
 
 - Similar to `problem 300 Longest increasing subsequence`
 
-```c++
+```cpp
 class Solution {
 public:
     int findLongestChain(vector<vector<int>>& pairs) {

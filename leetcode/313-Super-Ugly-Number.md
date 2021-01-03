@@ -23,7 +23,7 @@ The nth super ugly number is guaranteed to fit in a 32-bit signed integer.
 - The same as problem 264
 
 
-```c++
+```cpp
 class Solution {
 public:
     int nthSuperUglyNumber(int n, vector<int>& primes) {
@@ -45,7 +45,7 @@ public:
 
 or use minheap O(nklog(n))
 
-```c++
+```cpp
 class Solution {
 public:
     int nthSuperUglyNumber(int n, vector<int>& primes) {
@@ -70,7 +70,7 @@ public:
 Or use treemap `O(nlog(k))`
 Though this method is much slower than the first one.
 
-```c++
+```cpp
 class Solution {
 public:
     int nthSuperUglyNumber(int n, vector<int>& primes) {

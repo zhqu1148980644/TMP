@@ -28,7 +28,7 @@ Constraints:
 
 1. ##### bfs with pruning
 
-```c++
+```cpp
 class Solution {
 public:
     int minKnightMoves(int x, int y) {

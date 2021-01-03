@@ -25,7 +25,7 @@ Output: 3
 
 1. ##### sort  O(nlog(n)) S(1)
 
-```c++
+```cpp
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
@@ -41,7 +41,7 @@ public:
 
 2. ##### set O(n) S(n)
 
-```c++
+```cpp
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
@@ -63,7 +63,7 @@ public:
 
 - Though the problem said we can not modify the array.
 
-```c++
+```cpp
 
 ```
 
@@ -74,7 +74,7 @@ public:
     - `0(1) -> 1(3) -> 3(2) -> 2(4) -> 4(2)`. The cycle is `4 -> 2`.
 - Check `problem 142` for detailed explanation.
 
-```c++
+```cpp
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {

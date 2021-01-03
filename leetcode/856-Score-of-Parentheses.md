@@ -32,7 +32,7 @@ S is a balanced parentheses string, containing only ( and ).
 
 1. ##### dfs with recursion O(n) S(n)
 
-```c++
+```cpp
 class Solution {
 public:
     int score(const string & s, int & st) {
@@ -56,7 +56,7 @@ public:
 
 - From the official answer
 
-```c++
+```cpp
 class Solution {
 public:
     int scoreOfParentheses(string S) {
@@ -81,7 +81,7 @@ public:
 - From the official answer.
 - Count the score at the first time when meets a "()"
 
-```c++
+```cpp
 class Solution {
 public:
     int scoreOfParentheses(string S) {

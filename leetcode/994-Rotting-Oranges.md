@@ -40,7 +40,7 @@ Explanation:  Since there are already no fresh oranges at minute 0, the answer i
 
 1. ##### bfs with queue
 
-```c++
+```cpp
 class Solution {
 public:
     int orangesRotting(vector<vector<int>>& grid) {

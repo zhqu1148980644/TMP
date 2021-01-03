@@ -42,7 +42,7 @@ for (int i = 0; i < len; i++) {
 
 - copy the solution codes from problem 26 and relax the limitaion to allow for two consecutive duplicate.
 
-```c++
+```cpp
 int removeDuplicates(int* nums, int numsSize){
     if (numsSize <= 2) return numsSize;
     int i = 1;
@@ -56,7 +56,7 @@ int removeDuplicates(int* nums, int numsSize){
 
 - Go one step further, the code can be simplified further
 - The invariance: for every node `k` before `i`, `array[k] != array[k - 2]`
-```c++
+```cpp
 
 int removeDuplicates(int* nums, int numsSize){
     if (numsSize <= 2) return numsSize;
@@ -69,7 +69,7 @@ int removeDuplicates(int* nums, int numsSize){
 }
 ```
 
-```c++
+```cpp
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {

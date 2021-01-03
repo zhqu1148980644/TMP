@@ -28,7 +28,7 @@ The lexicographical order is [1, 10, 11, 12, 13, 2, 3, 4, 5, 6, 7, 8, 9], so the
     - For example, we are at the node `1` and the next node is `2 `. The second level contains 10 nodes(10-20), the third level contains 100 nodes(10 + 100) ....
 
 
-```c++
+```cpp
 class Solution {
 public:
     long steps(long prefix, long maximum) {

@@ -28,7 +28,7 @@ Please do not use the built-in HashSet library.
 
 1. ##### separate chaining
 
-```c++
+```cpp
 class MyHashSet {
 public:
     /** Initialize your data structure here. */
@@ -111,7 +111,7 @@ public:
 
 - Each bit represents a single number, for numbers range from 0 to 1000000, `1000000 / 32`'s int32 should be sufficient.
 
-```c++
+```cpp
 class MyHashSet {
 public:
     /** Initialize your data structure here. */

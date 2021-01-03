@@ -29,7 +29,7 @@ It's guaranteed that the values of the tree are unique.
 
 1. ##### inorder traversal O(n)
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -73,7 +73,7 @@ public:
     - if the target node has right child, then the successor is the leftmost child of the right child subtree.
     - else, find the first faster whose left child is the previous node within the desendant path.
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode* inorderSuccessor(TreeNode* root, TreeNode* p) {
@@ -107,7 +107,7 @@ public:
 
 Or
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -148,7 +148,7 @@ public:
 
 - reference: https://leetcode-cn.com/problems/inorder-successor-in-bst/solution/simple-c-solution-by-yanjiechen-2/
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode* inorderSuccessor(TreeNode* root, TreeNode* p) {

@@ -36,7 +36,7 @@ Output: 3
 
 1. ##### inorder traversal with dfs
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -94,7 +94,7 @@ class Solution:
 
 2. ##### iterative version with stack
 
-```c++
+```cpp
 class Solution {
 public:
     int kthSmallest(TreeNode* root, int k) {
@@ -119,7 +119,7 @@ public:
 
 - Codes below doesn't pre-exit like former solutions because there may be right children of leaf nodes point to ancestor nodes which could deconstruct the binary tree.
 
-```c++
+```cpp
 class Solution {
 public:
     int kthSmallest(TreeNode* root, int k) {

@@ -48,7 +48,7 @@ Output: ""
 
 - In `next` array, `next[i]` represents the length of the longest prefix-suffix pair in substring `s[:i)`.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> build_next(string & s) {
@@ -84,7 +84,7 @@ public:
 
 - The time complexity may not be `O(n)` due to hash collisions.
 
-```c++
+```cpp
 #define num(x) (((x) - 'a'))
 class Solution {
 public:

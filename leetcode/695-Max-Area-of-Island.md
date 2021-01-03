@@ -32,7 +32,7 @@ Given the above grid, return 0.
 
 - You can also record the maxinum size in merge function of UnionFind to speed up the process.
 
-```c++
+```cpp
 class UnionFind {
 private:
     int * nodes;
@@ -110,7 +110,7 @@ public:
 
 2. ##### dfs with recursion
 
-```c++
+```cpp
 class Solution {
 public:
     int m, n;
@@ -141,7 +141,7 @@ public:
 
 - Bfs with queue as example.
 
-```c++
+```cpp
 class Solution {
 public:
     int maxarea(vector<vector<int>> & grid, int x, int y) {

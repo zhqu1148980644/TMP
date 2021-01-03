@@ -45,7 +45,7 @@ target is a lowercase letter.
 
 - upper bound(the first greater one)
 
-```c++
+```cpp
 class Solution {
 public:
     char nextGreatestLetter(vector<char>& letters, char target) {

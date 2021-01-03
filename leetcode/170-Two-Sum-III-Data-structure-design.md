@@ -21,7 +21,7 @@ find(6) -> false
 
 1. ##### hashmap
 
-```c++
+```cpp
 class TwoSum {
     unordered_map<int, int> m;
 public:

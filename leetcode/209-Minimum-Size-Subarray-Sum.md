@@ -15,7 +15,7 @@ Explanation: the subarray [4,3] has the minimal length under the problem constra
 
 1. ##### sliding window O(n)
 
-```c++
+```cpp
 class Solution {
 public:
     int minSubArrayLen(int s, vector<int>& nums) {
@@ -36,7 +36,7 @@ public:
 
 - Maintain an array of accumulated sum for each element and use binary search to search for the left-closest element `j` that is larger than `accm[i] - s`, then the minimum subarray with sumvalue larger/equal than s ending with `i` is `num[j - 1, i]` 
 
-```c++
+```cpp
 class Solution {
 public:
     int minSubArrayLen(int s, vector<int>& nums) {

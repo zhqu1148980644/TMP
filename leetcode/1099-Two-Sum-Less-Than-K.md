@@ -26,7 +26,7 @@ Note:
 
 1. ##### straight forward O(n2)
 
-```c++
+```cpp
 class Solution {
 public:
     int twoSumLessThanK(vector<int>& A, int K) {
@@ -42,7 +42,7 @@ public:
 
 2. ##### sort with two pointers
 
-```c++
+```cpp
 class Solution {
 public:
     int twoSumLessThanK(vector<int>& A, int K) {

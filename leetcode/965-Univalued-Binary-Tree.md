@@ -25,7 +25,7 @@ Each node's value will be an integer in the range [0, 99].
 
 1. ##### straight forward
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -49,7 +49,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     bool isUnivalTree(TreeNode* root) {

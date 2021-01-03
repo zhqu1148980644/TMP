@@ -31,7 +31,7 @@ Explanation:
 - `dp[i][j][k]` represents the number of unique paths reached `grid[i][j]` after `k` moves starting from the given position of ball.
 - The answer equals to the `sum` of paths reached borders in `1, 2, 3, ... k` moves.
 
-```c++
+```cpp
 class Solution {
 public:
     int findPaths(int m, int n, int N, int i, int j) {
@@ -64,7 +64,7 @@ public:
 
 2. ##### dfs with memoization
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<vector<int>>> memo;

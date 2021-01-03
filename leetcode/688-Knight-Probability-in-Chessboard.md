@@ -37,7 +37,7 @@ The total probability the knight stays on the board is 0.0625.
 
 - Similar to problem 576, we firstly count the number of unique pairs within the board after k moves, then the probability of staying on the board equals to `numpath / 8 ** k`.
 
-```c++
+```cpp
 typedef long long ll;
 class Solution {
 public:
@@ -70,7 +70,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     double knightProbability(int N, int K, int r, int c) {
@@ -102,7 +102,7 @@ public:
 
 - Like problem 576, we can thought of this problem in a reversed perspective. ie: starting from any point within the board and arrived the given points after k steps.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<vector<double>>> dp;

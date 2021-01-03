@@ -32,7 +32,7 @@ All characters in words[i] and order are English lowercase letters.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     bool isAlienSorted(vector<string>& words, string order) {

@@ -21,7 +21,7 @@ Output: [1,2,2,3,5,6]
 
 merge from big to small stats at the end of `nums1`.
 
-```c++
+```cpp
 class Solution {
 public:
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {

@@ -35,7 +35,7 @@ You need to output 2.
 - Sort greed factors and cooky sizes in ascending order and feed children one by one from the least greedy child.
 - Try to feed the children with the cookie has least size, only in this way children with big appetite has chance to be contented.
 
-```c++
+```cpp
 class Solution {
 public:
     int findContentChildren(vector<int>& g, vector<int>& s) {

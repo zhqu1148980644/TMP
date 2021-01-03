@@ -16,7 +16,7 @@ Given 1->2->3->4, you should return the list as 2->1->4->3.
 
 - Simplify the logic with a dummy node.
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -52,7 +52,7 @@ public:
 - Borrowed from stephan.
 - The trick of pointer of pointer will be used again in problem 25.
 
-```c++
+```cpp
 // solution.  So so elegant.
 class Solution {
 public:
@@ -71,7 +71,7 @@ public:
 
 2. #### recursion
 
-```c++
+```cpp
 class Solution {
 public:
     ListNode* swapPairs(ListNode* head) {

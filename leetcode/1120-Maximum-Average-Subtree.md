@@ -27,7 +27,7 @@ Answers will be accepted as correct if they are within 10^-5 of the correct answ
 
 1. ##### dfs
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

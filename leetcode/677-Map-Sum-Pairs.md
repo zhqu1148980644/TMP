@@ -14,7 +14,7 @@ Input: sum("ap"), Output: 5
 
 1. ##### trie
 
-```c++
+```cpp
 class MapSum {
 public:
     struct TrieNode {

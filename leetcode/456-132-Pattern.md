@@ -30,7 +30,7 @@ Explanation: There are three 132 patterns in the sequence: [-1, 3, 2], [-1, 3, 0
 - Popping out the top of the stack if it's smaller than `minl[i]` would not interfere with future comparisons, it's due to the fact that `minl[:i - 1] >= minl[i]`, if the current top is smaller/eq than `minl[i]`, it must be smaller/eq than `minl[:i-1]`.
 - Although the stack is a monotonically decreasing stack, it's not intend to be used. If the current number is bigger than the top of the stack, the loop ends and returns true.
 
-```c++
+```cpp
 class Solution {
 public:
     bool find132pattern(vector<int>& nums) {
@@ -64,7 +64,7 @@ public:
 - Since we only used one `min` variable, how to prove that there are no other `min`s being missed after the loop ends?
     - Suppose the current number is `i` and `minold > i` is missed because of some other number is greater than the corresponding `maxold` related to `minold`, then `mini(the min setted before meeting i)` must be greater than `maxold` which also leads to a valid `132` pair.
 
-```c++
+```cpp
 class Solution {
 public:
     bool find132pattern(vector<int>& nums) {

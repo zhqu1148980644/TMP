@@ -23,7 +23,7 @@ One possible answer is: [0,-3,9,-10,null,5], which represents the following heig
 
 - For a soted array, the `middle node` is supposed to be the `root node` of the whole binary tree, then the middle node of the left part array is the root node of the left subtree and vice versa for the right subtree.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -54,7 +54,7 @@ public:
 - The key point is to trasfer the range info when expanding the binary trees.
 - Here I used a queue in a bfs style, other data structures or traversal methods works too.
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode* sortedArrayToBST(vector<int>& nums) {

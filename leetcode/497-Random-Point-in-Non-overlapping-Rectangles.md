@@ -34,7 +34,7 @@ The input is two lists: the subroutines called and their arguments. Solution
 
 - Borrowed from the official answer
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> rects;

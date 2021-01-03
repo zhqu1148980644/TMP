@@ -24,7 +24,7 @@ Note: You may assume that the secret number and your friend's guess only contain
 
 1. ##### hashmap
 
-```c++
+```cpp
 class Solution {
 public:
     string getHint(string secret, string guess) {
@@ -50,7 +50,7 @@ public:
 
 or just one pass.
 
-```c++
+```cpp
 class Solution {
 public:
     string getHint(string secret, string guess) {

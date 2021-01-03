@@ -24,7 +24,7 @@ All the numbers in the input array are in the range of 32-bit integer.
 
 - Time limit exceed.
 
-```c++
+```cpp
 struct Node {
     int val, cnt = 1;
     Node * left = 0, * right = 0;
@@ -70,7 +70,7 @@ public:
 
 2. ##### merge sort
 
-```c++
+```cpp
 class Solution {
 public:
     int res = 0;
@@ -118,7 +118,7 @@ public:
 - If we choose to insert elements backwards, the query parameter should be changed to `nums[i] / 2`.
 - Unlike `problem 315`, the queried numbers would not always be within the original array, instead of using a hashset to record the indexes of all elements, we can use binary search to find the index of a given number even if it doestn't exist.
 
-```c++
+```cpp
 struct FenwickTree {
     vector<int> sums;
     FenwickTree(int size) : sums(size + 1) {}
@@ -178,7 +178,7 @@ public:
 or
 
 
-```c++
+```cpp
 struct FenwickTree {
     vector<int> sums;
     FenwickTree(int num) : sums(num + 1) {}
@@ -232,7 +232,7 @@ public:
 
 4. ##### segment tree
 
-```c++
+```cpp
 class Solution {
 public:
     int n;

@@ -20,7 +20,7 @@ The number in given array is in range [-100,000, 100,000].
 
 1. ##### hashset
 
-```c++
+```cpp
 class Solution {
 public:
     int distributeCandies(vector<int>& candies) {
@@ -32,7 +32,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     int distributeCandies(vector<int>& candies) {

@@ -46,7 +46,7 @@ Note:
 
 - Maintaining a `monotonically increasing` stack(deque) with elements represents the minimum prefix sum in the valid range, remove the front element of the deque if the front element is the out of the valid range.
 
-```c++
+```cpp
 class Solution {
 public:
     int maxSubarraySumCircular(vector<int>& A) {
@@ -89,7 +89,7 @@ aaaaaaaccccccccbbbbb aaaaaaaacccccccbbbbb
 to make bbbbb+aaaaa has the largest sum, sum of cccccc has to be minimum
 ```
 
-```c++
+```cpp
 class Solution {
 public:
     int maxSubarraySumCircular(vector<int>& A) {

@@ -28,7 +28,7 @@ The value of each color in image[i][j] and newColor will be an integer in [0, 65
 
 1. ##### dfs
 
-```c++
+```cpp
 class Solution {
 public:
     void dfs(vector<vector<int>> & image, int x, int y, int oldcolor, int newColor) {
@@ -51,7 +51,7 @@ public:
 
 2. ##### bfs
 
-```c++
+```cpp
 class Solution {
 public:
 #define node(x, y) ((x) * n + (y))

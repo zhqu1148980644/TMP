@@ -28,7 +28,7 @@ words[i] will only consist of lowercase letters.
 
 1. ##### straight forward 
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
@@ -51,6 +51,6 @@ public:
 
 - Similar to trie with two types of nodes: `-` and `+`
 
-```c++
+```cpp
 
 ```

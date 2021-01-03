@@ -47,7 +47,7 @@ You have id = 0 (green color in the figure) and the only friend of your friends 
 - Find all friends in the requested level by using bfs search with queue.
 - Be carefully to filter friends that may be counted many times.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> watchedVideosByFriends(vector<vector<string>>& watchedVideos, vector<vector<int>>& friends, int id, int level) {

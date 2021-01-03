@@ -18,7 +18,7 @@ The boundaries of each input argument are 1 <= left <= right <= 10000.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     inline bool isdivide(int num) {

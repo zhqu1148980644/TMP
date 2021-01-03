@@ -32,7 +32,7 @@ It's guaranteed that words[i] will be unique.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> stringMatching(vector<string>& words) {

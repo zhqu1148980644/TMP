@@ -68,7 +68,7 @@ Therefore, it is NOT a valid word square.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     bool validWordSquare(vector<string>& words) {

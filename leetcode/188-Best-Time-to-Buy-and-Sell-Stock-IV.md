@@ -54,7 +54,7 @@ The second case: v2 > v1
   v1 p1 v2  p2
 ```
 
-```c++
+```cpp
 class Solution {
 public:
     int maxProfit(int k, vector<int>& prices) {

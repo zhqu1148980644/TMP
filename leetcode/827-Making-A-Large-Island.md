@@ -31,7 +31,7 @@ Notes:
 - Utilize the rank array in UnionFind structure which represents the size of community.
 - After the UnionFind structure has bee settled(connected all communities), for each zero point, record the sum size of it's four neibor communities.
 
-```c++
+```cpp
 struct UnionFind {
     vector<int> nodes, sizes;
     int maxsize = 0;
@@ -102,7 +102,7 @@ public:
 - This solution is more suitable when islands are sparse.
 - Use dfs to find the size of each connected community and mark them with unique community indexes, after all communities has been marked, use the same strategy as the previous solution to find the sumsize of four neighboring communities.
 
-```c++
+```cpp
 class Solution {
 public:
     unordered_map<int, int> sizes;

@@ -37,7 +37,7 @@ However, splitting into [1, 0], [2], [3], [4] is the highest number of chunks po
 - The more general rule is: 
     - If `max(array[i, j]) <= arr[j + 1:]`, then `array[i:j]` is a valid chunk that the sorted chunk will be exactly the same as this chunk in sorted array.
 
-```c++
+```cpp
 class Solution {
 public:
     int maxChunksToSorted(vector<int>& arr) {
@@ -64,7 +64,7 @@ public:
 - Else, store the current top of stack as the maximum number of this chunk, and pop every items in stack that are larger than `array[i]`. Finally, push the stored maximum number into the stack.
 - At the last, the stack only conatains maximum numbers of each chunks.
 
-```c++
+```cpp
 class Solution {
 public:
     int maxChunksToSorted(vector<int>& arr) {

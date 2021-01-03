@@ -39,7 +39,7 @@ Every integer represented in the list will be between -30000 and 30000.
 
 1. ##### stack
 
-```c++
+```cpp
 class Solution {
 public:
     int calPoints(vector<string>& ops) {

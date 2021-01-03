@@ -30,7 +30,7 @@ coordinates contains no duplicate point.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     bool checkStraightLine(vector<vector<int>>& coordinates) {

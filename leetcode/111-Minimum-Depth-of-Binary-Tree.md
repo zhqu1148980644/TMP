@@ -22,7 +22,7 @@ return its minimum depth = 2.
 
 1. ##### recursion(dfs)
 
-```c++
+```cpp
 class Solution {
 public:
     int minDepth(TreeNode* root) {
@@ -41,7 +41,7 @@ public:
 
 - This one will be much faster than the previous one because the loop will exit when the first time meets the lowest depth node wheras the previous will always traverse the full tree.
 
-```c++
+```cpp
 class Solution {
 public:
     int minDepth(TreeNode * root) {

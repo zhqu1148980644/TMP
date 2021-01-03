@@ -50,7 +50,7 @@ NOTE: create method has been changed on August 29, 2019 to createPath. Please 
 
 1. ##### hash map
 
-```c++
+```cpp
 struct Path {
     unordered_map<string, Path *> subpaths;
     int value = -1;

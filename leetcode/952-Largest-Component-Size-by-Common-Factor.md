@@ -35,7 +35,7 @@ Note:
     - One is by directly counting the appearance of each father(community) node.
     - Another solution is to reuse the size array in UnionFind, however, only the given numbers can be set with size 1 initially(insetead of setting all nodes with size 1 in ordinary UnionFind method).
 
-```c++
+```cpp
 struct UnionFind {
     vector<int> nodes, sizes;
     UnionFind(int size) : nodes(size), sizes(size) {
@@ -80,7 +80,7 @@ public:
 
 - Instead of traversing all possible factors below sqrt(n), we can restrict the searching range to prime numbers.
 
-```c++
+```cpp
 struct UnionFind {
     vector<int> nodes, sizes;
     UnionFind(int size) : nodes(size), sizes(size) {
@@ -149,7 +149,7 @@ public:
 
 or connect numbers while filtering nonprime numbers(Can not use euler seives). `O(max(n)*loglog(max(n))) + n`
 
-```c++
+```cpp
 struct UnionFind {
     vector<int> nodes, sizes;
     UnionFind(int size) : nodes(size), sizes(size) {

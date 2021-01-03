@@ -40,7 +40,7 @@ Explanation: There is no mountain.
 
 - Borrowed from others.
 
-```c++
+```cpp
 class Solution {
 public:
     int longestMountain(vector<int>& A) {

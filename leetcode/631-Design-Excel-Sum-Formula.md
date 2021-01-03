@@ -58,7 +58,7 @@ Set(2, "B", 2);
 - Lazy mode. Record the dependency of each cell in sum operation.
 - Use recursion to handle dependency of calculations.
 
-```c++
+```cpp
 #define node(r, c) ((r) * 26 + ((c) - 'A'))
 class Excel {
     vector<vector<int>> e;
@@ -120,6 +120,6 @@ public:
 - Update values in the dependency graph voluntarily when a node is updated by set operation.
 - See the official answer.
 
-```c++
+```cpp
 
 ```

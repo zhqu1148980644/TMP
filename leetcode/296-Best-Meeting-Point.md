@@ -26,7 +26,7 @@ Explanation: Given three people living at (0,0), (0,4), and (2,2):
 - For a certain axis, the origin with the lowest summing distance is the point(`(n-1)/2`) with the same amount of people in two sides.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int dis(vector<int> & x, int origin) {

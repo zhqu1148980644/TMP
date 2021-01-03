@@ -51,7 +51,7 @@ Constraints:
 
 1. ##### dynamic programming with dfs
 
-```c++
+```cpp
 class Solution {
 public:
     unordered_map<int, int> memo;
@@ -83,7 +83,7 @@ public:
 
 2. ##### dynamic programming
 
-```c++
+```cpp
 class Solution {
 public:
     string stoneGameIII(vector<int>& stoneValue) {

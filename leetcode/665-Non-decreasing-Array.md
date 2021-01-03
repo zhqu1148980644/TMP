@@ -32,7 +32,7 @@ Constraints:
     - if `r1 == 0, r2 == 1`. This case is impossible. Because `r1 == 0`, we have `b >= a` which leads to `b >= a > c` ie: `r1 != 0`.
     - if `r1 == 1 r2 == 1`, the only case is `a > c and b >= a and b > c`, like the first case, cange `c` to numbers between [b:d] could make the sequence increasing(>=).
 
-```c++
+```cpp
 class Solution {
 public:
     bool checkPossibility(vector<int>& nums) {

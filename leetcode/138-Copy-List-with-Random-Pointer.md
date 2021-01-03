@@ -45,7 +45,7 @@ Explanation: Given linked list is empty (null pointer), so return null.
 
 1. ##### recusion with hashmap O(n) S(n) 
 
-```c++
+```cpp
 /*
 // Definition for a Node.
 class Node {
@@ -88,7 +88,7 @@ public:
 
 - clone node one by one.
 
-```c++
+```cpp
 class Solution {
 private:
     unordered_map<Node *, Node *> his;
@@ -128,7 +128,7 @@ public:
     - set each new node's random pointer.
     - relink the original linked list and link new nodes together into a new linked list.
 
-```c++
+```cpp
 class Solution {
 public:
     Node* copyRandomList(Node* head) {

@@ -32,7 +32,7 @@ The tree will have between 1 and 100 nodes.
     - Whenever meets a node with no children(eigher left or right), all nodes after must have no children.
     - The left child is none while the right child is not.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -73,7 +73,7 @@ public:
 borrowed from others
 These two solutions check whether there is a `nonnull` node `after` a `nullnode`.
 
-```c++
+```cpp
 class Solution {
 public:
     bool isCompleteTree(TreeNode* root) {
@@ -98,7 +98,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     bool isCompleteTree(TreeNode* root) {
@@ -125,7 +125,7 @@ public:
 - When the root node's index starts at `1`, the index of the last element would be the same as the size of the tree.
     - left child: `2 * index`  right child: `2 * index + 1`
 
-```c++
+```cpp
 class Solution {
 public:
     double size = 0, maxindex = 0;

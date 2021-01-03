@@ -22,7 +22,7 @@ return its depth = 3.
 
 1. ##### recursion(dfs)
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

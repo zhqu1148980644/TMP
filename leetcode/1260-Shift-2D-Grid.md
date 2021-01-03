@@ -40,7 +40,7 @@ n == grid[i].length
 
 - treat the 2d maxtrix as 1d array.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> shiftGrid(vector<vector<int>>& grid, int k) {

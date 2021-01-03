@@ -35,7 +35,7 @@ One possible longest palindromic subsequence is "bb".
     - else `dp[i][j] = max(dp[i + 1][j], dp[i][j - 1])`
 - Codes below fill the table column by column from the left to the right, you may also choose to fill the table from the bottom row by row as long as all states required for updating a  position is available when needed.
 
-```c++
+```cpp
 class Solution {
 public:
     int longestPalindromeSubseq(string s) {
@@ -63,7 +63,7 @@ public:
 - Or just use a 1d table.
 - This time we fill the table row by row.
 
-```c++
+```cpp
 class Solution {
 public:
     int longestPalindromeSubseq(string s) {

@@ -11,7 +11,7 @@ Output: 1->1->2->3->4->4
 
 1. #### The same process used in merge sort.
 
-```c++
+```cpp
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {

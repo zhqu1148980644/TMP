@@ -40,7 +40,7 @@ grid[i][j] is 0 or 1
 - Count the number of zeros in suffix of each rows
 - Then starting from the first row, swap lower rows to make the current row has the minumum number of zeros it needed. If the current row already fits the requirements then just pass it.
 
-```c++
+```cpp
 class Solution {
 public:
     int minswap(vector<int> & vzero) {

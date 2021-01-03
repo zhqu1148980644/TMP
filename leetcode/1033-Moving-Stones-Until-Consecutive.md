@@ -43,7 +43,7 @@ a != b, b != c, c != a
     - insert the first stone or the last stone between the other two stones.
 - For maximum step, simply move two end stones towards the center one step each time.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> numMovesStones(int a, int b, int c) {

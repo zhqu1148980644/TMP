@@ -33,7 +33,7 @@ Output: false
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     bool search(vector<int>& nums, int target) {
@@ -65,7 +65,7 @@ public:
 
 Or
 
-```c++
+```cpp
 class Solution {
 public:
     bool search(vector<int>& nums, int target) {

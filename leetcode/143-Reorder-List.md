@@ -16,7 +16,7 @@ Given 1->2->3->4->5, reorder it to 1->5->2->4->3.
 
 1. ##### reverse then merge
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {

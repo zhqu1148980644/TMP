@@ -17,7 +17,7 @@ Because the range might be a large number, the low and high numbers are represen
 1. ##### dfs
 
 
-```c++
+```cpp
 class Solution {
 public:
     vector<pair<char, char>> cp = {{'6', '9'}, {'9', '6'}, {'0', '0'}, {'8', '8'}, {'1', '1'}};
@@ -55,7 +55,7 @@ public:
 
 Or
 
-```c++
+```cpp
 class Solution {
 public:
     vector<pair<char, char>> cp = {{'6', '9'}, {'9', '6'}, {'0', '0'}, {'8', '8'}, {'1', '1'}};

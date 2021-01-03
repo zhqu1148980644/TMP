@@ -35,7 +35,7 @@ Note:
 
 - state is represented as unique tuple of (i, j, k) such that `A[i] + A[j] = A[k]`.
 
-```c++
+```cpp
 class Solution {
 public:
     int lenLongestFibSubseq(vector<int>& A) {
@@ -66,7 +66,7 @@ public:
 - Try all possible heads`(i, j)` of Fibonacci sequences.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int lenLongestFibSubseq(vector<int>& A) {

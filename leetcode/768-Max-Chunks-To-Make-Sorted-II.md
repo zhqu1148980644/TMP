@@ -35,7 +35,7 @@ However, splitting into [2, 1], [3], [4], [4] is the highest number of chunks po
 - reference: https://leetcode-cn.com/problems/max-chunks-to-make-sorted-ii/comments/28236
 - The sum of a chunk in sorted array must be equal to the sum of the same chunk in permutated array.
 
-```c++
+```cpp
 class Solution {
 public:
     int maxChunksToSorted(vector<int>& arr) {
@@ -64,7 +64,7 @@ public:
 - See previous problem 768.
 - Maintains a stack storing the maximum number of each chunks and iteratively update(merge) chunks when traversing the permutated array.
 
-```c++
+```cpp
 class Solution {
 public:
     int maxChunksToSorted(vector<int>& arr) {

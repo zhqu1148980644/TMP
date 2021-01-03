@@ -18,7 +18,7 @@ Explanation:
 
 1. ##### Straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     bool isHappy(int n) {
@@ -42,7 +42,7 @@ public:
 
 - The sequence of happy numbers or unhappy numbers is a endless cycle.
 
-```c++
+```cpp
 int next(int n ) {
     int res = 0;
     while (n) {
@@ -70,7 +70,7 @@ public:
 - Every unhappy number will meet number 4.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int next(int n) {

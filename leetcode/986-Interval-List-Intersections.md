@@ -24,7 +24,7 @@ Note:
 
 1. ##### megre and sort O((m + n)log(m + n))
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> intervalIntersection(vector<vector<int>>& A, vector<vector<int>>& B) {
@@ -52,7 +52,7 @@ public:
 
 2. ##### two pointers O(m + n)
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> intervalIntersection(vector<vector<int>>& A, vector<vector<int>>& B) {

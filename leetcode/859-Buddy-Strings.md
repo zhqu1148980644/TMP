@@ -36,7 +36,7 @@ A and B consist only of lowercase letters.
 
 - Note that the problem requires the string A `must` operate 1 swap.
 
-```c++
+```cpp
 class Solution {
 public:
     bool buddyStrings(string A, string B) {

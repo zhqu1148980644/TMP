@@ -23,7 +23,7 @@ Note that an empty tree is represented by NULL, therefore you would see the expe
 
 1. ##### straight forward
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -52,7 +52,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode* searchBST(TreeNode* root, int val) {

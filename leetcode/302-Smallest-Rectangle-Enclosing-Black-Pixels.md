@@ -18,7 +18,7 @@ Output: 6
 
 1. ##### bfs O(n)
 
-```c++
+```cpp
 class Solution {
 public:
     int nrow, ncol;
@@ -60,7 +60,7 @@ public:
 
 2. ##### dfs
 
-```c++
+```cpp
 class Solution {
 public:
     int nrow, ncol;
@@ -99,7 +99,7 @@ public:
 - Be careful when selecting the `lo` and `hi` in binary search.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int nrow, ncol;

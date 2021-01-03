@@ -60,7 +60,7 @@ Output: "ops"
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     string sortString(string s) {

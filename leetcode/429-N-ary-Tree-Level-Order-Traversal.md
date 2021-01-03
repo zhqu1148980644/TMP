@@ -27,7 +27,7 @@ The total number of nodes is between [0, 10^4]
 
 1. ##### bfs
 
-```c++
+```cpp
 /*
 // Definition for a Node.
 class Node {

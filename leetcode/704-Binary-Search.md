@@ -25,7 +25,7 @@ n will be in the range [1, 10000].
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     int search(vector<int>& nums, int target) {

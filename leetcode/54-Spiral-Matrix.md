@@ -31,7 +31,7 @@ Output: [1,2,3,4,8,12,11,10,9,5,6,7]
     - Traverse top row, right column, bottom row, left column in the same manner that the first item of the current row or column has been visited.
     - In order to prevent visiting each items twice, ignore the bottom row and the left column when there are only one row or one column in this layer.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> spiralOrder(vector<vector<int>>& matrix) {

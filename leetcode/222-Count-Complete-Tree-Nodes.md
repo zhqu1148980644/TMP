@@ -22,7 +22,7 @@ Output: 6
 
 1. ##### recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -48,7 +48,7 @@ public:
     - If the height of the left subtree equals the height of the right subtree. The left subtree is full, we can quickly get the total number of nodes in the left subtree.
     - Else the right subtree is full.
 
-```c++
+```cpp
 class Solution {
 public:
     int countNodes(TreeNode* root) {
@@ -81,7 +81,7 @@ public:
 
 - Use binary search to search for the index of the last element in the last level.
 
-```c++
+```cpp
 class Solution {
 public:
     int height(TreeNode * root) {

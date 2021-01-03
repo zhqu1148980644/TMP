@@ -16,7 +16,7 @@ Output: False
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     bool issquare(int n) {
@@ -37,7 +37,7 @@ public:
 
 - Or use sqrt in std
 
-```c++
+```cpp
 class Solution {
 public:
     bool judgeSquareSum(int c) {
@@ -58,7 +58,7 @@ public:
 
 - scan all pairs of `a, b` in `range[0, sqrt(c)]`.
 
-```c++
+```cpp
 class Solution {
 public:
     bool judgeSquareSum(int c) {

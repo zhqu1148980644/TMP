@@ -42,7 +42,7 @@ equations[i][2] is '='
 
 - Iterating over all equations the first time to connect equal chracters, then iterate over again and check if two characters with unequal mark are within the same community.
 
-```c++
+```cpp
 struct UnionFind {
     vector<int> nodes;
     UnionFind(int size) : nodes(size) {

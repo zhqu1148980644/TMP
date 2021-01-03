@@ -31,7 +31,7 @@ The given list may contain duplicates, so ascending order means >= here.
     - This leads to another solution: Firtly sort arrays containing all numbers(with mark tells which array it belongs to), then use traditional sliding window strategy to find the minimum range.
 
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> smallestRange(vector<vector<int>>& nums) {
@@ -68,7 +68,7 @@ public:
 
 2. ##### sliding window with sort O(nlog(n))
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> smallestRange(vector<vector<int>>& nums) {

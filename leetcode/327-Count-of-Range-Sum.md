@@ -20,7 +20,7 @@ Explanation: The three ranges are : [0,0], [2,2], [0,2] and their respective sum
 - Find the number of range sums lies in `[lower, upper]` equals to find the number of prefix sum has been inserted before with value lies in `[curprefixsum - upper, curprefixsum - lower]`.
 - use binary search to find the index within the sorted array. `O(6nlog(n))`
 
-```c++
+```cpp
 struct FenwickTree {
     vector<int> sums;
     FenwickTree(int size) : sums(size + 1) {}
@@ -71,7 +71,7 @@ public:
 
 - Or map items to index.
 
-```c++
+```cpp
 struct FenwickTree {
     vector<int> sums;
     FenwickTree(int size) : sums(size + 1) {}
@@ -132,7 +132,7 @@ public:
 
 2. ##### segment tree
 
-```c++
+```cpp
 class Solution {
 public:
     int n;
@@ -193,7 +193,7 @@ public:
 
 - `distance` function in `STL` costs `O(n)` time. Thus the time complexity is actually `O(n2)`. However, a home made avl/rbtree can achieve `O(1)` complexity for computing the distance between two nodes.
 
-```c++
+```cpp
 class Solution {
 public:
     int countRangeSum(vector<int>& nums, int lower, int upper) {
@@ -212,7 +212,7 @@ public:
 
 4. #####  merge sort O(nlog(n))
 
-```c++
+```cpp
 class Solution {
 public:
     vector<long> tmp;

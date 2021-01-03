@@ -28,7 +28,7 @@ The number of nodes in the given tree is between 1 and 10^4.
 
 - Note that there is no way to get the sum of each level untill all elements in each level are visited.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -64,7 +64,7 @@ public:
 
 2. ##### bfs with queue
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

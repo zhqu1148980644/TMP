@@ -25,7 +25,7 @@ The input will only have lower-case letters.
 
 2. ##### trie
 
-```c++
+```cpp
 struct Trie {
     vector<Trie *> links{26};
     bool end = false;
@@ -82,7 +82,7 @@ public:
 
 or
 
-```c++
+```cpp
 struct Trie {
     vector<Trie *> links{26};
     string word;

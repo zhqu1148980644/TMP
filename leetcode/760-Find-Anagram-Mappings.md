@@ -20,7 +20,7 @@ A[i], B[i] are integers in range [0, 10^5].
 
 1. ##### hash map
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> anagramMappings(vector<int>& A, vector<int>& B) {

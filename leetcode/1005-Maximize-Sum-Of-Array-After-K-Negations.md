@@ -35,7 +35,7 @@ Note:
 - For negative numbers we only flip it once and change it to positive.
 - When k is still left after flipped all negative numbers, we choose to flip the one with the minimum absolute value(either it's negative or positive).
 
-```c++
+```cpp
 class Solution {
 public:
     int largestSumAfterKNegations(vector<int>& A, int K) {
@@ -63,7 +63,7 @@ or use counting sort since the range of values are from 1-100, though it's lengt
 
 2. ##### greedy with priority_queue
 
-```c++
+```cpp
 class Solution {
 public:
     int largestSumAfterKNegations(vector<int>& A, int K) {

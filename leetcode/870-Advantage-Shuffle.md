@@ -26,7 +26,7 @@ Note:
 
 - For each number in the array B, choose the smallest number that is greater than the  current number, if this number does not exist, choose the smallest available number in array A.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> advantageCount(vector<int>& A, vector<int>& B) {
@@ -51,7 +51,7 @@ public:
 - Sort both two arrays and find the slowest larger one in A array for each number in array B, if the required number doesn't exist in A then just mark it as unused and check for the next number in A. After this step, the prefix of B array(sorted version) has found their first larger one.
 - At last, randomly(means the size of number doesn't matter) choose unused numbers in A to fill unmatched numbers in B.
 
-```c++
+```cpp
 #include <functional>
 using namespace placeholders;
 class Solution {

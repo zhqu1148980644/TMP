@@ -20,7 +20,7 @@ Output: 2->3
 - If `cur` node equals to the `head` node, then this is a unique node, link to previous node's next pointer.
 - At the end of each iteration, move `head/cur` to `cur`'s next node.
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -61,7 +61,7 @@ Or
 - At the end of each iteration, move `cur` to `cur`'s next node.
 
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -98,7 +98,7 @@ struct ListNode* deleteDuplicates(struct ListNode* head){
 
 2. ##### recursion
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {

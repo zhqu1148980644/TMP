@@ -38,7 +38,7 @@ Explanation: The root node's value is 5 but its right child's value is 4.
 
 Recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -65,7 +65,7 @@ public:
 
 Or a dfs stack version(preorder).
 
-```c++
+```cpp
 class Solution {
 public:
     bool isValidBST(TreeNode* root) {
@@ -98,7 +98,7 @@ public:
 
 Recursion
 
-```c++
+```cpp
 class Solution {
 private:
     long prev = LONG_MIN;
@@ -119,7 +119,7 @@ public:
 
 Stack
 
-```c++
+```cpp
 class Solution {
 public:
     bool isValidBST(TreeNode* root) {
@@ -147,7 +147,7 @@ Morris
 
 It seems like there is no way to pre-exit when finding an item breaks the bst rule, because there may be leaf node whose right child has not been set to NULL.
 
-```c++
+```cpp
 class Solution {
 public:
     bool isValidBST(TreeNode* root) {

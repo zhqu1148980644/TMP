@@ -32,7 +32,7 @@ Calls to ExamRoom.leave(p) are guaranteed to have a student currently sitting in
 
 - From the official answer
 
-```c++
+```cpp
 class ExamRoom {
 public:
     set<int> seats;

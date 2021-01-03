@@ -30,7 +30,7 @@ Each element nums[i] will be an integer in the range [-1000, 1000].
 
 1. ##### prefix sum
 
-```c++
+```cpp
 class Solution {
 public:
     int pivotIndex(vector<int>& nums) {

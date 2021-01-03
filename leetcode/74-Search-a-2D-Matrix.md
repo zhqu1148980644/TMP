@@ -32,7 +32,7 @@ Output: false
 
 - Ravel the 2d matrix into a 1d sorted array.
 
-```c++
+```cpp
 class Solution {
 public:
     bool searchMatrix(vector<vector<int>>& matrix, int target) {

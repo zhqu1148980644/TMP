@@ -36,7 +36,7 @@ abc...za
 cbc...za
 ```
 
-```c++
+```cpp
 class Solution {
 public:
     bool canConvert(string str1, string str2) {

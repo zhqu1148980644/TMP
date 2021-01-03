@@ -22,7 +22,7 @@ n is a non-negative integer which won't exceed the input array size.
     - `0000***`
     - `***0000`
 
-```c++
+```cpp
 class Solution {
 public:
     bool canPlaceFlowers(vector<int>& flowerbed, int n) {
@@ -46,7 +46,7 @@ public:
 
 or count the number of `0`
 
-```c++
+```cpp
 class Solution {
 public:
     bool canPlaceFlowers(vector<int>& flowerbed, int n) {

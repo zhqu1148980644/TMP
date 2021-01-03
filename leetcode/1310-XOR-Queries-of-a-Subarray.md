@@ -44,7 +44,7 @@ Output: [8,0,4,4]
 - Xor of a collection of numbers is independent of the ordering xor operations.
 - `x ^ x` equals `0` and `x ^ 0` equals `x`.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> xorQueries(vector<int>& arr, vector<vector<int>>& queries) {

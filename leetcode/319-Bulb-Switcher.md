@@ -30,7 +30,7 @@ So you should return 1, because there is only one bulb is on.
 - The totoal number of square numbers below a given number equals to `floor(sqrt(n))`
     - `1 * 1, 2 * 2, 3 * 3, 4 * 4, .... sqrt(n) * sqrt(n) <= n`.
 
-```c++
+```cpp
 class Solution {
 public:
     int bulbSwitch(int n) {

@@ -16,7 +16,7 @@ Note: The length of given array won't exceed 10000.
 
 1. ##### mono stack
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> nextGreaterElements(vector<int>& nums) {
@@ -44,7 +44,7 @@ public:
 - or use mod to simulate the double-sized rounded array.
 - In this way, numbers didn't find the next greater in the first round(last half) has the chance to find it's next greater in the second round.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> nextGreaterElements(vector<int>& nums) {
@@ -64,7 +64,7 @@ public:
 
 or decreasing stack
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> nextGreaterElements(vector<int>& nums) {

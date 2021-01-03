@@ -17,7 +17,7 @@ To the right of 1 there is 0 smaller element.
 
 1. ##### count in merge sort O(nlog(n))
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> res;
@@ -67,7 +67,7 @@ public:
 
 2. ##### FenwickTree O(2nlog(n))
 
-```c++
+```cpp
 struct FenwickTree {
     vector<int> sums;
     FenwickTree(int size) : sums(size + 1) {}
@@ -119,7 +119,7 @@ public:
 
 - Array version
 
-```c++
+```cpp
 class Solution {
 public:
     int n;
@@ -176,7 +176,7 @@ public:
 
 4. ##### binary search tree avg O(nlog(n)) worst O(n2)
 
-```c++
+```cpp
 struct Node {
     int val, cnt = 1;
     Node * left = 0, * right = 0;

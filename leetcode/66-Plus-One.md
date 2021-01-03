@@ -24,7 +24,7 @@ Explanation: The array represents the integer 4321.
 
 The key is to update each digit if there is carry remained in the last digit.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> plusOne(vector<int>& digits) {
@@ -46,7 +46,7 @@ public:
 
 This elegant one is borrowed from others.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> plusOne(vector<int>& digits) {

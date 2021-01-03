@@ -20,7 +20,7 @@ Output: 0
 
 1. ##### iteratively remove a tail bit
 
-```c++
+```cpp
 class Solution {
 public:
     int rangeBitwiseAnd(int m, int n) {
@@ -39,7 +39,7 @@ public:
 2. ##### iteratively remove the rightmost `1` bit
 
 
-```c++
+```cpp
 class Solution {
 public:
     int rangeBitwiseAnd(int m, int n) {

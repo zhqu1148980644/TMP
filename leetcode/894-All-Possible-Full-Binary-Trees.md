@@ -24,7 +24,7 @@ Note:
 
 1. ##### recursion with memoization
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

@@ -25,7 +25,7 @@ Base condition: common prefix between two strings.
 
 There is no tricky way can fetch the common prefix with time less than `O(n)` when comparing two string.
 
-```c++
+```cpp
 int commonPrefix(string & str1, string & str2) {
     int min_len = min(str1.size(), str2.size());
     for (int i = 0; i < min_len; i++) {
@@ -42,7 +42,7 @@ int commonPrefix(string & str1, string & str2) {
 
 This can be generalized to any number of strings.
 
-```c++
+```cpp
 class Solution {
 public:
     string longestCommonPrefix(vector<string>& strs) {
@@ -69,7 +69,7 @@ public:
 
 We can also iteratively check every position from the beginning.
 
-```c++
+```cpp
 class Solution {
 public:
     string longestCommonPrefix(vector<string> & strs) {

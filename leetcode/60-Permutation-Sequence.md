@@ -35,7 +35,7 @@ Output: "2314"
     - Thus we use a `seen` hashset to record which number has been used in the current permutation.
 - Inorder to speed up the backtracking process or eliminate unnecessary backtrackings, we can pre-calculate the number of permutations will be generated in each recursive call and skip to the right recursive call where the target permutations will be created.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<bool> seen;
@@ -78,7 +78,7 @@ public:
     - 1-based. `5 / 2  == 4 / 2`. 5 and 4 are within the same group which is incorrect.
     - 0-based. `(5 - 1) / 2 != (4 - 1) / 2`.
 
-```c++
+```cpp
 class Solution {
 public:
     string getPermutation(int n, int k) {

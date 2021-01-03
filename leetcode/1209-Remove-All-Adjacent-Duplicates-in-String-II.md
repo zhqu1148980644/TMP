@@ -37,7 +37,7 @@ s only contains lower case English letters.
 
 1. ##### recursion
 
-```c++
+```cpp
 class Solution {
 public:
     string removeDuplicates(string s, int k) {
@@ -58,7 +58,7 @@ public:
 - from lee215
 - `cnts.top()` is the top of stack used for recording the count of the previous character.
 
-```c++
+```cpp
 class Solution {
 public:
     string removeDuplicates(string s, int k) {

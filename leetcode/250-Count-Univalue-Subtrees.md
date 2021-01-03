@@ -18,7 +18,7 @@ Output: 4
 
 1. ##### postorder traversal with recursion
 
-```c++
+```cpp
 class Solution {
 public:
     int res = 0;
@@ -40,7 +40,7 @@ public:
 
 2. ##### postorder with stack
 
-```c++
+```cpp
 class Solution {
 public:
     int countUnivalSubtrees(TreeNode* root) {

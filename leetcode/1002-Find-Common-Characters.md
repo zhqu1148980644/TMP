@@ -24,7 +24,7 @@ A[i][j] is a lowercase letter
 
 1. #### hashmap
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> commonChars(vector<string>& A) {

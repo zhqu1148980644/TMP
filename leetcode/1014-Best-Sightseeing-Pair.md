@@ -29,7 +29,7 @@ Explanation: i = 0, j = 2, A[i] + A[j] + i - j = 8 + 5 + 0 - 2 = 11
 - `(A[i] + A[j] + i - j)` equals to `(A[i] + i)  + (A[j] - j)`.
 - Thus the problem is equivalent to finding the larget sum of two numbers in array.
 
-```c++
+```cpp
 class Solution {
 public:
     int maxScoreSightseeingPair(vector<int>& A) {

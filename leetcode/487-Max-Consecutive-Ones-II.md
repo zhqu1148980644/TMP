@@ -17,7 +17,7 @@ What if the input numbers come in one by one as an infinite stream? In other wor
 
 1. ##### sliding window
 
-```c++
+```cpp
 class Solution {
 public:
     int findMaxConsecutiveOnes(vector<int>& nums) {
@@ -41,7 +41,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     int findMaxConsecutiveOnes(vector<int>& nums) {
@@ -69,7 +69,7 @@ public:
 - dp0 represents the number of consecutive 1s ends at the previous position with no 0 flipped.
 - dp1 represents the number of consecutive 1s ends at the previous position with `1` 0 flipped.
 
-```c++
+```cpp
 class Solution {
 public:
     int findMaxConsecutiveOnes(vector<int>& nums) {

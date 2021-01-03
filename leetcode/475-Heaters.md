@@ -35,7 +35,7 @@ Explanation: The two heater was placed in the position 1 and 4. We need to use r
 
 - For each house find the closest neighbor heater and update the minimum radius needed to cater for this house.
 
-```c++
+```cpp
 class Solution {
 public:
     int binary_search(vector<int> & heaters, int target) {
@@ -84,7 +84,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     int findRadius(vector<int>& houses, vector<int>& heaters) {
@@ -118,7 +118,7 @@ public:
 
 - Sort both houses and heaters.
 
-```c++
+```cpp
 class Solution {
 public:
     int findRadius(vector<int>& houses, vector<int>& heaters) {

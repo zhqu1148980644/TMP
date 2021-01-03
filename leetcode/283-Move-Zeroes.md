@@ -16,7 +16,7 @@ Output: [1,3,12,0,0]
 
 1. ##### two pointers
 
-```c++
+```cpp
 class Solution {
 public:
     void moveZeroes(vector<int>& nums) {
@@ -37,7 +37,7 @@ public:
 - The first version will do redundant assingment operations at the end of the the array if the array contains too much zeroes.
 - This version ensures that elements between i and j are always zeroes.
 
-```c++
+```cpp
 class Solution {
 public:
     void moveZeroes(vector<int>& nums) {

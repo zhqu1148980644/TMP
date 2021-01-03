@@ -53,7 +53,7 @@ The total number of cherries picked up is 5, and this is the maximum possible.
 - Since two people are moving synchronously, `y2` can be calculated based on `x1, y1, x2`. ie:
  `y2 = x1 + y1 - x2`.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<vector<int>>> memo;
@@ -92,7 +92,7 @@ public:
 - reference: https://leetcode.com/problems/cherry-pickup/discuss/109903/Step-by-step-guidance-of-the-O(N3)-time-and-O(N2)-space-solution
 - In the first solution, we can see that `dp[x1][y1][x2][y2]` only depends on states in `(x1 + x2) - 1`.
 
-```c++
+```cpp
 class Solution {
 public:
     int cherryPickup(vector<vector<int>>& grid) {

@@ -32,7 +32,7 @@ Output: 28
 
 1. #### Dynamic programming
 
-```c++
+```cpp
 int uniquePaths(int m, int n){
     if (m == 1 || n == 1) return 1;
     if (m < n) swap(m, n);
@@ -53,7 +53,7 @@ int uniquePaths(int m, int n){
 - No matter how to move(only down and right are permitted), The total number of move operations will be m - 1 + n - 1; ie(reach the lower right)
 - The unique path is the choose m - 1 operations to go down or n - 1 operations to go right; C(m + n - 2, m - 1)
 
-```c++
+```cpp
 int uniquePaths(int m, int n) {
     if (m == 1 || n == 1) return 1;
     if (m < n) swap(m, n);

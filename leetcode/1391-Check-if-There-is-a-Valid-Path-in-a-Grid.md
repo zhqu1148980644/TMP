@@ -59,7 +59,7 @@ Output: true
 
 1. ##### dfs
 
-```c++
+```cpp
 class Solution {
 public:
     int m, n;

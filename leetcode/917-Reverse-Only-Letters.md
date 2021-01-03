@@ -26,7 +26,7 @@ S doesn't contain \ or "
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     string reverseOnlyLetters(string S) {

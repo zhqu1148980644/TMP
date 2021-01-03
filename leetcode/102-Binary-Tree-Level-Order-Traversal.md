@@ -20,7 +20,7 @@ return its level order traversal as:
 
 1. ##### dfs with level tag
 
-```c++
+```cpp
 class Solution {
 private:
     vector<vector<int>> res;
@@ -44,7 +44,7 @@ public:
 
 2. ##### bfs with queue
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> levelOrder(TreeNode* root) {

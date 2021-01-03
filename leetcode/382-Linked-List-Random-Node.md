@@ -20,7 +20,7 @@ solution.getRandom();
 
 - Each element will be selected with probability `m/n`.
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {

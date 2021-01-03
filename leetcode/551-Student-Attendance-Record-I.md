@@ -28,7 +28,7 @@ Output: False
 1. ##### Straight forward
 
 
-```c++
+```cpp
 class Solution {
 public:
     bool checkRecord(string s) {

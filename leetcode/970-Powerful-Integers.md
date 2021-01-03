@@ -34,7 +34,7 @@ Note:
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> powerfulIntegers(int x, int y, int bound) {

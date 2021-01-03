@@ -11,7 +11,7 @@ Challenge: Perform all these in O(1) time complexity.
 1. ##### list and hash map with stl iterators
 
 
-```c++
+```cpp
 class AllOne {
 public:
     /** Initialize your data structure here. */
@@ -104,7 +104,7 @@ public:
 
 or
 
-```c++
+```cpp
 class AllOne {
 public:
     /** Initialize your data structure here. */

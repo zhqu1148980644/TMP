@@ -56,7 +56,7 @@ Can you solve it without using extra space?
         - One linked list starting from `head` and ending at the former node of  `head1`.
         - Another linked list starting from `head1` and ending at the former node of `head1`.
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -102,7 +102,7 @@ struct ListNode *detectCycle(struct ListNode *head) {
     - By moving slow at the head of the list, and let slow and fast continues to move forward with the same peace, they will both be at the intersection node after forwarded `x` steps.
 - Watch out the changes when initializing fast pointer.
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {

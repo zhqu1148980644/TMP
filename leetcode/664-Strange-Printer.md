@@ -31,7 +31,7 @@ Hint: Length of the given string will not exceed 100.
 - reference: official answer.
 - `dp[i][j]` represents the the minimum number of turns the printer needed to print `s[i:j]`
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> memo;
@@ -62,7 +62,7 @@ public:
 - A minor optimization: remove consecutive repeating characters since we will always print these duplicated characters in one turn.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int strangePrinter(string s) {
@@ -99,7 +99,7 @@ public:
 ```
 
 
-```c++
+```cpp
 class Solution {
 public:
     int strangePrinter(string s) {

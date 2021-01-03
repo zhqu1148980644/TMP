@@ -48,7 +48,7 @@ Explanation: The number "-91283472332" is out of the range of a 32-bit signed in
 
 1. #### Straight forward
 
-```c++
+```cpp
 int myAtoi(char * str){
     while (*str && *str == ' ')
         str++;

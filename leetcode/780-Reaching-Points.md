@@ -28,7 +28,7 @@ sx, sy, tx, ty will all be integers in the range [1, 10^9].
 - Reversely search for the source.
 - Time limit exceed
 
-```c++
+```cpp
 class Solution {
 public:
     bool reachingPoints(int sx, int sy, int tx, int ty) {
@@ -48,7 +48,7 @@ public:
 - optimized version: use mod to speed up the search speed(multiple plus/minus)
 - if `ty == sy` at some point, must manually check otherwize `tx % ty` would be smaller than `sy`.
 
-```c++
+```cpp
 class Solution {
 public:
     bool reachingPoints(int sx, int sy, int tx, int ty) {

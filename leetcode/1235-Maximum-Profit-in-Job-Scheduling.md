@@ -44,7 +44,7 @@ Constraints:
 - `dp[i]` represents the maximum profit can be achieved in the `range[:finish[i]]`
     - `dp[i] = max(profit[i] + dp[prevexclude], dp[i - 1])`
 
-```c++
+```cpp
 class Solution {
 public:
     int jobScheduling(vector<int>& startTime, vector<int>& endTime, vector<int>& profit) {
@@ -81,7 +81,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     int jobScheduling(vector<int>& startTime, vector<int>& endTime, vector<int>& profit) {

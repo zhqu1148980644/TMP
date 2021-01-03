@@ -34,7 +34,7 @@ Note:
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     array<int, 10> count(int n) {

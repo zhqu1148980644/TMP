@@ -11,7 +11,7 @@ Note: The input number n will not exceed 100,000,000. (1e8)
 
 1. ##### straight forward O(n^1/2)
 
-```c++
+```cpp
 class Solution {
 public:
     bool checkPerfectNumber(int num) {

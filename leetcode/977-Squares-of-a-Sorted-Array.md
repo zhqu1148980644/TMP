@@ -22,7 +22,7 @@ A is sorted in non-decreasing order.
 
 1. #### merge sorted list
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> sortedSquares(vector<int>& A) {
@@ -44,7 +44,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> sortedSquares(vector<int>& A) {

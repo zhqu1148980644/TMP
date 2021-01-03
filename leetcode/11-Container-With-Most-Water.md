@@ -29,7 +29,7 @@ class Solution:
     - TODO: Proof of correctness. Shrink the solution space.
 
 
-```c++
+```cpp
 #define max(x, y) ((x > y) ? (x) : (y))
 int maxArea(int* height, int heightSize){
     int max_size = 0;

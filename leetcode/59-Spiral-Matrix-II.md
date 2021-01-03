@@ -19,7 +19,7 @@ Output:
 - Follow the strategy used in problem 54.
 - Knowning the resulting matrix is square makes this problem much easier.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> generateMatrix(int n) {

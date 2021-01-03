@@ -39,7 +39,7 @@ Each node will have a value between 1 and 10^9.
 
 1. ##### dfs
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -76,7 +76,7 @@ public:
 
 - Simply simulate what we have done when using the system stack.
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode* recoverFromPreorder(string S) {

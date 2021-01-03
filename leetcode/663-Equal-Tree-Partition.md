@@ -39,7 +39,7 @@ The range of tree node value is in the range of [-100000, 100000].
 
 1. ##### postorder traversal with recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

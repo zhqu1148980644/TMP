@@ -29,7 +29,7 @@ difficulty[i], profit[i], worker[i]  are in range [1, 10^5]
 - Then sort both filtered jobs and workers by difficulty/ability in ascending order.
 - Finally use two pointer to search for the maximum profit can be made for each worker.
 
-```c++
+```cpp
 class Solution {
 public:
     int maxProfitAssignment(vector<int>& difficulty, vector<int>& profit, vector<int>& worker) {
@@ -70,7 +70,7 @@ public:
 - More concise version from the official answer.
 - Search from the lowest difficulty to the highest and record the maximum profit under the current difficulty.
 
-```c++
+```cpp
 class Solution {
 public:
     int maxProfitAssignment(vector<int>& difficulty, vector<int>& profit, vector<int>& worker) {

@@ -32,7 +32,7 @@ A[i][j] == 0 or A[i][j] == 1
 - Starting from an island, then bfs searching for the other island.
 - Q, what if there are more than two islands?
 
-```c++
+```cpp
 class Solution {
 public:
     int m, n;

@@ -14,7 +14,7 @@ Output:
 
 1. ##### permutation with bit representation O(n * 2^n)
 
-```c++
+```cpp
 class Solution {
 public:
     string build(string & word, int com) {
@@ -45,7 +45,7 @@ public:
 
 2. ##### dfs
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> res;

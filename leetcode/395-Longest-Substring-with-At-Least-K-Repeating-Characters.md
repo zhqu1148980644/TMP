@@ -24,7 +24,7 @@ The longest substring is "ababb", as 'a' is repeated 2 times and 'b' is repeated
 1. ##### divide and conquer with recursion
 
 
-```c++
+```cpp
 class Solution {
 public:
     int longestSubstring(string s, int k) {

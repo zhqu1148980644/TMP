@@ -36,7 +36,7 @@ Any room can contain threats or power-ups, even the first room the knight enters
     - `dp[i, j] = dungeon[i, j] + max(dp[i + 1, j], dp[i, j + 1])`
     - `dp[i, j] = min(0, dp[i, j])`
 
-```c++
+```cpp
 class Solution {
 public:
     int calculateMinimumHP(vector<vector<int>>& dungeon) {

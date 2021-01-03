@@ -37,7 +37,7 @@ Return false.
 
 - For each node in s, check if tree `t` is the same as this subtree.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -72,7 +72,7 @@ public:
 - After converted two trees into traversal sequence, use pattern matching algorithm to speed up the search. ie: kmp, rabin-karp ...
 
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -138,7 +138,7 @@ public:
     - `97` and `137` are two randomly chosen primes for differentiating left and right trees.
 - How to handle collisions.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -204,7 +204,7 @@ public:
 
 or simply use string hash, though it's much slower than integer hash.
 
-```c++
+```cpp
 class Solution {
 public:
     hash<string> hasher;

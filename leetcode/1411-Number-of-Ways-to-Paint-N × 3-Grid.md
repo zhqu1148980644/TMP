@@ -46,7 +46,7 @@ grid[i].length == 3
 - To ensure that there are no two adjacent cells have the same color in horizontal side, only `12` tiles listed in the first example can be staked, and the answer of `n` rows can be calculated based on the answer of `n - 1` rows. ie: stacking new tiles that satisfy the requirement in virtical side.
 - `dp[n][tile_id]` represents the number of solutions with `n` nrows that the bottom tile is `tiles[tile_id]`.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> possible_stacks() {
@@ -99,7 +99,7 @@ public:
     - `dp[1][0] = 6` and `dp[1][1] = 6`.
 - The dp formula can be fetched by counting the number of possible changes based on the figure in example1.
 
-```c++
+```cpp
 class Solution {
 public:
 

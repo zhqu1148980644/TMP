@@ -38,7 +38,7 @@ Explanation:
     - `dp[i][j][k] = max(dp[i][mid][k + 1] + dp[mid + 1, j - 1][0]) for mid in range(i, j) if s[mid] == s[j]`. ie: Firstly erases the middle parts `s[mid + 1: j - 1]`, then leaves `k + 1` continous elements after `s[j:]` and merge this trailing part with prefix `s[:mid]`if `s[mid] == s[j]`.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int solve(int (&dp)[100][100][100], vector<int> & boxes, int i, int j, int len) {
@@ -64,6 +64,6 @@ public:
 2. ##### dynamic programming with iteration
 
 
-```c++
+```cpp
 
 ```

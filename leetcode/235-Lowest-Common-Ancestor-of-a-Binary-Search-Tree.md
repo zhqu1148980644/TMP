@@ -31,7 +31,7 @@ Explanation: The LCA of nodes 2 and 4 is 2, since a node can be a descendant of 
 
 1. ##### recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -57,7 +57,7 @@ public:
 
 2. ##### iteration
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {

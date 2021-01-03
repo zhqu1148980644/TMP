@@ -29,7 +29,7 @@ String S is non-empty.
 
 - Do not generate the result inplace.
 
-```c++
+```cpp
 class Solution {
 public:
     string licenseKeyFormatting(string S, int K) {

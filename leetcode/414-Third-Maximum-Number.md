@@ -34,7 +34,7 @@ Both numbers with value 2 are both considered as second maximum.
 
 - Mainting an ordered set with size 3.
 
-```c++
+```cpp
 class Solution {
 public:
     int thirdMax(vector<int>& nums) {
@@ -51,7 +51,7 @@ public:
 };
 ```
 
-```c++
+```cpp
 class Solution {
 public:
     int thirdMax(vector<int>& nums) {

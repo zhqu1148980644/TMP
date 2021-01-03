@@ -43,7 +43,7 @@ There will be at most 1000 function calls.
 - Use hashmap for mapping key to score
 - Use treemap to keep records of decreasing scores.
 
-```c++
+```cpp
 class Leaderboard {
 public:
     unordered_map<int, multiset<int>::iterator> m;

@@ -33,7 +33,7 @@ Explanation: S = "time#bell#" and indexes = [0, 2, 5].
 - As long as a string is suffix of other string, this substring can be represented by the longer string.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int minimumLengthEncoding(vector<string>& words) {
@@ -57,7 +57,7 @@ public:
 - Firtly reverse all
 - After we sorted words by lexicographical order, strings with same(similar) suffix will be putted together.
 
-```c++
+```cpp
 class Solution {
 public:
     int minimumLengthEncoding(vector<string>& words) {
@@ -86,7 +86,7 @@ public:
 
 3. ##### suffix trie O(nw)
 
-```c++
+```cpp
 class Solution {
 public:
     struct TrieNode {
@@ -128,7 +128,7 @@ public:
 
 or
 
-```c++
+```cpp
 struct Trie {
     Trie * links[26] = {nullptr};
     const string * ps = nullptr;

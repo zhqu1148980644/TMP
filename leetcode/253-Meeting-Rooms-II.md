@@ -20,7 +20,7 @@ Output: 1
 
 - see `problem 252` for details.
 
-```c++
+```cpp
 class Solution {
 public:
     int minMeetingRooms(vector<vector<int>>& intervals) {
@@ -46,7 +46,7 @@ public:
 - Fore each meetings find former meeting with the longest ending time, check if this ending time is greater than the current meeting's start time to decide if there is need to open a new meeting room.
 - Use a `minheap` to reduce the complexity of `O(n2)` to `log(n)` in each step, thus the final time complexity is `2nlong(n)`.
 
-```c++
+```cpp
 class Solution {
 public:
     int minMeetingRooms(vector<vector<int>>& intervals) {
@@ -75,7 +75,7 @@ public:
 - sorting rooms by their finish time, then search for the nearest nonoverlapping room visited before. The search can be conducted by a naive lear scanning strategy or by binary search.
 - It seems like sorting rooms by `start` works too, however, it won't be possible to use binary search to speed up the seaching process.
 
-```c++
+```cpp
 class Solution {
 public:
     /**

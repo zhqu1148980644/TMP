@@ -76,7 +76,7 @@ Answers within 10^-5 of the actual value will be accepted as correct.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class UndergroundSystem {
 public:
     unordered_map<int, pair<string, int>> checkins;

@@ -29,7 +29,7 @@ The last four operations won't be called when stack is empty.
 
 - Based on solution in problem 155 with special handling for `popMax`.
 
-```c++
+```cpp
 class MaxStack {
 public:
     /** initialize your data structure here. */
@@ -91,7 +91,7 @@ public:
 - Use list for mainting the pusing orders and tree map for find the maximum value within the list.
 - Note that equivalent keys will be in the order of their insertion order in stl's multimap.
 
-```c++
+```cpp
 class MaxStack {
 public:
     /** initialize your data structure here. */

@@ -36,7 +36,7 @@ widths[i] will be in the range of [2, 10].
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> numberOfLines(vector<int>& widths, string S) {

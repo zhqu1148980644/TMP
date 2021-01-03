@@ -26,7 +26,7 @@ but not a subsequence of any other strings in the group of two strings.
 
 - The maximum length between two strings is the answer if they are not the same.
 
-```c++
+```cpp
 class Solution {
 public:
     int findLUSlength(string a, string b) {

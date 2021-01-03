@@ -28,7 +28,7 @@ Insertion, deletion or replace of any one character are all considered as one ch
             - For any repeating sequence other than the aforementioned two cases and remaining repeats of those two cases, we can use `3` deletions to represent one replacement.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int strongPasswordChecker(string s) {

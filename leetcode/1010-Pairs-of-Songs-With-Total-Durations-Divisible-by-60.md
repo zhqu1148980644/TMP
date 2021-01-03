@@ -31,7 +31,7 @@ Note:
 - `(a + b) % p == (a % p + b % p) % p`
 - Store visited numbers' mod `n % 60` in the hashmap, then for the curent number search for `(60 - n % p) % p` as the count of pairs with j as self.
 
-```c++
+```cpp
 class Solution {
 public:
     int numPairsDivisibleBy60(vector<int>& time) {

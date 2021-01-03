@@ -32,7 +32,7 @@ The answer output can be returned in any order.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     void count(unordered_map<string_view, int> & m, string_view sv) {

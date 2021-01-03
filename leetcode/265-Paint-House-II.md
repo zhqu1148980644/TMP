@@ -20,7 +20,7 @@ Could you solve it in O(nk) runtime?
 
 1. ###### dynamic programming
 
-```c++
+```cpp
 class Solution {
 public:
     int minCostII(vector<vector<int>>& costs) {

@@ -39,7 +39,7 @@ Please do not use the built-in Deque library.
 
 - Nearly the same as `problem 622`
 
-```c++
+```cpp
 class MyCircularDeque {
 public:
     /** Initialize your data structure here. Set the size of the deque to be k. */

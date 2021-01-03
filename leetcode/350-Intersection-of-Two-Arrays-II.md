@@ -27,7 +27,7 @@ Output: [4,9]
 
 1. ##### hash map o(n) S(n)
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
@@ -55,7 +55,7 @@ public:
 
 - Follow up: when two arrays are already sorted, this method is preferred.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {

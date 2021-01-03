@@ -26,7 +26,7 @@ Output: False
 
 - Time limit exceed
 
-```c++
+```cpp
 class Solution {
 public:
 #define node(i, j) (((long)(i) * (y + 1) + (j)))
@@ -67,7 +67,7 @@ public:
 - The solution exists only if `z = ax + by s.t. a, b (- R`.
 - `x = m * g, y = n * g  ->   z = (am + bn) * g` g is gcd.
 
-```c++
+```cpp
 class Solution {
 public:
     int gcd(int x, int y) {

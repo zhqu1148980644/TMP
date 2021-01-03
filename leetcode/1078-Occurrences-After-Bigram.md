@@ -25,7 +25,7 @@ first and second consist of lowercase English letters.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     string_view genword(string_view s, int & st) {
@@ -55,7 +55,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> findOcurrences(string text, string first, string second) {

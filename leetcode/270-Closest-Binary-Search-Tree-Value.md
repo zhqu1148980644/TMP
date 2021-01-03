@@ -25,7 +25,7 @@ Output: 4
 
 1. ##### recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -62,7 +62,7 @@ public:
 
 2. ##### iteration
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -91,7 +91,7 @@ public:
 - More elegant approach
 - reference: https://leetcode-cn.com/problems/closest-binary-search-tree-value/solution/wei-hu-qu-jian-duan-dian-de-die-dai-xie-fa-by-zjuw/
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

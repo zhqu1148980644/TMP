@@ -20,7 +20,7 @@ Then 4 is the first bad version.
 
 1. ##### binary search
 
-```c++
+```cpp
 // Forward declaration of isBadVersion API.
 bool isBadVersion(int version);
 

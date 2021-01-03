@@ -41,7 +41,7 @@ The value of each node in the linked list is between [-1000, 1000]
 1. ##### recursion
 
 
-```c++
+```cpp
 /**
  * // This is the ImmutableListNode's API interface.
  * // You should not implement it, or speculate about its implementation.

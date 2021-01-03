@@ -46,7 +46,7 @@ for (int i = 0; i < len; i++) {
 - Stack valid numbers at the front.
 - Assignments will run O(n) when the number of invalid numbers is small.
 
-```c++
+```cpp
 class Solution {
 public:
     int removeElement(vector<int>& nums, int val) {
@@ -65,7 +65,7 @@ public:
 
 - Put invalid numbers at the back.
 
-```c++
+```cpp
 class Solution {
 public:
     int removeElement(vector<int>& nums, int val) {

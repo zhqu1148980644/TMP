@@ -41,7 +41,7 @@
 
 1. ##### math
 
-```c++
+```cpp
 class Solution {
 public:
     inline int C(int n, int k) {

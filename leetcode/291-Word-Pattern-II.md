@@ -29,7 +29,7 @@ You may assume both pattern and str contains only lowercase letters.
 1. ##### backtrack(dfs)
 
 
-```c++
+```cpp
 class Solution {
 public:
     unordered_map<char, string_view> map;

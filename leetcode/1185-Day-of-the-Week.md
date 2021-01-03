@@ -41,7 +41,7 @@ class Solution:
 - Count the number of days after 1971.1.1(friday).
 - Then the answer is `day % 7` + friday.
 
-```c++
+```cpp
 class Solution {
 public:
     int days_after_197111(int year, int month, int day) {

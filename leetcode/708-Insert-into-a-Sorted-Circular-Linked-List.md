@@ -39,7 +39,7 @@ Constraints:
 
 - Watch out corner cases like: `555555`
 
-```c++
+```cpp
 /*
 // Definition for a Node.
 class Node {

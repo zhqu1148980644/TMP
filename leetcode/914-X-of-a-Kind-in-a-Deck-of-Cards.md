@@ -42,7 +42,7 @@ Constraints:
 
 1. ##### hash set
 
-```c++
+```cpp
 class Solution {
 public:
     inline int gcd(int a, int b) {
@@ -73,7 +73,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     inline int gcd(int a, int b) {

@@ -44,7 +44,7 @@ Note:
     - if `Y < X`, move `Y` forward `X - Y` steps.
     - else if `Y % 2 == 0`, divide by 2, else move 1 step forward.
 
-```c++
+```cpp
 class Solution {
 public:
     int brokenCalc(int X, int Y) {
@@ -74,7 +74,7 @@ public:
 - Since x can only choose to multiply 2 or deduce by 1, `x` needs to be increased to at least `Y` with `n1` multiplication.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int brokenCalc(int X, int Y) {

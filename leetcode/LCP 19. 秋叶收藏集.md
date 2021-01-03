@@ -31,7 +31,7 @@ leaves 中只包含字符 'r' 和字符 'y'
 - `dp[i][ry]`                                                             `r*y*` pattern.       
 - `dp[i][ryr]`                                                          `r*y*r*` pattern.
 
-```c++
+```cpp
 class Solution {
 public:
     int minimumOperations(string leaves) {
@@ -66,7 +66,7 @@ public:
 - reference: https://leetcode-cn.com/problems/UlBDOe/solution/simple-java-by-aerysn/
 - check reference for details.
 
-```c++
+```cpp
 class Solution {
 public:
     int minimumOperations(string leaves) {

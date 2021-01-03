@@ -26,7 +26,7 @@ as "[1,2,3,null,null,4,5]"
 
 - Format: Nodes are separated by commas, an empty string between two commas represents a nullptr.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -87,7 +87,7 @@ or
 
 - After the subtree has been built, the `st` will be at the end comma of the last element in subtree.
 
-```c++
+```cpp
 class Codec {
 public:
 
@@ -131,7 +131,7 @@ public:
 
 - The same format as above except the ordering of nodes is replaced by level order.
 
-```c++
+```cpp
 class Codec {
 public:
 
@@ -193,7 +193,7 @@ public:
 
 Or
 
-```c++
+```cpp
 class Codec {
 public:
 

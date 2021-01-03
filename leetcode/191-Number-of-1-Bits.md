@@ -39,7 +39,7 @@ If this function is called many times, how would you optimize it?
 
 - check each bit one by one.
 
-```c++
+```cpp
 int hammingWeight(uint32_t n) {
     int count = 0;
     for (int i = 0; i < 32; i++) {
@@ -54,7 +54,7 @@ int hammingWeight(uint32_t n) {
 
 - In each step, the left most bit(1) will be unsetted.
 
-```c++
+```cpp
 int hammingWeight(uint32_t n) {
     int count = 0;
     while (n) {

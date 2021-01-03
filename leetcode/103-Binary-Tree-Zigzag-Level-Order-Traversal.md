@@ -20,7 +20,7 @@ return its zigzag level order traversal as:
 
 1. ##### queue
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> zigzagLevelOrder(TreeNode* root) {

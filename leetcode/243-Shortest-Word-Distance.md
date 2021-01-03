@@ -19,7 +19,7 @@ You may assume that word1 does not equal to word2, and word1 and word2 are both 
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     int shortestDistance(vector<string>& words, string word1, string word2) {

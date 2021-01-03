@@ -27,7 +27,7 @@ Explanation: It's the substring "abc" four times. (And the substring "abcabc" tw
 
 - Check every possible prefix that may be the repeated substring.
 
-```c++
+```cpp
 
 ```
 
@@ -39,7 +39,7 @@ Explanation: It's the substring "abc" four times. (And the substring "abcabc" tw
     - if `s` can be found in double stripped `t`, we have `2n - 2 >= n  ==  n >= 2` and s is constructed from `n > 2` substrings. 
     - else: `n = 1`, `s` is made of itself.
 
-```c++
+```cpp
 class Solution {
 public:
     bool repeatedSubstringPattern(string s) {
@@ -72,7 +72,7 @@ suffix |   *************|
 - The example above also demonstrated how the second solution works.
     - This is a general approach to seach for the repeated pattern in a string. ie: `(s + s).find(s, 1)`.
 
-```c++
+```cpp
 class Solution {
 public:
     bool repeatedSubstringPattern(string s) {

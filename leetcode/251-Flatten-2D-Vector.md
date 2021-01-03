@@ -33,7 +33,7 @@ As an added challenge, try to code it using only iterators in C++ or iterators i
 
 1. ##### iterator
 
-```c++
+```cpp
 class Vector2D {
 public:
     vector<vector<int>::iterator> gen;
@@ -69,7 +69,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Vector2D {
 public:
     vector<vector<int>> v;

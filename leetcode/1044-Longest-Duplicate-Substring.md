@@ -33,7 +33,7 @@ Output: ""
 - Use rabin-karp algorithm to search repeated pattern in O(n) time.
 - Follow up: Need to handle collisions.
 
-```c++
+```cpp
 #define num(x) ((x) - 'a')
 class Solution {
 public:

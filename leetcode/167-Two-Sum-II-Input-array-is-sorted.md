@@ -19,7 +19,7 @@ Explanation: The sum of 2 and 7 is 9. Therefore index1 = 1, index2 = 2.
 
 1. ##### two pointers
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> twoSum(vector<int>& numbers, int target) {

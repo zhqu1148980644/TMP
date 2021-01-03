@@ -27,7 +27,7 @@ The length of both nums1 and nums2 would not exceed 1000.
 
 - Traversing `nums2` backwards and use a monotonically increasing stack to record the first greater number of each element.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
@@ -55,7 +55,7 @@ public:
 
 or traversing nums2 forwards from the start with monotonically decreasing stack
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {

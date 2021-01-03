@@ -33,7 +33,7 @@ iterator.hasNext(); // return false
 
 1. ##### inorder traversal with stack
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

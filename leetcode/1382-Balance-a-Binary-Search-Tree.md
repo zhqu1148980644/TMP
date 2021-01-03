@@ -28,7 +28,7 @@ The tree nodes will have distinct values between 1 and 10^5.
 1. ##### build tree from inorder traversal sequence
 
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

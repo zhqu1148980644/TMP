@@ -60,7 +60,7 @@ All Nodes will have unique values.
 
 1. ##### straight forward
 
-```c++
+```cpp
 /*
 // Definition for a Node.
 class Node {

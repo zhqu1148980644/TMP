@@ -24,7 +24,7 @@ Output: [1234,2345,3456,4567,5678,6789,12345]
 
 1. ##### generare all possible sequential digist
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> sequentialDigits(int low, int high) {

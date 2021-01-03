@@ -48,7 +48,7 @@ Note:
     - `overload > 0` means there are redundant coins in child node. `overload < 0` means the child node is short of coins.
     - When the `sum of absolute overloads` in chidren is larger than 1, these number of coins must be `passed over` the current node either from parent to children or reveresly. Then the final sum is the sum of these nonzero overloads(absolute sum).
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

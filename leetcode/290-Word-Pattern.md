@@ -28,7 +28,7 @@ You may assume pattern contains only lowercase letters, and str contains lowerca
 - Check `problem 205` for details.
 - Record each string's previous appearance index, if two strings are isomorphic, the index pair of each position should be the same.
 
-```c++
+```cpp
 class Solution {
 public:
     bool wordPattern(string pattern, string str) {

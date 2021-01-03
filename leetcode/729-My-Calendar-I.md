@@ -28,7 +28,7 @@ In calls to MyCalendar.book(start, end), start and end are integers in the range
 1. ##### tree map
 
 
-```c++
+```cpp
 class MyCalendar {
 public:
     map<int, int> m;

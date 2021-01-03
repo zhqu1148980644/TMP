@@ -14,7 +14,7 @@ Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefor
 
 1. ##### sort O(nlog(n)) S(1)
 
-```c++
+```cpp
 class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
@@ -42,7 +42,7 @@ public:
 - Add every number into the hashset.
 - Check every number that may be the first number of a consecutive sequence. ie: can not find `num - 1` in the hashset.
 
-```c++
+```cpp
 class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
@@ -70,7 +70,7 @@ public:
 
 - Each unique number is inserted once. Only update the boundary of a contiguous region.
 
-```c++
+```cpp
 class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {

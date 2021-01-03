@@ -26,7 +26,7 @@ For a certain position the final water level equals to the smaller one between t
     - Only maitain the left-heights array.
     - After we get the left-heights array, loop start from the end to left and sum up the volumn.
 
-```c++
+```cpp
 #define max(x, y) ( x > y ? x : y)
 #define min(x, y) ( x < y ? x : y)
 
@@ -78,7 +78,7 @@ class Solution:
 - Use two value to record the left-heighest and right-heighest. 
 - Move the lower one forward to ensure that all bars in the lower side is smaller than the current higher bar. Thus the water level of lower one is solely constrained by this side's highest bar.
 
-```c++
+```cpp
 class Solution {
 public:
     int trap(vector<int> & height) {
@@ -110,7 +110,7 @@ public:
 - borrowed from stephan.
 - only maintain the smallest height(water level) between left-heighest and right-heighest.
 
-```c++
+```cpp
 class Solution {
 public:
     int trap(vector<int> & height) {
@@ -130,7 +130,7 @@ public:
 5. #### stack version.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int trap(vector<int>& height) {

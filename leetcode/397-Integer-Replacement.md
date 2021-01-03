@@ -31,7 +31,7 @@ or
 
 1. ##### dfs
 
-```c++
+```cpp
 class Solution {
 public:
     int integerReplacement(int n) {
@@ -54,7 +54,7 @@ public:
     - Except for number `3`, other numbers with the lowest two bits set prefer `n + 1`.
 - When the number is `bin(n) = xx10`, for the same reason, more right shift operations can be achieved by chooseing `n + 1`.
 
-```c++
+```cpp
 class Solution {
 public:
     int integerReplacement(int n) {
@@ -76,7 +76,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     int integerReplacement(int n) {

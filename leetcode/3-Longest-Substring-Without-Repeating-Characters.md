@@ -48,7 +48,7 @@ class Solution:
 - When the current `s[j]` character doesn't exist in hashset, this means `s[i:j]` contain no duplicate characters. So record the current length `j - i + 1` and update `max_len` if needed.
 - When the current `s[j]` character are fond in hashset, unset `s[i]` and move i one step forward. This step may be called sevaral times until the duplicate of `s[j]` is removed and `s[i:j]` is `non-duplicated` again.
 
-```c++
+```cpp
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
@@ -71,7 +71,7 @@ Or use template borrowed from others.
 - https://leetcode.com/problems/minimum-window-substring/discuss/26808/Here-is-a-10-line-template-that-can-solve-most-'substring'-problems
 
 
-```c++
+```cpp
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
@@ -90,7 +90,7 @@ public:
 
 Use the same template in problem: `Longest Substring with At Most Two Distinct Characters`
 
-```c++
+```cpp
 int lengthOfLongestSubstringTwoDistinct(string s) {
     int count[128] = {0};
     int counter = 0, i = 0, j = 0, maxlen = 0;
@@ -107,7 +107,7 @@ int lengthOfLongestSubstringTwoDistinct(string s) {
 
 Use the same template in problem: `minimum window substring`
 
-```c++
+```cpp
 class Solution {
 public:
     string minWindow(string s, string t) {
@@ -138,7 +138,7 @@ As we can see in the second method, We have to move the `s[i]` forward several t
 - A `HashMap` can be used to record this information. ie. Each character's last index + 1 we seen before.
 - For ascii characters. We can directly use `int[256]` as a hashmap.
 
-```c++
+```cpp
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {

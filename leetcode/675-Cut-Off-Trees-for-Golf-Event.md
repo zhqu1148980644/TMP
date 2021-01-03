@@ -57,7 +57,7 @@ Constraints:
 
 - In each step, use bfs to find the shorted path to the tree with the minimum height, when the current minimum height tree is found, start a new bfs from this tree.
 
-```c++
+```cpp
 class Solution {
 public:
 #define node(x, y) (((x) * n + (y)))

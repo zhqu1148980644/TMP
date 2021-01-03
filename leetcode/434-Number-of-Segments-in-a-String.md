@@ -13,7 +13,7 @@ Output: 5
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     int countSegments(string s) {

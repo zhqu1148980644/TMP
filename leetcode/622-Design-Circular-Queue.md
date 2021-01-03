@@ -40,7 +40,7 @@ Please do not use the built-in Queue library.
 - `lo` represents the front of the queue, `hi` represents element next to last element.
 - Use `k + 1` spaces to differentiate between empty(`lo == hi`) and full(`hi == lo - 1`)
 
-```c++
+```cpp
 class MyCircularQueue {
 public:
     /** Initialize your data structure here. Set the size of the queue to be k. */

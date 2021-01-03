@@ -34,7 +34,7 @@ Note: 1 <= N <= 10 ^ 9.
     - ....
 - Time complexity: `1 + 2 + 3 + 4 ... + n = n(n + 1) / 2`, thus the number of while loops will run `sqrt(N)` times untill N is deduced to a number smaller than 0.
 
-```c++
+```cpp
 class Solution {
 public:
     int consecutiveNumbersSum(int N) {
@@ -59,7 +59,7 @@ public:
 - ie: `2n = x * c` only if `x` and `c` are intergers.
     - `2n % x = 0` and  x * x < 2n
     - `2n / x - x = 2a - 1  % 2 = 1`
-```c++
+```cpp
 class Solution {
 public:
     int consecutiveNumbersSum(int N) {

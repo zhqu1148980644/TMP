@@ -50,7 +50,7 @@ Output: 1
 
 1. ##### straight forward O(n2)
 
-```c++
+```cpp
 class Solution {
 public:
     int findTheDistanceValue(vector<int>& arr1, vector<int>& arr2, int d) {
@@ -72,7 +72,7 @@ public:
 
 2. ##### binary search O(n1 * log(n2))
 
-```c++
+```cpp
 class Solution {
 public:
     int findTheDistanceValue(vector<int>& arr1, vector<int>& arr2, int d) {

@@ -20,7 +20,7 @@ Output: [1,2]
 
 - As there are at most `two` numbers with occurrence greater than n / 3, we can simultaneously maintain two counts for the number appeared most and the number appeared the second most.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> majorityElement(vector<int>& nums) {

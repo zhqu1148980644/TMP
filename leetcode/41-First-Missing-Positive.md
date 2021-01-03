@@ -28,7 +28,7 @@ Your algorithm should run in O(n) time and uses constant extra space.
     - the mixing interger can't be bigger than n + 1; n: length of vector
 - Iteratively check the array from the beginning till find the first element whose value is not in the right position.
 
-```c++
+```cpp
 class Solution {
 public:
     int firstMissingPositive(vector<int>& nums) {

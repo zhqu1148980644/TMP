@@ -23,7 +23,7 @@ All inputs and outputs should use lowercase letters, and the output is 7 charact
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> m;
@@ -65,7 +65,7 @@ public:
 - Spacing between adjecent valid two-char hex numbers is `0x33 - 0x22 == 0x22 - 0x11 = 0x11 = 17`. Thus, the nearest y in `0xyy` for a given `n` is `(n / 17) + (n % 17 > 8 ? 1 : 0)`.
 
 
-```c++
+```cpp
 class Solution {
 public:
     string similarRGB(string color) {

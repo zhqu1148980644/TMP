@@ -32,7 +32,7 @@ Explanation: You are given the third node with value 1, the linked list should b
 1. ##### swap node value
 
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -54,7 +54,7 @@ public:
 
 Or
 
-```c++
+```cpp
 class Solution {
 public:
     void deleteNode(ListNode* node) {

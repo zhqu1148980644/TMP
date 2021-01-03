@@ -33,7 +33,7 @@ A[i] is 0 or 1
 
 - Only reverse the last digit
 
-```c++
+```cpp
 class Solution {
 public:
     vector<bool> prefixesDivBy5(vector<int>& A) {

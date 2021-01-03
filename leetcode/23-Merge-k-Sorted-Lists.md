@@ -31,7 +31,7 @@ Use a priority queue to reduce complexity of select-smallest operation to `O(1)`
 
 Merge will be called `log(k)` times.
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -79,7 +79,7 @@ public:
 
 Elegant solution borrowed from other.
 
-```c++
+```cpp
 class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {

@@ -35,7 +35,7 @@ target will be a non-zero integer in the range [-10^9, 10^9].
 - So, the answer is the first numer whose accumulate sum is larger than or equal to target and the difference between itself and the target is even.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int reachNumber(int target) {

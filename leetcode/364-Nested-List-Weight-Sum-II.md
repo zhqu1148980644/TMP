@@ -20,7 +20,7 @@ Explanation: One 1 at depth 3, one 4 at depth 2, and one 6 at depth 1; 1*3 + 4*2
 
 1. ##### two pass
 
-```c++
+```cpp
 /**
  * // This is the interface that allows for creating nested lists.
  * // You should not implement it, or speculate about its implementation
@@ -77,7 +77,7 @@ public:
 
 2. ##### bfs search one pass
 
-```c++
+```cpp
 class Solution {
 public:
     int depthSumInverse(vector<NestedInteger>& nestedList) {

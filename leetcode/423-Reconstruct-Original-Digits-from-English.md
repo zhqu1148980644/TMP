@@ -17,7 +17,7 @@ Output: "45"
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     string originalDigits(string s) {

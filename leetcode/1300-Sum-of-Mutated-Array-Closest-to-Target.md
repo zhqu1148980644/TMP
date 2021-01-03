@@ -37,7 +37,7 @@ Output: 11361
 
 - Use binary search to search for the minimum threshold value that may generate a sumvalue larger than the target value.
 
-```c++
+```cpp
 class Solution {
 public:
     int sum(vector<int> & arr, int maxv) {
@@ -64,7 +64,7 @@ public:
 
 - or also use binary search to speed up summing based on prefix sum.
 
-```c++
+```cpp
 class Solution {
 public:
 

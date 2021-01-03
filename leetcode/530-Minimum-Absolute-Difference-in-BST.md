@@ -26,7 +26,7 @@ The minimum absolute difference is 1, which is the difference between 2 and 1 (o
 
 1. ##### inorder traversal with recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -59,7 +59,7 @@ public:
 
 - Use morris traversal as example
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

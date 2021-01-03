@@ -22,7 +22,7 @@ Output: [9,4]
 
 1. ##### hashset
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {

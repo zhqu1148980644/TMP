@@ -22,7 +22,7 @@ You may assume the input string will only contain letters of alphabet.
 
 1. ##### hashset
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> findWords(vector<string>& words) {

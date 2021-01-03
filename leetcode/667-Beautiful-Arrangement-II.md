@@ -24,7 +24,7 @@ The n and k are in the range 1 <= k < n <= 104.
     - abs(diff):     `4  3   2  1  3  1  1  1  1`
 
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> constructArray(int n, int k) {

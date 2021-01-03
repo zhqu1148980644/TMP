@@ -29,7 +29,7 @@ Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (m
     - It can not be `n[i - 4]` or any location before this point, if the last robbing point is `n[i - 4]`, it's clear that rob `n[i - 2]` then rob `n[i]` can achieve a higher amount of money and this contradict with the truth that we are searching for the last robbing point.
 - So it's a dynamic programming problem, The answer of `n[i]` depends only on `n[i - 2]` and `n[i - 3]`.
 
-```c++
+```cpp
 #define max(x, y) ( x > y ? x : y)
 
 int rob(int* nums, int numsSize){
@@ -49,7 +49,7 @@ int rob(int* nums, int numsSize){
 
 As only three values need to be reordered, we can remove the redundant dp table.
 
-```c++
+```cpp
 class Solution {
 public:
     int rob(vector<int>& nums) {

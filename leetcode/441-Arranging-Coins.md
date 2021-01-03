@@ -35,7 +35,7 @@ Because the 4th row is incomplete, we return 3.
 
 1. ##### binary search
 
-```c++
+```cpp
 class Solution {
 public:
     int arrangeCoins(int n) {
@@ -55,7 +55,7 @@ public:
 
 2. ##### cummulation
 
-```c++
+```cpp
 class Solution {
 public:
     int arrangeCoins(int n) {
@@ -73,7 +73,7 @@ public:
 
 - `x = (-b + sqrt(b^2 - 4ac)) / 2a`
 
-```c++
+```cpp
 class Solution {
 public:
     int arrangeCoins(int n) {

@@ -36,7 +36,7 @@ Every string in deadends and the string target will be a string of 4 digits from
 1. ##### bfs search O(4^9)
 
 
-```c++
+```cpp
 class Solution {
 public:
     int openLock(vector<string>& deadends, string target) {

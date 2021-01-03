@@ -29,7 +29,7 @@ You can assume that no duplicate edges will appear in edges. Since all edges are
 
 1. ##### Union Find
 
-```c++
+```cpp
 class UnionFind {
 private:
     int * nodes;
@@ -80,7 +80,7 @@ public:
 
 2. ##### dfs
 
-```c++
+```cpp
 class Solution {
 public:
     void dfs(int node, vector<vector<int>> & adjs, vector<bool> & visited) {
@@ -115,7 +115,7 @@ public:
 
 3. ##### bfs
 
-```c++
+```cpp
 class Solution {
 public:
     int countComponents(int n, vector<vector<int>>& edges) {

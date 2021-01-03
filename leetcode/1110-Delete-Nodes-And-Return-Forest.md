@@ -27,7 +27,7 @@ to_delete contains distinct values between 1 and 1000.
 
 - Remember to cut the links between parent and child nodes when children need to be deleted.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

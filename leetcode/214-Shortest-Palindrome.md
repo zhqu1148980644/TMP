@@ -35,7 +35,7 @@ Output: "dcbabcd"
 
 - Time limit exceed and Memory limit exceed.
 
-```c++
+```cpp
 class Solution {
 public:
     string shortestPalindrome(string s) {
@@ -91,7 +91,7 @@ class Solution:
 - Here `next[i]` represents the longest prefix equals to `p[:i)`'s suffix `p[:next[i])`
 - Insert a `#` between s and rev to prevent prefix longer than `len(s)`.
 
-```c++
+```cpp
 class Solution {
 public:
     string shortestPalindrome(string s) {
@@ -118,7 +118,7 @@ public:
 
 The kmp template I used is borrowed from https://dsa.cs.tsinghua.edu.cn/~deng/ds/index.htm
 
-```c++
+```cpp
 // build next
 int * build_next(char * P) {
     int n = strlen(P);
@@ -155,7 +155,7 @@ int kmp(char * P, char * T) {
 - The idea is to shorten the searching space for longest palindrome prefix at each iteration.
 - The correctness is hard to understand, however if you assume that the `s[:i)` prefix at the end of each iteration must contain the target palindrome, the code below makes sense.
 
-```c++
+```cpp
 class Solution {
 public:
     string shortestPalindrome(string s) {
@@ -177,7 +177,7 @@ public:
 - Find the longest `prefix of s` and `suffix of reverse(s)` equals to find the longest `palindrome prefix` of s.
 - check palindrome related problem for detailed explanation of this method.
 
-```c++
+```cpp
 class Solution {
 public:
     int expand(const string & s, int i, int j) {
@@ -218,7 +218,7 @@ public:
 
 5. ##### rabin-karp or rolling hash
 
-```c++
+```cpp
 class Solution {
 public:
 #define num(i) ((s[i] - 'a'))

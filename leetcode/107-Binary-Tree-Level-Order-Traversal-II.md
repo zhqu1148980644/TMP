@@ -24,7 +24,7 @@ return its bottom-up level order traversal as:
 
 - Or you can use a linked list to insert new vectors at the front. however, converting the linked list to vector cost the same time as reversing.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

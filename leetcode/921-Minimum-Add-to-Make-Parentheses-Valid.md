@@ -36,7 +36,7 @@ S only consists of '(' and ')' characters.
 
 1. ##### greedy
 
-```c++
+```cpp
 class Solution {
 public:
     int minAddToMakeValid(string S) {
@@ -62,7 +62,7 @@ public:
 
 - one pass
 
-```c++
+```cpp
 class Solution {
 public:
     int minAddToMakeValid(string S) {
@@ -85,7 +85,7 @@ public:
 
 2. ##### stack
 
-```c++
+```cpp
 class Solution {
 public:
     int minAddToMakeValid(string S) {

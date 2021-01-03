@@ -44,7 +44,7 @@ s[0] == '1'
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     int numSteps(string s) {
@@ -71,7 +71,7 @@ public:
 - or
 - reference: https://leetcode-cn.com/problems/number-of-steps-to-reduce-a-number-in-binary-representation-to-one/solution/pan-duan-01zi-fu-er-yi-by-cieusy/
 
-```c++
+```cpp
 class Solution {
 public:
     int numSteps(string s) {

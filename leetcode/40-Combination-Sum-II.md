@@ -40,7 +40,7 @@ The difference between problem 39 and this problem is:
 
 - Because the array are sorted, we can easily bypass the same number in each step. ie. Ensure that in the for loop of backtrack, each number after the index will be used once.
 
-```c++
+```cpp
 class Solution {
 private:
     vector<vector<int>> res;

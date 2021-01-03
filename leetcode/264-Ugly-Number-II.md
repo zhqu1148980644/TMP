@@ -20,7 +20,7 @@ n does not exceed 1690.
 1. ##### tree set O(nlog(n))
 
 
-```c++
+```cpp
 class Solution {
 public:
     int nthUglyNumber(int n) {
@@ -46,7 +46,7 @@ public:
 - Similar to merge sort lists.
 - Each ugly number can generate 3 different ugly numbers.
 
-```c++
+```cpp
 class Solution {
 public:
     int nthUglyNumber(int n) {

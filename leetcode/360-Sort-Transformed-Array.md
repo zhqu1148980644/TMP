@@ -17,7 +17,7 @@ Output: [-23,-5,1,7]
 
 1. ##### find the mid point then merge two sorted arrays
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> sortTransformedArray(vector<int>& nums, int a, int b, int c) {
@@ -59,7 +59,7 @@ public:
 
 or just start merging from two ends.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> sortTransformedArray(vector<int>& nums, int a, int b, int c) {

@@ -20,7 +20,7 @@ You may assume k is always valid, 1 ≤ k ≤ n2.
 
 1. ##### merge sorted array O(klog(n)) worst(n2log(n))
 
-```c++
+```cpp
 class Solution {
 public:
     int kthSmallest(vector<vector<int>>& matrix, int k) {
@@ -46,7 +46,7 @@ public:
 - Use binsearch to find the k'th smallest number. For each suspected number `mid`, if the number of elements `slower/eq` than this number is smaller than k, then it must not be the k'th smallest number, the right target must be at least(>=) `mid + 1`
 - Counting the number of elements under some number could be done in `O(n)` time, which leads to `O(log(hi - lo)n)` time.
 
-```c++
+```cpp
 class Solution {
 public:
     inline int under(vector<vector<int>> & matrix, int target) {
@@ -84,7 +84,7 @@ public:
 
 - reference: https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/discuss/85201/c-on-time-on-space-solution-with-detail-intuitive-explanation && https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/discuss/85170/on-from-paper-yes-orows
 
-```c++
+```cpp
 class Solution {
 public:
     template <typename T>

@@ -22,7 +22,7 @@ Can you do it in O(n) time?
 
 1. #### prefix sum with hash map O(n)
 
-```c++
+```cpp
 class Solution {
 public:
     int maxSubArrayLen(vector<int>& nums, int k) {

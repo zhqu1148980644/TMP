@@ -24,7 +24,7 @@ The length of each words[i] and pairs[i][j] will be in the range [1, 20].
 
 - Note that a single word could be similar to multiple words.
 
-```c++
+```cpp
 class Solution {
 public:
     bool areSentencesSimilar(vector<string>& words1, vector<string>& words2, vector<vector<string>>& pairs) {

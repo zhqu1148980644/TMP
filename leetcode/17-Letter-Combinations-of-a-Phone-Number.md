@@ -42,7 +42,7 @@ class Solution:
 
 2. #### Backtracking
 
-```c++
+```cpp
 class Solution {
 public:
     string cur;

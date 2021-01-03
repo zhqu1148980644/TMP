@@ -27,7 +27,7 @@ Note:
 
 1. ##### queue O(n) S(n)
 
-```c++
+```cpp
 class Solution {
 public:
     void duplicateZeros(vector<int>& arr) {
@@ -52,7 +52,7 @@ public:
     - It should be mentioned that the last valid zero may not be duplicated successfully. ie: the duplicate is outside of the array.
 - Then fill the array backwards starting form the last valid element.
 
-```c++
+```cpp
 class Solution {
 public:
     void duplicateZeros(vector<int>& arr) {

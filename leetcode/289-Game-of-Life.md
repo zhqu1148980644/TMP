@@ -34,7 +34,7 @@ In this question, we represent the board using a 2D array. In principle, the boa
 
 1. ##### store the previous state inplace(other bits)
 
-```c++
+```cpp
 class Solution {
 public:
     void gameOfLife(vector<vector<int>>& board) {

@@ -42,7 +42,7 @@ It's also guaranteed that f(x, y) will fit in 32 bit signed integer if 1 <= x, y
 
 - Be careful when shrinking the rigth boundary of the searching range.
 
-```c++
+```cpp
 /*
  * // This is the custom function interface.
  * // You should not implement it, or speculate about its implementation
@@ -82,7 +82,7 @@ public:
 
 2. ##### two pointers O(n)
 
-```c++
+```cpp
 /*
  * // This is the custom function interface.
  * // You should not implement it, or speculate about its implementation

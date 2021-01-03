@@ -41,7 +41,7 @@ Output: [1,1,8,8]
 
 - Compared to the bst iterator in `probem 173`, a minor change needs to be applied.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -95,7 +95,7 @@ public:
 
 2. ##### merge after traversal
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

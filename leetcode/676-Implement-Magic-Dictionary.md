@@ -23,7 +23,7 @@ Please remember to RESET your class variables declared in class MagicDictionary,
 
 - For each word in the dictionary, generate a set of strings that could be converted to this word with a single character replacement.
 
-```c++
+```cpp
 class MagicDictionary {
 public:
     /** Initialize your data structure here. */
@@ -69,7 +69,7 @@ public:
 
 2. ##### trie permit a single mismatch
 
-```c++
+```cpp
 struct TrieNode {
     TrieNode * links[26] = {nullptr};
     bool end = false;

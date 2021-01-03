@@ -22,7 +22,7 @@ Note:
 
 - Be careful to handle negative modulus.
 
-```c++
+```cpp
 class Solution {
 public:
     int subarraysDivByK(vector<int>& A, int K) {

@@ -32,7 +32,7 @@ Note:
 
 1. ##### straight forward O(n)
 
-```c++
+```cpp
 class Solution {
 public:
     int missingElement(vector<int>& nums, int k) {
@@ -53,7 +53,7 @@ public:
 
 - search for the insertion point(left boundary) of the the k'th missing number. The the count of missing numbers before `nums[mid]` can be calculated in `O(1)` time.
 
-```c++
+```cpp
 class Solution {
 public:
     inline int missnum(vector<int> & nums, int i) {

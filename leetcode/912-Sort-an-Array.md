@@ -46,7 +46,7 @@ Output: [0,0,1,1,2,5]
 - bucket sort/count sort: `O(n) S(n) stable inadaptable`
     - Map elements to naturally sorted indexes.
 
-```c++
+```cpp
 #include <experimental/random>
 class Solution {
 public:

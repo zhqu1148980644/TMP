@@ -31,7 +31,7 @@ There is no way to divide the array using the conditions required.
 
 - To make all subarrays are in strict ascending order(no duplidate are witin one subsequence), the minimum number of arrays equals to the frequency of the most frequent elements.
 
-```c++
+```cpp
 class Solution {
 public:
     bool canDivideIntoSubsequences(vector<int>& nums, int K) {
@@ -47,7 +47,7 @@ public:
 
 2. ##### one pass
 
-```c++
+```cpp
 class Solution {
 public:
     bool canDivideIntoSubsequences(vector<int>& nums, int K) {

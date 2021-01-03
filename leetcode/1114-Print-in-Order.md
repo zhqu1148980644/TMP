@@ -169,7 +169,7 @@ class Foo:
 - `lock()`
 - `unlock()`
 
-```c++
+```cpp
 class Foo {
 public:
     mutex t2;

@@ -21,7 +21,7 @@ You may assume k is always valid, 1 ≤ k ≤ array's length.
 
 - sorting
 
-```c++
+```cpp
 class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {
@@ -35,7 +35,7 @@ public:
 
 - time complexity: O(n) + O(n/2) + O(n/4)... worst case: O(n2)
 
-```c++
+```cpp
 #include <experimental/random>
 class Solution {
 public:
@@ -72,7 +72,7 @@ public:
 - Maintaing a min heap with k largest elements.
 - Other heap based selection algorithm also works.
 
-```c++
+```cpp
 class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {
@@ -91,7 +91,7 @@ public:
 
 Or a manually built heap.
 
-```c++
+```cpp
 
 ```
 
@@ -99,7 +99,7 @@ Or a manually built heap.
 
 - reference: https://leetcode-cn.com/problems/kth-largest-element-in-an-array/comments/105522
 
-```c++
+```cpp
 class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {
@@ -124,7 +124,7 @@ public:
 - reference: https://www.geeksforgeeks.org/k-largestor-smallest-elements-in-an-array/
 - The complexity equals to iteratively find the largest element k times.
 
-```c++
+```cpp
 class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {
@@ -150,7 +150,7 @@ public:
 
 - Speculate the target number in the range of 32bit interger by counting the number of elements slower than it. For the target k'th larget number, numbers in the array <= it should be at least k.
 
-```c++
+```cpp
 class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {

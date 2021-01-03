@@ -15,7 +15,7 @@ Output: []
 
 2. ##### backtrack O(n*(n!))
 
-```c++
+```cpp
 class Solution {
 public:
     unordered_map<char, int> m;

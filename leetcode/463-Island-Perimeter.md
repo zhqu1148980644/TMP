@@ -28,7 +28,7 @@ Explanation: The perimeter is the 16 yellow stripes in the image below:
 - count the number of pairs of islands are adjacent to each other(Only count once) `nadj`.
 - The perimeter of the island is `nisland * 4 - 2 * nadj`
 
-```c++
+```cpp
 class Solution {
 public:
     int islandPerimeter(vector<vector<int>>& grid) {
@@ -52,7 +52,7 @@ public:
 
 - The projection of left/top edges and right/bottom edges are the same, thus we only need to count edges in one of two opposit sides.
 
-```c++
+```cpp
 class Solution {
 public:
     int islandPerimeter(vector<vector<int>>& grid) {

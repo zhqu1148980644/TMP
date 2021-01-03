@@ -36,7 +36,7 @@ S contains only uppercase, lowercase and spaces. Exactly one space between each
 1. ##### straight forward
 
 
-```c++
+```cpp
 class Solution {
 public:
     string toGoatLatin(string S) {

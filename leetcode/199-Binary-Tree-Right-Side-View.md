@@ -22,7 +22,7 @@ A right side view of a binary tree is the sequence composed of each level's righ
 
 - Bfs traversial is level traversial.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -59,7 +59,7 @@ public:
 - dfs also works as long as we can record the level of each node when traversing.
 - To make dfs work correctly and simple, we traverse starting from the right child.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> rightSideView(TreeNode* root) {

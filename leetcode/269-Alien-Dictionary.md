@@ -52,7 +52,7 @@ Explanation: The order is invalid, so return "".
 - Similar to problem 210, we can thought of the order of characters as a dependency tree.
 - The order of each pair of characters can be fetched by finding the first unequal character pair in two lexicographically sorted words.
 
-```c++
+```cpp
 class Solution {
 public:
     string alienOrder(vector<string>& words) {

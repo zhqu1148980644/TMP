@@ -72,7 +72,7 @@ Output:
 
 1. ##### dfs with row and col mark
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -111,7 +111,7 @@ public:
 
 2. ##### bfs with column mark
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> verticalOrder(TreeNode* root) {

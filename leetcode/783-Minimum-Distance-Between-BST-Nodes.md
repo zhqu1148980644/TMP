@@ -26,7 +26,7 @@ This question is the same as 530: https://leetcode.com/problems/minimum-absolut
 
 1. ##### stack
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

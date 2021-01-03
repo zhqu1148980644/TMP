@@ -75,7 +75,7 @@ Since the number of threads for producer/consumer is greater than 1, we do not k
 
 1. ##### condition_variable
 
-```c++
+```cpp
 class BoundedBlockingQueue {
 public:
     int cap;

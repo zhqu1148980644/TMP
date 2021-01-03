@@ -33,7 +33,7 @@ Local names do not start with a '+' character.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     string convert(const string & s) {

@@ -46,7 +46,7 @@ trust[i][0] != trust[i][1]
 
 1. ##### count indegree and outdrgee
 
-```c++
+```cpp
 class Solution {
 public:
     int findJudge(int N, vector<vector<int>>& trust) {

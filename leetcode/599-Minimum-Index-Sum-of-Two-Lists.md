@@ -25,7 +25,7 @@ No duplicates in both lists.
 
 1. ##### hash map
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> findRestaurant(vector<string>& list1, vector<string>& list2) {

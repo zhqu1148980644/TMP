@@ -21,7 +21,7 @@ The length and width of the given matrix are in the range of [1, 150].
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> imageSmoother(vector<vector<int>>& M) {

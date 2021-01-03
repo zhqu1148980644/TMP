@@ -26,7 +26,7 @@ groupSizes.length == n
 
 1. ##### sort
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> groupThePeople(vector<int>& groupSizes) {
@@ -50,7 +50,7 @@ public:
 
 2. ##### hashmap
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> groupThePeople(vector<int>& groupSizes) {

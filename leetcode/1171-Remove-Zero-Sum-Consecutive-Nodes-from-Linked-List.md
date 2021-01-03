@@ -31,7 +31,7 @@ Each node in the linked list has -1000 <= node.val <= 1000.
 
 1. ##### simulation
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -73,7 +73,7 @@ public:
 
 2. ##### recusion
 
-```c++
+```cpp
 class Solution {
 public:
     ListNode* removeZeroSumSublists(ListNode* head) {

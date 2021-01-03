@@ -45,7 +45,7 @@ Each node's value will be between 0 and 1000.
 - The order of elements in each row can not be maintained by ordinary traversal methods, elements must be sorted(or use treemap) according to their `y` index.
 - To simplify the sorting order, `y` is increased in children.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

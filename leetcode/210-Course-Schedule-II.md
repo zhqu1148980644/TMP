@@ -34,7 +34,7 @@ Explanation: There are a total of 4 courses to take. To take course 3 you should
 
 1. ##### Topological sort
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
@@ -69,7 +69,7 @@ public:
 
 - Be cautious about the appending order and the reversement at the end;
 
-```c++
+```cpp
 enum State {UNVISITED, VISITED, VISITING};
 
 class Solution {

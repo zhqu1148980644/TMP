@@ -14,7 +14,7 @@ Derive your algorithm's runtime complexity.
 
 1. ##### dfs with memoization O(2^n)
 
-```c++
+```cpp
 class Solution {
 public:
     unordered_map<string, bool> m;

@@ -58,7 +58,7 @@ Output: 23
         -> *****    **** <-
 ```
 
-```c++
+```cpp
 class Solution {
 public:
 #define edge(n1, n2) ((n1) * N + (n2))
@@ -102,7 +102,7 @@ public:
 
 or 
 
-```c++
+```cpp
 #define edge(x, y) (x < y ? x * N + y : y * N + x)
 
 using E = pair<int, int>;

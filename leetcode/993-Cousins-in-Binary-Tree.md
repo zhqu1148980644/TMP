@@ -35,7 +35,7 @@ Each node has a unique integer value from 1 to 100.
 
 1. ##### dfs
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -73,7 +73,7 @@ public:
 
 2. ##### bfs
 
-```c++
+```cpp
 class Solution {
 public:
     bool isCousins(TreeNode* root, int x, int y) {

@@ -61,7 +61,7 @@ Output: 570
 
 1. ##### hash map
 
-```c++
+```cpp
 class Solution {
 public:
     unordered_map<int, int> m {{1, 0}};

@@ -28,7 +28,7 @@ Note: This question is the same as 316: https://leetcode.com/problems/remove-du
 
 1. ##### mono stack
 
-```c++
+```cpp
 class Solution {
 public:
     string smallestSubsequence(string text) {

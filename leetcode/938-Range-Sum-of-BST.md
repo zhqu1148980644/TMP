@@ -23,7 +23,7 @@ The final answer is guaranteed to be less than 2^31.
 
 1. ##### recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -51,7 +51,7 @@ public:
 
 2. ##### iteration with stack
 
-```c++
+```cpp
 class Solution {
 public:
     int rangeSumBST(TreeNode* root, int L, int R) {
@@ -74,7 +74,7 @@ public:
 
 3. ###### iteration with queue
 
-```c++
+```cpp
 class Solution {
 public:
     int rangeSumBST(TreeNode* root, int L, int R) {

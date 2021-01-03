@@ -32,7 +32,7 @@ The substring with start index = 2 is "ab", which is an anagram of "ab".
 
 1. ##### sliding window
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> findAnagrams(string s, string p) {

@@ -63,7 +63,7 @@ Explanation: "abbbabbbc" occurs twice, but "abbbabbbc" can also be encoded to "2
     - If `s[i:j]` is made of repeated pattern `p` with `k` occurrences, `dp[i][j]` can be represented by `k[p]`.
     - Else, divide `s[i:j]` into two parts, `dp[i][j]` can be represented by `dp[i][k] + dp[k + 1][j] i <= k < j`, and choose the shortest one among all possibilities.
 
-```c++
+```cpp
 class Solution {
 public:
     const string & solve(string & s, vector<vector<string>> & dp, int i, int j) {
@@ -104,7 +104,7 @@ public:
 - bottom up iterative method.
 - fill the table column by column from left to right and bottom to top.
 
-```c++
+```cpp
 class Solution {
 public:
     string encode(string s) {

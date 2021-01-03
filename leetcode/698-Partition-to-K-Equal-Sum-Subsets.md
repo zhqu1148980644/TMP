@@ -22,7 +22,7 @@ Note:
 - The main trick is to start searching subsets from the largest available number to the smallest. why?
 - If the searching order is reversed, a hash map for recording bad states should be matained.
 
-```c++
+```cpp
 class Solution {
 public:
     bool canPartitionKSubsets(vector<int>& nums, int k) {

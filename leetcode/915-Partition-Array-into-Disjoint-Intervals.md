@@ -29,7 +29,7 @@ It is guaranteed there is at least one way to partition A as described.
 
 1. ##### tree map O(nlog(n))
 
-```c++
+```cpp
 class Solution {
 public:
     int partitionDisjoint(vector<int>& A) {
@@ -50,7 +50,7 @@ public:
 
 2. ##### mono stack O(n) S(n)
 
-```c++
+```cpp
 class Solution {
 public:
     int partitionDisjoint(vector<int>& A) {
@@ -74,7 +74,7 @@ public:
 
 3. ##### record minval for each suffix O(n) S(n)
 
-```c++
+```cpp
 class Solution {
 public:
     int partitionDisjoint(vector<int>& A) {
@@ -97,7 +97,7 @@ public:
 
 4. ##### one pass O(n) S(1)
 
-```c++
+```cpp
 class Solution {
 public:
     int partitionDisjoint(vector<int>& A) {

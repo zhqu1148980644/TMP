@@ -31,7 +31,7 @@ Output: 5
 - reference: https://leetcode-cn.com/problems/basic-calculator-ii/comments/32510
 - Codes below are self-explanatory.
 
-```c++
+```cpp
 class Solution {
 public:
     int calculate(string s) {
@@ -66,7 +66,7 @@ public:
 
 - In the first solution, it's clear that only the top value of the stack is being used. A single variable is enough for storing the top value.
 
-```c++
+```cpp
 class Solution {
 public:
     int calculate(string s) {

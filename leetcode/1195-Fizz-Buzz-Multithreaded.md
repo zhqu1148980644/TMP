@@ -26,7 +26,7 @@ Thread D will call number() which should only output the numbers.
 1. ##### conditional variable
 
 
-```c++
+```cpp
 class FizzBuzz {
 private:
     int n;

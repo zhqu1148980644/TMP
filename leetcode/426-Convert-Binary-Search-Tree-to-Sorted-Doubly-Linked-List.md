@@ -46,7 +46,7 @@ Output: [1]
 
 1. ##### inorder traversal with recursion
 
-```c++
+```cpp
 /*
 // Definition for a Node.
 class Node {
@@ -101,7 +101,7 @@ public:
 
 2. ##### inorder traversal with stack
 
-```c++
+```cpp
 class Solution {
 public:
     Node* treeToDoublyList(Node* root) {
@@ -136,7 +136,7 @@ public:
 
 3. ##### morris method
 
-```c++
+```cpp
 /*
 // Definition for a Node.
 class Node {

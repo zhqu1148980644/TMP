@@ -21,7 +21,7 @@ Note that the problem said we cannot use devision.
 - Calculate the product of all elements left/right to each item.
 - The product except an item itself is the multiplication of product of all elements left and right to this item.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> productExceptSelf(vector<int>& nums) {
@@ -44,7 +44,7 @@ public:
 
 Or we can use a variable denoted as `right` to record the multiplication of items on the right.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> productExceptSelf(vector<int>& nums) {
@@ -67,7 +67,7 @@ public:
 
 - Combine the multiplication of left product and right product in one loop and update the output array at the same time.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> productExceptSelf(vector<int>& nums) {

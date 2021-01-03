@@ -36,7 +36,7 @@ Constraints:
 
 - By adding items from the largest to smallest, the first matching subsequence is the best choice.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> minSubsequence(vector<int>& nums) {
@@ -59,7 +59,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> minSubsequence(vector<int>& nums) {

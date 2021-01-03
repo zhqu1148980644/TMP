@@ -36,7 +36,7 @@ Explanation: For n = 3 the term was "21" in which we have two groups "2" and "1"
 
 1. #### Straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     string countAndSay(int n) {

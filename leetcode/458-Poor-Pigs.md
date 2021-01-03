@@ -31,7 +31,7 @@ If there are n buckets and a pig drinking poison will die within m minutes, how 
 - For `x` pigs, the number is `nstates**x`
 - Thus in order to test n buckets, we need to ensure that `ntates**x >= n`.
 
-```c++
+```cpp
 class Solution {
 public:
     int poorPigs(int buckets, int minutesToDie, int minutesToTest){

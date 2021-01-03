@@ -49,7 +49,7 @@ rotate the input matrix in-place such that it becomes:
 - transpose then reverse each row
 - reverse rows then transpose
 
-```c++
+```cpp
 class Solution {
 public:
     void rotate(vector<vector<int>>& matrix) {

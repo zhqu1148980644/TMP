@@ -24,7 +24,7 @@ search("b..") -> true
 
 1. ##### trie
 
-```c++
+```cpp
 class Trie {
 private:
     Trie *links[26] = {nullptr};

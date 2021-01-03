@@ -21,7 +21,7 @@ S will consist of lowercase English letters ('a' to 'z') only.
 
 1. ##### hash map
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> partitionLabels(string S) {

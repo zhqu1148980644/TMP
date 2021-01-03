@@ -19,7 +19,7 @@ The length of words[i] will be in the range of [1, 50].
 
 - Time limit exceed
 
-```c++
+```cpp
 class Solution {
 public:
     bool isubseq(string & src, string & tgt) {
@@ -42,7 +42,7 @@ public:
 
 - Q? why this code can beat 100%?
 
-```c++
+```cpp
 class Solution {
 public:
     int numMatchingSubseq(string S, vector<string>& words) {
@@ -64,7 +64,7 @@ public:
 
 2. ##### binary search O(nlog(len(S))) n is sum length of words
 
-```c++
+```cpp
 class Solution {
 public:
     int numMatchingSubseq(string S, vector<string>& words) {
@@ -93,7 +93,7 @@ public:
 
 3. ##### buckets O(len(S)len(words))
 
-```c++
+```cpp
 class Solution {
 public:
     int numMatchingSubseq(string S, vector<string>& words) {
@@ -122,7 +122,7 @@ public:
 
 or neat solution from stephan.
 
-```c++
+```cpp
 class Solution {
 public:
     int numMatchingSubseq(string S, vector<string>& words) {

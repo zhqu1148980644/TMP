@@ -29,7 +29,7 @@ text consists of lower case English letters only.
 
 #### Solutions
 
-```c++
+```cpp
 class Solution {
 public:
     int maxNumberOfBalloons(string text) {

@@ -44,7 +44,7 @@ distance.length == n
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     int distanceBetweenBusStops(vector<int>& distance, int start, int destination) {
@@ -63,7 +63,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     int distanceBetweenBusStops(vector<int>& distance, int start, int destination) {

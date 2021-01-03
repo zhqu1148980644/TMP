@@ -46,7 +46,7 @@ Explanation: Given the above perfect binary tree (Figure A), your function shoul
 - Link nodes in the right side of the left tree to nodes in the left side of the right tree.
 - besides the code of the link part, The link function is actually a recursive preorder traversal function.
 
-```c++
+```cpp
 class Solution {
 public:
     void link(Node * root) {
@@ -72,7 +72,7 @@ public:
 
 2. ##### level order traversal with queue  O(n) S(log(n))
 
-```c++
+```cpp
 /*
 // Definition for a Node.
 class Node {
@@ -118,7 +118,7 @@ public:
 
 - Similar to the first recursive version.
 
-```c++
+```cpp
 class Solution {
 public:
     Node* connect(Node* root) {
@@ -185,7 +185,7 @@ class Solution:
 
 - Note that this verison links one level across multiple recursive call. 
 
-```c++
+```cpp
 class Solution {
 public:
     Node* connect(Node* root) {

@@ -19,7 +19,7 @@ Output:
 
 1. ##### inplace hasmap
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> findDuplicates(vector<int>& nums) {
@@ -38,7 +38,7 @@ public:
 
 2. ##### Pigeonhole principle
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> findDuplicates(vector<int>& nums) {

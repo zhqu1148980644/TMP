@@ -23,7 +23,7 @@ Output: true
 
 - The number of each character should be even to make the string a palindrome except for the center character.
 
-```c++
+```cpp
 class Solution {
 public:
     bool canPermutePalindrome(string s) {

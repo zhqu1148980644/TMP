@@ -16,7 +16,7 @@ For example, given that words = ["ab", "bc"] and S = "aabcd", we should return "
 
 1. ##### hash map O(n*(toal len of words))
 
-```c++
+```cpp
 class Solution {
 public:
     string boldWords(vector<string>& words, string S) {
@@ -53,7 +53,7 @@ public:
 
 2. ##### trie O(max(len(word)) * n)
 
-```c++
+```cpp
 struct Trie {
     vector<Trie *> links {26};
     int len = 0;

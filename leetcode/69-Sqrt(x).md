@@ -23,7 +23,7 @@ Explanation: The square root of 8 is 2.82842..., and since
 
 The problem does not require the decimal part.
 
-```c++
+```cpp
 class Solution {
 public:
     int mySqrt(int x) {
@@ -50,7 +50,7 @@ public:
 
 - In another perspective, we can see this iteration process as to find the next x by extending the current point's tangent till it intersect with `y = 0`.
 
-```c++
+```cpp
 class Solution {
 public:
     int mySqrt(int x) {
@@ -68,7 +68,7 @@ public:
 - This one is borrowed from others.
 - The idea is to iteratilvely find the highest(most significant) bit to fill every bit of root.
 
-```c++
+```cpp
 class Solution {
 public:
     int mySqrt(int x) {

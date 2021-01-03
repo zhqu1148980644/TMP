@@ -31,7 +31,7 @@ It is guaranteed that costs.length is even.
 - Suppose all people go to B, than select some guys flies to A, then the price changes of these people would be sum of `A[i] - B[i]`. Thus the answer can be solved by selecting first N people go to A when all persons are sorted by `A[i] - B[i]`. How to prove?
 - An optimization would be to use quick sort for selecting the first lower half.
 
-```c++
+```cpp
 class Solution {
 public:
 

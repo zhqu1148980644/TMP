@@ -31,7 +31,7 @@ The given list has length in the range [0, 10000].
 
 1. ##### mono stack
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {

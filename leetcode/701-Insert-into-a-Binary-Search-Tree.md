@@ -40,7 +40,7 @@ It's guaranteed that val does not exist in the original BST.
 
 1. ##### iteration
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -76,7 +76,7 @@ public:
 
 2. ##### recursion
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode* insertIntoBST(TreeNode* root, int val) {

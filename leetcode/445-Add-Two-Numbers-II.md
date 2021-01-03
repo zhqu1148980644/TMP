@@ -16,7 +16,7 @@ Output: 7 -> 8 -> 0 -> 7
 
 1. ##### two stacks
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -65,7 +65,7 @@ public:
 - Another way is to padd the shorter list till two lists have the same number of nodes.
 - `listnum` returns the remainder.
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {

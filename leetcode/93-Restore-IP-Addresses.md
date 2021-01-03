@@ -11,7 +11,7 @@ Output: ["255.255.11.135", "255.255.111.35"]
 
 1. ##### dfs
 
-```c++
+```cpp
 class Solution {
 private:
     vector<string> res;
@@ -47,7 +47,7 @@ public:
 
 2. ##### straight forward
 
-```c++
+```cpp
 #define valid(s) ((!(s.size() > 1 && s[0] == '0') && stoi(s) <= 255))
 class Solution {
 public:

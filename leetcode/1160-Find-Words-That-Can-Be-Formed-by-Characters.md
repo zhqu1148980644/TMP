@@ -30,7 +30,7 @@ All strings contain lowercase English letters only.
 
 1. ##### hash map
 
-```c++
+```cpp
 class Solution {
 public:
     int countCharacters(vector<string>& words, string chars) {

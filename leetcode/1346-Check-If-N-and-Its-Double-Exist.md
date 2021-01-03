@@ -39,7 +39,7 @@ Explanation: In this case does not exist N and M, such that N = 2 * M.
 
 1. ##### hash map O(n) S(n)
 
-```c++
+```cpp
 class Solution {
 public:
     bool checkIfExist(vector<int>& arr) {

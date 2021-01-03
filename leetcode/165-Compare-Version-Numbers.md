@@ -62,7 +62,7 @@ class Solution:
         return (ss1 > ss2) - (ss2 > ss1)
 ```
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> split(const string & s, char delimiter = '.') {

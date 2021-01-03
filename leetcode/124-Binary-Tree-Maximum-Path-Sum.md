@@ -31,7 +31,7 @@ Output: 42
 
 1. ##### recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -72,7 +72,7 @@ public:
 - `cursum` represents the maximum path sum across the current node(not higher than this).
 - For a certain root node, as the right child will be the previous visited node, we can use a variable `right` to record the right child's `cursum`, While the left child is not, we instead use a `stack` to store `cursum` of these left children.
 
-```c++
+```cpp
 class Solution {
 public:
     int maxPathSum(TreeNode* root) {

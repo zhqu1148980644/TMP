@@ -50,7 +50,7 @@ So order them in anti-clockwise without duplicate nodes we have [1,2,4,7,8,9,10,
 
 1. ##### straight forward
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

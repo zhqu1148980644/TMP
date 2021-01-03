@@ -31,7 +31,7 @@ Note:
 - reference: https://leetcode-cn.com/problems/subarrays-with-k-different-integers/solution/shuang-zhi-zhen-qing-xi-ontong-su-jie-shi-by-pbslz/
 - `numequal(k) == numless(k) - numless(k - 1)` .less means less than or equal to.
 
-```c++
+```cpp
 class Solution {
 public:
     int lessthen(vector<int> & A, int k) {

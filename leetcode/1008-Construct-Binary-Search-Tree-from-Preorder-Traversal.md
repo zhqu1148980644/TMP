@@ -23,7 +23,7 @@ The values of preorder are distinct.
 
 - Use a upperbound to make the recursive building process automatically ends and returns.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -53,7 +53,7 @@ public:
 
 2. ##### stack
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

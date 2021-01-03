@@ -21,7 +21,7 @@ Recursive solution is trivial, could you do it iteratively?
 
 1. ##### recursion  O(n) S(log(n))
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -51,7 +51,7 @@ public:
 
 2. ##### iteration with stack  O(n) S(log(n))
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> preorderTraversal(TreeNode* root) {
@@ -68,7 +68,7 @@ public:
 };
 ```
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> preorderTraversal(TreeNode* root) {
@@ -87,7 +87,7 @@ public:
 };
 ```
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> preorderTraversal(TreeNode* root) {
@@ -106,7 +106,7 @@ public:
 };
 ```
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> preorderTraversal(TreeNode* root) {
@@ -133,7 +133,7 @@ public:
 - Use the same strategy used in `probem 94`.
 - Then difference between preorder and inorder is that visit the current node whenever meet a new node instead of visiting it after we tracebacked to it.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> preorderTraversal(TreeNode* root) {

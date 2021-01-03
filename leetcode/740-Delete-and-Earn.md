@@ -35,7 +35,7 @@ Each element nums[i] is an integer in the range [1, 10000].
 - Similar to `problem 198 House Robber`
 
 
-```c++
+```cpp
 class Solution {
 public:
     int deleteAndEarn(vector<int>& nums) {
@@ -60,7 +60,7 @@ public:
 or.
 This version is slower than the previous version because naive sorting cause `O(nlog(n))` complexity while bucket sort takes `O(n)`.
 
-```c++
+```cpp
 class Solution {
 public:
     int deleteAndEarn(vector<int>& nums) {

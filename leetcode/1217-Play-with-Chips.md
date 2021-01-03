@@ -35,7 +35,7 @@ Constraints:
 - For odd numbers, they all can be changed the same odd numbers with `zero cost`, the same with even numbers changes to the same even number.
 - Finally, if there are both even and odd numbers in the original array, there would be `2` unique numbers(one odd and one even) left with count of ``cnt1` and `cnt2`, to make them the same, move the one with less count to the other by plusing a odd number(cost cnt * 1).
 
-```c++
+```cpp
 class Solution {
 public:
     int minCostToMoveChips(vector<int>& chips) {

@@ -28,7 +28,7 @@ Explanation: Alice chooses 1, Bob chooses 1, and Alice has no more moves.
 - When the initial number is an even number, then he can choose 1, then the other player meet an odd number, since factors of odd numbers are odd numbers too, when he choose a odd numbers, the left number for the first player is an even number again, at last, the first player can always get 2(means he wins).
 
 
-```c++
+```cpp
 class Solution {
 public:
     bool divisorGame(int N) {
@@ -42,7 +42,7 @@ public:
 -  `dp[i]` represent if the first player woud win when he starts the game with number `i`.
 - Check all possible factors, check if `cur - factor`'s state is loose, if this is true, then `dp[cur] = true`.
 
-```c++
+```cpp
 class Solution {
 public:
     bool divisorGame(int N) {

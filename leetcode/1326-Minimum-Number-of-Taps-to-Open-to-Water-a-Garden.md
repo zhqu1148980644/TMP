@@ -59,7 +59,7 @@ Output: 1
 - reference: https://leetcode-cn.com/problems/minimum-number-of-taps-to-open-to-water-a-garden/solution/5318-by-ikaruga/
 - `maxrange[i]` represents the rightmost(right closed) land could be covered by all taps that covered location `i`(the start point of land i).
 
-```c++
+```cpp
 class Solution {
 public:
     int minTaps(int n, vector<int>& ranges) {
@@ -92,7 +92,7 @@ public:
 - See `problem 45 jump game II`
 - Can be seen as a breath first approach.
 
-```c++
+```cpp
 class Solution {
 public:
     int minTaps(int n, vector<int>& ranges) {

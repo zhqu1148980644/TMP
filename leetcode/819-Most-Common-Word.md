@@ -32,7 +32,7 @@ Words only consist of letters, never apostrophes or other punctuation symbols.
 
 1. ##### trie
 
-```c++
+```cpp
 struct Trie {
     vector<Trie *> links {26};
     int cnt = 0;
@@ -86,7 +86,7 @@ public:
 
 2. ##### hashmap
 
-```c++
+```cpp
 class Solution {
 public:
     string mostCommonWord(string paragraph, vector<string>& banned) {

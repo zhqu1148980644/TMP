@@ -45,7 +45,7 @@ The total number of calls to removeRange in a single test case is at most 1000.
 ```
 
 
-```c++
+```cpp
 class RangeModule {
 public:
     map<int, int> s;

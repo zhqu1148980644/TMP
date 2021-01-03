@@ -19,7 +19,7 @@ A linked list can be reversed either iteratively or recursively. Could you imple
 
 1. ##### Iteration
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -48,7 +48,7 @@ struct ListNode* reverseList(struct ListNode* head){
 
 2. ##### recursion
 
-```c++
+```cpp
 typedef struct ListNode node;
 
 struct ListNode* reverse(node * pre, node * cur) {

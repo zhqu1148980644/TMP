@@ -20,7 +20,7 @@ Could you solve it without loops/recursion?
 
 - power of 4 must be power of 2.
 
-```c++
+```cpp
 class Solution {
 public:
     bool isPowerOfFour(int num) {
@@ -36,7 +36,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     bool isPowerOfFour(int num) {

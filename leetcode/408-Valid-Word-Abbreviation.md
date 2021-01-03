@@ -22,7 +22,7 @@ Return false.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     bool validWordAbbreviation(string word, string abbr) {
@@ -50,7 +50,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     bool validWordAbbreviation(string word, string abbr) {

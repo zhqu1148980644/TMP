@@ -27,7 +27,7 @@ Output: -1
 - Determin which side of array contains the target.
 - Do binary seach in that side.
 
-```c++
+```cpp
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
@@ -64,7 +64,7 @@ public:
 
 Be cautious about the selection of lo and hi. 
 
-```c++
+```cpp
 class Solution {
 public:
     int search(vector<int> & nums, int target) {
@@ -94,7 +94,7 @@ public:
 ```
 Or
 
-```c++
+```cpp
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
@@ -125,7 +125,7 @@ public:
 - Matain the basic operation in binary search.
 - Fake the value of `nums[mid]` when to ensure the moving direction are always right.
 
-```c++
+```cpp
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
@@ -149,7 +149,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     int search(vector<int>& nums, int target) {

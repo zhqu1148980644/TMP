@@ -35,7 +35,7 @@ special cases
 ---
 ```
 
-```c++
+```cpp
 class Solution {
 public:
     int removeCoveredIntervals(vector<vector<int>> & intervals) {

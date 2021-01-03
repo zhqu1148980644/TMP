@@ -30,7 +30,7 @@ A.length is even
 
 - Since the majority has half of the total size, the distance between two majority numbers is at most `2`(Except for len == 4).
 
-```c++
+```cpp
 class Solution {
 public:
     int repeatedNTimes(vector<int>& A) {

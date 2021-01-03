@@ -40,7 +40,7 @@ The problem states that the RPN expression is always valid, tedius checking of e
 
 1. ##### move forward with stack
 
-```c++
+```cpp
 class Solution {
 public:
     int evalRPN(vector<string>& tokens) {
@@ -68,7 +68,7 @@ public:
 
 - use map to control logic branches.
 
-```c++
+```cpp
 class Solution {
 public:
     int evalRPN(vector<string> & tokens) {
@@ -102,7 +102,7 @@ public:
     - Whenever meets a opearation string, call the same function to get the operated num1 and num2.
     - Just return this number when a number string is encountered.
 
-```c++
+```cpp
 class Solution {
 public:
     int evalRPN(vector<string> & tokens) {

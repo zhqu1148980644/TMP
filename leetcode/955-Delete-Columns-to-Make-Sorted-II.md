@@ -45,7 +45,7 @@ Note:
 
 - Iteratively removing columns from the left that doesn't satisfy the lexicographical order and stop when the current column suits.
 
-```c++
+```cpp
 class Solution {
 public:
     int minDeletionSize(vector<string>& A) {

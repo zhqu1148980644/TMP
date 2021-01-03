@@ -40,7 +40,7 @@ Note: 1 <= N <= 10000
 - After the first dfs, `sum(0)` equals to `ans[0]`, thus we can do dfs the second time and update `ans[i]` in a top-down manner with the second formula mentioned above.
 
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> count;
@@ -83,7 +83,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> g;

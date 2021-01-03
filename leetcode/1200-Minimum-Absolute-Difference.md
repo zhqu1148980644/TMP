@@ -31,7 +31,7 @@ Constraints:
 
 1. ##### sort with two pointers
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> minimumAbsDifference(vector<int>& arr) {

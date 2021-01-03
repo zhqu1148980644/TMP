@@ -17,7 +17,7 @@ Output: false
 
 - Tree set supports both range search and insert/remove in O(log(n)) time.
 
-```c++
+```cpp
 class Solution {
 public:
     bool containsNearbyAlmostDuplicate(vector<int>& nums, int k, int t) {

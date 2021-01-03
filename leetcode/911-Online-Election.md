@@ -31,7 +31,7 @@ TopVotedCandidate.q(int t) is always called with t >= times[0].
 
 - preprocess cost `O(n)` time, query cost `O(log(n))` times.
 
-```c++
+```cpp
 class TopVotedCandidate {
 public:
     vector<int> winner, times;

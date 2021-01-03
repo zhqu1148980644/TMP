@@ -14,7 +14,7 @@ Note: This question is the same as 1081: https://leetcode.com/problems/smallest
 
 1. ##### stack
 
-```c++
+```cpp
 class Solution {
 public:
     string removeDuplicateLetters(string s) {

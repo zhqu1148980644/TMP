@@ -34,7 +34,7 @@ Output: 0
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     int minFlips(int a, int b, int c) {

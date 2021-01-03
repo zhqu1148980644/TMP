@@ -28,7 +28,7 @@ Each tree has at most 5000 nodes.
 
 - For each node in `tree1`, use binary search to find the complement in `tree2`.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

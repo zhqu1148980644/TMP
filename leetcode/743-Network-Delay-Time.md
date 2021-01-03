@@ -29,7 +29,7 @@ All edges times[i] = (u, v, w) will have 1 <= u, v <= N and 0 <= w <= 100.
 
 1. ##### dfs O(n^n)
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> arrive;
@@ -57,7 +57,7 @@ public:
 
 2. ##### dijkstra O((n + e)log(n))
 
-```c++
+```cpp
 class Solution {
 public:
     int networkDelayTime(vector<vector<int>>& times, int N, int K) {
@@ -97,7 +97,7 @@ public:
 
 3. ##### Floyd O(n3)
 
-```c++
+```cpp
 class Solution {
 public:
     int networkDelayTime(vector<vector<int>>& times, int N, int K) {
@@ -124,7 +124,7 @@ public:
 
 3. ##### Bellman-Ford O(ne)
 
-```c++
+```cpp
 class Solution {
 public:
     int networkDelayTime(vector<vector<int>>& times, int N, int K) {
@@ -155,7 +155,7 @@ public:
 
 - compared to Bellman-Ford algorithm, only check edges sourced from updated nodes.
 
-```c++
+```cpp
 class Solution {
 public:
     int networkDelayTime(vector<vector<int>>& times, int N, int K) {

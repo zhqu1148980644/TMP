@@ -34,7 +34,7 @@ This question is the same as 476: https://leetcode.com/problems/number-compleme
 
 - `0101 ^ 0111`
 
-```c++
+```cpp
 class Solution {
 public:
     int bitwiseComplement(int N) {

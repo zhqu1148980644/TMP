@@ -38,7 +38,7 @@ The given tree will have between 1 and 5000 nodes.
 
 1. ##### dfs
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

@@ -22,7 +22,7 @@ nums[i] will be an integer between 0 and 49,999.
 
 1. ##### sliding window
 
-```c++
+```cpp
 class Solution {
 public:
     int findShortestSubArray(vector<int>& nums) {
@@ -52,7 +52,7 @@ public:
 
 - The truth is that we only cares about the first/last indexes of numbers with the maximum frequency.
 
-```c++
+```cpp
 class Solution {
 public:
     int findShortestSubArray(vector<int>& nums) {

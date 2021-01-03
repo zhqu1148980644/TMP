@@ -21,7 +21,7 @@ Output: 2->3->6->7->1->5->4->NULL
 
 #### Solutions
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {

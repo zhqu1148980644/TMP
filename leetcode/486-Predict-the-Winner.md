@@ -35,7 +35,7 @@ Finally, player 1 has more score (234) than player 2 (12), so you need to return
 - `score(i, j)` represents the maximum score for the first(relative) player with `nums[i:j]`
 - In each time, a player has two choice, after each choice, the number of spaces reduces 1. Thus the time complexity is `2**n`.
 
-```c++
+```cpp
 class Solution {
 public:
     int score(vector<int> & nums, int i, int j) {
@@ -57,7 +57,7 @@ public:
 
 - `dp[i][j]` represents the difference between my(relative) score and the other one's score.
 
-```c++
+```cpp
 class Solution {
 public:
     bool PredictTheWinner(vector<int>& nums) {
@@ -83,7 +83,7 @@ public:
 - If the number of items is even, the first player will always win.
 - reference: https://leetcode-cn.com/problems/predict-the-winner/comments/78786
 
-```c++
+```cpp
 class Solution {
 public:
     bool PredictTheWinner(vector<int>& nums) {
@@ -105,7 +105,7 @@ public:
 
 or column by column
 
-```c++
+```cpp
 class Solution {
 public:
     bool PredictTheWinner(vector<int>& nums) {

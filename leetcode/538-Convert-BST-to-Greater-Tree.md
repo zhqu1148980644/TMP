@@ -20,7 +20,7 @@ Output: The root of a Greater Tree like this:
 
 1. ##### inorder traversal with recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -49,7 +49,7 @@ public:
 
 2. ##### inorder with stack
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode* convertBST(TreeNode* root) {
@@ -75,7 +75,7 @@ public:
 
 3. ##### inorder with morris method
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode* convertBST(TreeNode* root) {

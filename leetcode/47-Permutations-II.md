@@ -24,7 +24,7 @@ Output:
 - use hashset to make each item been visited exactly once.
 - here, we can not use swap operation as we did in problem 47 because swap will shuffle the sorted order. 
 
-```c++
+```cpp
 class Solution {
 private:
     vector<vector<int>> res;
@@ -62,7 +62,7 @@ public:
 
 2. #### hash map to remove duplicate and reord usage
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> path;

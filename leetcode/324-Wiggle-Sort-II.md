@@ -26,7 +26,7 @@ Can you do it in O(n) time and/or in-place with O(1) extra space?
     - for example: 1 2 5 5 5 6 8, split into ` 1 2 5 5` and `5 6 8`, the merged array would be `1 5 2 5 5 6 8`.
     - If we merged them from the back: `5 5 2 1` and `8 6 5`, the merged array would be `5 8 5 6 2 5 1`
 
-```c++
+```cpp
 class Solution {
 public:
     void wiggleSort(vector<int>& nums) {
@@ -50,7 +50,7 @@ public:
     - the left part is smaller than the right part.
     - numbers equal to the median(mid value) are gathered in the middle.
 
-```c++
+```cpp
 #include <experimental/random>
 class Solution {
 public:
@@ -104,6 +104,6 @@ public:
 
 - check reference
 
-```c++
+```cpp
 
 ```

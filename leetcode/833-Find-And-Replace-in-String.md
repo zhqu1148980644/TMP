@@ -30,7 +30,7 @@ All characters in given inputs are lowercase letters.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     string findReplaceString(string S, vector<int>& indexes, vector<string>& sources, vector<string>& targets) {

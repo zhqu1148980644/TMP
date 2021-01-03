@@ -23,7 +23,7 @@ S consists only of English lowercase letters.
 
 1. ##### simulate with list
 
-```c++
+```cpp
 class Solution {
 public:
     string removeDuplicates(string S) {
@@ -48,7 +48,7 @@ public:
 
 2. ##### stack
 
-```c++
+```cpp
 class Solution {
 public:
     string removeDuplicates(string S) {

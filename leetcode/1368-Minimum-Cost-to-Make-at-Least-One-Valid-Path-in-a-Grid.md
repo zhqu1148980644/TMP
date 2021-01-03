@@ -65,7 +65,7 @@ Output: 0
 
 1. ##### dijkstra O(mnlog(mn)) O((e + v) * log(e + v))
 
-```c++
+```cpp
 class Solution {
 public:
     int minCost(vector<vector<int>>& grid) {
@@ -112,7 +112,7 @@ public:
 - To maintain this property, we can push 0 edges at the front and push 1 edges at the back with a `deque`.
 - `dis` vector is used for guaranting each node will be pushed at most twice(front and back), though the time complexity will not change if we simply use a `pair<node, dis>` as the element of deque.
 
-```c++
+```cpp
 class Solution {
 public:
     int minCost(vector<vector<int>>& grid) {
@@ -153,7 +153,7 @@ public:
 
 3. ##### SPFA
 
-```c++
+```cpp
 class Solution {
 public:
     int minCost(vector<vector<int>>& grid) {

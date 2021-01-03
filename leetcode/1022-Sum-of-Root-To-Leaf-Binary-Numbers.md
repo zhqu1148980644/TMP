@@ -25,7 +25,7 @@ The answer will not exceed 2^31 - 1.
 
 1. ##### dfs
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -54,7 +54,7 @@ public:
 
 - Use inorder traversal as example, preorder is fine too.
 
-```c++
+```cpp
 class Solution {
 public:
     int sumRootToLeaf(TreeNode* root) {

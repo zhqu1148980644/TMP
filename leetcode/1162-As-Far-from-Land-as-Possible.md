@@ -37,7 +37,7 @@ The cell (2, 2) is as far as possible from all the land with distance 4.
 
 - A water cell can be firstly reached by it's nearest land cell in a breath first approach.
 
-```c++
+```cpp
 #define node(x, y) (((x) * ncol) + (y))
 class Solution {
 public:
@@ -89,7 +89,7 @@ public:
 
 - Instead of using bool table to prevent visiting each water multiple times, we can use inplace tag.
 
-```c++
+```cpp
 class Solution {
 public:
     int maxDistance(vector<vector<int>>& grid) {
@@ -134,7 +134,7 @@ public:
 - `dp[i][j] = min(dp[i - 1][j], dp[i][j - 1], dp[i + 1][j], dp[i][j + 1]) + 1`
 
 
-```c++
+```cpp
 class Solution {
 public:
     int maxDistance(vector<vector<int>>& grid) {

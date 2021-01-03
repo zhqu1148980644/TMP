@@ -34,7 +34,7 @@ Note:
     - The prefix sum becomes >= K when `j == 2`, then the window's left boundary starts to shrink untill the windows's sum is smaller than `K = 13`, the stop point is number `10`, however `[10, -5, 15]` is not the smallest window with `sum >= k`.
 - The solution is to only record prefix sums in monotonically increasing order, suppose `prefix[i] > prefix[j] with i < j`, then discard `prefix[i]` is totally more reasonable because `sum[j:k]` is definitely larger than `sum[i:k]` and with shorter length. After the stack has been built in this way, use the same strategy as in sliding window to shrink the left boundary till the sum is smaller `K`. ie: Find the last element `i` with `sums[k] - sums[i] >= k`.
 
-```c++
+```cpp
 class Solution {
 public:
     int shortestSubarray(vector<int>& A, int K) {
@@ -63,7 +63,7 @@ public:
 
 or replace the deque with a stack.
 
-```c++
+```cpp
 class Solution {
 public:
     int shortestSubarray(vector<int>& A, int K) {

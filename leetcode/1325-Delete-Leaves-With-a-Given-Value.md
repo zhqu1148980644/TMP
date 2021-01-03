@@ -47,7 +47,7 @@ Output: [1,2,3]
 
 1. ##### postorder traversal with recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -76,7 +76,7 @@ public:
 
 2. ##### postorder traversal with stack
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

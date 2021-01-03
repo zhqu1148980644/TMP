@@ -34,7 +34,7 @@ Explanation:
 
 1. ##### cross product
 
-```c++
+```cpp
 class Solution {
 public:
     bool isConvex(vector<vector<int>>& points) {

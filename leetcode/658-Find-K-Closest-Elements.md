@@ -26,7 +26,7 @@ Absolute value of elements in the array and x will not exceed 104
 
 - Iteratively removing the border with larger diff value.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> findClosestElements(vector<int>& arr, int k, int x) {
@@ -64,7 +64,7 @@ case 4: x - A[mid] > A[mid + k] - x, need to move window go right
 -------A[mid]---------------------A[mid + k]----x------
 ```
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> findClosestElements(vector<int>& arr, int k, int x) {

@@ -37,7 +37,7 @@ s[i] = 'L' or 'R'
 
 1. ##### greedy
 
-```c++
+```cpp
 class Solution {
 public:
     int balancedStringSplit(string s) {

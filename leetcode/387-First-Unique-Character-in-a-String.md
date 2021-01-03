@@ -16,7 +16,7 @@ return 2.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     int firstUniqChar(string s) {
@@ -38,7 +38,7 @@ public:
 
 Or a general method
 
-```c++
+```cpp
 class Solution {
 public:
     int firstUniqChar(string s) {

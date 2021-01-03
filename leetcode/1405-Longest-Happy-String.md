@@ -39,7 +39,7 @@ a + b + c > 0
 - To fetch the longest string satisfying all constraints, the most ideal string should be looked like this: `aabaabccb` ie: char pairs(limit = 2) separated by single char.
 - reference: https://leetcode-cn.com/problems/longest-happy-string/solution/c-zhong-gui-zhong-ju-de-4msjie-fa-ji-shu-by-gary-2/
 
-```c++
+```cpp
 class Solution {
 public:
     string longestDiverseString(int a, int b, int c) {

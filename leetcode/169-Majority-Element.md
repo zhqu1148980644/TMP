@@ -35,7 +35,7 @@ Output: 2
 - Be careful about the lo and hi selection.
 - It's similar to merge sort.
 
-```c++
+```cpp
 int countRange(int * nums, int lo, int hi, int target) {
     int count = 0;
     while (lo <= hi)
@@ -74,7 +74,7 @@ int majorityElement(int* nums, int numsSize){
     - if the majority of `P` is `x != y`, then because `x` deduces less than `non-x(y and other nonx in P[:2n])`, `x` will still be the majority of `P[2n:]`.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {

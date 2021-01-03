@@ -33,7 +33,7 @@ Constraints:
 - `dp1` represents the maxisum sum of subarray with one element deletion.
 - `dp0` without deletion.
 
-```c++
+```cpp
 class Solution {
 public:
     int maximumSum(vector<int>& arr) {

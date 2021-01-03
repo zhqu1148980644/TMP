@@ -23,7 +23,7 @@ Each value in each tree will be a unique integer in the range [0, 99].
 
 1. ##### recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

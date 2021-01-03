@@ -43,7 +43,7 @@ s contain upper-case English letters only.
     - This counting applies to all ranges without duplicate 'A'.
     - For each character, counting cost `O(n)` time.
 
-```c++
+```cpp
 class Solution {
 public:
     int uniqueLetterString(string s) {
@@ -65,7 +65,7 @@ public:
 
 or use hash map instead of linear scanning. O(2n)
 
-```c++
+```cpp
 class Solution {
 public:
     int uniqueLetterString(string s) {

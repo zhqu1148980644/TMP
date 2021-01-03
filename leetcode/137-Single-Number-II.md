@@ -22,7 +22,7 @@ Output: 99
 
 1. ##### math
 
-```c++
+```cpp
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
@@ -37,7 +37,7 @@ public:
 
 2. ##### counter
 
-```c++
+```cpp
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
@@ -73,7 +73,7 @@ twice          0     0     1    0    0
 ```
 
 
-```c++
+```cpp
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
@@ -113,7 +113,7 @@ public:
         - When `xmx(m-1)...x1` equals to `k`,  `y1 & y2 & ... ym` equals to `1`, thus ` ~(y1 & y2 ... ym) == ~1 == 0` and `x1, x2 ... xm` are reset to 0.
         - When `xmx(m-1)...x1` is lower than `k`, `y1 & y2 ... ym` equals to `0`, thus `~(y1 & y2 ... ym) == ~0 == 1` and `x1, x2 ... xm` are not changed.
 
-```c++
+```cpp
 int xm = x(m-1) = .... x1 = 0;
 for (auto n : nums) {
     // update bit
@@ -143,7 +143,7 @@ return x1;
 
 - In this problem, `k = 3 = 11`, `mask = ~(x2 & x1)`.
 
-```c++
+```cpp
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {

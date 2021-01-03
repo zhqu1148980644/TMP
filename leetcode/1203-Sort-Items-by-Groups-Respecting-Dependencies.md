@@ -43,7 +43,7 @@ Explanation: This is the same as example 1 except that 4 needs to be before 6 in
 - Build a graph representing the dependency relationship between groups.
 - Within each group, build a dependency graph for every item of that group.
 
-```c++
+```cpp
 class Solution {
 public:
     bool toposort(vector<int> & sorted, vector<int> & indegree, 

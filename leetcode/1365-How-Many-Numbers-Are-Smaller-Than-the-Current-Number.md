@@ -38,7 +38,7 @@ Output: [0,0,0,0]
 
 1. ##### bucket sort O(nlog(n))
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> smallerNumbersThanCurrent(vector<int>& nums) {
@@ -56,7 +56,7 @@ public:
 
 2. ##### count sort O(n)
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> smallerNumbersThanCurrent(vector<int>& nums) {

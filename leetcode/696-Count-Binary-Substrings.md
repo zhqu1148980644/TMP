@@ -26,7 +26,7 @@ s will only consist of "0" or "1" characters.
 - borrowed from others
 - `cur` represents the length of the `current` continous string(all are 0 or 1), `last ` represents the length of the previous continous string(the opposite of 1/0).
 
-```c++
+```cpp
 class Solution {
 public:
     int countBinarySubstrings(string s) {
@@ -49,7 +49,7 @@ The above solution is the simplified version of the below solution.
 - count length of all continous substrings.
 - For each pair of adjacent substrings, there are min(len(a), len(b)) counts will be added to the total count.
 
-```c++
+```cpp
 class Solution {
 public:
     int countBinarySubstrings(string s) {

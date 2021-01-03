@@ -37,7 +37,7 @@ It is guaranteed an answer exists.
 
 - The coloring process must(node more than 3 neighbors) can be done by iteratively coloring adjacent nodes without violating the requirements.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> gardenNoAdj(int N, vector<vector<int>>& paths) {

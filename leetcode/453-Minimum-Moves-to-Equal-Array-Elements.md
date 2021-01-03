@@ -21,7 +21,7 @@ Only three moves are needed (remember each move increments two elements):
 
 - `1 2 3 4 3` except the largest number, all plus `1` is `2 3 4 4 4`, which is equivalent to decuce the largest number by `1`: `1 2 3 3 3`.
 
-```c++
+```cpp
 class Solution {
 public:
     int minMoves(vector<int>& nums) {
@@ -40,7 +40,7 @@ public:
 
 - reference: https://leetcode-cn.com/problems/minimum-moves-to-equal-array-elements/solution/c-dong-tai-gui-hua-by-gu-hai-qi/
 
-```c++
+```cpp
 class Solution {
 public:
     int minMoves(vector<int>& nums) {

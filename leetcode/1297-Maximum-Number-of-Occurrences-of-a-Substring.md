@@ -43,7 +43,7 @@ Output: 0
 - Scan every substring with length `minSize` and count(use hash map) their occurrence.
 - Use a character array to count the number of unique characters within a substring.
 
-```c++
+```cpp
 class Solution {
 public:
     int maxFreq(string s, int maxLetters, int minSize, int maxSize) {

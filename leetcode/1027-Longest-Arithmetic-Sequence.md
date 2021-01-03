@@ -41,7 +41,7 @@ The longest arithmetic subsequence is [20,15,10,5].
 
 - Use hash map to store length of every possible arithmetic sequence.
 
-```c++
+```cpp
 class Solution {
 public:
     int longestArithSeqLength(vector<int>& A) {
@@ -66,7 +66,7 @@ public:
 
 Or
 
-```c++
+```cpp
 class Solution {
 public:
     int longestArithSeqLength(vector<int>& A) {
@@ -90,7 +90,7 @@ public:
 - The dp table is much more smaller.
 - reference: https://leetcode-cn.com/problems/longest-arithmetic-sequence/solution/tong-guo-aihe-ajzhao-qian-mian-de-xiang-by-charon-/
 
-```c++
+```cpp
 class Solution {
 public:
     int longestArithSeqLength(vector<int>& A) {

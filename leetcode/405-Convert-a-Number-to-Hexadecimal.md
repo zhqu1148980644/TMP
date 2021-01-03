@@ -29,7 +29,7 @@ Output:
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     string toHex(int num) {

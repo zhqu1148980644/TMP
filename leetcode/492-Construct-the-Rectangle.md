@@ -19,7 +19,7 @@ The web page's width and length you designed must be positive integers.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> constructRectangle(int area) {

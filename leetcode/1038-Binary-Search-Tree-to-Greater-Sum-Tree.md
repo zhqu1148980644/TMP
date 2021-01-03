@@ -26,7 +26,7 @@ Note: This question is the same as 538: https://leetcode.com/problems/convert-b
 
 1. ##### reversed inorder traversal
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

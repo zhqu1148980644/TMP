@@ -33,7 +33,7 @@ Note:
 
 - for `a <= b <= c`, a + b > c is the sufficient requirement for them to make up a valid triangle
 
-```c++
+```cpp
 class Solution {
 public:
     int largestPerimeter(vector<int>& A) {

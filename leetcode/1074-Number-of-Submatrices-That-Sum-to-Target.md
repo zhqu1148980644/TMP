@@ -39,7 +39,7 @@ Explanation: The two 1x2 submatrices, plus the two 2x1 submatrices, plus the 2x2
 - In the inner loop, we can calculate the sum of submatrix in `O(1)` time with prefix sum and hash map.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int numSubmatrixSumTarget(vector<vector<int>>& matrix, int target) {

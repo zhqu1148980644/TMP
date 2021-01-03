@@ -32,7 +32,7 @@ Note:
 - reference: https://leetcode-cn.com/problems/smallest-integer-divisible-by-k/solution/javajie-fa-yi-ji-zheng-ming-de-si-lu-by-jiangzk/
 - If `K % 2 != 0 && K % 5 != 0`, there must be an answer.
 
-```c++
+```cpp
 class Solution {
 public:
     int smallestRepunitDivByK(int K) {

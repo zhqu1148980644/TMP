@@ -35,7 +35,7 @@ Explanation: You don't need to remove any of the intervals since they're already
 
 - `dp[i]` represents the maximum number of non-overlapping intervals including `intervals[i]`
 
-```c++
+```cpp
 class Solution {
 public:
     int eraseOverlapIntervals(vector<vector<int>>& intervals) {
@@ -64,7 +64,7 @@ public:
 - To make the number of non-overlapping intervals as large as possible, we need to select the interval with the minimum end as the next interval of growing intervals.
 - Sorting the array by end can reduce the number of comparisons to satisify the second rule.
 
-```c++
+```cpp
 class Solution {
 public:
     int eraseOverlapIntervals(vector<vector<int>>& intervals) {
@@ -88,7 +88,7 @@ public:
 
 - For demonstration, here is the version sorted by start.
 
-```c++
+```cpp
 class Solution {
 public:
     int eraseOverlapIntervals(vector<vector<int>>& intervals) {

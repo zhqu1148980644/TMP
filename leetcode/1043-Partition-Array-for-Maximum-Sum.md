@@ -22,7 +22,7 @@ Note:
 
 - `dp[i]` represents the maximum results for `nums[:i]`.
 
-```c++
+```cpp
 class Solution {
 public:
     int maxSumAfterPartitioning(vector<int>& A, int K) {

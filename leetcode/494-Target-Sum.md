@@ -29,7 +29,7 @@ There are 5 ways to assign symbols to make the sum of nums be target 3.
 
 1. ##### dfs O(2**n)
 
-```c++
+```cpp
 class Solution {
 public:
     int count = 0;
@@ -60,7 +60,7 @@ public:
 - Thus we need to count the number of solutions that satisfy `P = (target + sum) / 2` which is similar to 01 knapsack problem.
 - `dp[w]` represents the number of solutions with sum weight of `w`.
 
-```c++
+```cpp
 class Solution {
 public:
     int findTargetSumWays(vector<int>& nums, int S) {
@@ -91,7 +91,7 @@ public:
 - Since the sum may be `negative`, all sums are increased by `1000`.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int findTargetSumWays(vector<int>& nums, int S) {

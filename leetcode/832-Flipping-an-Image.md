@@ -25,7 +25,7 @@ Notes:
 
 1. #####  straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> flipAndInvertImage(vector<vector<int>>& A) {

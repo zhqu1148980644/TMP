@@ -33,7 +33,7 @@ All rows have the same size.
 
 - Merge iall islands connected with border with a virtual border node.
 
-```c++
+```cpp
 struct UnionFind {
     vector<int> nodes, sizes;
     UnionFind(int size) : nodes(size), sizes(size, 1) {
@@ -84,7 +84,7 @@ public:
 
 - bfs works too.
 
-```c++
+```cpp
 class Solution {
 public:
     int m, n;

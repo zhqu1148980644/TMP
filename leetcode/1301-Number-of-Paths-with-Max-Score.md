@@ -32,7 +32,7 @@ Output: [0,0]
 
 1. ##### dynamic programming
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> pathsWithMaxScore(vector<string>& board) {

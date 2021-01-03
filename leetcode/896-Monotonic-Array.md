@@ -37,7 +37,7 @@ Note:
 
 1. ##### one pass with mark
 
-```c++
+```cpp
 class Solution {
 public:
     bool isMonotonic(vector<int>& A) {

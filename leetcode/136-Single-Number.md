@@ -23,7 +23,7 @@ Output: 4
 - When you `xor` a bit position odd times, this bit position will be set to `0`. ie. `0 ^ 3 ^ 2 ^ 3 ^ 3 = 0`
 - What would happen when a number is xored only once ?
 
-```c++
+```cpp
 int singleNumber(int* nums, int numsSize){
     int res = 0;
     while(numsSize--) res ^= nums[numsSize];

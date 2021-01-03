@@ -9,7 +9,7 @@ Design the encode and decode methods for the TinyURL service. There is no restri
 
 1. ##### random string key
 
-```c++
+```cpp
 #include <experimental/random>
 class Solution {
 private:

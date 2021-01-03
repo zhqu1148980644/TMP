@@ -31,7 +31,7 @@ At most 50000 calls will be made to set, snap, and get.
 
 1. ##### binary search
 
-```c++
+```cpp
 class SnapshotArray {
 public:
     vector<vector<pair<int, int>>> m;

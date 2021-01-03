@@ -49,7 +49,7 @@ Output: 4
 
 1. ##### hash map O(n)
 
-```c++
+```cpp
 class Solution {
 public:
     int minSteps(string s, string t) {

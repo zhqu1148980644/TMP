@@ -43,7 +43,7 @@ Note:
 - Longest increasing subsequence.
 - Minimum number of deletion equals to `len` minus the `longest increasing subsequence` with comparison based on each column.
 
-```c++
+```cpp
 class Solution {
 public:
     bool less(vector<string> & A, int i, int j) {

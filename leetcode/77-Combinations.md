@@ -17,7 +17,7 @@ Output:
 
 1. ##### recursive backtracking
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> res;
@@ -49,7 +49,7 @@ public:
 
 2. ##### iterative backtracking
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> combine(int n, int k) {

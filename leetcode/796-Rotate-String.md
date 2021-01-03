@@ -17,7 +17,7 @@ A and B will have length at most 100.
 
 1. ##### straight forward O(nm)
 
-```c++
+```cpp
 class Solution {
 public:
     bool rotateString(string A, string B) {
@@ -28,7 +28,7 @@ public:
 
 2. ##### kmp O(n + m)
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> build_next(const string & s) {
@@ -64,7 +64,7 @@ public:
 
 3. ##### rabin-karp O(n + m)
 
-```c++
+```cpp
 class Solution {
 public:
     int search(const string & s, const string & p) {

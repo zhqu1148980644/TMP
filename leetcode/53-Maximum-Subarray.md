@@ -19,7 +19,7 @@ If you have figured out the O(n) solution, try coding another solution using the
 - Use a dp table to record maximum contiguous sum end in each positions.
 - `dp[i] = nums[i] + (dp[i - 1] > 0 ? dp[i - 1] : 0)`
 
-```c++
+```cpp
 #define max(x, y) ((x > y) ? x : y)
 int maxSubArray(int* nums, int numsSize){
     int res = INT_MIN, sum = 0;

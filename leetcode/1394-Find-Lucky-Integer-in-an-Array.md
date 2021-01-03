@@ -41,7 +41,7 @@ Constraints:
 
 1. ##### hash map
 
-```c++
+```cpp
 class Solution {
 public:
     int findLucky(vector<int>& arr) {
@@ -60,7 +60,7 @@ public:
 
 Or search backwards
 
-```c++
+```cpp
 class Solution {
 public:
     int findLucky(vector<int>& arr) {

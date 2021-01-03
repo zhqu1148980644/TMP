@@ -19,7 +19,7 @@ sumRange(0, 5) -> -3
 
 1. ##### sum prefix
 
-```c++
+```cpp
 class NumArray {
 private:
     vector<int> accum;

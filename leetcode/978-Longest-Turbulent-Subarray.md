@@ -34,7 +34,7 @@ Note:
 
 - Be careful to handle adjacent pairs with the same value, and the case when the array size is 1.
 
-```c++
+```cpp
 class Solution {
 public:
     int maxTurbulenceSize(vector<int>& A) {

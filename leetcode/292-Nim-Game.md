@@ -18,7 +18,7 @@ Explanation: If there are 4 stones in the heap, then you will never win the game
 
 - stackoverflow or time limit exceed
 
-```c++
+```cpp
 class Solution {
 public:
     unordered_map<int, bool> m;
@@ -33,7 +33,7 @@ public:
 };
 ```
 
-```c++
+```cpp
 class Solution {
 public:
 
@@ -54,7 +54,7 @@ public:
 
 - When the first player has `4n` stones, the second player can always matain this state untill the first player gets `4` stones, then the second player could win.
 
-```c++
+```cpp
 class Solution {
 public:
     bool canWinNim(int n) {

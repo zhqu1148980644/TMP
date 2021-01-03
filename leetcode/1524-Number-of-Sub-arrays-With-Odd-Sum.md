@@ -41,7 +41,7 @@ Constraints:
 
 1. ##### dynamic programming with prefix sum
 
-```c++
+```cpp
 class Solution {
 public:
     int numOfSubarrays(vector<int>& arr) {

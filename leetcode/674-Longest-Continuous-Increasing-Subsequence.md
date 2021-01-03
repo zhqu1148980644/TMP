@@ -21,7 +21,7 @@ Explanation: The longest continuous increasing subsequence is [2], its length is
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     int findLengthOfLCIS(vector<int>& nums) {

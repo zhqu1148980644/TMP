@@ -17,7 +17,7 @@ Output: "10101"
 
 1. ##### Straight forward
 
-```c++
+```cpp
 #define num(x) ((x) - '0')
 #define cha(x) ((x == 1) ? '1' : '0')
 #define max(x, y) ((x > y) ? x : y)
@@ -53,7 +53,7 @@ char * addBinary(char * a, char * b){
 
 c++ version
 
-```c++
+```cpp
 #define num(x) ((x) - '0')
 #define chr(x) ((x) == 1 ? '1' : '0')
 class Solution {

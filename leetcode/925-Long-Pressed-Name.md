@@ -35,7 +35,7 @@ The characters of name and typed are lowercase letters.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     auto abbreviate(string & s) {
@@ -69,7 +69,7 @@ public:
 
 2. ##### two pointers
 
-```c++
+```cpp
 class Solution {
 public:
     bool isLongPressedName(string name, string typed) {

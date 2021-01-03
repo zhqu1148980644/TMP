@@ -25,7 +25,7 @@ The binary representation of 10 is: 1010.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     bool hasAlternatingBits(int n) {
@@ -41,7 +41,7 @@ public:
 
 or one line version using xor
 
-```c++
+```cpp
 class Solution {
 public:
     bool hasAlternatingBits(int n) {

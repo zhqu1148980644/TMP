@@ -33,7 +33,7 @@ collection.getRandom();
 
 - Similar to previous problem.
 
-```c++
+```cpp
 class RandomizedCollection {
 public:
     /** Initialize your data structure here. */

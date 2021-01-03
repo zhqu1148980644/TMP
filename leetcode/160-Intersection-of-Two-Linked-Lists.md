@@ -56,7 +56,7 @@ Your code should preferably run in O(n) time and use only O(1) memory.
 - counting the length of each list use two pointers two pass.
 - Reset two pointers to heads, move to the interset node.
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -94,7 +94,7 @@ public:
 
 2. ##### two pointers in cycle
 
-```c++
+```cpp
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {

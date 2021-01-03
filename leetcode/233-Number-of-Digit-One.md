@@ -24,7 +24,7 @@ Explanation: Digit 1 occurred in the following numbers: 1, 10, 11, 12, 13.
         - `1609 % 100 = 9`, as `9` is smaller than `10`, the remaining number of `1` in base 100 is `0`.
     - `0 <= (n % base) - (base / 10) + 1 <= base / 10`
 
-```c++
+```cpp
 class Solution {
 public:
     int countDigitOne(int n) {

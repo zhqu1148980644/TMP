@@ -19,7 +19,7 @@ Output: false
 - Too many duplicate paths.
 
 
-```c++
+```cpp
 class Solution {
 private:
 
@@ -57,7 +57,7 @@ public:
 - Use a hashmap or table to record inpassible paths which can be represented as unique `i j` pairs.
 - reference: https://leetcode-cn.com/problems/interleaving-string/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-2-9/
 
-```c++
+```cpp
 #define node(i, j) ((i) * ncol + (j))
 class Solution {
 public:
@@ -115,7 +115,7 @@ class Solution:
 
 3. ###### bfs with queue.
 
-```c++
+```cpp
 #define node(i, j) (((i) * ncol + (j)))
 class Solution {
 public:
@@ -152,7 +152,7 @@ public:
 - So, it's a dynamic programming problem with no diagonal path in the 2d dp table.
 - Since the problem doesn't require the full path, we can solve it in `O(n)` space.
 
-```c++
+```cpp
 class Solution {
 public:
     bool isInterleave(string s1, string s2, string s3) {

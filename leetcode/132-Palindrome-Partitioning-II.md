@@ -22,7 +22,7 @@ Explanation: The palindrome partitioning ["aa","b"] could be produced using 1 cu
     - the maximum cut is `j`. ie: every character is a single palindrome.
 - Use method in `problem 5` to memoize whether a certain substring is a palindrome.
 
-```c++
+```cpp
 class Solution {
 public:
     int minCut(string s) {
@@ -48,7 +48,7 @@ public:
 
 - Since only the palindrome subarray would help us to update the `mincut` dp table, we can uitilize a center expansion method we used in `problem 5` to avoid checking every possible substring which is time consuming.
 
-```c++
+```cpp
 class Solution {
 public:
     int minCut(string s) {

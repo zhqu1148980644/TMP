@@ -31,7 +31,7 @@ Output: False
 
 1. ##### hashset
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -64,7 +64,7 @@ public:
 
 2. ##### two pointers
 
-```c++
+```cpp
 class Solution {
 public:
     bool findTarget(TreeNode* root, int k) {
@@ -93,7 +93,7 @@ public:
 
 3. ##### successor and precursor
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode * successor(TreeNode * root, stack<TreeNode *> & s) {

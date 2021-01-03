@@ -34,7 +34,7 @@ Note:
 
 - A magic square only conatains digits in `1-9` and without duplicates.
 
-```c++
+```cpp
 class Solution {
 public:
     bool ismagic(array<int, 9> m) {

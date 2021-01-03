@@ -20,7 +20,7 @@ S will consist only of letters or digits.
 
 1. ##### backtrack
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> res;
@@ -47,7 +47,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> res;

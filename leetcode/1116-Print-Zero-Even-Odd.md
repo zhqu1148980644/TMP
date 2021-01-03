@@ -37,7 +37,7 @@ Output: "0102030405"
 
 1. ##### mutex
 
-```c++
+```cpp
 class ZeroEvenOdd {
 private:
     int n;
@@ -92,7 +92,7 @@ public:
 
 2. ##### condition variable
 
-```c++
+```cpp
 class ZeroEvenOdd {
 private:
     int n;

@@ -54,7 +54,7 @@ Output: [1]
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> createTargetArray(vector<int>& nums, vector<int>& index) {

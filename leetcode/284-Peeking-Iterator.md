@@ -19,7 +19,7 @@ Calling hasNext() after that should return false.
 
 - Follow up: use template.
 
-```c++
+```cpp
 /*
  * Below is the interface for Iterator, which is already defined for you.
  * **DO NOT** modify the interface for Iterator.

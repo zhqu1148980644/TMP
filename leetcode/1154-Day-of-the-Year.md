@@ -33,7 +33,7 @@ date represents a calendar date between Jan 1st, 1900 and Dec 31, 2019.
 
 - Similar to `problem 1118`
 
-```c++
+```cpp
 class Solution {
 public:
     int days[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};

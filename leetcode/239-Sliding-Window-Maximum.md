@@ -29,7 +29,7 @@ Could you solve it in linear time?
 
 - Time Limit Exceed
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
@@ -53,7 +53,7 @@ using namespace std;
     - To pop an item doesn't belong to the current window, we just need to check the front of the queue and remove it if it's the target.
 
 
-```c++
+```cpp
 class MomoQueue {
 public:
     deque<int> q;
@@ -96,7 +96,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
@@ -157,7 +157,7 @@ impl Solution {
 
 - See official answer in https://leetcode-cn.com/problems/sliding-window-maximum/solution/hua-dong-chuang-kou-zui-da-zhi-by-leetcode-3/
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {

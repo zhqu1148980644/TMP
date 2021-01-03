@@ -41,7 +41,7 @@ Constraints:
 
 - Count the number of full round, then use the sum of arithmetic sequences to count the number of candidates each student will be given.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> distributeCandies(int candies, int num_people) {
@@ -81,7 +81,7 @@ public:
 
 2. ##### simulation O(max(n), sqrt(candies))
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> distributeCandies(int candies, int num_people) {

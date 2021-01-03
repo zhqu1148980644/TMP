@@ -39,7 +39,7 @@ Explanation: There are a total of 2 courses to take.
 
 - In each step, remove a node with node indgree(dependency).
 
-```c++
+```cpp
 class Solution {
 public:
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
@@ -72,7 +72,7 @@ public:
 
 2. ##### dfs
 
-```c++
+```cpp
 enum State {UNVISITED, VISITED, VISITING};
 
 class Solution {

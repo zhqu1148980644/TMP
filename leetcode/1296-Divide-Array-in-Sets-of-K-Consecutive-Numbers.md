@@ -41,7 +41,7 @@ Explanation: Each array should be divided in subarrays of size 3.
 - Put each item in an ordered hashmap, at each iteration:
     - staring from the minimum number, trying to find k consecutive numbers and deduce the corresponding count, return false when the search fails.
 
-```c++
+```cpp
 class Solution {
 public:
     bool isPossibleDivide(vector<int>& nums, int K) {
@@ -73,7 +73,7 @@ public:
 
 2. ##### sort
 
-```c++
+```cpp
 class Solution {
 public:
     bool isPossibleDivide(vector<int>& nums, int k) {
@@ -110,7 +110,7 @@ public:
 
 - reference: https://leetcode-cn.com/problems/hand-of-straights/solution/mei-ri-suan-fa-day-103-lao-ti-xin-zuo-ji-hu-bu-hui/
 
-```c++
+```cpp
 
 class Solution {
 public:

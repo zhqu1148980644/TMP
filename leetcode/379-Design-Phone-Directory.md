@@ -48,7 +48,7 @@ The total number of call of the methods is between [0 - 20000]
 
 - reference: https://leetcode-cn.com/problems/design-phone-directory/solution/c-shuang-shu-zu-o1ti-jie-by-da-li-wang/
 
-```c++
+```cpp
 class PhoneDirectory {
 public:
     /** Initialize your data structure here

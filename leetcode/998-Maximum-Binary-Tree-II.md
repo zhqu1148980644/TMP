@@ -48,7 +48,7 @@ Constraints:
 
 - Search in the right tree(As the val is appended at the back), find the fist smaller node, then create a new node with the smaller subtree as it's left child(since they are left to the target val), return this newly created node as the new right child of the parent node.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

@@ -50,7 +50,7 @@ valid substrings are:
     s[i + 1: j]
 ```
 
-```c++
+```cpp
 class Solution {
 public:
     int findTheLongestSubstring(string s) {

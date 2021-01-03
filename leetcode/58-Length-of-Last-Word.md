@@ -18,7 +18,7 @@ Output: 5
 1. #### Straight foward
 
 
-```c++
+```cpp
 class Solution {
 public:
     int lengthOfLastWord(string s) {
@@ -33,7 +33,7 @@ public:
 
 tricky version borrowed from other.
 
-```c++
+```cpp
 int lengthOfLastWord(char * s){
     int len = 0;
     while (*s) {

@@ -46,7 +46,7 @@ Output: 0
 
 - The idea is similar to dynamic programming while the maximum zigzag length of parent nodes can be calculated based on that of children nodes.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

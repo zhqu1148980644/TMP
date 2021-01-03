@@ -44,7 +44,7 @@ The total number of FreqStack.push and FreqStack.pop calls will not exceed 15000
 - Note that when pop has been called, the maxfreq neither remains the same nor decreases by `1`. Thus maintaining a `maxfreq` variable is sufficient enough, therefore no need to use a treemap/prioeity_queue.
 - Borrowed from the official answer.
 
-```c++
+```cpp
 class FreqStack {
 public:
     unordered_map<int, int> cnts;

@@ -37,7 +37,7 @@ Note: The given binary tree has not more than 10000 nodes. The height of the tre
 1. ##### postorder recursion
 
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

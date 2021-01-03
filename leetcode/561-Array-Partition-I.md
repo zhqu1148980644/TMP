@@ -15,7 +15,7 @@ All the integers in the array will be in the range of [-10000, 10000].
 
 - for sorted array: `n1, n2, n3, n4, n5, n6`, pairs will be `(n1, n2), (n3, n4), (n5, n6)`
 
-```c++
+```cpp
 class Solution {
 public:
     int arrayPairSum(vector<int>& nums) {
@@ -34,7 +34,7 @@ public:
 
 - The problem's note is `All the integers in the array will be in the range of [-10000, 10000].`
 
-```c++
+```cpp
 class Solution {
 public:
     int arrayPairSum(vector<int>& nums) {

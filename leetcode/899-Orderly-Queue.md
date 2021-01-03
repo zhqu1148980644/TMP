@@ -44,7 +44,7 @@ In the second move, we move the 3rd character ("c") to the end, obtaining the fi
     - Choose the first character `s[i]` and push onto the back. `[0, 1, ... i - 1, i + 1, i]`.
 - Bubble sort sorts the array using the same strategy, thus the minimum string is the sorted string.
 
-```c++
+```cpp
 class Solution {
 public:
     string orderlyQueue(string S, int K) {

@@ -23,7 +23,7 @@ All coordinates in rectangles will be between -10^9 and 10^9.
 
 - Check nonoverlap.
 
-```c++
+```cpp
 class Solution {
 public:
     bool isRectangleOverlap(vector<int>& rec1, vector<int>& rec2) {
@@ -40,7 +40,7 @@ public:
 
 or check overlap.
 
-```c++
+```cpp
 class Solution {
 public:
     bool isRectangleOverlap(vector<int>& rec1, vector<int>& rec2) {

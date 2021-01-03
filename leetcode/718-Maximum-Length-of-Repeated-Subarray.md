@@ -21,7 +21,7 @@ Note:
 
 - Guess the maximum length using binary search strategy. In each guess state, use rabin-karp-like hashing method to check if the there exists a repeated substring in both two strings.
 
-```c++
+```cpp
 class Solution {
 public:
     bool dup(vector<int> & A, vector<int> & B, int k) {
@@ -85,7 +85,7 @@ public:
 
 - `dp[i][j] = dp[i - 1][j - 1] + 1 if A[i] == A[j] else 0`
 
-```c++
+```cpp
 class Solution {
 public:
     int findLength(vector<int>& A, vector<int>& B) {
@@ -104,7 +104,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     int findLength(vector<int>& A, vector<int>& B) {
@@ -132,7 +132,7 @@ public:
 
 - Check the official answer
 
-```c++
+```cpp
 class Solution {
 public:
     int duplen(vector<int> & A, vector<int> & B, int sta, int stb, int maxlen) {

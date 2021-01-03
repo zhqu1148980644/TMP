@@ -16,7 +16,7 @@ All letters in S and C are lowercase.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> shortestToChar(string S, char C) {

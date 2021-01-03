@@ -17,7 +17,7 @@ canConstruct("aa", "aab") -> true
 
 - O(n + m)
 
-```c++
+```cpp
 class Solution {
 public:
     bool canConstruct(string ransomNote, string magazine) {
@@ -35,7 +35,7 @@ public:
 
 - O(nm)
 
-```c++
+```cpp
 class Solution {
 public:
     bool canConstruct(string ransomNote, string magazine) {

@@ -57,7 +57,7 @@ Rows ordered from the weakest to the strongest are [0,2,3,1]
 
 1. ##### sort
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> kWeakestRows(vector<vector<int>>& mat, int k) {

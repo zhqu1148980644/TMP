@@ -21,7 +21,7 @@ Output: ["h","a","n","n","a","H"]
 
 1. #####  Straight forward
 
-```c++
+```cpp
 void reverseString(char* s, int sSize){
     int i = 0;
     sSize--;
@@ -34,7 +34,7 @@ void reverseString(char* s, int sSize){
 }
 ```
 
-```c++
+```cpp
 class Solution {
 public:
     void reverseString(vector<char>& s) {

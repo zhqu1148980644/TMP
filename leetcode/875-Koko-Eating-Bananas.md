@@ -34,7 +34,7 @@ piles.length <= H <= 10^9
 
 - For a speculated `mid`, if the toal number of hours needed to eat all piles is greater then the threshold `H`, then the correct `k` must be `> mid`. ie: `lo = mid + 1`
 
-```c++
+```cpp
 class Solution {
 public:
     int minhour(vector<int> & piles, int k) {

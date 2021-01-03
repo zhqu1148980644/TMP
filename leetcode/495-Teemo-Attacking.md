@@ -32,7 +32,7 @@ You may assume the numbers in the Teemo's attacking time series and his poisonin
 
 1. ##### straightforward
 
-```c++
+```cpp
 class Solution {
 public:
     int findPoisonedDuration(vector<int>& timeSeries, int duration) {
@@ -49,7 +49,7 @@ public:
 
 2. ##### interval merging
 
-```c++
+```cpp
 class Solution {
 public:
     int findPoisonedDuration(vector<int>& timeSeries, int duration) {

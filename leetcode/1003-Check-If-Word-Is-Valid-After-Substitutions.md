@@ -43,7 +43,7 @@ S[i] is 'a', 'b', or 'c'
 
 1. ##### stack
 
-```c++
+```cpp
 class Solution {
 public:
     bool isValid(string S) {

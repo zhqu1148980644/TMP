@@ -74,7 +74,7 @@ Explanation: The startUrl links to all other pages that do not share the same ho
 
 1. ##### hash set
 
-```c++
+```cpp
 /**
  * // This is the HtmlParser's API interface.
  * // You should not implement it, or speculate about its implementation
@@ -140,6 +140,6 @@ class Solution:
 2. ##### bloom filter
 
 
-```c++
+```cpp
 
 ```

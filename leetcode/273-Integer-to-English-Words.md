@@ -23,7 +23,7 @@ Output: "One Billion Two Hundred Thirty Four Million Five Hundred Sixty Seven Th
 
 - borrowed from stephan
 
-```c++
+```cpp
 class Solution {
 public:
     string numberToWords(int num) {

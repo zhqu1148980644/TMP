@@ -30,7 +30,7 @@ Constraints:
 
 1. ##### binary search O(log(n))
 
-```c++
+```cpp
 class Solution {
 public:
     bool isMajorityElement(vector<int>& nums, int target) {

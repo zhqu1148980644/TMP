@@ -29,7 +29,7 @@ Output: false
 
 - `breakable[i]` means if suffix `s[i:]` is breakable.
 
-```c++
+```cpp
 class Solution {
 private:
     unordered_set<string> m;
@@ -59,7 +59,7 @@ public:
 
 - Since the program will exit whenever we meets a breakable suffix, we can use a boolean array to record the unbreakable suffix. ie: breakable suffix will never be visited twice.
 
-```c++
+```cpp
 class Solution {
 public:
     unordered_set<string> m;
@@ -110,7 +110,7 @@ class Solution:
 
 
 
-```c++
+```cpp
 class Solution {
 public:
     bool wordBreak(string s, vector<string>& wordDict) {
@@ -132,7 +132,7 @@ public:
 
 Or skip impossible prefix and suffix.
 
-```c++
+```cpp
 class Solution {
 public:
     bool wordBreak(string s, vector<string>& wordDict) {

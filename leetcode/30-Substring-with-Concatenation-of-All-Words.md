@@ -27,7 +27,7 @@ Output: []
 
 - Check every substring with length of the concatenated words string.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> findSubstring(string s, vector<string>& words) {
@@ -68,7 +68,7 @@ public:
 - When the current checking word is appeared more than permitted, move the left bound of the window forward till this word is removed.
 
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> findSubstring(string s, vector<string>& words) {

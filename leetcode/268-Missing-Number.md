@@ -22,7 +22,7 @@ Your algorithm should run in linear runtime complexity. Could you implement it u
 
 1 + 2 + 3... + n = n * (n + 1) / 2
 
-```c++
+```cpp
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
@@ -40,7 +40,7 @@ public:
 
 2. ##### buckets
 
-```c++
+```cpp
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {

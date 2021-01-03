@@ -21,7 +21,7 @@ Explanation: nums = [3,1,5,8] --> [3,5,8] -->   [3,8]   -->  [8]  --> []
 1. ##### backtrack/dfs
 
 
-```c++
+```cpp
 
 
 ```
@@ -34,7 +34,7 @@ Explanation: nums = [3,1,5,8] --> [3,5,8] -->   [3,8]   -->  [8]  --> []
 - Thus, for each possible splitting ballon, we keep this ballon and two boundary ballons unbroken.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int maxCoins(vector<int>& nums) {
@@ -58,7 +58,7 @@ public:
 
 - Recursive version with memoization.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> memo;

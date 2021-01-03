@@ -32,7 +32,7 @@ Every node has value 0.
 - `dp1` represents all nodes has been monitored with no camera settled at the root node.
 - `dp2` is the same as `dp1` except the camera settled.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -65,7 +65,7 @@ public:
 
 - start adding cameras from leafs to root using postorder traversal.
 
-```c++
+```cpp
 class Solution {
 public:
     int res = 0;

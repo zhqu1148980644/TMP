@@ -39,7 +39,7 @@ When we erase the brick at (1, 0), the brick at (1, 1) has already disappeared d
 - As the UnionFind structure is only capable of adding and merging elements, we need to revere the erasure process.
 - By this way, we can utilize the efficient union operation of UF and count the increased number of bricks connected to the top(ceiling) at each erasure(add) step.
 
-```c++
+```cpp
 struct UnionFind {
     vector<int> nodes, sizes;
     UnionFind(int size) : nodes(size), sizes(size, 1) {
@@ -128,7 +128,7 @@ public:
 
 - Use the same idead but with different strategy for searching connected nodes.
 
-```c++
+```cpp
 
 ```
 

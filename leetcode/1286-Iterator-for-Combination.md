@@ -30,7 +30,7 @@ iterator.hasNext(); // returns false
 
 1. ##### store full permutations
 
-```c++
+```cpp
 class CombinationIterator {
 private:
     queue<string> res;
@@ -70,7 +70,7 @@ public:
 
 - Convert a non-full permutation to a position mask:
 
-```c++
+```cpp
 ab
 ac
 ad
@@ -79,7 +79,7 @@ bc
 
 - Interger of position mask decreases as the permutation forward.
 
-```c++
+```cpp
 1100
 1010
 1001
@@ -88,7 +88,7 @@ bc
 
 - The code below firstly find the bigest number, when ever a next-permutaiotn are requested, deduce the number one by one until find a number whose number of bits setted is equal to `k`.
 
-```c++
+```cpp
 class CombinationInterator {
 private:
     string s;
@@ -144,7 +144,7 @@ public:
     - If this character exists, lift it up to the next bigger character and reset all characters after it in a minimum ascending order to make combinations unique.
     - Else the next combination doesn't exist, return the current one and flip the `finished` flag.
 
-```c++
+```cpp
 class CombinationIterator {
 public:
     string chars;

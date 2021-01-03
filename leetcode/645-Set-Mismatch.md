@@ -13,7 +13,7 @@ The given array's numbers won't have any order.
 
 1. ##### Pigeonhole principle
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> findErrorNums(vector<int>& nums) {
@@ -36,7 +36,7 @@ public:
 
 - Only positions of the miss number and duplicate number will be positive.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> findErrorNums(vector<int>& nums) {
@@ -64,7 +64,7 @@ public:
 
 3. ##### bit operations
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> findErrorNums(vector<int>& nums) {

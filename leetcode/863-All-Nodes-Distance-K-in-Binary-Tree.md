@@ -34,7 +34,7 @@ The target node is a node in the tree.
 - Use postorder traversal to record the distance between the target node and it's ascendant nodes.
 - Then dfs starting with the target's descendants(include itself).
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> res;
@@ -77,7 +77,7 @@ public:
 
 or simplified version
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> res;
@@ -114,7 +114,7 @@ public:
 - Use hashmap to record each node's parent node.
 - Then bfs search each node's left/right/parent node.
 
-```c++
+```cpp
 class Solution {
 public:
     unordered_map<TreeNode *, TreeNode *> parents;
@@ -165,7 +165,7 @@ public:
 
 - reference: https://leetcode-cn.com/problems/all-nodes-distance-k-in-binary-tree/solution/c-zuo-biao-hua-chu-li-by-da-li-wang/
 
-```c++
+```cpp
 class Solution {
 public:
     unordered_map<TreeNode *, long long> index;

@@ -28,7 +28,7 @@ Note: All the values of tree nodes are in the range of [-1e7, 1e7].
 
 1. ##### postorder traversal with recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

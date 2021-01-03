@@ -23,7 +23,7 @@ The length of all the strings in the input won't exceed 1,000.
 
 - Use sort to start the scanning from the longest string may be more efficient in some cases.
 
-```c++
+```cpp
 class Solution {
 public:
     bool issub(string & s1, string & s2) {
@@ -60,7 +60,7 @@ class Solution:
 
 2. ##### binary search O(n*len(x)*log(len(s))) lenx is the mean size of strings in d
 
-```c++
+```cpp
 class Solution {
 public:
 

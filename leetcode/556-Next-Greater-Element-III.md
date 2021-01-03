@@ -17,7 +17,7 @@ Output: -1
 
 - check `problem` 31 for details
 
-```c++
+```cpp
 class Solution {
 public:
     int nextGreaterElement(int n) {

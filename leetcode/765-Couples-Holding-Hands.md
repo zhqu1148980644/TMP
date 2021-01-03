@@ -29,7 +29,7 @@ row is guaranteed to be a permutation of 0...len(row)-1.
 - After numbers has been swapped, don't forget to update the index info in hash map.
     - Or simply search for the correct index at each step in linear time, thus the time complexity becomes O(n2).
 
-```c++
+```cpp
 class Solution {
 public:
     int minSwapsCouples(vector<int>& row) {

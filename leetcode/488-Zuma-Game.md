@@ -50,7 +50,7 @@ Explanation: RBYYBBRRB -> RBYY[Y]BBRRB -> RBBBRRB -> RRRB -> B -> B[B] -> BB[B] 
 
 1. ##### dfs
 
-```c++
+```cpp
 class Solution {
 public:
     string hand;
@@ -94,7 +94,7 @@ public:
 
 2. ##### bfs
 
-```c++
+```cpp
 class Solution {
 public:
     int findMinStep(string board, string hand) {

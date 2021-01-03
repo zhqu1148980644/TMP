@@ -26,7 +26,7 @@ Placing a bomb at (1,1) kills 3 enemies.
 - `rowsum` represents all enemies can be killed in a region without any walls. Whenever meets a block whose's left block is a wall, count all enemies starting at this block until a wall is reached. Then all zeros in this non-wall region can `reuse` this counts.
 - `colsum` is a vector stores counts of the previous row in all columns. The couting process of `colsum[j]` is the same as `rowsum`.
 
-```c++
+```cpp
 class Solution {
 public:
     int maxKilledEnemies(vector<vector<char>>& grid) {

@@ -22,7 +22,7 @@ trie.search("app");     // returns true
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Trie {
 public:
     /** Initialize your data structure here. */

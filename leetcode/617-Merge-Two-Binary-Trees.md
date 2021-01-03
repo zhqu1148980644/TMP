@@ -26,7 +26,7 @@ Note: The merging process must start from the root nodes of both trees.
 
 1. ##### recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -52,7 +52,7 @@ public:
 
 2. ##### iteration
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode* mergeTrees(TreeNode* t1, TreeNode* t2) {

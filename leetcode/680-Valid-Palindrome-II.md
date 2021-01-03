@@ -23,7 +23,7 @@ Explanation: You could delete the character 'c'.
 
 - Find the first pair of characters that are unequal and separately check if the remaining characters are palindrome after deleted one of them.
 
-```c++
+```cpp
 class Solution {
 public:
     bool isPalin(const string & s, int i, int j, bool check) {
@@ -43,7 +43,7 @@ public:
 
 or iterative version
 
-```c++
+```cpp
 class Solution {
 public:
     bool valid(string & s, int & i, int & j) {

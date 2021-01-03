@@ -22,7 +22,7 @@ A[i] will be in the range of [0, 10000].
 - When updating sates, each number can only be used once.
 - Time limit exceed;
 
-```c++
+```cpp
 class Solution {
 public:
     bool splitArraySameAverage(vector<int>& A) {
@@ -52,7 +52,7 @@ public:
 - Optimized version, use bit position represents k. O(sum * len)
 
 
-```c++
+```cpp
 class Solution {
 public:
     bool splitArraySameAverage(vector<int>& A) {
@@ -105,7 +105,7 @@ impl Solution {
 
 or search for `len(part1)`.
 
-```c++
+```cpp
 class Solution {
 public:
     bool splitArraySameAverage(vector<int>& A) {
@@ -140,7 +140,7 @@ public:
 
 2. ##### dfs search O((N/2)!)
 
-```c++
+```cpp
 class Solution {
 public:
     // vector<bool> visited;

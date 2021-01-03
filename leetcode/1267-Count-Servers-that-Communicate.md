@@ -41,7 +41,7 @@ grid[i][j] == 0 or 1
 
 - from the official answer
 
-```c++
+```cpp
 class Solution {
 public:
     int countServers(vector<vector<int>>& grid) {

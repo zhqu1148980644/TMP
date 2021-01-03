@@ -26,7 +26,7 @@ Output:
 - use swap to make sure each item is used only once.
 - Caution: the result permutations are not listed in lexicographical order as the original list is not sorted and swap could shuffle the list.
 
-```c++
+```cpp
 class Solution {
 private:
     vector<vector<int>> res;
@@ -52,7 +52,7 @@ public:
 
 - use a hashset to record the usage of each item.
 
-```c++
+```cpp
 class Solution {
 private:
     vector<vector<int>> res;

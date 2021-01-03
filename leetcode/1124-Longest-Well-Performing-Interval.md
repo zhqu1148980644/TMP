@@ -28,7 +28,7 @@ Explanation: The longest well-performing interval is [9,9,6].
 
 1. ##### prefix sum  O(n2)
 
-```c++
+```cpp
 class Solution {
 public:
     int longestWPI(vector<int>& hours) {
@@ -61,7 +61,7 @@ public:
         - `0 5 6` with monotonically decreasing prefix sum: `0 -1 -2`.
 - This method is the same as that of `problem 962`
 
-```c++
+```cpp
 class Solution {
 public:
     int longestWPI(vector<int>& hours) {
@@ -93,7 +93,7 @@ public:
 - use hash map to record the `first` shown index of each prefix sum.
 - For a negative prefix `sum[i]`, we only need to check the distance between `sum[i]` and `sum[i] - 1`, this is due to the fact that `sum[i] - 1` must occur before `sum[i] - 2/3/4/5...`. ie: when the first time `sum[i] - 2` shows up, it's left element must be `sum[i] - 1`.
 
-```c++
+```cpp
 class Solution {
 public:
     int longestWPI(vector<int>& hours) {
@@ -122,6 +122,6 @@ public:
 
 - Need revision.
 
-```c++
+```cpp
 
 ```

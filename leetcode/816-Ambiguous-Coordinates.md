@@ -33,7 +33,7 @@ S[0] = "(", S[S.length - 1] = ")", and the other elements in S are digits.
 
 - Note: strings with trailing zeroes are not permitted. ie: "00.123" or "1.1230"
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> nums(const string & s) {

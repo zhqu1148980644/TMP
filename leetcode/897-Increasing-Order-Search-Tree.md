@@ -41,7 +41,7 @@ Each node will have a unique integer value from 0 to 1000.
 
 1. ##### inorder traversal with recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -72,7 +72,7 @@ public:
 
 2. ##### stack
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode* increasingBST(TreeNode* root) {
@@ -100,7 +100,7 @@ public:
 
 - Caution: don't set the right child back to null as in ordinary morris traversal.
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode* increasingBST(TreeNode* root) {

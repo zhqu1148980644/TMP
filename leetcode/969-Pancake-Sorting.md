@@ -34,7 +34,7 @@ A[i] is a permutation of [1, 2, ..., A.length]
 
 - At each iteration, find the largest number and stack it at the front of the sorted suffix utill the whole array is sorted.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> pancakeSort(vector<int>& A) {

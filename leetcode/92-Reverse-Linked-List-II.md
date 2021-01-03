@@ -18,7 +18,7 @@ Output: 1->4->3->2->5->NULL
 - This is a simplified reverse-nodes-in-k-group problem(25). ie: reverse-nodes-in-k-group one time.
 - Just copy paste the reverse-k nodes code
 
-```c++
+```cpp
 typedef struct ListNode node;
 struct ListNode* reverseBetween(struct ListNode* head, int m, int n){
     node * next, * nnext, * hhead = head, ** pprev = &hhead;
@@ -50,7 +50,7 @@ struct ListNode* reverseBetween(struct ListNode* head, int m, int n){
 - After inserted `n - m` times, reversion done.
 - In this pespective, it's easy to rewrite `reverse-list-in-k-group` quickly and concisely with the same idea.
 
-```c++
+```cpp
 typedef struct ListNode node;
 struct ListNode* reverseBetween(struct ListNode* head, int m, int n){
     node dummpy = {0, head}, * cur;

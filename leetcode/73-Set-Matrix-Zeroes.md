@@ -45,7 +45,7 @@ Output:
 - When ever meet an zero item ouside the first column/row, set the corresponding position in the first column/row to zero.
 - To aoid confusion in whether the first column/row contain zeros, use two bool value to record this information.
 
-```c++
+```cpp
 class Solution {
 public:
     void setZeroes(vector<vector<int>>& matrix) {

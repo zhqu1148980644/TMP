@@ -34,7 +34,7 @@ Output: [2,6,14,11,7,3,12,8,4,13,9,10,5,1]
 
 1. ##### recursion
 
-```c++
+```cpp
 /*
 // Definition for a Node.
 class Node {
@@ -78,7 +78,7 @@ public:
 - `root right left`
 - However it's actually not a real postorder traversal.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> postorder(Node* root) {
@@ -105,7 +105,7 @@ public:
 - Pop the current node(visiting upside) only if there are no other child left.
 - `last` represent the last child visited before.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> postorder(Node* root) {

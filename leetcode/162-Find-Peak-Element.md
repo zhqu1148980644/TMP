@@ -31,7 +31,7 @@ Explanation: Your function can return either index number 1 where the peak eleme
 - Shrink the searhing range 2 folds in each iteration.
 - if `mid < mid + 1` then the peak must be in the right side and vice versa.
 
-```c++
+```cpp
 class Solution {
 public:
     int findPeakElement(vector<int>& nums) {

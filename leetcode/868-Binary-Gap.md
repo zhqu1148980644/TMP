@@ -43,7 +43,7 @@ Note:
 
 1. ##### bit operation
 
-```c++
+```cpp
 class Solution {
 public:
     int binaryGap(int N) {

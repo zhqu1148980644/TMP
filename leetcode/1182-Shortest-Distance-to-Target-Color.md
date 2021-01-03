@@ -33,7 +33,7 @@ queries[i].length == 2
 
 1. ##### hash map O(2n)
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> shortestDistanceColor(vector<int>& colors, vector<vector<int>>& queries) {
@@ -70,7 +70,7 @@ public:
 
 2. ##### binary  O(n + len(q)log(n))
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> shortestDistanceColor(vector<int>& colors, vector<vector<int>>& queries) {

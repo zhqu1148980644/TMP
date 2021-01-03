@@ -26,7 +26,7 @@ Explanation: The array contains less than 2 elements, therefore return 0.
 
 1. ##### sort O(nlog(n))
 
-```c++
+```cpp
 class Solution {
 public:
     int maximumGap(vector<int>& nums) {
@@ -45,7 +45,7 @@ public:
 
 2. ##### raidix sort O(n) S(n)
 
-```c++
+```cpp
 class Solution {
 public:
     int maximumGap(vector<int>& nums) {
@@ -90,7 +90,7 @@ public:
     - `maxpgap == w` is true only when all nodes are evenly separated.
 - Instead of creating buckets to collect items, we can simply use two arrays to record the minimum and maximum number in each bucket.
 
-```c++
+```cpp
 class Solution {
 public:
     int maximumGap(vector<int>& nums) {

@@ -65,7 +65,7 @@ There are no single-quote, double-quote, or control characters in the source cod
 
 - Be careful about the cases like: `[/*dasdasdasdas, asdasda*/asdasd]` or `[/*dasdasdasd, asdasdasd*/]`.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> removeComments(vector<string>& source) {
@@ -111,7 +111,7 @@ public:
 
 - borrowed from https://leetcode-cn.com/problems/remove-comments/solution/c-0ms-zhuang-tai-ji-by-charon____/
 
-```c++
+```cpp
 class Solution {
 public:
     inline string nextc(string & s, int i) {

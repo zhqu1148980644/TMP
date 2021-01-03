@@ -28,7 +28,7 @@ It is guaranteed such an S exists for the given A and B.
 
 - prefer appending two equal chars. ie: `aa/bb`
 
-```c++
+```cpp
 class Solution {
 public:
     string strWithout3a3b(int A, int B) {

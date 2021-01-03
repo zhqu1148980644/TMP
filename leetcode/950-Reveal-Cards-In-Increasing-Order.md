@@ -51,7 +51,7 @@ A[i] != A[j] for all i != j
     - As long as the order of the appding elements are in `decreasing` order, the final array would be the result that could generate the sequence with `increasing` order.
 
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> deckRevealedIncreasing(vector<int>& deck) {
@@ -75,7 +75,7 @@ public:
 
 - Put elements in increasing order and skip one empty cell at each iteration.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> deckRevealedIncreasing(vector<int>& deck) {

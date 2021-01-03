@@ -21,7 +21,7 @@ Answers within 10^-6 of the true value will be accepted as correct.
 
 - At each step, cut the range with the maximum distance
 
-```c++
+```cpp
 class Solution {
 public:
     double minmaxGasDist(vector<int>& stations, int K) {
@@ -48,7 +48,7 @@ public:
 
 - Use binary search to find the target distance. For a suspected distance, if the requiered number of cuts (can split all ranges into subranges <= the suspected distance) is greater than `K`, then the suspected distance must be underestimated.
 
-```c++
+```cpp
 class Solution {
 public:
     int numcuts(vector<int> & stations, double maxdis) {

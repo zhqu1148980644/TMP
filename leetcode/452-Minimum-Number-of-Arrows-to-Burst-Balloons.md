@@ -24,7 +24,7 @@ One way is to shoot one arrow for example at x = 6 (bursting the balloons [2,8] 
 
 - Sort by start of each balloon.
 
-```c++
+```cpp
 class Solution {
 public:
     int findMinArrowShots(vector<vector<int>>& points) {
@@ -49,7 +49,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     int findMinArrowShots(vector<vector<int>>& points) {
@@ -72,7 +72,7 @@ public:
 
 - Or sort by end, then there is no need to update the minimum end of intervals.
 
-```c++
+```cpp
 class Solution {
 public:
     int findMinArrowShots(vector<vector<int>>& points) {

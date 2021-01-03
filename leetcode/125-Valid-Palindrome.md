@@ -20,7 +20,7 @@ Output: false
 
 - Skip the undesirable characters when checking palindrome string in normal way(Two pointers).
 
-```c++
+```cpp
 class Solution {
 public:
     bool isPalindrome(string s) {

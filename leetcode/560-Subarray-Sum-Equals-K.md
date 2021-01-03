@@ -21,7 +21,7 @@ Given `sum[:i]` and `sum[:j]` st `j > i` we can quickly calculate the sum betwee
 
 2. ##### prefix sum with hash map
 
-```c++
+```cpp
 class Solution {
 public:
     int subarraySum(vector<int>& nums, int k) {
@@ -40,7 +40,7 @@ public:
 
 or store expected_sums in the hash map
 
-```c++
+```cpp
 class Solution {
 public:
     int subarraySum(vector<int>& nums, int k) {

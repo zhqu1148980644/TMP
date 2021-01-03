@@ -26,7 +26,7 @@ Note:
 - reference: https://leetcode-cn.com/problems/sum-of-subarray-minimums/solution/c-dan-diao-zhan-jie-fa-by-da-li-wang/
 - `Sum[i]` represents the the sum of min of subarrays end with `A[i]`(includeing A[i]).
 
-```c++
+```cpp
 class Solution {
 public:
     int sumSubarrayMins(vector<int>& A) {
@@ -61,7 +61,7 @@ public:
 or
 
 
-```c++
+```cpp
 class Solution {
 public:
     int sumSubarrayMins(vector<int>& A) {
@@ -91,7 +91,7 @@ public:
 
 - ?????, how ???
 
-```c++
+```cpp
 class Solution {
 public:
     int sumSubarrayMins(vector<int>& A) {

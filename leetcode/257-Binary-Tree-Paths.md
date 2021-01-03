@@ -44,7 +44,7 @@ class Solution(object):
                 ] or [ str(root.val) ]
 ```
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

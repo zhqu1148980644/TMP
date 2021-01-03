@@ -27,7 +27,7 @@ The above output corresponds to the 5 unique BST's shown below:
 
 1. ##### recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -77,7 +77,7 @@ public:
 - Structures of trees built from `2 3` are the same as structures of trees built from `98 99`. They differ only in values but not structures.
 - Codes in the first method recursively calculate tree structures from different values but with same structures.
 
-```c++
+```cpp
 typedef TreeNode node;
 class Solution {
 public:

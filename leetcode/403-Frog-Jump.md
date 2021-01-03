@@ -35,7 +35,7 @@ the gap between the 5th and 6th stone is too large.
 
 1. ##### dfs with memoization
 
-```c++
+```cpp
 class Solution {
 public:
     bool canCross(vector<int>& stones) {
@@ -64,7 +64,7 @@ public:
 
 2. ##### dynamic programming or bfs search ?
 
-```c++
+```cpp
 class Solution {
 public:
     bool canCross(vector<int>& stones) {
@@ -88,7 +88,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     bool canCross(vector<int>& stones) {

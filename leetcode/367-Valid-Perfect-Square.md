@@ -20,7 +20,7 @@ Output: false
 
 1. ##### newton's method
 
-```c++
+```cpp
 class Solution {
 public:
     bool isPerfectSquare(int num) {
@@ -35,7 +35,7 @@ public:
 
 2. ##### binary search
 
-```c++
+```cpp
 class Solution {
 public:
     bool isPerfectSquare(int num) {

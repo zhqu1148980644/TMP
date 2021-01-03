@@ -42,7 +42,7 @@ Note:
 - For the current `i`, `dp[j]` represents the OR operation of numbers in `num[j:i - 1]`.
 - If `dp[j] == num[i]`, this denotes that `dp[j:i-1]` has collected all bits that are within the current number `nums[i]`, thus the OR result of `nums[k:i - 1]` equals to that of `nums[k:i]`, and because we are traversing the array forwards, `nums[k:i-1]` has already been visited before thus no need to visit again.
 
-```c++
+```cpp
 class Solution {
 public:
     int subarrayBitwiseORs(vector<int>& A) {

@@ -22,7 +22,7 @@ Could you improve it to O(n log n) time complexity?
 
 - `dp[i]` represents the length of the longest increasing subsequence within `s[:i]`
 
-```c++
+```cpp
 class Solution {
 public:
     int lengthOfLIS(vector<int>& nums) {
@@ -47,7 +47,7 @@ public:
     - The current number is larger than the tail of `tails`: Pushing it at the back repsents the newly found increasing subsequence with longer length.
     - The current number is smaller than the tail: Use binary search to find the correct point in `tails` and replace the first larger/equal one with the current number. This step does not change the correctness of `tails`(invariant).
 
-```c++
+```cpp
 class Solution {
 public:
     int lengthOfLIS(vector<int>& nums) {

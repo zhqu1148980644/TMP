@@ -38,7 +38,7 @@ twitter.getNewsFeed(1);
 
 1. ##### hash map with linked list
 
-```c++
+```cpp
 class Twitter {
 public:
     unordered_map<int, unordered_set<int>> users;

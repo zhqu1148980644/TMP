@@ -31,7 +31,7 @@ Since the list has two middle nodes with values 3 and 4, we return the second on
 
 1. ##### two pointers
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -55,7 +55,7 @@ public:
 
 2. ##### two pass
 
-```c++
+```cpp
 class Solution {
 public:
     ListNode* middleNode(ListNode* head) {

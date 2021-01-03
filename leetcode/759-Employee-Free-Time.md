@@ -32,7 +32,7 @@ Constraints:
 
 1. ##### discretization with tree map O(nlog(n)) n is the number of intervals
 
-```c++
+```cpp
 /*
 // Definition for an Interval.
 class Interval {
@@ -78,7 +78,7 @@ public:
 
 2. ##### sort O(nlog(n))
 
-```c++
+```cpp
 class Solution {
 public:
     vector<Interval> employeeFreeTime(vector<vector<Interval>> schedule) {
@@ -115,7 +115,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     vector<Interval> employeeFreeTime(vector<vector<Interval>> schedule) {
@@ -144,7 +144,7 @@ public:
 
 3. ##### priority queue O(nlog(n))
 
-```c++
+```cpp
 class Solution {
 public:
     vector<Interval> employeeFreeTime(vector<vector<Interval>> schedule) {

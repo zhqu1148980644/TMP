@@ -30,7 +30,7 @@ If instead we turned both strings into "lee" or "eet", we would get answers of 4
 
 - This program equals to find the common subsequence with the largest sum.
 
-```c++
+```cpp
 class Solution {
 public:
     int minimumDeleteSum(string s1, string s2) {
@@ -63,7 +63,7 @@ public:
 
 -  `dp[i][j]` represents the the minimum sum of deleted characters to make `s1[:i]` and `s2[:j]` equal.
 
-```c++
+```cpp
 class Solution {
 public:
     int minimumDeleteSum(string s1, string s2) {

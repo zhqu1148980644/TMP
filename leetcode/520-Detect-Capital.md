@@ -31,7 +31,7 @@ Output: False
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     bool detectCapitalUse(string word) {
@@ -55,7 +55,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     bool detectCapitalUse(string word) {

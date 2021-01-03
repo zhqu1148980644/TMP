@@ -27,7 +27,7 @@ Each call to ping will have 1 <= t <= 10^9.
 
 1. ##### deque
 
-```c++
+```cpp
 class RecentCounter {
 public:
     deque<int> times;

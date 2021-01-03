@@ -28,7 +28,7 @@ Note: You may assume the tree (i.e., the given root node) is not NULL.
 
 1. ##### use inorder traversal to find the leftmost node in each level
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -58,7 +58,7 @@ public:
 
 or iteration version
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -93,7 +93,7 @@ public:
 
 2. ##### level order traversal
 
-```c++
+```cpp
 class Solution {
 public:
     int findBottomLeftValue(TreeNode* root) {

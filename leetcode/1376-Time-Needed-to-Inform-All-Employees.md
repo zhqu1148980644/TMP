@@ -71,7 +71,7 @@ Output: 1076
 1. ##### dfs maxinum path sum
 
 
-```c++
+```cpp
 class Solution {
 public:
     int maxtime = 0;

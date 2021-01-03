@@ -39,7 +39,7 @@ It is guaranteed there exists an answer.
 
 1. ##### hash set
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> fairCandySwap(vector<int>& A, vector<int>& B) {

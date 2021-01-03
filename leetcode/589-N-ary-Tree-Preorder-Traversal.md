@@ -33,7 +33,7 @@ Output: [1,2,3,6,7,11,14,4,8,12,5,9,13,10]
 
 1. ##### recursion
 
-```c++
+```cpp
 /*
 // Definition for a Node.
 class Node {
@@ -72,7 +72,7 @@ public:
 
 2. ##### iteration with stack
 
-```c++
+```cpp
 /*
 // Definition for a Node.
 class Node {

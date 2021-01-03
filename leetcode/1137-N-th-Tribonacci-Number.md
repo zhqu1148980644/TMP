@@ -28,7 +28,7 @@ The answer is guaranteed to fit within a 32-bit integer, ie. answer <= 2^31 - 1.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     int tribonacci(int n) {
@@ -46,6 +46,6 @@ public:
 
 2. ##### fast power
 
-```c++
+```cpp
 
 ```

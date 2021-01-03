@@ -34,7 +34,7 @@ Constraints:
 
 1. #### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     int countGoodTriplets(vector<int>& arr, int a, int b, int c) {

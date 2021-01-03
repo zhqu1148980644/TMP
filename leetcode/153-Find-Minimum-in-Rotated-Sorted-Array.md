@@ -25,7 +25,7 @@ Output: 0
 - Though the first solution may seems more complicated, it's actually more generic in most binary search problems, the idea is the make the moving direction in each step correct with the normal binary search strategy.
     - If the binsearch algorithm doesn't works in some circumstances, fake the comparing element.
 
-```c++
+```cpp
 class Solution {
 public:
     int findMin(vector<int>& nums) {
@@ -51,7 +51,7 @@ public:
 Or
 Caution: do not use [) mode.
 
-```c++
+```cpp
 class Solution {
 public:
     int findMin(vector<int>& nums) {
@@ -74,7 +74,7 @@ public:
 
 OR
 
-```c++
+```cpp
 class Solution {
 public:
     int findMin(vector<int>& nums) {

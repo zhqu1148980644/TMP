@@ -52,7 +52,7 @@ In total you spent $17 and covered all the days of your travel.
 
 - `dp[i]` represents the minimum cost when traveled in `days[i]`
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> memo, plans;
@@ -78,7 +78,7 @@ public:
 
 - Iterative version
 
-```c++
+```cpp
 class Solution {
 public:
     int mincostTickets(vector<int>& days, vector<int>& costs) {
@@ -106,7 +106,7 @@ public:
 or
 
 
-```c++
+```cpp
 class Solution {
 public:
     int mincostTickets(vector<int>& days, vector<int>& costs) {

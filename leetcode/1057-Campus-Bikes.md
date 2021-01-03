@@ -38,7 +38,7 @@ All worker and bike locations are distinct.
 
 - As Manhattan distances may contain multiple duplicates, use tree map to reduce the time complexity.
 
-```c++
+```cpp
 class Solution {
 public:
     inline int dis(vector<int> & p, vector<int> & b) {

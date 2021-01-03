@@ -11,7 +11,7 @@ Output: ["11","69","88","96"]
 
 1. ##### dynamic programming
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<string>> res = {
@@ -45,7 +45,7 @@ public:
 
 2. ##### dfs
 
-```c++
+```cpp
 class Solution {
 public:
     vector<pair<char, char>> cp = {{'6', '9'}, {'9', '6'}, {'0', '0'}, {'8', '8'}, {'1', '1'}};

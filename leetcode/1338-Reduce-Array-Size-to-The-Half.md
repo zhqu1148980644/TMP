@@ -48,7 +48,7 @@ Output: 5
 
 1. ##### hash map and sort
 
-```c++
+```cpp
 class Solution {
 public:
     int minSetSize(vector<int>& arr) {

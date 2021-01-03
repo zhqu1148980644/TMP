@@ -36,7 +36,7 @@ Note:
 - reference: https://leetcode-cn.com/problems/smallest-range-ii/solution/tai-nan-liao-zhi-neng-hua-tu-ping-zhi-jue-by-user8/
 - Split the sorted array into two parts, then move the lower part `k` steps forward and the other part `k` steps downward. Check reference for demonstration figures.
 
-```c++
+```cpp
 class Solution {
 public:
     int smallestRangeII(vector<int>& A, int K) {

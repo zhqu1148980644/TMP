@@ -27,7 +27,7 @@ points[i].length == 2
 
 - Check if two points' slopes are the same according to the third point.
 
-```c++
+```cpp
 class Solution {
 public:
     bool isBoomerang(vector<vector<int>>& points) {

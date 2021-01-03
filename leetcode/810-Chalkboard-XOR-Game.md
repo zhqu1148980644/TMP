@@ -30,7 +30,7 @@ Notes:
         - `(even number of S xor) ^ (S)`
         - `0 ^ nonzero != 0`. The hypothesis fails.
 
-```c++
+```cpp
 class Solution {
 public:
     bool xorGame(vector<int>& nums) {

@@ -19,7 +19,7 @@ Constraints:
 
 1. ##### hash map
 
-```c++
+```cpp
 class Solution {
 public:
 #define node(x, y) ((x) * 10 + (y))

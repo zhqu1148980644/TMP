@@ -14,7 +14,7 @@ Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.
 
 
 
-```c++
+```cpp
 class Solution {
 public:
     int countPrimes(int n) {
@@ -36,7 +36,7 @@ public:
 2. ##### euler sieve
 
 
-```c++
+```cpp
 class Solution {
 public:
     int countPrimes(int n) {

@@ -29,7 +29,7 @@ Constraints:
 
 - Be careful when the step size is 0
 
-```c++
+```cpp
 class Solution {
 public:
     int missingNumber(vector<int>& arr) {

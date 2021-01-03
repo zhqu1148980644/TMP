@@ -34,7 +34,7 @@ How would you handle overflow for very large input integers?
 
 1. ##### dfs
 
-```c++
+```cpp
 class Solution {
 public:
     string_view s;

@@ -27,7 +27,7 @@ The input string will only contain the character '*' and digits '0' - '9'.
 
 - `dp[i]` only depends on `dp[i - 1]` and `dp[i - 2]`
 
-```c++
+```cpp
 class Solution {
 public:
     int numDecodings(string s) {

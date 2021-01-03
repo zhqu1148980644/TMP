@@ -25,7 +25,7 @@ You can assume that you can always reach the last index.
 - Loop through the points that is reacheable at the current step, calculate the maximum region that is reacheable in the next step.
 - When we get to the maximum region from the last step, update jumps to `jumps + 1`, then back to step 2.
 
-```c++
+```cpp
 #define max(x, y) (x > y ? x : y);
 int jump(int* nums, int numsSize){
     int furthest = 0, end = 0, jumps = 0;

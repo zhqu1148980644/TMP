@@ -10,7 +10,7 @@ Please optimize your algorithm to use less time and space. The input size may be
 
 - recursion version
 
-```c++
+```cpp
 class Solution {
 private:
     vector<int> res;
@@ -33,7 +33,7 @@ public:
 
 - stack version
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> lexicalOrder(int n) {
@@ -59,7 +59,7 @@ public:
 
 2. ##### iteration
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> lexicalOrder(int n) {

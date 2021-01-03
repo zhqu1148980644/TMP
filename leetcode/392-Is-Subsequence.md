@@ -26,7 +26,7 @@ Special thanks to @pbrother for adding this problem and creating all test cases.
 
 1. ##### Two pointers
 
-```c++
+```cpp
 bool isSubsequence(char * s, char * t){
     while (*s && *t) {
         if (*s == *t)
@@ -42,7 +42,7 @@ bool isSubsequence(char * s, char * t){
 - Record indexes of each char in t.
 - Use binary search to find the first occurrence in the legal range, and shrink the legal range after each match.
 
-```c++
+```cpp
 class Solution {
 public:
     int bisearch(vector<int> & nums, int target) {

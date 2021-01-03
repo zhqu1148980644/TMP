@@ -39,7 +39,7 @@ Note:
 
 1. ##### dijkstra O(mn)
 
-```c++
+```cpp
 aclass Solution {
 public:
 #define node(x, y) ((x) * n + (y))

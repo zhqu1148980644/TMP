@@ -24,7 +24,7 @@ S and T consist of lowercase letters only.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     string customSortString(string S, string T) {

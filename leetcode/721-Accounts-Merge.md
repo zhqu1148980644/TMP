@@ -29,7 +29,7 @@ We could return these lists in any order, for example the answer [['Mary', 'mary
 
 1. ##### Union Find
 
-```c++
+```cpp
 class UnionFind {
 private:
     vector<int> nodes, sizes;
@@ -97,7 +97,7 @@ public:
 
 - Build the adjacency matrix and use dfs to find all connected components.
 
-```c++
+```cpp
 class Solution {
 public:
     unordered_map<string, vector<int>> g;
@@ -143,7 +143,7 @@ public:
 
 or use only one hashset
 
-```c++
+```cpp
 class Solution {
 public:
     unordered_map<string, vector<int>> g;

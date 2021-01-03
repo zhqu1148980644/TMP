@@ -40,7 +40,7 @@ Explanation:
 
 1. ##### postorder traversal with recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

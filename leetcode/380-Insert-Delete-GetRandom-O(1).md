@@ -37,7 +37,7 @@ randomSet.getRandom();
 
 1. ##### array and hash map
 
-```c++
+```cpp
 class RandomizedSet {
 public:
     /** Initialize your data structure here. */

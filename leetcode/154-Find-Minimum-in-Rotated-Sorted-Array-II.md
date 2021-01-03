@@ -32,7 +32,7 @@ Would allow duplicates affect the run-time complexity? How and why?
 - For example: `01111` can be rotated to `10111` and `11101`.
 - In these two cases, both `left` `mid` `right` equals to `1`, thus a linear search is nesserary.
 
-```c++
+```cpp
 class Solution {
 public:
     int findMin(vector<int>& nums) {

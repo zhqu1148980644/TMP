@@ -41,7 +41,7 @@ Constraints:
 
 1. ##### math/greedy
 
-```c++
+```cpp
 class Solution {
 public:
     int minNumberOperations(vector<int>& target) {

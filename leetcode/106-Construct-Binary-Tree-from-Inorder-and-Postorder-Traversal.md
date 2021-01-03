@@ -53,7 +53,7 @@ Or terminate the recursion by delivering the `range` info of inorder sequence an
 
 - Notes: the selection of postindex and range is independent of each other, you can use `left-close-right-close` for range and `open` for posindex too.
 
-```c++
+```cpp
 class Solution {
     vector<int> postorder;
     unordered_map<int, int> m;
@@ -84,7 +84,7 @@ public:
 
 - See `problem 105` for detail.
 
-```c++
+```cpp
 class Solution {
 public:
     int pos, ino;
@@ -110,7 +110,7 @@ public:
 - See `problem 105` for details.
 - Emulate binary tree traversal in order of `root right left`.(reversed postorder).
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {

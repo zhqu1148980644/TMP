@@ -18,7 +18,7 @@ N  will be in range [1, 10000].
 
 1. ##### straight forward O(32n)
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> valid = {1, 1, 2, 0, 0, 1, 1, 0, 1, 1};
@@ -45,7 +45,7 @@ public:
 
 2. ##### dynamic programming O(n) S(n)
 
-```c++
+```cpp
 class Solution {
 public:
     int rotatedDigits(int N) {
@@ -87,7 +87,7 @@ public:
     - `dp[2]` represents numbers `47**`, as the current number already contains invalid number `7`, all numbers with this prefix will be invalid.
     - `dp[2] = dp[3] = dp[4] = 0`
 
-```c++
+```cpp
 class Solution {
 public:
     int rotatedDigits(int N) {

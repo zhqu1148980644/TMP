@@ -27,7 +27,7 @@ This question is the same as 1009: https://leetcode.com/problems/complement-of-
 
 - `0101 ^ 0111`
 
-```c++
+```cpp
 class Solution {
 public:
     int findComplement(int num) {

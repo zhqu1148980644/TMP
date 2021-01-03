@@ -25,7 +25,7 @@ One longest palindrome that can be built is "dccaccd", whose length is 7.
 
 - Count how many pairs of characters are the same.
 
-```c++
+```cpp
 class Solution {
 public:
     int longestPalindrome(string s) {
@@ -47,7 +47,7 @@ public:
 
 Or
 
-```c++
+```cpp
 class Solution {
 public:
     int longestPalindrome(string s) {

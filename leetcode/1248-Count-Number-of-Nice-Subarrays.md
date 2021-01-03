@@ -30,7 +30,7 @@ Constraints:
 
 1. ##### sliding window
 
-```c++
+```cpp
 class Solution {
 public:
     int numberOfSubarrays(vector<int>& nums, int k) {
@@ -61,7 +61,7 @@ public:
 - reference: https://leetcode-cn.com/problems/count-number-of-nice-subarrays/comments/358786
 - Convert the problem into `the number of subarrays with sum equals to K with odd treated as 1 and even treated as 0`, then the problem is the same as `problem 560`.
 
-```c++
+```cpp
 class Solution {
 public:
     int numberOfSubarrays(vector<int>& nums, int k) {

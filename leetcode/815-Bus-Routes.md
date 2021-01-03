@@ -28,7 +28,7 @@ The best strategy is take the first bus to the bus stop 7, then take the second 
 - Caution: `Do not use vector` to store buses as some test case contains TOO MANY duplicate stops.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int numBusesToDestination(vector<vector<int>>& routes, int S, int T) {
@@ -70,7 +70,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     int numBusesToDestination(vector<vector<int>>& routes, int S, int T) {

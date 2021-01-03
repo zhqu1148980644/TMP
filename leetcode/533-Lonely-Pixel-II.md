@@ -34,7 +34,7 @@ The range of width and height of the input 2D array is [1,200].
 
 - The time complexity could be improvement by hashing each row into a unique key.
 
-```c++
+```cpp
 class Solution {
 public:
     int findBlackPixel(vector<vector<char>>& picture, int N) {
@@ -74,7 +74,7 @@ public:
 
 or with preexisting.
 
-```c++
+```cpp
 class Solution {
 public:
     int findBlackPixel(vector<vector<char>>& picture, int N) {

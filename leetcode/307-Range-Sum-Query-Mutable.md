@@ -25,7 +25,7 @@ sumRange(0, 2) -> 8
 - Initialization: `O(nlog(n))`
 - Update/Query: `O(log(n))`
 
-```c++
+```cpp
 struct FenwickTree {
     vector<int> sums;
     FenwickTree(int n) : sums(n + 1) {}
@@ -87,7 +87,7 @@ public:
 - Query: `O(log(n) + k)`
 - Segment tree can be used to solve aggregation problems like `min/max..` in a similar way.
 
-```c++
+```cpp
 class NumArray {
 public:
     struct STNode {
@@ -166,7 +166,7 @@ public:
 - For simplicity, the code below treat the root node as `tree[1]` and `tree[0]` is merely a placeholder.
 - Reference: the official answer
 
-```c++
+```cpp
 class NumArray {
 public:
     int * tree;
@@ -233,6 +233,6 @@ public:
 
 3. ##### block sum
 
-```c++
+```cpp
 
 ```

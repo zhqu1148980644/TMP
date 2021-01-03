@@ -35,7 +35,7 @@ All elements in the matrix are distinct.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> luckyNumbers (vector<vector<int>>& matrix) {
@@ -66,7 +66,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> luckyNumbers (vector<vector<int>>& matrix) {

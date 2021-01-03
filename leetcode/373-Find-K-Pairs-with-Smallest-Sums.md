@@ -30,7 +30,7 @@ Explanation: All possible pairs are returned from the sequence: [1,3],[2,3]
 
 - Use binary search to search for the n'th pair sum.
 
-```c++
+```cpp
 class Solution {
 public:
     // use sliding window to count the number of pair sums <= target
@@ -91,7 +91,7 @@ public:
 - It's clearly that codes of this version is the same as the previous one which uses sliding window for counting, thought we see them in a different way.
 
 
-```c++
+```cpp
 class Solution {
 public:
     inline int under(vector<int> & nums1, vector<int> & nums2, int target) {
@@ -151,7 +151,7 @@ public:
 
 - Similar to merge multiple sorted lists.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> kSmallestPairs(vector<int>& nums1, vector<int>& nums2, int k) {
@@ -184,7 +184,7 @@ public:
 
 - check problem 378 for details and reference
 
-```c++
+```cpp
 template <typename T>
 struct Matrix {
     using fn_type = function<T(int, int)>;

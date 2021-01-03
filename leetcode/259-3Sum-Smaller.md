@@ -14,7 +14,7 @@ Follow up: Could you solve it in O(n2) runtime?
 
 1. ##### two pointers
 
-```c++
+```cpp
 class Solution {
 public:
     int threeSumSmaller(vector<int>& nums, int target) {

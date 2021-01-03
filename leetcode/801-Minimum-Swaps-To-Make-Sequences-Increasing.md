@@ -39,7 +39,7 @@ which are both strictly increasing.
 - `dp[i][swap]` the last pair of numbers was swapped.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int minSwap(vector<int>& A, vector<int>& B) {

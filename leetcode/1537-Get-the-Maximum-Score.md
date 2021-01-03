@@ -52,7 +52,7 @@ nums1 and nums2 are strictly increasing.
 
 1. ##### hash map O(n) S(n)
 
-```c++
+```cpp
 class Solution {
 public:
     int maxSum(vector<int>& nums1, vector<int>& nums2) {
@@ -83,7 +83,7 @@ public:
 
 2. ##### two pointers O(n) S(1)
 
-```c++
+```cpp
 class Solution {
 public:
     int maxSum(vector<int>& nums1, vector<int>& nums2) {

@@ -26,7 +26,7 @@ You may assume that row1 ≤ row2 and col1 ≤ col2.
 1. ##### 2d prefix sum
 
 
-```c++
+```cpp
 class NumMatrix {
 public:
     vector<vector<int>> accum;

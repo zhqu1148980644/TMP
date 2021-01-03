@@ -53,7 +53,7 @@ stones[i] have distinct values.
     - However, there are special cases like: `[3,4,5,6,10]`, these kind of cases need two steps: move 3 to 8 then 10 to 7.
     - We can prove that as long as the lenght of the continous array is less than `n - 1`, we can always ends with `n - cur` steps(cur is the number of stones in the current valid window).
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> numMovesStonesII(vector<int>& stones) {

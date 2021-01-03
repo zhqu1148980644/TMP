@@ -20,7 +20,7 @@ S consists of lowercase English letters only.
 
 #### Solutions
 
-```c++
+```cpp
 class Solution {
 public:
     string removeVowels(string S) {

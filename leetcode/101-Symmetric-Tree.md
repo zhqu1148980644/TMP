@@ -28,7 +28,7 @@ Bonus points if you could solve it both recursively and iteratively.
 
 1. ##### recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -63,7 +63,7 @@ public:
     - left root right
     - right root left
 
-```c++
+```cpp
 class Solution {
 public:
     bool isSymmetric(TreeNode* root) {
@@ -95,7 +95,7 @@ public:
 
 3. ##### bfs with queue
 
-```c++
+```cpp
 class Solution {
 public:
     bool isSymmetric(TreeNode* root) {
@@ -123,7 +123,7 @@ public:
 
 Or
 
-```c++
+```cpp
 class Solution {
 public:
     bool isSymmetric(TreeNode* root) {

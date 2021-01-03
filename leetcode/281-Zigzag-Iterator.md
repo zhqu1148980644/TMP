@@ -35,7 +35,7 @@ Output: [1,4,8,2,5,9,3,6,7].
 
 - Using the abstraction of STL's iterator, this strategy can be simply extended to any number of vectors.
 
-```c++
+```cpp
 typedef vector<int>::iterator It;
 class ZigzagIterator {
     list<pair<It, It>> iters;
@@ -83,7 +83,7 @@ public:
 
 or
 
-```c++
+```cpp
 class ZigzagIterator {
 public:
     vector<vector<int>> vs;

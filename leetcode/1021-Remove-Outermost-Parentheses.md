@@ -41,7 +41,7 @@ S is a valid parentheses string
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     string removeOuterParentheses(string S) {
@@ -63,7 +63,7 @@ public:
 
 2. ##### stack
 
-```c++
+```cpp
 class Solution {
 public:
     string removeOuterParentheses(string S) {

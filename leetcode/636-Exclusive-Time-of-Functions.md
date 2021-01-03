@@ -37,7 +37,7 @@ Functions will always log when they exit.
 
 1. ##### stack
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> exclusiveTime(int n, vector<string>& logs) {
@@ -67,7 +67,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> exclusiveTime(int n, vector<string>& logs) {

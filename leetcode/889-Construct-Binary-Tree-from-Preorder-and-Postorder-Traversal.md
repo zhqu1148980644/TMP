@@ -35,7 +35,7 @@ It is guaranteed an answer exists. If there exists multiple answers, you can ret
 
 - Recursively build tree by directly finding the splitting point.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -72,7 +72,7 @@ public:
 
 or use hasmap to achieve real `O(n)(otherwise it's  nlog(n))` complexity.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> pre, post;
@@ -118,7 +118,7 @@ reversed preorder: 4 3 2 1 ...
 ```
 - reference: https://leetcode.com/problems/construct-binary-tree-from-preorder-and-postorder-traversal/discuss/161268/C%2B%2BJavaPython-One-Pass-Real-O(N)
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode* constructFromPrePost(vector<int>& pre, vector<int>& post) {
@@ -147,7 +147,7 @@ public:
 - Instead of explicitly specifying the partition points, we can impose restrictions on when should the recursive building process ends and return.
 - The idea behind this solution is the same as the previous one.
 
-```c++
+```cpp
 class Solution {
 public:
     int prei = 0, posti = 0;

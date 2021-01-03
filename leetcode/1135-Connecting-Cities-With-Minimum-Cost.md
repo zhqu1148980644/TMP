@@ -43,7 +43,7 @@ There is no way to connect all cities even if all edges are used.
 - Check if the size of connected components equals to one to make sure all cities are connected.
     - The growing tree built by kruskal algorihtm is not guaranteed to be connected(sparse) as apposesed to prim algorithm.
 
-```c++
+```cpp
 class UnionFind {
 private:
     int * nodes;
@@ -108,7 +108,7 @@ public:
 - In each step, find an edge with miminum cost with one node within the MST and another node outside.
 - Use min heap to speed up the process of searching edge with the minimal cost.
 
-```c++
+```cpp
 class Solution {
 public:
     int minimumCost(int N, vector<vector<int>>& connections) {

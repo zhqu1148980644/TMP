@@ -34,7 +34,7 @@ Explanation: There is one 0-diff pair in the array, (1, 1).
 
 - Since every pair will be encountered twice, we only count one of them.
 
-```c++
+```cpp
 class Solution {
 public:
     int findPairs(vector<int>& nums, int k) {
@@ -60,7 +60,7 @@ public:
 - Borrowed from others
 - Store the lower one of the valid pair to permit duplicate pairs.
 
-```c++
+```cpp
 class Solution {
 public:
     int findPairs(vector<int>& nums, int k) {

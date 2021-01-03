@@ -25,7 +25,7 @@ Constraints:
 
 1. ##### priority queue o(nlog(n))
 
-```c++
+```cpp
 class Solution {
 public:
     int connectSticks(vector<int>& sticks) {

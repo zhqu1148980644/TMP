@@ -25,7 +25,7 @@ All substring matching algorithms.
 
 1. #### kmp
 
-```c++
+```cpp
 int * build_next(char * pattern, int len) {
     int  * next = (int *) malloc(sizeof(int) * len);
     int i = 0;

@@ -30,7 +30,7 @@ The answer provided is the shortest such string that satisfies these properties.
 - Find the longest common subsequence.
 - Insert characters outside the lcs into lcs with the same order as that in original string.
 
-```c++
+```cpp
 class Solution {
 public:
     string lcs(string & s1, string & s2) {

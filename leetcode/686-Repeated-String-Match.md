@@ -14,7 +14,7 @@ The length of A and B will be between 1 and 10000.
 
 1. ##### straight forward O(n2)
 
-```c++
+```cpp
 class Solution {
 public:
     int repeatedStringMatch(string A, string B) {
@@ -37,7 +37,7 @@ public:
 
 2. ##### kmp
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> build_next(string & s) {

@@ -41,7 +41,7 @@ S contains only digits.
 
 1. ##### backtrack
 
-```c++
+```cpp
 class Solution {
 public:
     vector<long> path;

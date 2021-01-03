@@ -25,7 +25,7 @@ Each graph[i] will be a sorted list of different integers, chosen within the ran
 1. ##### dfs
 
 
-```c++
+```cpp
 class Solution {
 public:
     enum State {UNVISITED, VISITING, VISITED};
@@ -59,7 +59,7 @@ public:
 - Borrowed from the official answer
 - Reverse all edges and use bfs search for acyclic path starting with all 0 indgree(revered) nodes. Then all nodes has been popped by queue are safe nodes.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> eventualSafeNodes(vector<vector<int>>& graph) {

@@ -29,7 +29,7 @@ Google: 90% of our engineers use the software you wrote (Homebrew), but you canâ
 
 1. ##### recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -55,7 +55,7 @@ public:
 
 inorder
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode* invertTree(TreeNode* root) {
@@ -82,7 +82,7 @@ public:
 
 preorder
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode* invertTree(TreeNode* root) {
@@ -108,7 +108,7 @@ public:
 
 level order
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode* invertTree(TreeNode* root) {

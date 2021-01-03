@@ -21,7 +21,7 @@ The minimum path sum from top to bottom is 11 (i.e., 2 + 3 + 5 + 1 = 11).
 
 1. ##### top-down dynamic programming
 
-```c++
+```cpp
 class Solution {
 public:
     int minimumTotal(vector<vector<int>>& triangle) {
@@ -48,7 +48,7 @@ public:
 2. ##### bottom-up dynamic programming
 
 
-```c++
+```cpp
 class Solution {
 public:
     int minimumTotal(vector<vector<int>>& triangle) {
@@ -66,7 +66,7 @@ public:
 
 Or a inplace version
 
-```c++
+```cpp
 class Solution {
 public:
     int minimumTotal(vector<vector<int>>& triangle) {

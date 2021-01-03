@@ -26,7 +26,7 @@ Finally, sentences can only be similar if they have the same number of words. So
 
 - Make sure the id for unseen words are reversed.
 
-```c++
+```cpp
 struct UnionFind {
     int * nodes;
     int * sizes;
@@ -92,7 +92,7 @@ public:
 2. ##### dfs
 
 
-```c++
+```cpp
 class Solution {
 public:
     unordered_map<string, unordered_set<string>> g;

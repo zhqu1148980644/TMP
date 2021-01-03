@@ -27,7 +27,7 @@ Notes: 
 
 - Check all combinations of overlapping, use hash map to record the delta with the maximum count.
 
-```c++
+```cpp
 class Solution {
 public:
     struct hash {

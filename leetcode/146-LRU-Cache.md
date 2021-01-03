@@ -36,7 +36,7 @@ cache.get(4);       // returns 4
     - Thus we need another map to save iterators of each item in double linked list.
 
 
-```c++
+```cpp
 class LRUCache {
 private:
     int size;
@@ -85,7 +85,7 @@ public:
 
 Or save `key-value` pair in double linked list and store each node's iterator in a hashmap.
 
-```c++
+```cpp
 class LRUCache {
 public:
     using kv = pair<int, int>;
@@ -129,7 +129,7 @@ public:
 
 Or use self-made double linked list.
 
-```c++
+```cpp
 template <typename K, typename V>
 struct List {
     using node = List<K, V>;

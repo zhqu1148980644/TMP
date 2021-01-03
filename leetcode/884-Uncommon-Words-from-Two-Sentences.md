@@ -28,7 +28,7 @@ A and B both contain only spaces and lowercase letters.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> uncommonFromSentences(string A, string B) {

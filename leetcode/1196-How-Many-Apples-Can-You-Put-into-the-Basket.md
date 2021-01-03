@@ -25,7 +25,7 @@ Constraints:
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     int maxNumberOfApples(vector<int>& arr) {

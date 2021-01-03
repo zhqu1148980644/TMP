@@ -38,7 +38,7 @@ formula will only consist of letters, digits, and round parentheses, and is a va
 
 1. ##### stack with hash map
 
-```c++
+```cpp
 class Solution {
 public:
     string countOfAtoms(string formula) {

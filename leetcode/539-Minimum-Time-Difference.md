@@ -10,7 +10,7 @@ The input time is legal and ranges from 00:00 to 23:59.
 
 1. ##### sort
 
-```c++
+```cpp
 class Solution {
 public:
     int findMinDifference(vector<string>& timePoints) {

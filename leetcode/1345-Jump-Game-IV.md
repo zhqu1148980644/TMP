@@ -54,7 +54,7 @@ Output: 3
 
 1. ##### bfs
 
-```c++
+```cpp
 class Solution {
 public:
     int minJumps(vector<int>& arr) {

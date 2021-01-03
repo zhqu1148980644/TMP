@@ -40,7 +40,7 @@ Output: 1
 
 1. ##### postorder with recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

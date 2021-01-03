@@ -46,7 +46,7 @@ Note:
 
 1. ##### straight forward O(mn) S(m + n)
 
-```c++
+```cpp
 class Solution {
 public:
     int projectionArea(vector<vector<int>>& grid) {
@@ -70,7 +70,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     int projectionArea(vector<vector<int>>& grid) {

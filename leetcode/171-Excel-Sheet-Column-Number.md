@@ -31,7 +31,7 @@ Output: 701
 
 1. ##### Straight forward
 
-```c++
+```cpp
 int titleToNumber(char * s){
     long num = 0;
     while (*s)
@@ -44,7 +44,7 @@ int titleToNumber(char * s){
 
 - `1234 = 1 * 10^3 + 2 * 10^2 + 3 * 10^1 + 4 * 10^0`
 
-```c++
+```cpp
 int titleToNumber(char * s) {
     int len = strlen(s);
     long num = 0;

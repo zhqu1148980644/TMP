@@ -21,7 +21,7 @@ The answer with the calculation error less than 10-5 will be accepted.
 - borrowed from the official answer
 - Use binary search to search for the meanvalue.
 
-```c++
+```cpp
 class Solution {
 public:
     bool greater(vector<int> & nums, double expmean, int k) {

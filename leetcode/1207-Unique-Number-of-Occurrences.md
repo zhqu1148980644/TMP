@@ -26,7 +26,7 @@ Constraints:
 
 1. ##### hash map
 
-```c++
+```cpp
 class Solution {
 public:
     bool uniqueOccurrences(vector<int>& arr) {

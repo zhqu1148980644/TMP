@@ -27,7 +27,7 @@ Output: [-1,-1]
 
 When there are two many duplicates.
 
-```c++
+```cpp
 inline int binarySearch(vector<int> & nums, int target) {
     int lo = 0, hi = nums.size();
     while (lo < hi) {

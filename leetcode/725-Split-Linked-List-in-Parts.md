@@ -32,7 +32,7 @@ k will be an integer in the range [1, 50].
 
 1. ##### straight forward
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {

@@ -47,7 +47,7 @@ All characters in s are lower-case English letters.
 
 - characters with even numbers can be placed in any palindrome strings, while each character with odd numbers can only be placed at the center of one palindrome. This implies that the minimum number of palindromes can be constructed is `max(1, numodd)`, and obviously the upper bound is the total number characters.
 
-```c++
+```cpp
 class Solution {
 public:
     bool canConstruct(string s, int k) {

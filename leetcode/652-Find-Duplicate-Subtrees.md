@@ -27,7 +27,7 @@ Therefore, you need to return above trees' root in the form of a list.
 
 1. ##### postorder traversal with hash map
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -67,7 +67,7 @@ public:
 
 or with custom hash key
 
-```c++
+```cpp
 class Solution {
 public:
     unordered_map<size_t, TreeNode *> m;

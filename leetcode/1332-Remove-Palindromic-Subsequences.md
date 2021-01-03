@@ -53,7 +53,7 @@ Output: 0
     - else, we can firstly remove all `a` in string, then remove all `b`, thus the answer is `2`
 
 
-```c++
+```cpp
 class Solution {
 public:
     int removePalindromeSub(string s) {

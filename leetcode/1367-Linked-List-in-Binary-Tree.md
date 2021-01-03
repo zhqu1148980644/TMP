@@ -38,7 +38,7 @@ Explanation: There is no path in the binary tree that contains all the elements 
 
 1. ##### dfs
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -90,7 +90,7 @@ public:
 
 or
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {

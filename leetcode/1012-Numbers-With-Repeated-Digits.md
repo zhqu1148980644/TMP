@@ -32,7 +32,7 @@ Note:
 - `dp[i]` represents the current checking numbers's prefix is `str(N)[:i)`.
     - Basically, we are checking and counting all numbers in the order of prefix.
 
-```c++
+```cpp
 class Solution {
 public:
     // A(m, n) means the number of permutaion when select n from m number

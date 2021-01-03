@@ -46,7 +46,7 @@ Explanation: There is no such common subsequence, so the result is 0.
     - Otherwise, `dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])`.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int longestCommonSubsequence(string text1, string text2) {

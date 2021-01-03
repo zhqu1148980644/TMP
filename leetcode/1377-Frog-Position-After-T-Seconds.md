@@ -43,7 +43,7 @@ Output: 0.16666666666666666
 
 1. ##### dfs
 
-```c++
+```cpp
 class Solution {
 public:
     double res = 0;

@@ -40,7 +40,7 @@ Explanation: It is better not to apply any change.
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     int maximum69Number (int num) {

@@ -30,7 +30,7 @@ For k = 3, you should return: 3->2->1->4->5
 
 - If the reversed node in the last step are smaller then k, Use the same function reverse back this part of node
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -71,7 +71,7 @@ struct ListNode* reverseKGroup(struct ListNode* head, int k){
 - Firstly iterate the linked list to get the total length `N`.
 - Then reverse k-group `N // k` times using the method in `problem 92`.
 
-```c++
+```cpp
 class Solution {
 public:
     ListNode* reverseKGroup(ListNode* head, int k) {
@@ -98,7 +98,7 @@ public:
 
 Or recall the same function to reverse back the tail.
 
-```c++
+```cpp
 class Solution {
 public:
     ListNode* reverseKGroup(ListNode* head, int k) {

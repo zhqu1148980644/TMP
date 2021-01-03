@@ -30,7 +30,7 @@ Constraints:
     - `113 3 455`, half size is `3(odd)`, when `nums[mid] != nums[mid + 1] -> 3 != 4`, ...
     - Though it's safety to move the beginning of the searching range to `mid + 1` in both cases, in the first case, the final range may be `45`, it's unable to determine which one is the singleton. So we set `lo = mid` in the first case. In another perspective, we are actually maintaining the invariant that the length of the whole search range is `odd`.
 
-```c++
+```cpp
 class Solution {
 public:
     int singleNonDuplicate(vector<int>& nums) {
@@ -58,7 +58,7 @@ public:
 
 or merge these two conditions.
 
-```c++
+```cpp
 class Solution {
 public:
     int singleNonDuplicate(vector<int>& nums) {

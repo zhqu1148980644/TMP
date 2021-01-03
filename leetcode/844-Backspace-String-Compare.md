@@ -35,7 +35,7 @@ Can you solve it in O(N) time and O(1) space?
 
 1. ##### stack O(n) S(n)
 
-```c++
+```cpp
 class Solution {
 public:
     vector<char> remove(const string & S) {
@@ -55,7 +55,7 @@ public:
 
 2. ##### use inplace stack O(n) S(1)
 
-```c++
+```cpp
 class Solution {
 public:
     int type(string & s) {
@@ -80,7 +80,7 @@ public:
 
 3. ##### backward two pointers O(n) S(1)
 
-```c++
+```cpp
 class Solution {
 public:
     bool backspaceCompare(string S, string T) {

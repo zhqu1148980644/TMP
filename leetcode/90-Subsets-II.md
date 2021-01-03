@@ -23,7 +23,7 @@ Output:
 
 1. ##### backtrack with sorting
 
-```c++
+```cpp
 class Solution {
     vector<vector<int>> res;
     vector<int> path;
@@ -54,7 +54,7 @@ public:
 - `size` represents the starting index of newlly generated subsets in the last step, only newly added subsets can be merged with a duplicate number.
 - reference: https://leetcode-cn.com/problems/subsets-ii/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-19/
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
@@ -84,7 +84,7 @@ public:
 - Another iterative approach
 - Handle duplicted number at one time.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
@@ -163,7 +163,7 @@ class Solution:
 - In this method, we only choose bit subsets with contiguous duplicates. .e.g For nums `4444`. Only `1000` `1100` `1110` `1111` are selected.
 
 
-```c++
+```cpp
 class Solution {
 public:
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {

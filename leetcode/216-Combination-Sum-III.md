@@ -20,7 +20,7 @@ Output: [[1,2,6], [1,3,5], [2,3,4]]
 
 1. #### backtracking
 
-```c++
+```cpp
 class Solution {
     vector<vector<int>> res;
     vector<int> path;
@@ -49,7 +49,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> path;

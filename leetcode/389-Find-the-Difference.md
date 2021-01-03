@@ -22,7 +22,7 @@ Explanation:
 
 1. ##### hash map
 
-```c++
+```cpp
 class Solution {
 public:
     char findTheDifference(string s, string t) {
@@ -39,7 +39,7 @@ public:
 
 2. ##### bit operation
 
-```c++
+```cpp
 class Solution {
 public:
     char findTheDifference(string s, string t) {
@@ -53,7 +53,7 @@ public:
 
 3. ##### number sum
 
-```c++
+```cpp
 class Solution {
 public:
     char findTheDifference(string s, string t) {

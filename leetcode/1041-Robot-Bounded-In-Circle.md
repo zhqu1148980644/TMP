@@ -44,7 +44,7 @@ instructions[i] is in {'G', 'L', 'R'}
     - the direction are different than the initial direction, we can draw a line between the initial point and the final point after one loop, than as long as robot continues go forward, these lines would eventualy make up a polygan.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int dirs[4][2] = {{0, -1}, {-1, 0}, {0, 1}, {1, 0}};

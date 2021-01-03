@@ -32,7 +32,7 @@ There are two ways to reach the bottom-right corner:
 
 1. #### Dynamic programming
 
-```c++
+```cpp
 class Solution {
 public:
     int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {

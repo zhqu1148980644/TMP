@@ -27,7 +27,7 @@ Could you do it using only constant space complexity?
 
 - The traversal sequence of the left subtree is monotonically decreasing. And the root node is the lower bound of the right subtree.
 
-```c++
+```cpp
 class Solution {
 public:
     bool verifyPreorder(vector<int>& preorder) {

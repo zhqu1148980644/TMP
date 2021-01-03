@@ -41,7 +41,7 @@ Output:
 
 1. ##### backtrack with recursion
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> wordBreak(string s, vector<string>& wordDict) {
@@ -87,7 +87,7 @@ class Solution:
 
 2. ##### dynamic programming
 
-```c++
+```cpp
 class Solution {
 public:
     // not nesserary, for pre-exit

@@ -23,7 +23,7 @@ Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
 1. ##### dynamic programming
 
 
-```c++
+```cpp
 class Solution {
 public:     
     int rob(vector<int> & nums, int start, int len) {

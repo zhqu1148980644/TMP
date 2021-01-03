@@ -22,7 +22,7 @@ Output: 6
 
 1. ##### one pass
 
-```c++
+```cpp
 int findSpecialInteger(int * arr, int arrSize) {
     int count = 1;
     for (int i = 1; i < arrSize; i++) {
@@ -36,7 +36,7 @@ int findSpecialInteger(int * arr, int arrSize) {
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     int findSpecialInteger(vector<int>& arr) {

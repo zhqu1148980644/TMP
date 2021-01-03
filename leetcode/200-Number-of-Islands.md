@@ -27,7 +27,7 @@ Output: 3
 
 1. ##### dfs with recursion
 
-```c++
+```cpp
 class Solution {
 public:
     void dfs(vector<vector<char>> & grid, int x, int y) {
@@ -59,7 +59,7 @@ public:
 
 - Treat all zeros as a union.
 
-```c++
+```cpp
 template <typename T>
 class UnionFind {
 private:
@@ -131,7 +131,7 @@ public:
 Or count when merging in union find.
 
 
-```c++
+```cpp
 template <typename T>
 class UnionFind {
 private:
@@ -205,7 +205,7 @@ public:
 ```
 Or count the number of `1` at first and decuce the count whenever make new merge and ignore all zeros.
 
-```c++
+```cpp
 #define node(x, y) ( (x) * ncol + (y) )
 class Solution {
 public:
@@ -236,7 +236,7 @@ public:
 
 Or
 
-```c++
+```cpp
 class Solution {
 public:
     int nrow, ncol;

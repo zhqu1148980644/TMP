@@ -39,7 +39,7 @@ Output: 2
 
 - Use unordered set to dedup the input vector of words.
 
-```c++
+```cpp
 struct UnionFind {
     vector<int> nodes, sizes;
     UnionFind(int size) : nodes(size), sizes(size, 1) {
@@ -89,7 +89,7 @@ public:
 
 2. ##### dfs O(n2 * l)
 
-```c++
+```cpp
 class Solution {
 public:
     bool similar(const string_view & s1, const string_view & s2) {

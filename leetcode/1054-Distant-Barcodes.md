@@ -25,7 +25,7 @@ Note:
 
 - At each step, put two distinct elements with the largest counts.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> rearrangeBarcodes(vector<int>& barcodes) {
@@ -57,7 +57,7 @@ public:
 - directly puting elements from the largest count to the smallest with two ajacent elements separated by anothor element.
 - How to prove the correctness.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> rearrangeBarcodes(vector<int>& barcodes) {

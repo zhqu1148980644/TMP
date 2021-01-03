@@ -27,7 +27,7 @@ Output: [0,0,1,1,2,2]
     - elements before `i` are always smaller than 1 and elements after `j` are always larger than 1.
     - elements in `array[i:cur)` are always 1. `i == cur` means no 1 ecountered.
 
-```c++
+```cpp
 class Solution {
 public:
     void sortColors(vector<int>& nums) {

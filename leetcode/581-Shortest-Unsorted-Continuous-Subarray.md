@@ -21,7 +21,7 @@ Explanation: You need to sort [6, 4, 8, 10, 9] in ascending order to make the wh
 
 - Sort the original array and find the first and last element that are different in two arrays.
 
-```c++
+```cpp
 class Solution {
 public:
     int findUnsortedSubarray(vector<int>& nums) {
@@ -57,7 +57,7 @@ class Solution:
     - Finding all ajcant number pairs, whenever meet a pair with the second number smaller than the first number, update the peak value if the first number is larger it.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int findUnsortedSubarray(vector<int>& nums) {
@@ -86,7 +86,7 @@ public:
 - Use mono stack to find the smallest valley and largest peak.
 - Elements in stack are always in ascending/desending order.
 
-```c++
+```cpp
 class Solution {
 public:
     int findUnsortedSubarray(vector<int>& nums) {

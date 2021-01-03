@@ -25,7 +25,7 @@ Output: true
 
 2. hashset
 
-```c++
+```cpp
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {

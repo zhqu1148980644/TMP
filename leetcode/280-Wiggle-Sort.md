@@ -12,7 +12,7 @@ Output: One possible answer is [3,5,1,6,2,4]
 
 - After `pair[i, i + 1]` is correct(suppose increasing), reversing `pair[i + 1, i + 2]`(increasing) would not change the correctness of the previous pair.
 
-```c++
+```cpp
 class Solution {
 public:
     void wiggleSort(vector<int>& nums) {
@@ -28,7 +28,7 @@ public:
 
 or use index as the less marker
 
-```c++
+```cpp
 class Solution {
 public:
     void wiggleSort(vector<int>& nums) {

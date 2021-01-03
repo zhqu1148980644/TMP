@@ -27,7 +27,7 @@ S[i] consists of only lowercase English letters.
 
 1. ##### sliding window
 
-```c++
+```cpp
 class Solution {
 public:
     int countLetters(string S) {

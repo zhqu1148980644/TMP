@@ -22,7 +22,7 @@ A is a mountain, as defined above.
 
 1. ##### binary search
 
-```c++
+```cpp
 class Solution {
 public:
     int peakIndexInMountainArray(vector<int>& A) {

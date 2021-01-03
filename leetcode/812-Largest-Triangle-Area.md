@@ -20,7 +20,7 @@ Answers within 10^-6 of the true value will be accepted as correct.
 
 - Shoelace Formula: `|x1*y2 + x2*y3 + x3*y1 - x2*y1 - x3*y2 - x1*y3| / 2`
 
-```c++
+```cpp
 class Solution {
 public:
     double largestTriangleArea(vector<vector<int>>& points) {

@@ -18,7 +18,7 @@ Explanation: 342 + 465 = 807.
 - Emulate the process of adding two numbers. Do not care about reversion, Store carry when forwarding.
 
 
-```c++
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {

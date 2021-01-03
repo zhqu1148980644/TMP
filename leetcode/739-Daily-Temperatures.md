@@ -8,7 +8,7 @@ Note: The length of temperatures will be in the range [1, 30000]. Each temperatu
 
 1. ##### monotonous decreasing stack O(n)
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> dailyTemperatures(vector<int>& T) {
@@ -34,7 +34,7 @@ public:
 - reference: https://leetcode-cn.com/problems/daily-temperatures/solution/java-by-sdwwld/
 - Scan the array backwards and reuse infos fetched before.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> dailyTemperatures(vector<int>& T) {

@@ -55,7 +55,7 @@ Explanation: Place students in available seats in column 1, 3 and 5.
     - An arrangement can be represented by an `integer` as the number of columns is smaller than `8`.
     - For example, `##0##1#10` can be represented as `2^5 + 2^7`.
 
-```c++
+```cpp
 class Solution {
 public:
     inline int countone(int n) {
@@ -104,7 +104,7 @@ public:
 
 - In the first version, the calculation of all states is unnecessary, a top-down strategy can save a huge amount of running time though the time complexity is the same.
 
-```c++
+```cpp
 
 ```
 

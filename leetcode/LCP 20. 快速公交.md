@@ -57,7 +57,7 @@
     - `y` comes from jumping from `x` follwed by several backward steps.
         - Notes: By any means, we cannot call `solve(x + num)` within the call of `solve(x)`.
 
-```c++
+```cpp
 class Solution {
 public:
     int busRapidTransit(int target, int inc, int dec, vector<int>& jump, vector<int>& cost) {

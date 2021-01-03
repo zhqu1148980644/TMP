@@ -48,7 +48,7 @@ Constraints:
 
 - `dp[d][i] = dp[d - 1][i - 1] + dp[d - 1][i - 2] + ... dp[d - 1][i - f]`
 
-```c++
+```cpp
 class Solution {
 public:
     int numRollsToTarget(int d, int f, int target) {

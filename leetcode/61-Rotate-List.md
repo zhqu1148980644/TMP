@@ -23,7 +23,7 @@ rotate 4 steps to the right: 2->0->1->NULL
 
 1. two pinters
 
-```c++
+```cpp
 class Solution {
 public:
     ListNode* rotateRight(ListNode* head, int k) {
@@ -54,7 +54,7 @@ public:
 
 - This simple method seems contain more useless opeation for counting the length, however these two solutions move the same number of times.
 
-```c++
+```cpp
 class Solution {
 public:
     ListNode * rotateRight(ListNode * head, int k) {

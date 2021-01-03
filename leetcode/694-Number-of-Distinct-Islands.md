@@ -43,7 +43,7 @@ are considered different island shapes, because we do not consider reflection / 
 
 - We record each point's relative coordinate with respect to the top left point when traversing nodes in an island.
 
-```c++
+```cpp
 class Solution {
 public:
     void dfs(vector<vector<int>> & grid, vector<int> & coor, int x, int y, int & x0, int & y0) {
@@ -77,7 +77,7 @@ public:
 
 2. ##### dfs with stack
 
-```c++
+```cpp
 class Solution {
 public:
     void dfs(vector<vector<int>> & grid, vector<int> & coor, int x, int y) {

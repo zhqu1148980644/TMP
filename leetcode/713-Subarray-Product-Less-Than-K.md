@@ -19,7 +19,7 @@ Note:
 
 - count the number of subarrays starting at `i`, `i` is the left boundary of the valid window.
 
-```c++
+```cpp
 class Solution {
 public:
     int numSubarrayProductLessThanK(vector<int>& nums, int k) {
@@ -43,7 +43,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     int numSubarrayProductLessThanK(vector<int>& nums, int k) {
@@ -68,7 +68,7 @@ public:
 or count the number of subarrys ending at `j - 1`
 
 
-```c++
+```cpp
 class Solution {
 public:
     int numSubarrayProductLessThanK(vector<int>& nums, int k) {
@@ -91,7 +91,7 @@ public:
 
 - Transform product into log sum to aoid the product gets too large. Then the problem equals to find the number of subarrays with sum slower than log(k).
 
-```c++
+```cpp
 
 
 ```

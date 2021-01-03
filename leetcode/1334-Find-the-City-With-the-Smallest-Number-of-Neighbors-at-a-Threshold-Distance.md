@@ -53,7 +53,7 @@ The city 0 has 1 neighboring city at a distanceThreshold = 2.
 
 - Floyd algorithm computes shortest paths of all possible pairs of nodes in the graph.
 
-```c++
+```cpp
 class Solution {
 public:
     int findTheCity(int n, vector<vector<int>>& edges, int distanceThreshold) {
@@ -90,7 +90,7 @@ public:
 - Dijkstra computes the minimum distance from a single source to multiple target nodes, thus we need to run this algorithm for every node.
 - ??? Why do not use minstack?
 
-```c++
+```cpp
 typedef pair<int, int> E;
 class Solution {
 public:
@@ -138,7 +138,7 @@ public:
 
 - Or a normal dijkstra method.
 
-```c++
+```cpp
 typedef pair<int, int> E;
 class Solution {
 public:

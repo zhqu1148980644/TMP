@@ -30,7 +30,7 @@ Note:
 
 - The same as `problem 205`.
 
-```c++
+```cpp
 class Solution {
 public:
     bool match(const string & s, const string & p) {

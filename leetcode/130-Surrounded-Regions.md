@@ -28,7 +28,7 @@ X O X X
 
 1. ##### dfs with recursion
 
-```c++
+```cpp
 class Solution {
 public:
 
@@ -73,7 +73,7 @@ public:
 2. ##### bfs with queue
 
 
-```c++
+```cpp
 
 typedef pair<int, int> Coor;
 class Solution {
@@ -136,7 +136,7 @@ public:
 
 - Treat every `O` at borders or connected to borders as a union, and set every item not in this union as `X`.
 
-```c++
+```cpp
 template <typename T>
 class UnionFind {
 public:

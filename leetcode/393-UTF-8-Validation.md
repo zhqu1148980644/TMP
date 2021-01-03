@@ -44,7 +44,7 @@ But the second continuation byte does not start with 10, so it is invalid.
 
 - reference: https://leetcode-cn.com/problems/utf-8-validation/solution/python-zi-fu-chuan-fang-fa-jie-jue-by-powcai/
 
-```c++
+```cpp
 class Solution {
 public:
     bool validUtf8(vector<int>& data) {

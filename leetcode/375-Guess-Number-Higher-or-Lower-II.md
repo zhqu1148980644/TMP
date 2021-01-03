@@ -26,7 +26,7 @@ Given a particular n ≥ 1, find out how much money you need to have to guarante
 
 1. ##### dfs with memoization
 
-```c++
+```cpp
 class Solution {
 public:
     int getMoneyAmount(int n) {
@@ -47,7 +47,7 @@ public:
 
 2. ##### dynamic programming
 
-```c++
+```cpp
 class Solution {
 public:
     int getMoneyAmount(int n) {
@@ -68,7 +68,7 @@ public:
 ```
 
 or manually check border cases;
-```c++
+```cpp
 class Solution {
 public:
     int getMoneyAmount(int n) {

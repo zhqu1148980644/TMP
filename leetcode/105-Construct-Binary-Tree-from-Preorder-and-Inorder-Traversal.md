@@ -55,7 +55,7 @@ class Solution:
 - Since the building process is actually a `preorder` traversal, we can simply increment `pre` to get root nodes in the recursion process.
 - `left` and `right` are used to terminate the recursion. i.e. finding out which part of the subarray in `preorder` belongs to the left/right subtree.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -97,7 +97,7 @@ public:
     - In other words, inindex represents the current node are being built in each step, when inindex reaches the `root node` of the current subtree, the building terminate.
 - This strategy can also be applied to recover the binary tree from postorder and inorder traversal sequence.
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -136,7 +136,7 @@ public:
         - The pop sequence of preorder stack and inorder sequence differs when inorder meets a right child if we traverse backwards from the left most leaf node.
         - When this happens, the disagreed node in preorder sequence is the the right child of the previous node.
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {

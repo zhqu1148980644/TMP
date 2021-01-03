@@ -23,7 +23,7 @@ The size of the given array will be in the range [1,1000].
 
 1. ##### recursion  worst O(n2) avg O(nlog(n))
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -56,7 +56,7 @@ public:
 
 - monotonically decreasing stack.
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode* constructMaximumBinaryTree(vector<int>& nums) {
@@ -92,7 +92,7 @@ public:
     - Else, traversing ``deep right unitll find a node(or nullnode) with value smaller than the current number, link the smaller subtree as the `left child` to form a new maximum tree, then link this maximum tree at the deepmost right child.
         - Why link as left child ? Because they are visited before and their values are smaller than the current number.
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode* constructMaximumBinaryTree(vector<int>& nums) {

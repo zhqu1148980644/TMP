@@ -24,7 +24,7 @@ A[i] is either 0 or 1.
 
 1. ##### prefix sum O(n) S(n)
 
-```c++
+```cpp
 class Solution {
 public:
     int numSubarraysWithSum(vector<int>& A, int S) {
@@ -45,7 +45,7 @@ public:
 
 - Note that the case `S == 0` shoulbe be separately handled.
 
-```c++
+```cpp
 class Solution {
 public:
     int numSubarraysWithSum(vector<int>& A, int S) {

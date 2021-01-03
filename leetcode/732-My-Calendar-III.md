@@ -33,7 +33,7 @@ In calls to MyCalendarThree.book(start, end), start and end are integers in the 
 
 1. ##### discretization O(n2)
 
-```c++
+```cpp
 class MyCalendarThree {
 public:
     map<int, int> m;
@@ -61,6 +61,6 @@ public:
 
 2. ##### segment tree
 
-```c++
+```cpp
 
 ```

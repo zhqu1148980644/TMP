@@ -62,7 +62,7 @@ Note: Answer will in the range of 32-bit signed integer.
 
 1. ##### recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -92,7 +92,7 @@ public:
 
 2. ##### level order traversal
 
-```c++
+```cpp
 class Solution {
 public:
     int widthOfBinaryTree(TreeNode* root) {

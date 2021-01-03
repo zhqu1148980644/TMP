@@ -53,7 +53,7 @@ Therefore, you can't travel around the circuit once no matter where you start.
     - When we arrived at `s[k]` with `i < k <= j` starting from `s[i]`, then the current gas tank we have will be `g[k] + left`  `left >= 0`, if we choose to start at `s[k]`, the gas tank at initial will merely be `g[k]` which is less/equal than the previous situation, how could we get to gas station farther then `s[j]`.
 - So, we can choose the gas station next to the farmost gas station we can reach as the new starting station.
 
-```c++
+```cpp
 class Solution {
 public:
     int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
@@ -79,7 +79,7 @@ public:
 - Aggregating gas unit debt(`gas[i] - cost[i]`) for every gas station, and choose the gas station next to the gas station with the lowest(negative) debt as the starting station.
     - Explanation: To ensure gas not be negative at all time, we need to move the gas ubunt debt line up, till the lowest debt(negative) increases to greater than or equal to 0. Since all debts after the pivot is higher than the pivot, which means the gas unit is aggregating after the pivot and the aggregated gas unit may be larger enough to pull up(added up in the first station) the whole line across zero.
 
-```c++
+```cpp
 public:
     int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
         int mindebt = 0;

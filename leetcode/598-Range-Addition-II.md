@@ -37,7 +37,7 @@ The range of operations size won't exceed 10,000.
 
 - All ops will cause regions within the former minimum op increse by 1.
 
-```c++
+```cpp
 class Solution {
 public:
     int maxCount(int m, int n, vector<vector<int>>& ops) {

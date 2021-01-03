@@ -35,7 +35,7 @@ Note:
 - The implementation of `numcarry(numboat)` leads to a greedy method.
 
 
-```c++
+```cpp
 class Solution {
 public:
     int numcarry(vector<int> & people, int numboat, int limit) {
@@ -74,7 +74,7 @@ public:
 
 2. ##### greedy strategy O(nlog(n))
 
-```c++
+```cpp
 class Solution {
 public:
     int numRescueBoats(vector<int>& people, int limit) {

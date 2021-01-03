@@ -46,7 +46,7 @@ n == satisfaction.length
 - Thus the first step should be sorting the satisfaction array in ascending order and the next step is to find a starting point and discard dishes before this point. However this strategy has `O(n2)` time complexity.
 - Another method is to traversing dishes reversely, and iteratively add dishes as long as the prefix sum is greater than 0. By using prefix sum we can calculate `n1 * 1 + n2 * 2 + n3 * 3 ...` in `O(1)` time based on `n2 * 1 + n3 * 2 ....`
 
-```c++
+```cpp
 class Solution {
 public:
     int maxSatisfaction(vector<int>& satisfaction) {

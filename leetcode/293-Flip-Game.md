@@ -17,7 +17,7 @@ Output:
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> generatePossibleNextMoves(string s) {

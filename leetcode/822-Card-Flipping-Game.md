@@ -32,7 +32,7 @@ Note:
 - Choose the smallest number that didn't appeared both in front and back.
 - Suppose this small number is not the answer, there must be another number with the same value in front of a certain card, since the number is the smallest one the back side of this card must have a larger value, then swap this card again would remove the inconsistency.
 
-```c++
+```cpp
 class Solution {
 public:
     int flipgame(vector<int>& fronts, vector<int>& backs) {

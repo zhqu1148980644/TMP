@@ -25,7 +25,7 @@ Try to solve it in O(n log k) time and O(n) extra space.
 1. ##### count sort O(n + klog(k))
 
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> topKFrequent(vector<string>& words, int k) {
@@ -60,7 +60,7 @@ public:
 
 2. ##### heap O(nlog(k))
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> topKFrequent(vector<string>& words, int k) {
@@ -98,7 +98,7 @@ public:
 
 3. ##### quick partition O(n + klog(k))
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> topKFrequent(vector<string>& words, int k) {

@@ -22,7 +22,7 @@ You may assume word1 and word2 are both in the list.
 
 - Copy codes in problem 243.
 
-```c++
+```cpp
 class Solution {
 public:
     int shortestWordDistance(vector<string>& words, string word1, string word2) {

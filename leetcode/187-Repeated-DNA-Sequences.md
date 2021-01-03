@@ -14,7 +14,7 @@ Output: ["AAAAACCCCC", "CCCCCAAAAA"]
 
 1. ##### hash map
 
-```c++
+```cpp
  straight forward with hash map.
 class Solution {
 public:
@@ -39,7 +39,7 @@ public:
 - When sliding the string, bits representation of the next substring can be quickly calculated by `shifting` the integer of the current substring.
 - To faciliate the integer-subtring conversion, use `3 bits` representation(`char & 7`) instead.
     - `A = 0b1000001, B = 0b000010, C = 0b1000011, D = 0b1000100`
-```c++
+```cpp
 class Solution {
 public:
     vector<string> findRepeatedDnaSequences(string s) {
@@ -57,7 +57,7 @@ public:
 
 Or replace the `int` value type to `bool`.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> findRepeatedDnaSequences(string s) {

@@ -21,7 +21,7 @@ Output: "bb"
 
 1. #### Brute force O(n3)
 
-```c++
+```cpp
 int ispalin(char * st, char * ed) {
     while (st < ed) if (*st++ != *--ed) return 0;
     return true;
@@ -54,7 +54,7 @@ char * longestPalindrome(char * s) {
 
 Row by row, from bottom to top.
 
-```c++
+```cpp
 char * longestPalindrome(char * s) {
     if (!s || !*s) return "";
     int len = strlen(s);
@@ -75,7 +75,7 @@ char * longestPalindrome(char * s) {
 
 Column by column, from left to right.
 
-```c++
+```cpp
 class Solution {
 public:
     string longestPalindrome(string s) {
@@ -99,7 +99,7 @@ public:
 
 3. #### Linear scan and expand from the center O(n2)
 
-```c++
+```cpp
 #define max(x, y) ((x > y) ? (x) : (y))
 int expand(char * s, int left, int right) {
     while(left >= 0 && s[right] && s[left] == s[right]) {
@@ -150,7 +150,7 @@ Note that when `R - cur` < `radius(mirror)`, since some parts are outside the pa
 
 ```
 
-```c++
+```cpp
 class Solution {
 public:
     int expand(const string & s, int l, int r) {

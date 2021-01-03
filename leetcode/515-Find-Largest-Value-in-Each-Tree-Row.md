@@ -15,7 +15,7 @@ Output: [1, 3, 9]
 
 1. ##### dfs with recursion
 
-```c++
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -45,7 +45,7 @@ public:
 
 2. ##### level order traversal
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> largestValues(TreeNode* root) {

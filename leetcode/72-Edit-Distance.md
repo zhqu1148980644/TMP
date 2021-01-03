@@ -44,7 +44,7 @@ exection -> execution (insert 'u')
         - from `min[i - 1, j - 1]`, just replace one of `s1[i]` and `s2[j]` to make them match. ie. one replacement in either `s1` or `s2`.
         - Thus we choose the `minimum` editing distance among these three situations, and `plus one`.
 
-```c++
+```cpp
 class Solution {
 public:
     int minDistance(string word1, string word2) {

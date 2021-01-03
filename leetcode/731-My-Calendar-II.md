@@ -36,7 +36,7 @@ In calls to MyCalendar.book(start, end), start and end are integers in the range
 
 - Use two arrays to store booked ranges with no overlap and ranges with exactly one overlap.
 
-```c++
+```cpp
 class MyCalendarTwo {
 public:
     vector<pair<int, int>> once, twice;
@@ -70,7 +70,7 @@ public:
 
 Or replace two arrays with two tree maps for speeding up the search process. `O(nlog(n))`.
 
-```c++
+```cpp
 
 ```
 
@@ -78,7 +78,7 @@ Or replace two arrays with two tree maps for speeding up the search process. `O(
 
 - This approach is similar to `problem 252 meeting rooms`'s.
 
-```c++
+```cpp
 class MyCalendarTwo {
 public:
     map<int, int> m;
@@ -105,14 +105,14 @@ public:
 
 - Optimized version
 
-```c++
+```cpp
 
 
 ```
 
 3. ##### segment tree wort(O(n2))
 
-```c++
+```cpp
 
 
 ```

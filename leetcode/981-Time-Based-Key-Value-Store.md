@@ -41,7 +41,7 @@ TimeMap.set and TimeMap.get functions will be called a total of 120000 times (c
 
 1. ##### hashmap and treemap
 
-```c++
+```cpp
 class TimeMap {
 public:
     unordered_map<string, map<int, string>> m;
@@ -74,7 +74,7 @@ public:
 
 - The problem ensures that timestamps of set operations are in increasing order.
 
-```c++
+```cpp
 class TimeMap {
 public:
     unordered_map<string, vector<pair<int, string>>> m;

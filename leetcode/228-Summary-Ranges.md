@@ -20,7 +20,7 @@ Explanation: 2,3,4 form a continuous range; 8,9 form a continuous range.
 
 - Here I used to_string function in c++, you can write an new one.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<string> summaryRanges(vector<int>& nums) {

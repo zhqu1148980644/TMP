@@ -22,7 +22,7 @@ The length of both given strings is in range [1, 10,000].
 
 1. ##### sliding window
 
-```c++
+```cpp
 class Solution {
 public:
     bool checkInclusion(string s1, string s2) {
@@ -48,7 +48,7 @@ public:
 
 Since the window is always valid, we can discard the `match` variable.
 
-```c++
+```cpp
 class Solution {
 public:
     bool checkInclusion(string s1, string s2) {

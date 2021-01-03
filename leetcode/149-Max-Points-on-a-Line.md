@@ -40,7 +40,7 @@ Explanation:
 - For each point, check all possible lines could be found and record the maximum number of points reside in thoese lines.
 - To get rid of precision problems, we use `gcd` pair to represents a unique line/slope.
 
-```c++
+```cpp
 class Solution {
 public:
     int maxPoints(vector<vector<int>>& points) {

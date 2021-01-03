@@ -32,7 +32,7 @@ Note:
 
 1. ##### straight forward
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> sumEvenAfterQueries(vector<int>& A, vector<vector<int>>& queries) {
@@ -64,7 +64,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> sumEvenAfterQueries(vector<int>& A, vector<vector<int>>& queries) {

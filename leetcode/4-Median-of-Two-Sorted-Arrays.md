@@ -27,7 +27,7 @@ The median is (2 + 3)/2 = 2.5
 
 - Merge two sorted arrays.
 
-```c++
+```cpp
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
@@ -81,7 +81,7 @@ And the relation satisfies: numbers in left part <= numbers in right part
 
 
 
-```c++
+```cpp
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {

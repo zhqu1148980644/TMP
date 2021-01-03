@@ -33,7 +33,7 @@ It can be shown with 5 or less moves that it is impossible for the array to have
 
 - Use buckets to store each unique value.
 
-```c++
+```cpp
 class Solution {
 public:
     int minIncrementForUnique(vector<int>& A) {
@@ -59,7 +59,7 @@ public:
 
 2. ##### sort/greedy O(nlog(n))
 
-```c++
+```cpp
 class Solution {
 public:
     int minIncrementForUnique(vector<int>& A) {
@@ -88,7 +88,7 @@ public:
 
 
 
-```c++
+```cpp
 struct UnionFind {
     vector<int> nodes;
     UnionFind(int size, int initial = -1) : nodes(size) {

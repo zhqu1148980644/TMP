@@ -40,7 +40,7 @@ Each asteroid will be a non-zero integer in the range [-1000, 1000]..
 
 - Use a virtual `guardian(INT_MIN)` to prevent handling the difference between `equal(both explode) and greater(only the negative asteroid would explode)`.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> asteroidCollision(vector<int>& asteroids) {
@@ -71,7 +71,7 @@ public:
 
 More intricate solution without guardian
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> asteroidCollision(vector<int>& asteroids) {

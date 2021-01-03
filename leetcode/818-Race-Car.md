@@ -46,7 +46,7 @@ Your position goes from 0->1->3->7->7->6.
         -  Or move `backwards 1 step` after moved n - 1 steps, then try to move n steps forward.
 - As there are `n` subproblems in total and we need to scan(backward) `log(n)` times when solving each subproblem, the time complexity is `nlog(n)`.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> memo;
@@ -85,7 +85,7 @@ public:
 
 2. ##### dynamic programming with iteration
 
-```c++
+```cpp
 class Solution {
 public:
     int racecar(int target) {
@@ -120,7 +120,7 @@ public:
 - reference: https://leetcode.com/problems/race-car/discuss/124312/Straightforward-C%2B%2B-BFS-solution-with-Explanation
 - Use pruning to avoid TLE. Ie. dont geting away from the target.
 
-```c++
+```cpp
 class Solution {
 public:
     struct hash {

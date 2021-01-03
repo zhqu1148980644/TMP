@@ -31,7 +31,7 @@ Note: This question is the same as 1296: https://leetcode.com/problems/divide-
 
 - Note : The test case are flawless, method(the first codes below) uses lenear scanning would get TLE when the inputs contains too much duplicates. Check problem 1296 fot this kind of test case.
 
-```c++
+```cpp
 class Solution {
 public:
     bool isNStraightHand(vector<int>& hand, int W) {
@@ -59,7 +59,7 @@ public:
 
 one possible solution is to prededuplicate the array.
 
-```c++
+```cpp
 class Solution {
 public:
     bool isNStraightHand(vector<int>& hand, int W) {
@@ -95,7 +95,7 @@ public:
 2. ##### tree map O(nlog(n))
 
 
-```c++
+```cpp
 class Solution {
 public:
     bool isNStraightHand(vector<int>& hand, int W) {
@@ -125,7 +125,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     bool isNStraightHand(vector<int>& hand, int W) {
@@ -148,7 +148,7 @@ public:
 
 - reference: https://leetcode-cn.com/problems/hand-of-straights/solution/mei-ri-suan-fa-day-103-lao-ti-xin-zuo-ji-hu-bu-hui/
 
-```c++
+```cpp
 class Solution {
 public:
     bool valid(vector<int> & counts, int W) {

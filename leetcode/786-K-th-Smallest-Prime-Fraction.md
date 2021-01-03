@@ -28,7 +28,7 @@ K will be between 1 and A.length * (A.length - 1) / 2.
 - Note that for every denominater in the array, it's possible fractions are in mono-increasing order in accordance with the forwading of numerator from the front;
 
 
-```c++
+```cpp
 class Solution {
 public:
     pair<int, pair<int, int>> under(vector<int> & nums, double frac) {
@@ -70,7 +70,7 @@ public:
 - This approach is conceptually similar to merge multiple sorted lists. Heads of lists are `1 / allnumbers`.
 - Depending on the size of K, it may be more efficient to gradually append new factions.
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> kthSmallestPrimeFraction(vector<int>& A, int K) {
@@ -93,7 +93,7 @@ public:
 
 or
 
-```c++
+```cpp
 class Solution {
 public:
     vector<int> kthSmallestPrimeFraction(vector<int>& A, int K) {
@@ -134,7 +134,7 @@ public:
 
 ```
 
-```c++
+```cpp
 template <typename T>
 struct Matrix {
     using fn_type = function<T(int, int)>;

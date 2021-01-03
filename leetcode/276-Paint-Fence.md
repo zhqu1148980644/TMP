@@ -30,7 +30,7 @@ Explanation: Take c1 as color 1, c2 as color 2. All possible ways are:
 - `dp[i] = dp[i - 1] * (k - 1) else`
 
 
-```c++
+```cpp
 class Solution {
 public:
     int numWays(int n, int k) {
@@ -54,7 +54,7 @@ Or
 - `dp[same] = dp[diff]`
 - `dp[diff] = dp[diff] * (k - 1) + dp[same] * (k - 1)`
 
-```c++
+```cpp
 class Solution {
 public:
     int numWays(int n, int k) {

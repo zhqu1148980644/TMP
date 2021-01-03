@@ -31,7 +31,7 @@ Note:
 - As subsequence are independance of positions of each element, sorting the array would not change the result.
 - For element `A[i]`, there are `i` elements smaller than `A[i]`, thus all subsequences(2^i)(either choose or not) in the left side has the maximum with `number(A[i])`, then these subsequences would contribute `2^i * A[i]` to the final result. The same for subsequences in the right, the contribution are `-2^(n - i - 1) * A[i]`.
 
-```c++
+```cpp
 Sorted array in ascending order.
               |
            |
@@ -43,7 +43,7 @@ Sorted array in ascending order.
 ```
 
 
-```c++
+```cpp
 class Solution {
 public:
     int sumSubseqWidths(vector<int>& A) {

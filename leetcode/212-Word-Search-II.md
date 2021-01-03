@@ -37,7 +37,7 @@ Output: ["eat","oath"]
     - Remove the `end mark` of a node after we saved the string to prevent collecting multiple duplicate words.
     - Use inplace mark to represent passed characters in dfs.
 
-```c++
+```cpp
 class Trie {
 public:
     Trie * links[26] = {nullptr};

@@ -33,7 +33,7 @@ Output: ""
     - All characters are `a`, change the last `a` into `b` is the answer.
     - Else, change the first `non-a` character to `a` is the answer.
 
-```c++
+```cpp
 class Solution {
 public:
     string breakPalindrome(string palindrome) {

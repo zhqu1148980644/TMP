@@ -28,7 +28,7 @@ Explanation: 5! = 120, one trailing zero.
     - ....
 - Thus the number of traling zeros is the sum count of `n/5`   `n/25`  `n/125` .....
 
-```c++
+```cpp
 class Solution {
 public:
     int trailingZeroes(int n) {
