@@ -1,8 +1,3 @@
-# UnionFind
+# leetcode solutions
 
-- []
-
-
-# Dynamic Programming
-
-- 70
+- languages: c++/python/rust
