@@ -105,10 +105,8 @@ class FeedsCrawler():
             if uid is None:
                 self.run = False
                 break
-            page = 1
-            while page < MAX_PAGE:
+            for page in range(1, MAX_PAGE):
                 feeds_str = self.get_feeds(uid, page)
-                page += 1
                 feeds = json.loads(feeds_str)
                 for feed in feeds['data']['cards']:
                     if feed['card_type'] != 9:

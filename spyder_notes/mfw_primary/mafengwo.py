@@ -23,7 +23,7 @@ download_bf = pybloom_live.BloomFilter(1024 * 1024 * 16, 0.01)
 
 
 def download_city_notes(id):
-    for i in range(1, 999):                                                                              #遍历每个城市的每一页游记，再下载每一页的游记
+    for i in range(1, 999):                                                                          #遍历每个城市的每一页游记，再下载每一页的游记
         url = 'http://www.mafengwo.cn/yj/%s/1-0-%d.html' % (id, i)
         if url in download_bf:
             continue
@@ -47,9 +47,8 @@ def download_city_notes(id):
                 response = urllib.request.urlopen(req)
                 html = response.read()
                 filename = city_url[7:].replace('/', '_')
-                fo = open("%s%s" % (dirname, filename), 'wb+')
-                fo.write(html)
-                fo.close()
+                with open("%s%s" % (dirname, filename), 'wb+') as fo:
+                    fo.write(html)
                 download_bf.add(city_url)
             except Exception as Arguments:
                 print(Arguments)

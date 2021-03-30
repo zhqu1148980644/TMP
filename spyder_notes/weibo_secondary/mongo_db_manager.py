@@ -34,7 +34,6 @@ class FeedsMongoManager:
                                   })
         except Exception as e:
             print(e)
-            pass
                     # item_id = feed['itemid']
                     # scheme = feed['scheme']
                     # uid = feed['mblog']['user']['id']

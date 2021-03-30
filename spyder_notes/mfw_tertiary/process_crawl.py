@@ -100,7 +100,7 @@ while True:
 
     # looking for an empty thread from pool to crawl
 
-    if is_root_page is True:
+    if is_root_page:
         get_page_content(curtask[1], curtask[0], curtask[2])
         is_root_page = False
     else:

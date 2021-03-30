@@ -51,13 +51,10 @@ class PipeBase(object):
 
     def __or__(self, rop):
         self.handle_sibling(rop)
-        if isgenerator(rop):
+        if isgenerator(rop) or not isgenerator(rop) and not callable(rop):
             self.x = rop
-        elif callable(rop):
-            self.x = rop(self.x)
         else:
-            self.x = rop
-
+            self.x = rop(self.x)
         return self
 
     def handle_sibling(self, rop):
@@ -95,12 +92,12 @@ class FileMixin(object):
         except IndexError:
             available = False
 
-        if self.running:
-            if not available:
-                self.x = lop
-            return self
-        else:
+        if not self.running:
             return self(lop)
+
+        if not available:
+            self.x = lop
+        return self
 
     # 'test.file' >> p
     def __rrshift__(self, lop):
@@ -172,14 +169,13 @@ class EasyPipe(Pipe, metaclass=Singleton):
         raise NotImplementedError
 
     def __or__(self, rop):
-        if rop == self.END:
-            res = self.x
-            self._threads = []
-            self.stream = []
-            self.fns = []
-            return res
-        else:
+        if rop != self.END:
             return super().__or__(rop)
+
+        self._threads = []
+        self.stream = []
+        self.fns = []
+        return self.x
 
     def __ror__(self, lop):
         self._threads = []

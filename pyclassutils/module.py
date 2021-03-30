@@ -13,10 +13,9 @@ class LazyProperty(object):
     def __get__(self, instance, owner):
         if instance is None:
             return self
-        else:
-            value = self.func(instance)
-            setattr(instance, self.func.__name__, value)
-            return value
+        value = self.func(instance)
+        setattr(instance, self.func.__name__, value)
+        return value
 
 
 class NodupsDict(UserDict):
@@ -94,9 +93,8 @@ class multi_methods(object):
     def register(self, func=None, **kwargs):
         if func is None:
             return partial(self.register, **kwargs)
-        else:
-            func.__name__ = func.__name__.strip('_')
-            self._methods[func.__name__] = func
+        func.__name__ = func.__name__.strip('_')
+        self._methods[func.__name__] = func
 
 
 class AttrWrapper(object):

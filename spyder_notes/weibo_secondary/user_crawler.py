@@ -84,10 +84,7 @@ class UsersCrawler:
             count = 0
             user_str = self.get_users(uid, self.page)
             users = json.loads(user_str)
-            if self.page == 1:
-                index = 1
-            else:
-                index = 0
+            index = 1 if self.page == 1 else 0
             try:
                 page_count = len(users['data']['cards'][index]['card_group'])
             except:
@@ -124,7 +121,7 @@ class UsersCrawler:
 
 
 user_crawler = UsersCrawler()
-for i in range(100):
+for _ in range(100):
     user_crawler.crawl_users()
 while True:
     for t in user_crawler.threads:

@@ -105,20 +105,17 @@ class CrawlDatabaseManager:
     def dequeueUrl(self, depth):
         try:
             conn=self.cnxpool.connect()
-            cursor=conn.cursor()            
+            cursor=conn.cursor()
             query = ("SELECT `index`, `url`, `depth` FROM urls WHERE status='new' and depth=%d ORDER BY `index`"%(depth))
             result1=cursor.execute(query)
-            if result1 >0:
-               row=cursor.fetchone()
-               update_query = ("UPDATE urls SET `status`='downloading' WHERE `index`=%d") % (row[0])
-               result2=cursor.execute(update_query)
-               cursor.execute("commit") 
-               print("dequeued %s ,still left %d need to be downloaded "%(str(row[1]),result1))
-               return row
-            else:
+            if result1 <= 0:
                 return None
-            cursor.close()   
-            self.cnxpool.disconnect(conn)                              
+            row=cursor.fetchone()
+            update_query = ("UPDATE urls SET `status`='downloading' WHERE `index`=%d") % (row[0])
+            result2=cursor.execute(update_query)
+            cursor.execute("commit")
+            print("dequeued %s ,still left %d need to be downloaded "%(str(row[1]),result1))
+            return row
         except pymysql.Error as err:
             print(err)
             return None

@@ -40,15 +40,22 @@ max_follow_fans_ratio_allowed = 3
 
 def extract_user(users):
     print('extract user')
-    for i in range(0,20):
+    for _ in range(20):
         user_crawler.save_screenshot("test.png")
         for user_element in user_crawler.find_elements_by_xpath('//li[@class="follow_item S_line2"]'):
             print("提取该用户信息")
             tried = 0
             while tried < 3:
                 try:
-                    user = {}
-                    user['follows'] = re.findall(r'(\d+)', user_element.find_element_by_xpath('.//div[@class="info_connect"]/span').text)[0]
+                    user = {
+                        'follows': re.findall(
+                            r'(\d+)',
+                            user_element.find_element_by_xpath(
+                                './/div[@class="info_connect"]/span'
+                            ).text,
+                        )[0]
+                    }
+
                     user['follows_link'] = user_element.find_element_by_xpath('.//div[@class="info_connect"]/span//a').get_attribute('href')
                     user['fans'] = re.findall(r'(\d+)', user_element.find_elements_by_xpath('.//div[@class="info_connect"]/span')[1].text)[0]
                     user['fans_link'] = user_element.find_elements_by_xpath('.//div[@class="info_connect"]/span//a')[1].get_attribute('href')
@@ -82,14 +89,18 @@ def extract_user(users):
     return users
 
 def extract_feed(feeds):
-    for i in range(0,5):      #翻5页
+    for _ in range(5):  #翻5页
         scroll_to_bottom()
         for element in feeds_crawler.find_elements_by_class_name('WB_detail'):
             tried = 0
             while tried < 3:
                 try:
-                    feed = {}
-                    feed['time'] = element.find_element_by_xpath('.//div[@class="WB_from S_txt2"]').text
+                    feed = {
+                        'time': element.find_element_by_xpath(
+                            './/div[@class="WB_from S_txt2"]'
+                        ).text
+                    }
+
                     feed['content'] = element.find_element_by_xpath('.//div[@class="WB_text W_f14"]').text
                     feed['image_names'] = []
                     for image in element.find_elements_by_xpath('.//li[contains(@class,"WB_pic")]/img'):
@@ -108,7 +119,7 @@ def extract_feed(feeds):
 def scroll_to_bottom():
     # 最多尝试 20 次滚屏
     print('scroll down')
-    for i in range(0,50):
+    for _ in range(50):
         # print 'scrolling for the %d time' % (i)
         feeds_crawler.execute_script('window.scrollTo(0, document.body.scrollHeight)')
         html = feeds_crawler.page_source
@@ -199,7 +210,6 @@ def login(username, password):
         feeds_crawler.find_elements_by_xpath('//*[@id="pl_login_form"]/div/div[3]/div[3]/div/input')[0].send_keys(verifycode1)
     except Exception as e:
         print(e)
-        pass
     feeds_crawler.save_screenshot("3.png")
     feeds_crawler.find_element_by_xpath('//div[contains(@class,"login_btn")][1]/a').click()
     print("success!")

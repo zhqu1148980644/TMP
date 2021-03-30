@@ -148,7 +148,7 @@ class TritrisBoard(QFrame):
     def clearTritrisBoard(self):
         #clears shapes from the TritrisBoard#
         self.TritrisBoard = []
-        for i in range((TritrisBoard.TritrisBoardHeight + 2) * TritrisBoard.TritrisBoardWidth):
+        for _ in range((TritrisBoard.TritrisBoardHeight + 2) * TritrisBoard.TritrisBoardWidth):
             self.TritrisBoard.append(Shape.NoShape)
 
     def start(self):
@@ -257,10 +257,10 @@ class TritrisBoard(QFrame):
         #add up rows full of squares into list rowsToRemove
         for i in range(TritrisBoard.TritrisBoardHeight):
 
-            n = 0
-            for j in range(TritrisBoard.TritrisBoardWidth):
-                if not self.shapeAt(j, i) == Shape.NoShape:
-                    n = n + 1
+            n = sum(
+                self.shapeAt(j, i) != Shape.NoShape
+                for j in range(TritrisBoard.TritrisBoardWidth)
+            )
 
             if n == self.TritrisBoardWidth:
                 rowsToRemove.append(i)
@@ -273,7 +273,7 @@ class TritrisBoard(QFrame):
                 for l in range(TritrisBoard.TritrisBoardWidth):
                     self.setShapeAt(l, k, self.shapeAt(l, k + 1))
 
-        numTetrisWidgetLines = numTetrisWidgetLines + len(rowsToRemove)
+        numTetrisWidgetLines += len(rowsToRemove)
 
         if numTetrisWidgetLines > 0:
             self.numLinesRemoved = self.numLinesRemoved + numTetrisWidgetLines

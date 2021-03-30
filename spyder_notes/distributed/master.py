@@ -152,7 +152,7 @@ class CrawlMaster:
         i = 1
         try:
             length=len(self.clients)
-            i=i+length
+            i += length
         except:
             pass
         return str(i)
@@ -235,29 +235,28 @@ class ServerSocket:
             try:
                 data = s.recv(1024).decode("utf-8")
                 data = json.loads(data)
-                if data:
-                    #print request from client which contains information of RUNNING
-                    try:
-                        if data["CLIENT_STATUS"]=="RUNNING":
-                            print("receiving live data {} from {}".format(data,s.getpeername()))
-                    except:
-                        pass
-
-                    response=self.on_massage(s,data)
-
-                    s.send(response.encode("utf-8"))
-                    response_json=json.loads(response)
-                    #print massage send to client by server except for WAIT
-                    try:
-                        if "URLS" in response_json.keys():
-                            print("sending {} to {}".format(response_json["URLS"],s.getpeername()))
-                    except:
-                        massage=response_json["MASSAGE"]
-                        if not (massage =="WAIT"):
-                            print("sending massage {} to {}".format(massage,s.getpeername()))
-                else:
+                if not data:
                     continue
 
+                #print request from client which contains information of RUNNING
+                try:
+                    if data["CLIENT_STATUS"]=="RUNNING":
+                        print("receiving live data {} from {}".format(data,s.getpeername()))
+                except:
+                    pass
+
+                response=self.on_massage(s,data)
+
+                s.send(response.encode("utf-8"))
+                response_json=json.loads(response)
+                    #print massage send to client by server except for WAIT
+                try:
+                    if "URLS" in response_json.keys():
+                        print("sending {} to {}".format(response_json["URLS"],s.getpeername()))
+                except:
+                    massage=response_json["MASSAGE"]
+                    if massage != "WAIT":
+                        print("sending massage {} to {}".format(massage,s.getpeername()))
             except Exception as err:
                     print("expecting exceptional conditions for {} close connection".format(
                     s.getpeername()))
