@@ -48,58 +48,57 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 ################################################DEPRECATED CODE########################################################
 # Tranform json file to BIO file with native scanning way. slow
 def json_to_tab(input, output):
-    outfile = open(output, "w", encoding='utf-8', newline='\n')
-    for file in input:
-        with open(file) as f:
-            source = json.loads(f.read())
-            text = source['text'].replace('\n', ' ')
-            length = len(text)
-            sent_span = list(sent_tokenizer.span_tokenize(text))
-            token_span_sentence = [
-                [(st + i, st + j)
-                 for i, j in word_tokenizer.span_tokenize(text[st: ed])]
-                for st, ed in sent_span
-            ]
-            pos_tags = [
-                pos[1]
-                for st, ed in sent_span
-                for pos in nltk.pos_tag(word_tokenizer.tokenize(text[st: ed]))
-            ]
-            denotations = source["denotations"]
-            # Guard.
-            denotations.append({'obj': None, 'span': {'begin': length, 'end': length}})
-            cur = 0
-            token_index = 0
-            for sentence in token_span_sentence:
-                for token_start, token_end in sentence:
-                    # Skip denotation which start is less than the former denotation's end.
-                    if cur and cur != len(denotations):
-                        last_end = denotations[cur - 1]['span']['end']
-                        while denotations[cur]['span']['begin'] < last_end:
-                            print("pass one denotation: ", file, cur)
+    with open(output, "w", encoding='utf-8', newline='\n') as outfile:
+        for file in input:
+            with open(file) as f:
+                source = json.loads(f.read())
+                text = source['text'].replace('\n', ' ')
+                length = len(text)
+                sent_span = list(sent_tokenizer.span_tokenize(text))
+                token_span_sentence = [
+                    [(st + i, st + j)
+                     for i, j in word_tokenizer.span_tokenize(text[st: ed])]
+                    for st, ed in sent_span
+                ]
+                pos_tags = [
+                    pos[1]
+                    for st, ed in sent_span
+                    for pos in nltk.pos_tag(word_tokenizer.tokenize(text[st: ed]))
+                ]
+                denotations = source["denotations"]
+                # Guard.
+                denotations.append({'obj': None, 'span': {'begin': length, 'end': length}})
+                cur = 0
+                token_index = 0
+                for sentence in token_span_sentence:
+                    for token_start, token_end in sentence:
+                        # Skip denotation which start is less than the former denotation's end.
+                        if cur and cur != len(denotations):
+                            last_end = denotations[cur - 1]['span']['end']
+                            while denotations[cur]['span']['begin'] < last_end:
+                                print("pass one denotation: ", file, cur)
+                                cur += 1
+                                if cur == len(denotations):
+                                    break
+                        cur_denote = denotations[cur]
+                        start = cur_denote['span']['begin']
+                        end = cur_denote['span']['end']
+                        entity = cur_denote['obj']
+                        token = text[token_start: token_end]
+                        pos = pos_tags[token_index]
+                        token_index += 1
+                        if token_end <= start:
+                            write_row(outfile, token, pos, MARKER[0])
+                        # e.g.  token: gain   denotation: 'gain-of-information'
+                        elif token_start == start or (token_start - 1) == start:
+                            write_row(outfile, token, pos, MARKER[1], entity)
+                        else:
+                            write_row(outfile, token, pos, MARKER[3], entity)
+                        if token_end == end:
                             cur += 1
-                            if cur == len(denotations):
-                                break
-                    cur_denote = denotations[cur]
-                    start = cur_denote['span']['begin']
-                    end = cur_denote['span']['end']
-                    entity = cur_denote['obj']
-                    token = text[token_start: token_end]
-                    pos = pos_tags[token_index]
-                    token_index += 1
-                    if token_end <= start:
-                        write_row(outfile, token, pos, MARKER[0])
-                    # e.g.  token: gain   denotation: 'gain-of-information'
-                    elif token_start == start or (token_start - 1) == start:
-                        write_row(outfile, token, pos, MARKER[1], entity)
-                    else:
-                        write_row(outfile, token, pos, MARKER[3], entity)
-                    if token_end == end:
-                        cur += 1
-                outfile.write("\n")
-        outfile.write("\n")
-        print("Loading: ", file, " done.")
-    outfile.close()
+                    outfile.write("\n")
+            outfile.write("\n")
+            print("Loading: ", file, " done.")
 
 
 ## for generating word2vec model based on your own corpus
@@ -109,8 +108,7 @@ class Sentence(object):
 
     def __iter__(self):
         for record in self.records:
-            for sentence in record.tokens_by_sentence():
-                yield sentence
+            yield from record.tokens_by_sentence()
 
 
 def generate_wordvec(records, reuse=True):
@@ -266,8 +264,7 @@ class Text(object):
         self._generate_token_by_sentence()
 
         for tokens in self._tokens:
-            for token in tokens:
-                yield token
+            yield from tokens
 
     def token_span(self):
         """
@@ -278,8 +275,7 @@ class Text(object):
                 yield span
                 self._token_span.append(span)
         else:
-            for span in self._token_span:
-                yield span
+            yield from self._token_span
 
     def sentences(self):
         """
@@ -297,8 +293,7 @@ class Text(object):
                 yield span
                 self._sent_span.append(span)
         else:
-            for span in self._sent_span:
-                yield span
+            yield from self._sent_span
 
     # time comsuming.
     def pos_tags(self):
@@ -473,10 +468,10 @@ class AGACTransform(object):
 
         # function for cheking if a word span within any sentence span
         def check_skip(st, ed):
-            for sent_begin, sent_end in sentence_with_deno:
-                if st >= sent_begin and ed <= sent_end:
-                    return False
-            return True
+            return not any(
+                st >= sent_begin and ed <= sent_end
+                for sent_begin, sent_end in sentence_with_deno
+            )
 
         return check_skip
 
@@ -529,9 +524,7 @@ class AGACTransform(object):
                         outfile.write('\n')
 
     def get_dataframe(self, file=None, pos=False, filter=False, delimiter='\t'):
-        if file is not None:
-            data = self.read_df_from_file(file, pos, delimiter)
-        else:
+        if file is None:
             tokens, poss, entities, sentences = [], [], [], []
             sent_id = 0
             for record in self.records:
@@ -555,21 +548,21 @@ class AGACTransform(object):
                     if pos:
                         poss.append(pos_tags[index])
                     marker = deno_dict.get(token + str(st), None)
-                    if marker is not None:
-                        entities.append(marker)
-                    else:
+                    if marker is None:
                         entities.append('O')
                         if token in (".", "?", "!") and text[st + 1: st + 2] == ' ':
                             sent_id += 1
+                    else:
+                        entities.append(marker)
             if pos:
                 data = pd.DataFrame(np.column_stack([tokens, poss, entities, sentences]),
                                     columns=['token', 'pos', 'entity', 'sentence'])
-                data['sentence'] = data['sentence'].astype('int')
             else:
                 data = pd.DataFrame(np.column_stack([tokens, entities, sentences]),
                                     columns=['token', 'entity', 'sentence'])
-                data['sentence'] = data['sentence'].astype('int')
-
+            data['sentence'] = data['sentence'].astype('int')
+        else:
+            data = self.read_df_from_file(file, pos, delimiter)
         return data
 
     @staticmethod
@@ -581,10 +574,8 @@ class AGACTransform(object):
         try:
             sentence_ids = np.zeros([len(data)], dtype=np.int)
             last = 0
-            sent_id = 0
-            for index in data.index[data.isnull().any(axis=1)]:
+            for sent_id, index in enumerate(data.index[data.isnull().any(axis=1)]):
                 sentence_ids[last: index] = sent_id
-                sent_id += 1
                 last = index
             data['sentence'] = sentence_ids
             data = data.dropna(how='any')
@@ -605,15 +596,14 @@ def write_text(records, output):
     :records: list. list of AGACRecord. fetched from AGACTranform().records
     :output: str. filename of output file.
     """
-    outfile = open(output, "w", encoding='utf-8', newline='\n')
-    for record in records:
-        outfile.write("#########################################\n")
-        outfile.write(record.filename + '\n')
-        outfile.write(record.text + '\n')
-        for deno in record.denotations:
-            outfile.write(str(deno))
-            outfile.write('\n')
-    outfile.close()
+    with open(output, "w", encoding='utf-8', newline='\n') as outfile:
+        for record in records:
+            outfile.write("#########################################\n")
+            outfile.write(record.filename + '\n')
+            outfile.write(record.text + '\n')
+            for deno in record.denotations:
+                outfile.write(str(deno))
+                outfile.write('\n')
 
 
 ##########################################Processing data for model training############################################
@@ -740,10 +730,7 @@ class Table(object):
 
     def transform(self, X, Y):
         try:
-            if isinstance(X, tuple):
-                token_list, pos_list = X[0], X[1]
-            else:
-                token_list, pos_list = X, None
+            token_list, pos_list = (X[0], X[1]) if isinstance(X, tuple) else (X, None)
             tokens = [[self.token_vocab.token2id(word) for word in sent] for sent in token_list]
             token_ids = self.padding_zero(tokens)
             chars = [[[self.char_vocab[char] for char in word] for word in sent] for sent in token_list]
@@ -809,20 +796,19 @@ class Table(object):
         """
         if not nested:
             return pad_sequences(sequences, padding='post')
-        else:
-            max_sent_len = 0
-            max_word_len = 0
-            for sent in sequences:
-                max_sent_len = max(len(sent), max_sent_len)
-                for word in sent:
-                    max_word_len = max(len(word), max_word_len)
+        max_sent_len = 0
+        max_word_len = 0
+        for sent in sequences:
+            max_sent_len = max(len(sent), max_sent_len)
+            for word in sent:
+                max_word_len = max(len(word), max_word_len)
 
-            x = np.zeros((len(sequences), max_sent_len, max_word_len)).astype('int32')
-            for i, sent in enumerate(sequences):
-                for j, word in enumerate(sent):
-                    x[i, j, :len(word)] = word
+        x = np.zeros((len(sequences), max_sent_len, max_word_len)).astype('int32')
+        for i, sent in enumerate(sequences):
+            for j, word in enumerate(sent):
+                x[i, j, :len(word)] = word
 
-            return x
+        return x
 
     def save(self, filepath):
         joblib.dump(self, filepath)
@@ -855,8 +841,7 @@ class BatchData(Sequence):
         return self.table.transform(batch_x, batch_y)
 
     def on_epoch_end(self):
-        if self.shuffle:
-            pass
+        pass
 
     def __len__(self):
         return self.batch_step
@@ -1000,7 +985,7 @@ class BiLSTMCRF(object):
     @staticmethod
     def multi_bilstm(input, lstm_size, layer, dropout=0.2):
         bilstm_layer = input
-        for size in range(layer):
+        for _ in range(layer):
             bilstm_layer = Bidirectional(
                 LSTM(lstm_size, return_sequences=True, recurrent_dropout=dropout))(bilstm_layer)
             # bilstm_layer = Dropout(dropout)(bilstm_layer)

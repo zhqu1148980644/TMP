@@ -59,8 +59,7 @@ class CrawlBSF:
 
     def dequeuUrl(self):
         try:
-            url = self.cur_queue.popleft()
-            return url
+            return self.cur_queue.popleft()
         except IndexError:
             return None
 
@@ -159,7 +158,7 @@ while True:
 
     # looking for an empty thread from pool to crawl
 
-    if is_root_page is True:
+    if is_root_page:
         get_page_content(url)
         is_root_page = False
     else:

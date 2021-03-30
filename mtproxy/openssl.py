@@ -40,9 +40,8 @@ CIPHER_ENC_UNCHANGED = -1
 
 
 def to_bytes(s):
-    if bytes != str:
-        if type(s) == str:
-            return s.encode('utf-8')
+    if bytes != str and type(s) == str:
+        return s.encode('utf-8')
     return s
 
 

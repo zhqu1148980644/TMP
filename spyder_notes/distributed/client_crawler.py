@@ -77,7 +77,7 @@ class crawler:
         self.status = "RUNNING"
         self.client_id = None
         self.enqued_num=0
-        self.start=False    
+        self.start=False
         self.get=False
         self.socket = SocketClient(host, hostport)
         self.deque = deque()
@@ -97,7 +97,7 @@ class crawler:
             'user-agent': "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36",
             'accept': "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
             'accept-language': "zh-CN,en-US;q=0.8,en;q=0.6"
-        }       
+        }
         #start a thread for heartbeat which is  continual
         if not os.path.exists(self.dir_name):
             os.mkdir(self.dir_name)
@@ -108,7 +108,7 @@ class crawler:
         except Exception as err:
             print("failed to start thread HEARTBEAT ,error is "+str(err))
         time.sleep(30)
-        if self.get==True:
+        if self.get:
             self.thread()
         #start multi_process num is equal to cpu_max
         
@@ -253,7 +253,7 @@ class crawler:
 
             if self.start==True:
                 continue
-            
+
             try:
                 a1 = self.deque.pop()
                 self.deque.append(a1)
@@ -267,7 +267,7 @@ class crawler:
                 server_response = self.socket.send(json.dumps(request))
                 self.on_massage(server_response)
                 self.last_heartbeat_time = time.time()
-            elif a1 is not None and time1 - self.last_heartbeat_time >= 40:
+            elif time1 - self.last_heartbeat_time >= 40:
                 request["MASSAGE_TYPE"] = "HEARTBEAT"
                 request["CLIENT_STATUS"] = self.status
                 request["CLIENT_ID"]=self.client_id               

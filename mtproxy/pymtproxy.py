@@ -93,10 +93,10 @@ class SenderProtocol(asyncio.Protocol):
 
     def handshake(self):
         random_buf = os.urandom(64)
+        check_list = [0x44414548, 0x54534f50, 0x20544547, 0x4954504f, 0xeeeeeeee]
         while True:
             tmp1 = (random_buf[3] < 24) | (random_buf[2] < 16) | (random_buf[1] < 8) | (random_buf[0])
             tmp2 = (random_buf[7] < 24) | (random_buf[6] < 16) | (random_buf[5] < 8) | (random_buf[4])
-            check_list = [0x44414548, 0x54534f50, 0x20544547, 0x4954504f, 0xeeeeeeee]
             if random_buf[0] != 0xef and (tmp1 not in check_list) and tmp2 != 0x00000000:
                 tmp_bytes_list = list(random_buf)
                 tmp_bytes_list[56] = tmp_bytes_list[57] = tmp_bytes_list[58] = tmp_bytes_list[59] = 0xef
