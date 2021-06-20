@@ -1,0 +1,189 @@
+---
+title: "Lab2_zhongquan"
+author: "ZhongQuan"
+date: "2019/3/14"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# load packages and load sequence
+```{r}
+library(BSgenome)
+library(GenomicFeatures)
+library(GenomicRanges)
+library(BSgenome.Hsapiens.UCSC.hg19)
+available.genomes()
+Seq<-Hsapiens[["chr1"]]
+Seq
+```
+
+
+# 1. explore sequence composition of fly genome
+```{r}
+# Get GC content
+bases <- alphabetFrequency(Seq, baseOnly = TRUE)
+bases[1:4]
+ntotBases <- sum(bases[1:4])
+ntotBases
+baseFreq <- bases[1:4] / ntotBases
+baseFreq
+GCcontent <- baseFreq["C"] + baseFreq["G"]
+GCcontent
+
+# Look at CG dinucleotide content
+cg <- matchPattern("CG", Seq)
+cg
+ncg <- length(cg)
+ncg
+
+# Compare to the observed to expected ratio
+ncg / (baseFreq["C"] * baseFreq["G"] * ntotBases)
+
+# Compare to the observed to expected ratio of TG
+tg <- matchPattern("TG", Seq)
+ntg <- length(tg)
+ntg / (baseFreq["T"] * baseFreq["G"] * ntotBases)
+
+# Look at GC content and CG dinucleotide distribution in 1000 bp windows in whole genome
+ss <- seq(1, length(Seq), by=1000)
+tail(ss)
+ss <- ss[-length(ss)]
+tail(ss)
+Seq.set <- DNAStringSet(Seq, start = ss, end = ss + 999)
+Seq.set
+tail(Seq.set)
+length(Seq.set)
+ff <- alphabetFrequency(Seq.set, baseOnly = TRUE)
+head(ff)
+summary(ff)
+pCG <- (ff[, "C"] + ff[, "G"]) / rowSums(ff)
+head(pCG)
+summary(pCG)
+hist(pCG[pCG > 0], 100)
+
+# CG occurance
+Seq.set <- DNAStringSet(Seq, start = ss, end = ss + 999)
+nCG <- vcountPattern("CG", Seq.set)
+obsExp <- nCG * 1000 / (ff[, "C"] * ff[, "G"])
+head(obsExp)
+summary(obsExp)
+mean(obsExp, na.rm = TRUE)
+hist(obsExp, 100)
+```
+
+# 2 Explore GC content at gene TSS (transriptional starting site) and their overlaps with CpG island
+```{r}
+# first obtain genes from UCSC usng GenomicFeature functions
+library(GenomicFeatures)
+txdb <- makeTxDbFromUCSC(genome="hg19", tablename = "refGene")
+txdb
+summary(txdb)
+genes.hg19 <- genes(txdb)
+genes
+
+# Get transcriptional start site.
+tss <- start(genes.hg19)
+head(tss)
+summary(tss)
+idx <- which(strand(genes.hg19) == "-")
+head(idx)
+length(idx)
+summary(idx)
+length(genes.hg19)
+tss[idx] <- end(genes.hg19)[idx]
+head(end(genes.hg19))
+length(tss)
+
+# Create GRanges object for the TSS, remove random and hap chromosomes
+allchrs <- as.character(seqnames(genes.hg19))
+head(allchrs)
+idx <- c(grep("random", allchrs), grep("hap", allchrs), grep("chrUn", allchrs))
+idx
+TSS <- GRanges(seqnames = Rle(allchrs[-idx]),  ranges = IRanges(tss[-idx] - 500, tss[-idx] + 500))
+TSS
+summary(TSS)
+
+# get GC contents of TSS for genes on chrosome 1
+idx.chr1 <- seqnames(TSS) == "chr1"
+length(idx.chr1)
+idx.chr1
+Seq.set <- DNAStringSet(Seq, start = start(TSS[idx.chr1]), end = end(TSS[idx.chr1]))
+ff <- alphabetFrequency(Seq.set, baseOnly = TRUE)
+pCG.TSS <- (ff[, "C"] + ff[, "G"]) / rowSums(ff)
+head(pCG.TSS)
+summary(pCG.TSS)
+hist(pCG.TSS, 50)
+
+# Compare with genome wide distribution of GC content
+d1 <- density(pCG[pCG > 0])
+d2 <- density(pCG.TSS)
+length(d1)
+summary(d1)
+length(d2)
+summary(d2)
+plot(d1, lwd = 2, main = "GC percentage's comparison between whole chr1 and sites around TSS in chr1")
+lines(d2, col = "red", lwd = 2)
+legend("topright", legend = c("Genome", "TSS"), lwd = 2, col = c("black", "red"))
+
+## CG dinucleotide around TSS, compute obs/Exp
+nCG <- vcountPattern("CG", Seq.set)
+obsExp.TSS <- nCG * 1000 / (ff[, "C"] * ff[, "G"])
+summary(obsExp)
+summary(obsExp.TSS)
+hist(obsExp.TSS, 50)
+
+## Compare with the genome wide one
+d1 <- density(obsExp[!is.na(obsExp)])
+d1
+d2 <- density(obsExp.TSS)
+d2
+plot(d1, lwd = 2, xlim = c(0, 1.5), main = "obs/exp comparison between whole chr1 and sites around TSS in chr1")
+lines(d2, col = "red", lwd = 2)
+legend("topright", legend = c("Genome", "TSS"), lwd = 2, col = c("black", "red"))
+```
+
+# 3. Overlaps of CpG island and TSS
+## Read in CpG island file, create GRanges object and compute the percentage of TSS covered by CGI.
+```{r}
+# read csv file with no header and separator is '\t'
+data <- read.csv("cpgIslandExt.txt", sep = "\t", header = FALSE)
+head(data)
+colnames(data)
+levels(data$V2)
+cpg_chrs <- as.character(data$V2)
+head(cpg_chrs)
+unique(cpg_chrs)
+levels(cpg_chrs)
+
+# remove cpg islands within (random, hap, chrUn) chromsomes
+cpg_idx <- c(grep("random", cpg_chrs), grep("hap", cpg_chrs), grep("chrUn", cpg_chrs))
+length(cpg_idx)
+length(data$V2)
+
+# create Granges object
+unique(as.character(data$V2[-cpg_idx]))
+cpg_islands <- GRanges(seqnames = Rle(as.character(data$V2[-cpg_idx])), ranges = IRanges(data$V3[-cpg_idx], data$V4[-cpg_idx]))
+cpg_islands
+unique(cpg_islands@seqnames)
+length(unique(cpg_islands@seqnames))
+length(cpg_islands@ranges)
+# calculate overlap percentage in TSS indiviual level 
+# way 1 count overlaps and count numbers of TSS which has a overlap count larger than 0
+overlap_counts <- countOverlaps(TSS, cpg_islands)
+overlaps1 <- which(overlap_counts > 0)
+overlap_ratio1 <- length(overlaps1) / length(TSS)
+overlap_ratio1
+
+# way 2 find overlapped pairs and remove duplicate TSS
+overlaps2 <-unique(findOverlaps(TSS, cpg_islands)@from)
+overlap_ratio2 <- length(overlaps2) / length(TSS)
+overlap_ratio2
+
+# calculate overlap percentage in base level
+overlap_ratio_bases <- sum(intersect(TSS, cpg_islands)@ranges@width) / sum(TSS@ranges@width)
+# In all bases within TSS site ,the pencentage of bases within cpgislands is :
+overlap_ratio_bases
+```

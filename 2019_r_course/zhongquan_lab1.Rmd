@@ -1,0 +1,94 @@
+---
+title: "LAB1_zhongquan"
+author: "ZhongQuan"
+date: "2019/3/13"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+
+```{r}
+#1. For each of vector, matrix, data frame and list, do following
+my_list<-list(num=c(2,3,1,4,5))
+my_list[["name"]][2] = 9
+my_list
+
+#2. Gene table analysis
+
+#2.1. Read in and get basic summaries
+genes<-read.csv("hg19_gene_table.txt", sep = "\t")
+
+#2.2. total number of genes
+nrow(genes)
+
+#2.3. summarizes number of genes on each chromosome
+table(genes$chrom)
+#2.4. summarizes number of +/- genes
+table(genes$strand)
+
+#2.5. Explore gene lengths
+geneLen<-genes$txEnd - genes$txStart
+
+#2.6. histogram of gene length
+hist(geneLen, 50, main="Gene lengths", xlab = "base pairs")
+
+#2.7. histogram of log gene length - a clear bimodal distribution.
+hist(log(geneLen), 50, main="log(Gene lengths)", xlab="base pairs")
+
+#2.8. look at gene length distribution stratified by strand
+boxplot(geneLen~genes$strand)
+
+#2.9. use log gene length
+boxplot(log(geneLen)~genes$strand)
+
+#2.10. Hypothesis testing on whether gene length are difference on different strand. write yourself.
+t.test(geneLen[genes$strand == "+"], geneLen[genes$strand == "-"], paired=FALSE)
+
+#2.11. now look at gene lengths distributions on different chromosomes
+boxplot(geneLen ~ genes$chrom)
+boxplot(log(geneLen) ~ genes$chrom)
+
+#2.12. exclude the random and hap chromosomes, then plot log gene length on chromosomes
+idx<-c(grep("random", genes$chrom), grep("hap", genes$chrom))
+par(las=3)
+boxplot(log(geneLen[-idx]) ~ as.character(genes$chrom[-idx]))
+
+#2.13. what’s the longest gene?
+idx<-which.max(geneLen)
+genes[idx, ]
+
+#2.14. now look at number of exons
+nExon<-genes$exonCount
+hist(nExon, 40, main="Number of exons", xlab="Exon count")
+
+#2.15. which gene has the most exon?
+idx<-which.max(nExon)
+genes[idx, ]
+
+#2.16. look at correlation of gene length and number of exons
+plot(geneLen, nExon, pch=".", xlab="Gene length", ylab="Number of exons")
+cor(nExon, geneLen)
+
+#2.17. Gene density. chrosome length:
+chrlen=c(247249719,242951149,199501827,191273063,180857866,170899992,158821424,
+146274826,140273252,135374737,134452384,132349534,114142980,106368585,100338915,
+88827254,78774742,76117153,63811651,62435964,46944323,49691432,154913754,57772954)
+names(chrlen)=paste("chr",c(1:22,"X","Y"),sep="")
+
+#2.18. number of genes per Mega basepairs on each chromosome
+sapply(paste("chr",c(1:22,"X","Y"),sep=""), function(chr) {nrow(genes[genes$chrom == chr, ]) / (chrlen[chr]/1000000)})
+
+```
+
+
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
